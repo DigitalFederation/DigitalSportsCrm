@@ -1,0 +1,109 @@
+<?php
+
+namespace Domain\Payments\Services;
+
+use Domain\Payments\Contracts\PaymentGatewayInterface;
+use Domain\Payments\Gateways\OfflineGateway;
+use InvalidArgumentException;
+
+class PaymentGatewayManager
+{
+    private array $gateways = [];
+    private array $config;
+
+    public function __construct(array $config = [])
+    {
+        $this->config = $config;
+        $this->registerDefaultGateways();
+    }
+
+    /**
+     * Register a payment gateway
+     */
+    public function register(string $name, string $gatewayClass): void
+    {
+        if (! class_exists($gatewayClass)) {
+            throw new InvalidArgumentException("Gateway class {$gatewayClass} does not exist");
+        }
+
+        if (! in_array(PaymentGatewayInterface::class, class_implements($gatewayClass))) {
+            throw new InvalidArgumentException("Gateway class {$gatewayClass} must implement PaymentGatewayInterface");
+        }
+
+        $this->gateways[$name] = $gatewayClass;
+    }
+
+    /**
+     * Get a configured gateway instance
+     */
+    public function gateway(string $name): PaymentGatewayInterface
+    {
+        if (! isset($this->gateways[$name])) {
+            throw new InvalidArgumentException("Gateway {$name} is not registered");
+        }
+
+        $gatewayClass = $this->gateways[$name];
+        $gateway = new $gatewayClass;
+
+        // Configure the gateway with its config
+        $gatewayConfig = $this->config['gateways'][$name] ?? [];
+        $gateway->configure($gatewayConfig);
+
+        return $gateway;
+    }
+
+    /**
+     * Get all registered gateway names
+     */
+    public function getAvailableGateways(): array
+    {
+        return array_keys($this->gateways);
+    }
+
+    /**
+     * Check if a gateway is registered
+     */
+    public function hasGateway(string $name): bool
+    {
+        return isset($this->gateways[$name]);
+    }
+
+    /**
+     * Register default gateways
+     */
+    private function registerDefaultGateways(): void
+    {
+        // The offline gateway is always available as the built-in default.
+        $this->register('offline', OfflineGateway::class);
+
+        // Register any additional gateways declared in config/payment.php. This keeps
+        // country/provider-specific gateways (e.g. the bundled EasyPay example) out of
+        // the core service: a deployment adds its own by implementing
+        // PaymentGatewayInterface and pointing the gateway's `gateway` key at it.
+        // See docs/guides/building-integrations.md.
+        foreach ($this->config['gateways'] ?? [] as $name => $gatewayConfig) {
+            if ($name === 'offline') {
+                continue;
+            }
+
+            // Skip gateways explicitly disabled via their `enabled` flag (e.g. EASYPAY_ENABLED=false).
+            if (($gatewayConfig['enabled'] ?? true) === false) {
+                continue;
+            }
+
+            $gatewayClass = $gatewayConfig['gateway'] ?? null;
+
+            if ($gatewayClass) {
+                $this->register($name, $gatewayClass);
+            }
+        }
+    }
+
+    /**
+     * Create manager instance from Laravel config
+     */
+    public static function createFromConfig(): self
+    {
+        return new self(config('payment', []));
+    }
+}

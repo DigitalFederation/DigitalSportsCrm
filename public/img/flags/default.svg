@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Default country flag</title>
+  <desc id="desc">Neutral placeholder flag used when a country flag is unavailable.</desc>
+  <rect width="640" height="480" fill="#f8fafc"/>
+  <path d="M0 0h640v480H0z" fill="none" stroke="#cbd5e1" stroke-width="16"/>
+  <path d="M0 120h640M0 240h640M0 360h640" stroke="#e2e8f0" stroke-width="24"/>
+  <circle cx="320" cy="240" r="72" fill="#94a3b8"/>
+  <path d="M320 192a48 48 0 0 1 0 96 48 48 0 0 1 0-96zm0 24a24 24 0 0 0 0 48 24 24 0 0 0 0-48z" fill="#f8fafc"/>
+</svg>

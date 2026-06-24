@@ -1,0 +1,35 @@
+# phpstan.neon
+
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 3
+    paths:
+        - app
+        - src/Domain
+    excludePaths:
+        - bootstrap/* # Directories that PHPStan should skip
+        - storage/*
+        - public/*
+        - vendor/*
+        - database/*
+        - config/*
+        - resources/*
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        -
+            identifier: missingType.generics
+        -
+            identifier: missingType.iterableValue
+        - '#Unsafe usage of new static#'
+        - '#Call to an undefined method#'
+        - '#Method Illuminate\\Validation\\Validator::validate does not exist.#'
+        - '#Access to an undefined property App\\Models\\.*#'
+        - '#Method App\\Http\\Livewire\\.*::render does not exist.#'
+        - '#Negated boolean expression is always false#'
+
+    # If you're using Laravel's DI container for tests, you might need to specify universal object crates
+    universalObjectCratesClasses:
+        - Illuminate\Foundation\Application
+        - Illuminate\Container\Container

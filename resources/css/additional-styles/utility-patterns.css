@@ -1,0 +1,67 @@
+/* Typography */
+.h1 {
+    @apply text-4xl font-extrabold tracking-tighter;
+}
+
+.h2 {
+    @apply text-3xl font-extrabold tracking-tighter;
+}
+
+.h3 {
+    @apply text-3xl font-extrabold;
+}
+
+.h4 {
+    @apply text-2xl font-extrabold tracking-tight;
+}
+
+@screen md {
+    .h1 {
+        @apply text-5xl;
+    }
+
+    .h2 {
+        @apply text-4xl;
+    }
+}
+
+
+
+/* Forms */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.numeric {
+    @apply w-16;
+    font-family: monospace;
+}
+
+.dive-log-info-wrapper{
+    @apply border-4 rounded-lg border-slate-100 p-4 flex justify-between items-center;
+}
+
+
+.blue-to-blue-gradient-bg {
+    background: linear-gradient(25deg, #1570EF, #B2DDFF);
+}
+
+.cool-sky-gradient-bg {
+    background: #1570EF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #9CECFB, #65C7F7, #1570EF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #9CECFB, #65C7F7, #1570EF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

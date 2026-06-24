@@ -1,0 +1,95 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  laravel:
+    name: Laravel Test Suite
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: digifederation_testing
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      APP_ENV: testing
+      APP_DEBUG: false
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: digifederation_testing
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      CACHE_DRIVER: array
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: array
+      MAIL_MAILER: array
+      TELESCOPE_ENABLED: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: bcmath, dom, fileinfo, gd, intl, mbstring, mysql, zip
+          coverage: none
+
+      - name: Prepare environment
+        run: cp .env.example .env
+
+      - name: Validate Composer configuration
+        run: composer validate --no-check-publish
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Generate application key
+        run: php artisan key:generate --ansi
+
+      - name: Clear configuration cache
+        run: php artisan config:clear
+
+      - name: Run Larastan domain analysis
+        run: ./vendor/bin/phpstan analyse app/Models app/Http src/Domain/*/Models src/Domain/*/Actions src/Domain/*/Services -c phpstan.neon --no-progress
+
+      - name: Install Browsershot dependency
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: npm install --no-save --no-audit --no-fund puppeteer@24.22.0
+
+      - name: Configure Chrome for Browsershot
+        run: |
+          chrome_path="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium-browser || command -v chromium || true)"
+
+          if [ -z "$chrome_path" ]; then
+            echo "Chrome/Chromium executable not found" >&2
+            exit 1
+          fi
+
+          echo "BROWSERSHOT_CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+
+      - name: Run test suite
+        run: php artisan test --colors=always

@@ -1,0 +1,228 @@
+IOC;name;Region Name;Sub-region Name;Continent
+AFG;Afghanistan;Asia;Southern Asia;AS
+ALB;Albania;Europe;Southern Europe;EU
+ALG;Algeria;Africa;Northern Africa;AF
+ASA;American Samoa;Oceania;Polynesia;OC
+AND;Andorra;Europe;Southern Europe;EU
+ANG;Angola;Africa;Sub-Saharan Africa;AF
+AIA;Anguilla;Americas;Latin America and the Caribbean;NA
+ANT;Antigua and Barbuda;Americas;Latin America and the Caribbean;NA
+ARG;Argentina;Americas;Latin America and the Caribbean;SA
+ARM;Armenia;Asia;Western Asia;AS
+ARU;Aruba;Americas;Latin America and the Caribbean;NA
+AUS;Australia;Oceania;Australia and New Zealand;OC
+AUT;Austria;Europe;Western Europe;EU
+AZE;Azerbaijan;Asia;Western Asia;AS
+BAH;Bahamas;Americas;Latin America and the Caribbean;NA
+BRN;Bahrain;Asia;Western Asia;AS
+BAN;Bangladesh;Asia;Southern Asia;AS
+BAR;Barbados;Americas;Latin America and the Caribbean;NA
+BLR;Belarus;Europe;Eastern Europe;EU
+BEL;Belgium;Europe;Western Europe;EU
+BIZ;Belize;Americas;Latin America and the Caribbean;NA
+BEN;Benin;Africa;Sub-Saharan Africa;AF
+BER;Bermuda;Americas;Northern America;NA
+BHU;Bhutan;Asia;Southern Asia;AS
+BOL;Bolivia (Plurinational State of);Americas;Latin America and the Caribbean;SA
+AHO;Bonaire, Sint Eustatius and Saba;Americas;Latin America and the Caribbean;NA
+BIH;Bosnia and Herzegovina;Europe;Southern Europe;EU
+BOT;Botswana;Africa;Sub-Saharan Africa;AF
+BRA;Brazil;Americas;Latin America and the Caribbean;SA
+IVB;British Virgin Islands;Americas;Latin America and the Caribbean;NA
+BRU;Brunei Darussalam;Asia;South-eastern Asia;AS
+BUL;Bulgaria;Europe;Eastern Europe;EU
+BUR;Burkina Faso;Africa;Sub-Saharan Africa;AF
+BDI;Burundi;Africa;Sub-Saharan Africa;AF
+CPV;Cabo Verde;Africa;Sub-Saharan Africa;AF
+CAM;Cambodia;Asia;South-eastern Asia;AS
+CMR;Cameroon;Africa;Sub-Saharan Africa;AF
+CAN;Canada;Americas;Northern America;NA
+CAY;Cayman Islands;Americas;Latin America and the Caribbean;NA
+CAF;Central African Republic;Africa;Sub-Saharan Africa;AF
+CHA;Chad;Africa;Sub-Saharan Africa;AF
+CHI;Chile;Americas;Latin America and the Caribbean;SA
+CHN;China;Asia;Eastern Asia;AS
+HKG;China, Hong Kong Special Administrative Region;Asia;Eastern Asia;AS
+MAC;China, Macao Special Administrative Region;Asia;Eastern Asia;AS
+COL;Colombia;Americas;Latin America and the Caribbean;SA
+COM;Comoros;Africa;Sub-Saharan Africa;AF
+CGO;Congo;Africa;Sub-Saharan Africa;AF
+COK;Cook Islands;Oceania;Polynesia;OC
+CRC;Costa Rica;Americas;Latin America and the Caribbean;NA
+CRO;Croatia;Europe;Southern Europe;EU
+CUB;Cuba;Americas;Latin America and the Caribbean;NA
+CYP;Cyprus;Asia;Western Asia;EU
+CZE;Czechia;Europe;Eastern Europe;EU
+CIV;Côte d'Ivoire;Africa;Sub-Saharan Africa;AF
+PRK;Democratic People's Republic of Korea;Asia;Eastern Asia;AS
+COD;Democratic Republic of the Congo;Africa;Sub-Saharan Africa;AF
+DEN;Denmark;Europe;Northern Europe;EU
+DJI;Djibouti;Africa;Sub-Saharan Africa;AF
+DMA;Dominica;Americas;Latin America and the Caribbean;NA
+DOM;Dominican Republic;Americas;Latin America and the Caribbean;NA
+ECU;Ecuador;Americas;Latin America and the Caribbean;SA
+EGY;Egypt;Africa;Northern Africa;AF
+ESA;El Salvador;Americas;Latin America and the Caribbean;NA
+GEQ;Equatorial Guinea;Africa;Sub-Saharan Africa;AF
+ERI;Eritrea;Africa;Sub-Saharan Africa;AF
+EST;Estonia;Europe;Northern Europe;EU
+SWZ;Eswatini;Africa;Sub-Saharan Africa;AF
+ETH;Ethiopia;Africa;Sub-Saharan Africa;AF
+FLK;Falkland Islands (Malvinas);Americas;Latin America and the Caribbean;SA
+FAR;Faroe Islands;Europe;Northern Europe;EU
+FIJ;Fiji;Oceania;Melanesia;OC
+FIN;Finland;Europe;Northern Europe;EU
+FRA;France;Europe;Western Europe;EU
+FGU;French Guiana;Americas;Latin America and the Caribbean;SA
+FPO;French Polynesia;Oceania;Polynesia;OC
+GBR;Great Britain;Europe;Great Britain;EU
+GAB;Gabon;Africa;Sub-Saharan Africa;AF
+GAM;Gambia;Africa;Sub-Saharan Africa;AF
+GEO;Georgia;Asia;Western Asia;AS
+GER;Germany;Europe;Western Europe;EU
+GHA;Ghana;Africa;Sub-Saharan Africa;AF
+GIB;Gibraltar;Europe;Southern Europe;EU
+GRE;Greece;Europe;Southern Europe;EU
+GRL;Greenland;Americas;Northern America;NA
+GRN;Grenada;Americas;Latin America and the Caribbean;NA
+GUD;Guadeloupe;Americas;Latin America and the Caribbean;NA
+GUM;Guam;Oceania;Micronesia;OC
+GUA;Guatemala;Americas;Latin America and the Caribbean;NA
+GUI;Guinea;Africa;Sub-Saharan Africa;AF
+GBS;Guinea-Bissau;Africa;Sub-Saharan Africa;AF
+GUY;Guyana;Americas;Latin America and the Caribbean;SA
+HAI;Haiti;Americas;Latin America and the Caribbean;NA
+HON;Honduras;Americas;Latin America and the Caribbean;NA
+HUN;Hungary;Europe;Eastern Europe;EU
+ISL;Iceland;Europe;Northern Europe;EU
+IND;India;Asia;Southern Asia;AS
+INA;Indonesia;Asia;South-eastern Asia;AS
+IRI;Iran (Islamic Republic of);Asia;Southern Asia;AS
+IRQ;Iraq;Asia;Western Asia;AS
+IRL;Ireland;Europe;Northern Europe;EU
+ISR;Israel;Asia;Western Asia;AS
+ITA;Italy;Europe;Southern Europe;EU
+JAM;Jamaica;Americas;Latin America and the Caribbean;NA
+JPN;Japan;Asia;Eastern Asia;AS
+JOR;Jordan;Asia;Western Asia;AS
+KAZ;Kazakhstan;Asia;Central Asia;AS
+KEN;Kenya;Africa;Sub-Saharan Africa;AF
+KIR;Kiribati;Oceania;Micronesia;OC
+KUW;Kuwait;Asia;Western Asia;AS
+KGZ;Kyrgyzstan;Asia;Central Asia;AS
+LAO;Lao People's Democratic Republic;Asia;South-eastern Asia;AS
+LAT;Latvia;Europe;Northern Europe;EU
+LIB;Lebanon;Asia;Western Asia;AS
+LES;Lesotho;Africa;Sub-Saharan Africa;AF
+LBR;Liberia;Africa;Sub-Saharan Africa;AF
+LBA;Libya;Africa;Northern Africa;AF
+LIE;Liechtenstein;Europe;Western Europe;EU
+LTU;Lithuania;Europe;Northern Europe;EU
+LUX;Luxembourg;Europe;Western Europe;EU
+MAD;Madagascar;Africa;Sub-Saharan Africa;AF
+MAW;Malawi;Africa;Sub-Saharan Africa;AF
+MAS;Malaysia;Asia;South-eastern Asia;AS
+MDV;Maldives;Asia;Southern Asia;AS
+MLI;Mali;Africa;Sub-Saharan Africa;AF
+MLT;Malta;Europe;Southern Europe;EU
+MSH;Marshall Islands;Oceania;Micronesia;OC
+MRT;Martinique;Americas;Latin America and the Caribbean;NA
+MTN;Mauritania;Africa;Sub-Saharan Africa;AF
+MRI;Mauritius;Africa;Sub-Saharan Africa;AF
+MAY;Mayotte;Africa;Sub-Saharan Africa;AF
+MEX;Mexico;Americas;Latin America and the Caribbean;NA
+FSM;Micronesia (Federated States of);Oceania;Micronesia;OC
+MON;Monaco;Europe;Western Europe;EU
+MGL;Mongolia;Asia;Eastern Asia;AS
+MGO;Montenegro;Europe;Southern Europe;EU
+MNT;Montserrat;Americas;Latin America and the Caribbean;NA
+MAR;Morocco;Africa;Northern Africa;AF
+MOZ;Mozambique;Africa;Sub-Saharan Africa;AF
+MYA;Myanmar;Asia;South-eastern Asia;AS
+NAM;Namibia;Africa;Sub-Saharan Africa;AF
+NRU;Nauru;Oceania;Micronesia;OC
+NEP;Nepal;Asia;Southern Asia;AS
+NED;Netherlands;Europe;Western Europe;EU
+NCD;New Caledonia;Oceania;Melanesia;OC
+NZL;New Zealand;Oceania;Australia and New Zealand;OC
+NCA;Nicaragua;Americas;Latin America and the Caribbean;NA
+NIG;Niger;Africa;Sub-Saharan Africa;AF
+NGR;Nigeria;Africa;Sub-Saharan Africa;AF
+NIU;Niue;Oceania;Polynesia;OC
+NFI;Norfolk Island;Oceania;Australia and New Zealand;OC
+NMA;Northern Mariana Islands;Oceania;Micronesia;OC
+NOR;Norway;Europe;Northern Europe;EU
+OMA;Oman;Asia;Western Asia;AS
+PAK;Pakistan;Asia;Southern Asia;AS
+PLW;Palau;Oceania;Micronesia;OC
+PAN;Panama;Americas;Latin America and the Caribbean;NA
+PNG;Papua New Guinea;Oceania;Melanesia;OC
+PAR;Paraguay;Americas;Latin America and the Caribbean;SA
+PER;Peru;Americas;Latin America and the Caribbean;SA
+PHI;Philippines;Asia;South-eastern Asia;AS
+POL;Poland;Europe;Eastern Europe;EU
+POR;Portugal;Europe;Southern Europe;EU
+PUR;Puerto Rico;Americas;Latin America and the Caribbean;NA
+QAT;Qatar;Asia;Western Asia;AS
+KOR;Republic of Korea;Asia;Eastern Asia;AS
+MDA;Republic of Moldova;Europe;Eastern Europe;EU
+ROU;Romania;Europe;Eastern Europe;EU
+RUS;Russian Federation;Europe;Eastern Europe;EU
+RWA;Rwanda;Africa;Sub-Saharan Africa;AF
+REU;Réunion;Africa;Sub-Saharan Africa;AF
+HEL;Saint Helena;Africa;Sub-Saharan Africa;AF
+SKN;Saint Kitts and Nevis;Americas;Latin America and the Caribbean;NA
+LCA;Saint Lucia;Americas;Latin America and the Caribbean;NA
+SPM;Saint Pierre and Miquelon;Americas;Northern America;NA
+VIN;Saint Vincent and the Grenadines;Americas;Latin America and the Caribbean;NA
+SAM;Samoa;Oceania;Polynesia;OC
+SMR;San Marino;Europe;Southern Europe;EU
+STP;Sao Tome and Principe;Africa;Sub-Saharan Africa;AF
+KSA;Saudi Arabia;Asia;Western Asia;AS
+SEN;Senegal;Africa;Sub-Saharan Africa;AF
+SRB;Serbia;Europe;Southern Europe;EU
+SEY;Seychelles;Africa;Sub-Saharan Africa;AF
+SLE;Sierra Leone;Africa;Sub-Saharan Africa;AF
+SIN;Singapore;Asia;South-eastern Asia;AS
+SVK;Slovakia;Europe;Eastern Europe;EU
+SLO;Slovenia;Europe;Southern Europe;EU
+SOL;Solomon Islands;Oceania;Melanesia;OC
+SOM;Somalia;Africa;Sub-Saharan Africa;AF
+RSA;South Africa;Africa;Sub-Saharan Africa;AF
+ESP;Spain;Europe;Southern Europe;EU
+SRI;Sri Lanka;Asia;Southern Asia;AS
+PLE;State of Palestine;Asia;Western Asia;AS
+SUD;Sudan;Africa;Northern Africa;AF
+SUR;Suriname;Americas;Latin America and the Caribbean;SA
+SWE;Sweden;Europe;Northern Europe;EU
+SUI;Switzerland;Europe;Western Europe;EU
+SYR;Syrian Arab Republic;Asia;Western Asia;AS
+TJK;Tajikistan;Asia;Central Asia;AS
+THA;Thailand;Asia;South-eastern Asia;AS
+TPE;Taiwan;Asia;Eastern Asia;AS
+MKD;The former Yugoslav Republic of Macedonia;Europe;Southern Europe;EU
+TLS;Timor-Leste;Asia;South-eastern Asia;OC
+TOG;Togo;Africa;Sub-Saharan Africa;AF
+TGA;Tonga;Oceania;Polynesia;OC
+TTO;Trinidad and Tobago;Americas;Latin America and the Caribbean;NA
+TUN;Tunisia;Africa;Northern Africa;AF
+TUR;Turkey;Asia;Western Asia;AS
+TKM;Turkmenistan;Asia;Central Asia;AS
+TKS;Turks and Caicos Islands;Americas;Latin America and the Caribbean;NA
+TUV;Tuvalu;Oceania;Polynesia;OC
+UGA;Uganda;Africa;Sub-Saharan Africa;AF
+UKR;Ukraine;Europe;Eastern Europe;EU
+UAE;United Arab Emirates;Asia;Western Asia;AS
+GBR;United Kingdom of Great Britain and Northern Ireland;Europe;Northern Europe;EU
+TAN;United Republic of Tanzania;Africa;Sub-Saharan Africa;AF
+ISV;United States Virgin Islands;Americas;Latin America and the Caribbean;NA
+USA;United States of America;Americas;Northern America;NA
+URU;Uruguay;Americas;Latin America and the Caribbean;SA
+UZB;Uzbekistan;Asia;Central Asia;AS
+VAN;Vanuatu;Oceania;Melanesia;OC
+VEN;Venezuela (Bolivarian Republic of);Americas;Latin America and the Caribbean;SA
+VIE;Viet Nam;Asia;South-eastern Asia;AS
+WAF;Wallis and Futuna Islands;Oceania;Polynesia;OC
+YEM;Yemen;Asia;Western Asia;AS
+ZAM;Zambia;Africa;Sub-Saharan Africa;AF
+ZIM;Zimbabwe;Africa;Sub-Saharan Africa;AF

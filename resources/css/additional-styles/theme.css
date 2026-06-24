@@ -1,0 +1,28 @@
+.form-input:focus,
+.form-textarea:focus,
+.form-multiselect:focus,
+.form-select:focus,
+.form-checkbox:focus,
+.form-radio:focus {
+    @apply ring-0;
+}
+
+.min-w-36 {
+    min-width:9rem
+}
+
+
+.overlay-backdrop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0.75; 
+}
+
+.card-modal{
+    position: absolute;
+    z-index: 100;
+}

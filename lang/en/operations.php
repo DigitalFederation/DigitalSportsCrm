@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Page titles
+    'title' => 'Operations Center',
+    'subtitle' => 'Monitor and manage background jobs, scheduled tasks, and system commands',
+    'queue_management' => 'Queue Management',
+    'scheduler' => 'Scheduler Dashboard',
+    'scheduler_subtitle' => 'View and manage scheduled tasks',
+    'command_center' => 'Command Center',
+    'command_center_subtitle' => 'Execute system commands manually',
+    'batch_monitor' => 'Batch Monitor',
+    'batch_monitor_subtitle' => 'Track job batch progress',
+    'queue_details' => 'Queue Details',
+
+    // Stats
+    'pending_jobs' => 'Pending Jobs',
+    'processing' => 'Processing',
+    'failed_jobs' => 'Failed Jobs',
+    'active_batches' => 'Active Batches',
+
+    // System health
+    'system_health' => 'System Health',
+    'database' => 'Database',
+    'queue' => 'Queue',
+    'storage' => 'Storage',
+
+    // Scheduled tasks
+    'scheduled_tasks' => 'Scheduled Tasks',
+    'scheduler_info' => 'These tasks run automatically based on their schedule. You can also run them manually.',
+    'command' => 'Command',
+    'frequency' => 'Frequency',
+    'next_run' => 'Next Run',
+    'last_run' => 'Last Run',
+    'never_run' => 'Never run',
+    'manual' => 'manual',
+    'run_now' => 'Run Now',
+    'running' => 'Running...',
+
+    // Queue
+    'search_jobs' => 'Search jobs...',
+    'job_class' => 'Job Class',
+    'status' => 'Status',
+    'attempts' => 'Attempts',
+    'created_at' => 'Created',
+    'failed_at' => 'Failed At',
+    'error' => 'Error',
+    'actions' => 'Actions',
+    'pending' => 'Pending',
+    'retry' => 'Retry',
+    'delete' => 'Delete',
+    'purge_all_failed' => 'Purge All Failed',
+    'no_pending_jobs' => 'No pending jobs in the queue',
+    'no_failed_jobs' => 'No failed jobs',
+    'job_details' => 'Job Details',
+
+    // Commands
+    'search_commands' => 'Search commands...',
+    'all_categories' => 'All',
+    'category_license' => 'License Management',
+    'category_membership' => 'Membership Management',
+    'category_sync' => 'Role Synchronization',
+    'category_qr' => 'QR Code Generation',
+    'category_maintenance' => 'Data Maintenance',
+    'category_cache' => 'Cache Management',
+    'execute' => 'Execute',
+    'executing' => 'Executing...',
+    'dangerous' => 'Dangerous',
+    'supports_dry_run' => 'Dry-run',
+    'last_executed' => 'Last executed',
+    'no_commands_found' => 'No commands found',
+    'command_output' => 'Command Output',
+    'no_output' => 'No output',
+
+    // Batches
+    'completed_batches' => 'Completed Batches',
+    'batch_name' => 'Batch Name',
+    'total_jobs' => 'Total Jobs',
+    'completed' => 'Completed',
+    'failed' => 'Failed',
+    'finished_at' => 'Finished At',
+    'success' => 'Success',
+    'partial' => 'Partial',
+    'started' => 'Started',
+    'progress' => 'Progress',
+    'jobs' => 'jobs',
+    'total' => 'Total',
+    'cancel' => 'Cancel',
+    'cancelled' => 'Cancelled',
+    'no_active_batches' => 'No active job batches',
+    'no_completed_batches' => 'No completed batches',
+
+    // Quick actions
+    'quick_actions' => 'Quick Actions',
+    'action_sync_all_user_roles' => 'Sync All Roles',
+    'action_licenses_activate_paid' => 'Activate Paid Licenses',
+    'action_optimize_clear' => 'Clear Caches',
+    'action_qr_code_individuals_generate' => 'Generate QR Codes',
+
+    // Navigation
+    'view_all' => 'View all',
+    'back_to_dashboard' => 'Back to Dashboard',
+    'close' => 'Close',
+    'recent_failed_jobs' => 'Recent Failed Jobs',
+
+    // Confirmations
+    'confirm_retry' => 'Are you sure you want to retry this job?',
+    'confirm_delete' => 'Are you sure you want to delete this failed job?',
+    'confirm_purge_all' => 'Are you sure you want to purge ALL failed jobs? This action cannot be undone.',
+    'confirm_run_task' => 'Are you sure you want to run the task ":task" now?',
+    'confirm_execute_command' => 'Are you sure you want to execute the command ":command"?',
+    'confirm_execute_action' => 'Are you sure you want to execute ":action"?',
+    'confirm_cancel_batch' => 'Are you sure you want to cancel this batch? Running jobs will continue but no new jobs will be processed.',
+
+    // Messages
+    'job_retry_success' => 'Job has been queued for retry.',
+    'job_retry_failed' => 'Failed to retry job.',
+    'job_deleted' => 'Failed job has been deleted.',
+    'job_delete_failed' => 'Failed to delete job.',
+    'jobs_purged' => ':count failed job(s) have been purged.',
+    'task_executed_success' => 'Task executed successfully.',
+    'task_executed_failed' => 'Task execution failed.',
+    'command_executed_success' => 'Command executed successfully.',
+    'command_executed_failed' => 'Command execution failed.',
+    'action_executed_success' => 'Action executed successfully.',
+    'action_executed_failed' => 'Action execution failed.',
+    'batch_cancelled' => 'Batch has been cancelled.',
+    'batch_cancel_failed' => 'Failed to cancel batch.',
+    'rate_limit_exceeded' => 'Please wait :seconds seconds before executing another command.',
+    'command_not_allowed' => 'This command is not allowed.',
+    'no_scheduled_tasks' => 'No scheduled tasks configured.',
+];

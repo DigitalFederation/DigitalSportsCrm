@@ -1,0 +1,51 @@
+<?php
+
+namespace Domain\Memberships\Actions;
+
+use Domain\Memberships\DataTransferObject\MembershipData;
+use Domain\Memberships\Models\Membership;
+use Domain\Memberships\Models\MembershipPlan;
+
+/**
+ * @mixin \Domain\Memberships\Models\Membership
+ */
+class CreateMembershipAction
+{
+    public function __invoke(MembershipData $data)
+    {
+        // If name is empty, use the name of the first plan.
+        if (empty($data->name) && ! empty($data->plans)) {
+            $firstPlanId = $data->plans[0];
+            $firstPlan = MembershipPlan::find($firstPlanId);
+            if ($firstPlan) {
+                $data->name = $firstPlan->name;
+            }
+        }
+
+        // Detect if we need to calculate Current End Term
+        if (empty($data->current_term_ends_at)) {
+            $calculateAction = new CalculateMembershipEndTermDateAction;
+            $membershipPlans = MembershipPlan::whereIn('id', $data->plans)->get()->unique('interval', 'interval_unit');
+
+            // If we have only one plan, and we have interval and interval unit, we calculate the end term
+            if ($membershipPlans->count() == 1 && ! empty($membershipPlans->first()->interval) && ! empty($membershipPlans->first()->interval_unit)) {
+                $data->current_term_ends_at = $calculateAction(
+                    $data->current_term_starts_at,
+                    $data->current_term_ends_at,
+                    $membershipPlans->first()->interval,
+                    $membershipPlans->first()->interval_unit
+                );
+            }
+        }
+
+        $membership = Membership::create((array) $data);
+        $membership->plans()->sync($data->plans);
+
+        activity('Membership')
+            ->performedOn($membership)
+            ->event('created')
+            ->log('Membership: '.$membership->name.', was added to Federation');
+
+        return $membership;
+    }
+}

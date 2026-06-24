@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'my_certifications' => 'My Certifications',
+    'my_international_certifications' => 'My International Certifications',
+    'cmas_certifications' => 'International Certifications',
+    'international_certifications_subtitle' => 'International Diving & Scientific certifications',
+    'total_certifications' => 'total certifications',
+    'filter' => 'Filter',
+    'category' => 'Category',
+    'all_categories' => 'All Categories',
+    'apply_filters' => 'Apply Filters',
+    'no_certifications' => 'No Certifications',
+    'no_certifications_message' => 'You currently have no certifications.',
+    'no_international_certifications' => 'No International Certifications',
+    'no_international_certifications_message' => 'You currently have no international certifications.',
+    'view_details' => 'View Details',
+    'coach' => 'Coach',
+    'referee_judge' => 'Referee/Judge',
+    'generation_error' => 'Technical error occurred while generating the certification card. Please try again later.',
+
+    // Certification categories
+    'categories' => [
+        'Diver Career' => 'Diver Career',
+        'Recreational Diver Speciality' => 'Recreational Diver Speciality',
+        'Technical Diver Speciality' => 'Technical Diver Speciality',
+        'Instructor Career' => 'Instructor Career',
+        'Instructor and Dive Leader' => 'Instructor and Dive Leader',
+        'Recreational Instructor Speciality' => 'Recreational Instructor Speciality',
+        'Technical Instructor Speciality' => 'Technical Instructor Speciality',
+        'Scientific Diver Career' => 'Scientific Diver Career',
+        'Scientific Speciality Diver' => 'Scientific Speciality Diver',
+        'Scientific Speciality Instructor' => 'Scientific Speciality Instructor',
+        'Scientific Instructor Career' => 'Scientific Instructor Career',
+        'Freediver' => 'Freediver',
+        'Freediving Instructor' => 'Freediving Instructor',
+        'Coach' => 'Coach',
+        'Referee / Judge' => 'Referee / Judge',
+    ],
+];

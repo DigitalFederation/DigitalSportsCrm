@@ -1,0 +1,18 @@
+name: Repository Hygiene
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  generated-artifacts:
+    name: Block generated artifacts and local secrets
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate tracked files
+        run: bash scripts/validate-no-generated-artifacts.sh --all

@@ -1,0 +1,16 @@
+title = "Digital Sports CRM secret scanning"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Ignore generated dependencies and known non-secret placeholders."
+paths = [
+    '''^vendor/''',
+    '''^node_modules/''',
+    '''^public/vendor/''',
+    '''^public/build/''',
+    '''^storage/clockwork/''',
+    '''^storage/debugbar/''',
+    '''^storage/logs/''',
+]

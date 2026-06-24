@@ -1,0 +1,13 @@
+<x-layout>
+    <livewire:attachments.attachment-federation-create
+        :committee="$committee"
+        :countries="$countries"
+        :categories="$categories"
+        :professional_roles="$professional_roles"
+        :licenses="$licenses"
+        :entity_licenses="$entity_licenses"
+        :individual_licenses="$individual_licenses"
+        :federation_id="$federation_id"
+        :certifications="$certifications"
+    />
+</x-layout>

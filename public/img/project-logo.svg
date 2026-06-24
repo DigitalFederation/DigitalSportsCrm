@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="60" viewBox="0 0 420 60" fill="none" aria-label="Digital Sports CRM" role="img">
+  <title>Digital Sports CRM</title>
+
+  <g transform="translate(8 8) scale(1.833)" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="5" r="3"/>
+    <circle cx="6" cy="12" r="3"/>
+    <circle cx="18" cy="19" r="3"/>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+  </g>
+
+  <text x="76" y="38" font-family="Geist, Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" fill="#0f172a" letter-spacing="0">
+    Digital Federation <tspan font-weight="400" fill="#64748b">CRM</tspan>
+  </text>
+</svg>

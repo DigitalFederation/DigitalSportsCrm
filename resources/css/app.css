@@ -1,0 +1,405 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=fallback');*/
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+@import 'additional-styles/tailwind-linkup-styles.css';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/range-slider.css';
+@import 'additional-styles/toggle-switch.css';
+/* @import 'additional-styles/flatpickr.css'; */
+@import 'additional-styles/theme.css';
+@import 'additional-styles/choicesjs.min.css';
+@import 'tailwindcss/utilities';
+
+@import "filepond/dist/filepond.min.css";
+@import '/node_modules/@shoelace-style/shoelace/dist/themes/light.css';
+@import "additional-styles/tabulator_simple.css";
+
+/* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
+[x-cloak=""] {
+    display: none;
+}
+
+.no-transition * {
+    transition: none !important;
+}
+
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+label {
+    font-size: .75rem !important;
+    font-weight: 700 !important;
+    margin-bottom: .1rem !important;
+    color: #344767 !important;
+    margin-left: .25rem !important;
+}
+
+@media screen and (max-width: theme('screens.lg')) {
+    [x-cloak="lg"] {
+        display: none;
+    }
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.bg-card-waves-animate {
+    /* Make sure the background image is set */
+    animation: wave 15s linear infinite;
+}
+
+/* this classes will force tailwind to bring that colors to the project */
+.bg-pending-state {
+    @apply bg-yellow-400;
+}
+
+.bg-waiting-director {
+    @apply bg-yellow-400;
+}
+
+.bg-active-state {
+    @apply bg-admin_green;
+}
+
+.bg-canceled-state {
+    @apply bg-red-700;
+}
+
+.bg-draft-state {
+    @apply bg-gray-400;
+}
+
+.border-pending-state {
+    @apply border-yellow-400;
+}
+
+.border-active-state {
+    @apply border-admin_green;
+}
+
+.border-canceled-state {
+    @apply border-red-700;
+}
+
+.border-draft-state {
+    @apply border-gray-400;
+}
+
+.text-pending-state {
+    @apply text-yellow-400;
+}
+
+.text-active-state {
+    @apply text-admin_green;
+}
+
+.text-canceled-state {
+    @apply text-red-700;
+}
+
+.text-draft-state {
+    @apply text-gray-400;
+}
+
+
+.tox-tinymce {
+    min-height: 400px !important;
+}
+
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+#sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  #sidebar {
+    scrollbar-width: none;
+  }
+
+  /* For Internet Explorer and older Edge */
+  #sidebar {
+    -ms-overflow-style: none;
+  }
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --df-surface: #ffffff;
+  --df-surface-muted: #f8fafc;
+  --df-surface-subtle: #f1f5f9;
+  --df-border-subtle: #e2e8f0;
+  --df-border-strong: #cbd5f5;
+  --df-text-primary: #1f2937;
+  --df-text-secondary: #4b5563;
+  --df-brand: #4f46e5;
+  --df-brand-strong: #4338ca;
+  --df-success: #16a34a;
+  --df-warning: #f59e0b;
+  --df-danger: #dc2626;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-slate-50 text-slate-700 leading-relaxed;
+    color: var(--df-text-primary);
+    background-color: var(--df-surface-muted);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-slate-900 tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  a:not(.btn) {
+    @apply text-slate-600 transition-colors duration-150;
+  }
+
+  a:not(.btn):hover {
+    @apply text-slate-900;
+  }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.18);
+    color: var(--df-brand-strong);
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-2xl border border-slate-200/80 bg-white/90 shadow-sm transition-all duration-200;
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+
+  .surface-card:hover {
+    box-shadow: 0 20px 45px -24px rgba(79, 70, 229, 0.45);
+    border-color: rgba(79, 70, 229, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .surface-card__header {
+    @apply flex items-center justify-between gap-4 border-b border-slate-200/80 px-6 py-4;
+  }
+
+  .surface-card__body {
+    @apply px-6 py-5;
+  }
+
+  .surface-card__footer {
+    @apply flex items-center justify-end gap-3 border-t border-slate-200/70 bg-slate-50/60 px-6 py-4;
+  }
+
+  .glass-toolbar {
+    @apply flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200/70 bg-white/80 px-5 py-3 shadow-sm transition-all duration-200;
+    backdrop-filter: saturate(160%) blur(8px);
+  }
+
+  .glass-toolbar > .toolbar-title {
+    @apply text-base font-semibold text-slate-800;
+  }
+
+  .glass-toolbar > .toolbar-actions {
+    @apply flex items-center gap-2;
+  }
+
+  .form-field {
+    @apply flex flex-col gap-2;
+  }
+
+  .form-field > label {
+    @apply text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+
+  .form-control {
+    @apply w-full rounded-lg border border-slate-200/80 bg-white px-3 py-2.5 text-sm text-slate-700 shadow-sm transition-all duration-150 ease-out focus:border-indigo-400 focus:ring-2 focus:ring-indigo-200/80 disabled:cursor-not-allowed disabled:bg-slate-100;
+  }
+
+  .form-control--inset {
+    @apply border-transparent bg-slate-100/80 shadow-inner focus:border-indigo-300 focus:ring-indigo-200;
+  }
+
+  .form-hint {
+    @apply text-xs text-slate-500;
+  }
+
+  .input-with-icon {
+    @apply relative flex items-center gap-2;
+  }
+
+  .input-with-icon > svg,
+  .input-with-icon > i {
+    @apply pointer-events-none text-slate-400;
+  }
+
+  .input-with-icon > .form-control {
+    @apply pl-10;
+  }
+
+  .input-with-icon > .form-control + svg,
+  .input-with-icon > .form-control + i {
+    @apply absolute left-3 text-sm;
+  }
+
+  .badge-soft {
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600 transition-colors duration-150;
+  }
+
+  .badge-soft[data-tone='success'] {
+    background: rgba(22, 163, 74, 0.12);
+    border-color: rgba(22, 163, 74, 0.4);
+    color: var(--df-success);
+  }
+
+  .badge-soft[data-tone='warning'] {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: var(--df-warning);
+  }
+
+  .badge-soft[data-tone='danger'] {
+    background: rgba(220, 38, 38, 0.12);
+    border-color: rgba(220, 38, 38, 0.4);
+    color: var(--df-danger);
+  }
+
+  .badge-soft[data-tone='brand'] {
+    background: rgba(79, 70, 229, 0.12);
+    border-color: rgba(79, 70, 229, 0.35);
+    color: var(--df-brand-strong);
+  }
+
+  .list-timeline {
+    @apply relative space-y-6 pl-6;
+  }
+
+  .list-timeline::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.5rem;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.7), rgba(148, 163, 184, 0));
+  }
+
+  .list-timeline__item {
+    @apply relative rounded-xl border border-slate-200/70 bg-white/90 p-4 shadow-sm transition hover:border-indigo-200/70 hover:shadow-md;
+  }
+
+  .list-timeline__item::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: -1.45rem;
+    top: 1.1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: var(--df-brand);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  }
+
+  .data-sheet {
+    @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+  }
+
+  .data-sheet table {
+    @apply w-full border-collapse text-left;
+  }
+
+  .data-sheet thead {
+    @apply bg-slate-50/80 text-xs uppercase tracking-wide text-slate-500;
+  }
+
+  .data-sheet thead th {
+    @apply px-4 py-3 font-semibold;
+  }
+
+  .data-sheet tbody tr {
+    @apply border-t border-slate-100 transition hover:bg-slate-50/60;
+  }
+
+  .data-sheet tbody td {
+    @apply px-4 py-3 text-sm text-slate-600;
+  }
+
+  .empty-state {
+    @apply flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-slate-300 bg-slate-50/80 px-6 py-12 text-center;
+  }
+
+  .empty-state__icon {
+    @apply flex h-14 w-14 items-center justify-center rounded-full bg-indigo-50 text-indigo-500;
+  }
+
+  .empty-state__title {
+    @apply text-lg font-semibold text-slate-800;
+  }
+
+  .empty-state__description {
+    @apply max-w-md text-sm text-slate-500;
+  }
+}
+
+@layer utilities {
+  .shadow-soft-xl {
+    box-shadow: 0 30px 60px -40px rgba(15, 23, 42, 0.45);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 18px 45px -36px rgba(30, 41, 59, 0.55);
+  }
+
+  .ring-brand {
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.35);
+  }
+
+  .bg-grid-slate {
+    background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.25) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .bg-gradient-soft {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(236, 72, 153, 0.08));
+  }
+
+  .backdrop-blur-soft {
+    backdrop-filter: saturate(140%) blur(12px);
+  }
+}
