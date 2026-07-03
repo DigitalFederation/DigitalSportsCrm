@@ -1,13 +1,14 @@
 ---
-title: Administering the Platform
+title: Admin Portal
 description: The admin panel from an operator's point of view — which screen does what, and where to find it
 ---
 
-# Administering the Platform
+# Admin Portal
 
-This guide is for **administrators operating the running application** — not for developers
-editing code. It maps the everyday admin tasks to the screen that performs them. The deep
-technical detail lives in the linked pages; this is the "where do I click" map.
+This is the operator guide for the **admin portal** (`/admin`) — for administrators running the
+platform, not for developers editing code. It maps the everyday admin tasks to the screen that
+performs them. The deep technical detail lives in the linked pages; this is the "where do I
+click" map. For the other portals, see [Using the Platform](/using-the-platform/).
 
 If you came here because something "isn't there," read [Managed in the UI vs. in
 config](#managed-in-the-ui-vs-in-config) first — a few things (committees, the shape of the
@@ -85,6 +86,7 @@ deployment-specific tweaks** (users, roles, menu order) are done in the admin UI
 
 ## See also
 
+- [Using the Platform](/using-the-platform/) — the other portals (Federation, Club, Individual)
 - [Getting Started](/guides/getting-started) — install, first admin account
 - [Navigation & Menus](/guides/navigation-and-menus) — the sidebar, seeding, and the menu editor
 - [Configuring Committees](/guides/configuring-committees) — committee sections via config
