@@ -41,6 +41,27 @@ A feature flag selects which menu the app renders (`config/features.php`):
 
 Recommended setup is the default (database menu) so the menu can be managed in-app.
 
+## Managing menus in the admin UI
+
+Once menus are seeded, an admin can reorder, rename, show/hide, and add entries **without
+editing config or the database by hand**, at:
+
+```
+/admin/menu-management          # route name: admin.menu-management.index
+```
+
+The menu-management link only appears — and the page only loads — when **all three** of these
+hold. If the page seems missing, check them in order:
+
+| Prerequisite | Why it's needed | If missing |
+|--------------|-----------------|------------|
+| `MenuSeeder` has run | There are no `menu_items` to manage until config is seeded into the database | Editor is empty. Run `php artisan db:seed --class=MenuSeeder`. |
+| `DYNAMIC_MENU_ADMIN=true` | Enables the database menu **and** its admin editor (`config/features.php` → `dynamic_menu.admin_interface`). Defaults to **off** in code; `.env.example` ships it **on**. | Page returns **404**. Set `DYNAMIC_MENU_ADMIN=true` (with `DYNAMIC_MENU_ENABLED=true`) in `.env`, then `php artisan config:clear`. |
+| `manage_menus` permission | Gates the editor; granted to the `admin` role by the seeder | Page returns **403**. Grant `manage_menus` to the user's role. |
+
+In-app edits are **deployment-specific** and are **overwritten on the next re-seed** — make
+structural changes in config (below) and use the editor only for per-deployment tweaks.
+
 ## Customizing the sidebar
 
 You generally edit **configuration, then re-seed** (the database menu is rebuilt from config):

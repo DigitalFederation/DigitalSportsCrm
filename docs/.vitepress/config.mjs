@@ -31,6 +31,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Get Started', link: '/guides/getting-started' },
+      { text: 'Administration', link: '/administration/admin-panel' },
       { text: 'Architecture', link: '/architecture/01-overview' },
       { text: 'Features', link: '/features/memberships' },
       { text: 'Access Control', link: '/access-control/federation-membership-rules' },
@@ -38,6 +39,13 @@ export default defineConfig({
     ],
 
     sidebar: [
+      {
+        text: 'Administration',
+        collapsed: false,
+        items: [
+          { text: 'Administering the Platform', link: '/administration/admin-panel' },
+        ],
+      },
       {
         text: 'Architecture',
         collapsed: false,

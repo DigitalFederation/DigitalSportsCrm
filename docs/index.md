@@ -55,6 +55,12 @@ features:
    - Entity + Diving license → TD approval required first
    - Individual + Diving license → Direct to federation validation
 
+### For Administrators
+
+1. Read [Administering the Platform](/administration/admin-panel) — the admin panel, task by task
+2. Learn how the sidebar works in [Navigation & Menus](/guides/navigation-and-menus)
+3. Set up committees in [Configuring Committees](/guides/configuring-committees)
+
 ### For New Developers
 
 1. Start with [Architecture Overview](/architecture/01-overview)
@@ -69,6 +75,13 @@ features:
 ---
 
 ## Documentation Structure
+
+### Administration
+Operator-facing guides for running the platform through the admin panel.
+
+| Document | Description |
+|----------|-------------|
+| [Administering the Platform](/administration/admin-panel) | Task → screen map for the admin panel; what's managed in the UI vs. in config |
 
 ### Architecture
 Technical deep-dives for developers understanding the system design.
