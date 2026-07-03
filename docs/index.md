@@ -55,11 +55,11 @@ features:
    - Entity + Diving license → TD approval required first
    - Individual + Diving license → Direct to federation validation
 
-### For Administrators
+### For Operators (Admin, Federation, Club, Individual)
 
-1. Read [Administering the Platform](/administration/admin-panel) — the admin panel, task by task
-2. Learn how the sidebar works in [Navigation & Menus](/guides/navigation-and-menus)
-3. Set up committees in [Configuring Committees](/guides/configuring-committees)
+1. Start with [Using the Platform](/using-the-platform/) — the four portals and which one is yours
+2. Open your portal guide: [Admin](/using-the-platform/admin) · [Federation](/using-the-platform/federation) · [Club](/using-the-platform/club) · [Individual](/using-the-platform/individual)
+3. Learn how the sidebar works in [Navigation & Menus](/guides/navigation-and-menus)
 
 ### For New Developers
 
@@ -76,12 +76,16 @@ features:
 
 ## Documentation Structure
 
-### Administration
-Operator-facing guides for running the platform through the admin panel.
+### Using the Platform
+Operator-facing guides for each portal — what each screen does and where to find it.
 
 | Document | Description |
 |----------|-------------|
-| [Administering the Platform](/administration/admin-panel) | Task → screen map for the admin panel; what's managed in the UI vs. in config |
+| [Overview](/using-the-platform/) | The four portals and who logs into each |
+| [Admin Portal](/using-the-platform/admin) | Users, roles, permissions, menus; UI vs. config |
+| [Federation Portal](/using-the-platform/federation) | Members, licenses, certifications, events; main vs. local |
+| [Club Portal](/using-the-platform/club) | Members, licenses, enrolling athletes, technical directors |
+| [Individual Portal](/using-the-platform/individual) | Self-service: licenses, certifications, enrollments, documents |
 
 ### Architecture
 Technical deep-dives for developers understanding the system design.

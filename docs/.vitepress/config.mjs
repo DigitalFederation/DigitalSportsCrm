@@ -31,7 +31,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Get Started', link: '/guides/getting-started' },
-      { text: 'Administration', link: '/administration/admin-panel' },
+      { text: 'Using the Platform', link: '/using-the-platform/' },
       { text: 'Architecture', link: '/architecture/01-overview' },
       { text: 'Features', link: '/features/memberships' },
       { text: 'Access Control', link: '/access-control/federation-membership-rules' },
@@ -40,10 +40,14 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Administration',
+        text: 'Using the Platform',
         collapsed: false,
         items: [
-          { text: 'Administering the Platform', link: '/administration/admin-panel' },
+          { text: 'Overview', link: '/using-the-platform/' },
+          { text: 'Admin Portal', link: '/using-the-platform/admin' },
+          { text: 'Federation Portal', link: '/using-the-platform/federation' },
+          { text: 'Club Portal', link: '/using-the-platform/club' },
+          { text: 'Individual Portal', link: '/using-the-platform/individual' },
         ],
       },
       {
