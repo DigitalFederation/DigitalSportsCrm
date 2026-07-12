@@ -68,7 +68,7 @@ return [
     'instructions' => 'Instruções',
     'example' => 'Exemplo',
     'max_file_size' => 'Tamanho máximo do ficheiro',
-    'skip_existing_records' => 'Ignorar registos existentes',
+    'skip_existing_records' => 'Ignorar registros existentes',
     'validate_only' => 'Validar apenas',
     'no_import' => 'sem importação',
     'no_suggestions' => 'Sem sugestões',
@@ -175,9 +175,9 @@ return [
     'are_you_sure' => 'Tem certeza?',
 
     // Common flash messages
-    'record_created_success' => 'Registo criado com sucesso.',
-    'record_updated_success' => 'Registo atualizado com sucesso.',
-    'record_deleted_success' => 'Registo eliminado com sucesso.',
+    'record_created_success' => 'registro criado com sucesso.',
+    'record_updated_success' => 'registro atualizado com sucesso.',
+    'record_deleted_success' => 'registro eliminado com sucesso.',
     'operation_success' => 'Operação concluída com sucesso.',
     'operation_failed' => 'A operação falhou. Por favor, tente novamente.',
     'unauthorized_action' => 'Ação não autorizada.',

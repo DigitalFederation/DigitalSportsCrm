@@ -757,7 +757,7 @@ return [
     'header' => [
         'subtitle' => 'Gerir candidaturas abertas e rever propostas de eventos submetidas por entidades e associações.',
         'entity_subtitle' => 'Consulte as convocatórias disponíveis e gira as suas candidaturas a eventos.',
-        'total_records' => 'Total de Registos',
+        'total_records' => 'Total de Registros',
         'create_template_subtitle' => 'Crie um novo modelo para definir os requisitos e prazos para submissão de eventos.',
         'edit_template_subtitle' => 'Atualize os detalhes, prazos e definições do modelo de candidatura.',
     ],

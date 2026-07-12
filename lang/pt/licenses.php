@@ -68,8 +68,8 @@ return [
     'status' => 'Estado',
 
     // Purchase summary
-    'Purchase Summary' => 'Resumo do registo',
-    'Purchase Details' => 'Detalhes do registo',
+    'Purchase Summary' => 'Resumo do registro',
+    'Purchase Details' => 'Detalhes do registro',
     'Entity' => 'Entidade',
     'Federation' => 'Federação',
     'Number of Members' => 'Número de Membros',

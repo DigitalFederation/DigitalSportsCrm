@@ -52,7 +52,7 @@ test('entity registration form loads successfully', function () {
     $response = $this->get(route('entity.registration.form'));
 
     $response->assertStatus(200)
-        ->assertSee('Registo de Entidade')
+        ->assertSee('Registro de Entidade')
         ->assertSee('Informação da Entidade')
         ->assertSee('Localização da Sede')
         ->assertSee('Contactos Públicos');
@@ -63,7 +63,7 @@ test('entity registration form displays required field indicators', function () 
 
     // Check for required field indicators (asterisks)
     $response->assertSee('Nome da Entidade') // Entity name
-        ->assertSee('Nome de Registo Fiscal') // Legal name
+        ->assertSee('Nome de Registro Fiscal') // Legal name
         ->assertSee('Responsável Legal') // Legal responsible person
         ->assertSee('NIF') // VAT number
         ->assertSee('Morada') // Address

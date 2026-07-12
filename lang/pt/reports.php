@@ -53,7 +53,7 @@ return [
     'columns' => [
         'entity' => 'Entidade',
         'entity_name' => 'Nome da Entidade',
-        'legal_name' => 'Nome de Registo Fiscal',
+        'legal_name' => 'Nome de Registro Fiscal',
         'member' => 'Membro',
         'member_number' => 'Número de Filiado',
         'member_id' => 'Nr ID',

@@ -231,7 +231,7 @@ return [
     'compressor_certificate' => 'Certificado de Compressor',
     'oxygen_provider_certificate' => 'Certificado de Fornecedor de Oxigénio',
     'diving_insurance' => 'Seguro de Mergulho',
-    'equipment_maintenance_log' => 'Registo de Manutenção de Equipamento',
+    'equipment_maintenance_log' => 'Registro de Manutenção de Equipamento',
     'uploaded' => 'Carregado',
     'upload' => 'Carregar',
     'pending_invitation' => 'Convite Pendente',
@@ -247,7 +247,7 @@ return [
 
     // Document types
     'BusinessLicense' => 'Alvará Comercial',
-    'TaxRegistration' => 'Registo Fiscal',
+    'TaxRegistration' => 'Registro Fiscal',
     'EntityInsurance' => 'Seguro da Entidade',
     'EntityAccidentInsurance' => 'Contrato de Seguro de Acidentes Pessoais',
     'EntityStatutes' => 'Estatutos ou Documento Comercial',
@@ -374,7 +374,7 @@ return [
     'CompressorCertificate' => 'Certificado de Compressor',
     'OxygenProviderCertificate' => 'Certificado de Fornecedor de Oxigénio',
     'DivingInsurance' => 'Seguro de Mergulho',
-    'EquipmentMaintenanceLog' => 'Registo de Manutenção de Equipamento',
+    'EquipmentMaintenanceLog' => 'Registro de Manutenção de Equipamento',
 
     // Wizard Steps
     'select_license_type' => 'Selecionar Tipo de Licença',
@@ -589,9 +589,9 @@ return [
     'manage_relationship_with' => 'Gerir relação com :name',
     'select_action' => 'Selecionar Ação',
     'deactivate_relationship' => 'Desativar Relação',
-    'deactivate_description' => 'Preserva o registo mas marca-o como inativo. Pode ser reativado posteriormente.',
+    'deactivate_description' => 'Preserva o registro mas marca-o como inativo. Pode ser reativado posteriormente.',
     'permanently_delete' => 'Eliminar Permanentemente',
-    'delete_description' => 'Remove completamente o registo. Esta ação não pode ser desfeita.',
+    'delete_description' => 'Remove completamente o registro. Esta ação não pode ser desfeita.',
     'deactivation_reason' => 'Motivo da Desativação',
     'deactivation_reason_required' => 'Por favor, forneça um motivo para a desativação',
     'reason_placeholder' => 'Por favor, forneça um motivo para desativar esta relação profissional...',

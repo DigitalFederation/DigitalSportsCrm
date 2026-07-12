@@ -794,7 +794,7 @@
                     <div class="flex flex-col px-6 py-5 border-t border-slate-200">
                         <div class="flex gap-4 self-start">
                             <button type="submit" class="btn btn-primary">
-                                {{ __('Guardar registo') }}
+                                {{ __('Guardar registro') }}
                             </button>
                             <a class="btn btn-info" href="{{ route(Request::segment(1).'.license.index') }}">
                                 {{ __('Voltar') }}

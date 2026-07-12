@@ -60,9 +60,9 @@ return [
     ],
     // Página de Profissionais de Mergulho
     'diving_professionals' => [
-        'title' => 'Registo Nacional de Profissionais de Mergulho',
+        'title' => 'Registro Nacional de Profissionais de Mergulho',
         'description' => 'Instrutores e Líderes de Mergulho Recreativo.',
-        'subtitle_paragraph_1' => "Este registo centraliza a informacao sobre instrutores e lideres de mergulho licenciados a exercer atividades de mergulho recreativo e cientifico. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
+        'subtitle_paragraph_1' => "Este registro centraliza a informacao sobre instrutores e lideres de mergulho licenciados a exercer atividades de mergulho recreativo e cientifico. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
         'subtitle_paragraph_2' => 'A consulta do RNPM permite verificar o estado de licenciamento dos profissionais. A inclusão de um nome na listagem pública é voluntária, os dados só são divulgados mediante consentimento do profissional de mergulho. A ausência de um profissional no RNPM pode significar apenas que não autorizou a publicação dos seus dados. Nessas situações, recomenda-se que o praticante confirme diretamente com o profissional de mergulho se a sua licença está válida, de acordo com a legislação em vigor.',
         'filters' => [
             'name' => 'Nome do Profissional',
@@ -97,16 +97,16 @@ return [
             'view_profile' => 'Ver Perfil',
         ],
         'profile' => [
-            'back' => 'Voltar ao Registo',
+            'back' => 'Voltar ao Registro',
             'licenses' => 'Licenças',
             'not_found' => 'Profissional de mergulho não encontrado',
         ],
     ],
-    // Pagina de Registo de Treinadores
+    // Pagina de Registro de Treinadores
     'coach_registry' => [
-        'title' => 'Registo Nacional de Treinadores de Atividades Subaquáticas',
+        'title' => 'Registro Nacional de Treinadores de Atividades Subaquáticas',
         'subtitle' => "Encontre treinadores certificados para atividades subaquáticas em {$country}",
-        'subtitle_paragraph_1' => "Este registo centraliza a informacao sobre treinadores licenciados a exercer funcoes em modalidades desportivas subaquaticas. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
+        'subtitle_paragraph_1' => "Este registro centraliza a informacao sobre treinadores licenciados a exercer funcoes em modalidades desportivas subaquaticas. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
         'subtitle_paragraph_2' => 'A consulta do RNTAS permite verificar o estado de licenciamento dos treinadores de atividades subaquáticas. A inclusão de um nome na listagem pública é voluntária, os dados só são divulgados mediante consentimento do treinador. A ausência de um treinador no RNTAS pode significar apenas que não autorizou a publicação dos seus dados. Nessas situações, recomenda-se que o praticante confirme diretamente com o treinador se a sua certificação está válida, de acordo com a legislação em vigor.',
         'filters' => [
             'name' => 'Nome do Treinador',
@@ -148,7 +148,7 @@ return [
             'view_profile' => 'Ver Perfil',
         ],
         'profile' => [
-            'back' => 'Voltar ao Registo',
+            'back' => 'Voltar ao Registro',
             'licenses' => 'Licenças',
             'not_found' => 'Treinador não encontrado',
             'date_of_birth' => 'Data de Nascimento',
@@ -169,9 +169,9 @@ return [
             ],
         ],
     ],
-    // Pagina de Registo de Clubes
+    // Pagina de Registro de Clubes
     'club_registry' => [
-        'title' => 'Registo Nacional de Clubes',
+        'title' => 'Registro Nacional de Clubes',
         'subtitle' => "Encontre clubes de desporto subaquático registados em {$country}",
         'filters' => [
             'name' => 'Nome do Clube',
@@ -193,8 +193,8 @@ return [
         'no_results' => 'Não existem clubes',
         'no_results_hint' => 'Tente ajustar os filtros para encontrar mais clubes.',
         'clear_filters' => 'Limpar Filtros',
-        'subtitle_paragraph_1' => "Este registo centraliza a informacao sobre clubes licenciados a exercer atividades desportivas nas modalidades subaquaticas. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
-        'subtitle_paragraph_2' => 'A consulta do RNCAS permite verificar o estado de licenciamento dos clubes de atividades subaquáticas. A inclusão de uma entidade na listagem pública é voluntária. Os dados só são divulgados com o consentimento do clube. A ausência de um clube no registo público pode significar apenas que a entidade não autorizou a divulgação. Nesses casos, recomenda‑se que o praticante confirme diretamente com a entidade se o seu licenciamento está válido, de acordo com a legislação em vigor.',
+        'subtitle_paragraph_1' => "Este registro centraliza a informacao sobre clubes licenciados a exercer atividades desportivas nas modalidades subaquaticas. E gerido por {$federationName} ({$federationShortName}) com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
+        'subtitle_paragraph_2' => 'A consulta do RNCAS permite verificar o estado de licenciamento dos clubes de atividades subaquáticas. A inclusão de uma entidade na listagem pública é voluntária. Os dados só são divulgados com o consentimento do clube. A ausência de um clube no registro público pode significar apenas que a entidade não autorizou a divulgação. Nesses casos, recomenda‑se que o praticante confirme diretamente com a entidade se o seu licenciamento está válido, de acordo com a legislação em vigor.',
         'legend' => [
             'title' => 'Informação',
             'subtitle' => 'Legenda',
@@ -210,9 +210,9 @@ return [
             'view_entity' => 'Ver Entidade',
         ],
     ],
-    // Pagina de Registo de Oficiais Tecnicos
+    // Pagina de Registro de Oficiais Tecnicos
     'technical_official_registry' => [
-        'title' => 'Registo Nacional de Oficiais Técnicos',
+        'title' => 'Registro Nacional de Oficiais Técnicos',
         'subtitle' => "Encontre oficiais técnicos certificados para atividades subaquáticas em {$country}",
         'filters' => [
             'name' => 'Nome do Oficial',
@@ -234,9 +234,9 @@ return [
         'no_results' => 'Não existem oficiais técnicos',
         'no_results_hint' => 'Tente ajustar os filtros para encontrar mais oficiais.',
         'clear_filters' => 'Limpar Filtros',
-        'subtitle_paragraph_1' => "Este registo centraliza a informacao sobre oficiais tecnicos detentores de certificacoes emitidas por {$federationName} ({$federationShortName}).",
-        'subtitle_paragraph_2' => "O registo e gerido pela {$federationShortName}, com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
-        'subtitle_paragraph_3' => "A consulta do registo permite verificar o estado de licenciamento dos oficiais tecnicos. A inclusao de um nome na listagem publica e voluntaria e os dados so sao divulgados mediante consentimento. Em caso de duvida, os agentes desportivos filiados devem contactar a {$federationShortName}.",
+        'subtitle_paragraph_1' => "Este registro centraliza a informacao sobre oficiais tecnicos detentores de certificacoes emitidas por {$federationName} ({$federationShortName}).",
+        'subtitle_paragraph_2' => "O registro e gerido pela {$federationShortName}, com o objetivo de reforcar a transparencia e a qualidade dos servicos prestados.",
+        'subtitle_paragraph_3' => "A consulta do registro permite verificar o estado de licenciamento dos oficiais tecnicos. A inclusao de um nome na listagem publica e voluntaria e os dados so sao divulgados mediante consentimento. Em caso de duvida, os agentes desportivos filiados devem contactar a {$federationShortName}.",
         'legend' => [
             'title' => 'Informação',
             'subtitle' => 'Legenda',
@@ -260,7 +260,7 @@ return [
             'view_profile' => 'Ver Perfil',
         ],
         'profile' => [
-            'back' => 'Voltar ao Registo',
+            'back' => 'Voltar ao Registro',
             'certifications' => 'Certificações',
             'not_found' => 'Oficial técnico não encontrado',
             'competitions' => 'Competições',
@@ -280,9 +280,9 @@ return [
             ],
         ],
     ],
-    // Pagina de Registo de Prestadores de Servicos de Mergulho
+    // Pagina de Registro de Prestadores de Servicos de Mergulho
     'diving_service_provider_registry' => [
-        'title' => 'Registo Nacional de Prestadores de Serviços de Mergulho',
+        'title' => 'Registro Nacional de Prestadores de Serviços de Mergulho',
         'description' => 'Escolas e Centros de Mergulho, Estações de Misturas Respiratórias, Aluguer de Equipamento.',
         'filters' => [
             'name' => 'Nome do Prestador',

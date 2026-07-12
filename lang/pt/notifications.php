@@ -35,7 +35,7 @@ return [
 
     // Event notifications
     'event_enrollment_confirmed' => 'A sua inscrição no evento foi confirmada.',
-    'event_registration_confirmed' => 'O seu registo no evento foi confirmado.',
+    'event_registration_confirmed' => 'O seu registro no evento foi confirmado.',
 
     // Request notifications
     'request_approved' => 'O seu pedido para aderir a :federation foi aprovado.',

@@ -11,7 +11,7 @@ return [
     'entities_to_approve' => 'Entidades para Aprovar',
     'create_entity' => 'Criar Entidade',
     'create_entity_account' => 'Criar conta de Entidade',
-    'edit_entity_record' => 'Editar registo da Entidade',
+    'edit_entity_record' => 'Editar registro da Entidade',
 
     // Ações
     'create_individual' => 'Criar Individual',
@@ -63,7 +63,7 @@ return [
     'information' => 'Informação',
     'entity_logo' => 'Logótipo da Entidade',
     'club_school_center_name' => 'Nome do Clube/Escola/Centro',
-    'legal_name' => 'Nome de Registo Fiscal',
+    'legal_name' => 'Nome de registro Fiscal',
     'responsible_person_name' => 'Nome da pessoa responsável',
     'nif' => 'NIF',
     'national_fed_nr' => 'Nr. Fed. Nacional',
@@ -95,7 +95,7 @@ return [
     'privacy_policy' => 'Política de Privacidade',
     'data_sharing_confirm' => 'Confirmo que a entidade consente a partilha de dados com terceiros autorizados conforme descrito na',
     'data_sharing_policy' => 'Política de Partilha de Dados',
-    'save_record' => 'Guardar registo',
+    'save_record' => 'Guardar registro',
 
     // Secção de login do utilizador
     'user_login_information' => 'Informação de login do utilizador',
@@ -104,7 +104,7 @@ return [
     'confirm_user_login_email' => 'Confirmar email de login do utilizador',
     'confirm_email_address' => 'Confirmar o endereço de email',
     'email_credential_hint' => 'Credencial de email para o utilizador fazer login',
-    'entity_creation_info' => 'Quando um registo de Entidade é criado, um utilizador é também automaticamente associado a este registo. Será enviado um email para o endereço escolhido para que o utilizador possa registar as suas credenciais. Depois disso, a pessoa pode fazer login na plataforma.',
+    'entity_creation_info' => 'Quando um registro de Entidade é criado, um utilizador é também automaticamente associado a este registro. Será enviado um email para o endereço escolhido para que o utilizador possa registar as suas credenciais. Depois disso, a pessoa pode fazer login na plataforma.',
 
     // Conteúdo do modal
     'member_invitation_form' => 'Formulário de Convite de Membro',
@@ -160,7 +160,7 @@ return [
     'invalid_member_number' => 'O numero de filiado e invalido. Por favor, confirme a informacao fornecida.',
     'member_must_have_federation' => 'Este membro deve ser um filiado com estado de ativa ou pendente e nao confirmar se ja nao e membro da sua entidade ou tem um pedido pendente.',
     'invitation_sent_success' => 'O convite de membro foi enviado com sucesso. Por favor, aguarde que o membro reveja o seu pedido.',
-    'error_creating_record' => 'Erro ao criar este registo: :error',
+    'error_creating_record' => 'Erro ao criar este registro: :error',
 
     // Abas do Perfil da Entidade
     'no_certifications_message' => 'Esta entidade ainda não tem certificações atribuídas.',

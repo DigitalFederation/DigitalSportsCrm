@@ -54,8 +54,8 @@ return [
     'complete_configuration' => 'Por favor complete a configuração para ativar a geração automática de faturas.',
 
     // Logs
-    'recent_logs' => 'Registos de Sincronização',
-    'no_logs' => 'Sem registos de sincronização disponíveis.',
+    'recent_logs' => 'Registros de Sincronização',
+    'no_logs' => 'Sem registros de sincronização disponíveis.',
     'type' => 'Tipo',
     'date' => 'Data',
     'duration' => 'Duração',

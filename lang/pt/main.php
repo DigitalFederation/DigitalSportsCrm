@@ -189,7 +189,7 @@ return [
     'upload_pdf_hint' => 'Pode carregar vários ficheiros PDF. Máx 10MB cada.',
     'view' => 'Ver',
     'remove' => 'Remover',
-    'save_record' => 'Guardar registo',
+    'save_record' => 'Guardar registro',
     'explore_and_add_more_insurance_plans' => 'Adicionar plano de seguros',
     'membership_id' => 'ID de Membro',
     'valid_from' => 'Válido Desde',
@@ -598,7 +598,7 @@ return [
     'sport_licenses' => 'Licenças Desportivas',
 
     // Audit Log
-    'audit_log' => 'Registo de Auditoria',
-    'load_activity_log' => 'Carregar Registo de Atividade',
-    'no_activity_logs' => 'Sem registos de atividade para mostrar.',
+    'audit_log' => 'Registro de Auditoria',
+    'load_activity_log' => 'Carregar Registro de Atividade',
+    'no_activity_logs' => 'Sem registros de atividade para mostrar.',
 ];

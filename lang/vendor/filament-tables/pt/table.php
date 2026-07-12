@@ -80,11 +80,11 @@ return [
     'actions' => [
 
         'disable_reordering' => [
-            'label' => 'Terminar reordenacao de registos',
+            'label' => 'Terminar reordenacao de registros',
         ],
 
         'enable_reordering' => [
-            'label' => 'Reordenar registos',
+            'label' => 'Reordenar registros',
         ],
 
         'filter' => [
@@ -150,13 +150,13 @@ return [
 
         'trashed' => [
 
-            'label' => 'Registos eliminados',
+            'label' => 'Registros eliminados',
 
-            'only_trashed' => 'Apenas registos eliminados',
+            'only_trashed' => 'Apenas registros eliminados',
 
-            'with_trashed' => 'Com registos eliminados',
+            'with_trashed' => 'Com registros eliminados',
 
-            'without_trashed' => 'Sem registos eliminados',
+            'without_trashed' => 'Sem registros eliminados',
 
         ],
 
@@ -186,11 +186,11 @@ return [
 
     ],
 
-    'reorder_indicator' => 'Arraste e largue os registos para ordenar.',
+    'reorder_indicator' => 'Arraste e largue os registros para ordenar.',
 
     'selection_indicator' => [
 
-        'selected_count' => '1 registo selecionado|:count registos selecionados',
+        'selected_count' => '1 registro selecionado|:count registros selecionados',
 
         'actions' => [
 

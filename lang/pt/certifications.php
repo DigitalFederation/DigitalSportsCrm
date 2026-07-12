@@ -414,7 +414,7 @@ return [
             'status' => 'Estado',
         ],
         'no_certifications' => 'Nenhuma certificacao encontrada',
-        'no_certifications_description' => 'Nao existem registos de certificacao correspondentes aos filtros atuais.',
+        'no_certifications_description' => 'Nao existem registros de certificacao correspondentes aos filtros atuais.',
         'total_certifications' => 'Total de Certificações',
         'last_five_years' => 'Últimos 5 Anos',
         'course_director_assistant' => 'Diretor de Curso / Assistente',

@@ -709,7 +709,7 @@
                         <div class="flex gap-4 self-start">
 
                             <button type="submit" class="btn btn-primary">
-                                {{__('Guardar registo')}}
+                                {{__('Guardar registro')}}
                             </button>
 
                             <a class="btn btn-info"

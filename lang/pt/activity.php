@@ -8,7 +8,7 @@ return [
     'action_performed' => 'Ação realizada em',
 
     // Subject types
-    'record' => 'registo',
+    'record' => 'registro',
     'subject' => [
         'document' => 'documento',
         'insurance' => 'seguro',

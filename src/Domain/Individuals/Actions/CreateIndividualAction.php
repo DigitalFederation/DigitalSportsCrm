@@ -66,37 +66,39 @@ class CreateIndividualAction
     }
 
     private function syncFederations(
-        int|array $federationId,
+        int|array|null $federationId,
         Individual $individual,
         bool $addedByFederation,
         bool $addedByEntity = false): void
     {
-        if (is_array($federationId)) {
-            $federationList = $federationId;
-        } else {
-            $federationList = [$federationId];
-            // Only get parent federation when a single federation ID is passed
-            $federationParent = Federation::select('id', 'parent_id')->where('id', $federationId)->value('parent_id');
-            if (! empty($federationParent)) {
-                $federationList[] = $federationParent;
+        if($federationId){
+            if (is_array($federationId)) {
+                $federationList = $federationId;
+            } else {
+                $federationList = [$federationId];
+                // Only get parent federation when a single federation ID is passed
+                $federationParent = Federation::select('id', 'parent_id')->where('id', $federationId)->value('parent_id');
+                if (! empty($federationParent)) {
+                    $federationList[] = $federationParent;
+                }
             }
-        }
 
-        // When entity passes an array of federations, it already includes all relevant federations
-        // including main and local federations, so we don't need to add parents
+            // When entity passes an array of federations, it already includes all relevant federations
+            // including main and local federations, so we don't need to add parents
 
-        // Determine the appropriate status based on who is adding the individual
-        // Active if added by federation OR entity, pending otherwise
-        $statusClass = ($addedByFederation || $addedByEntity) ? ActiveIndividualFederationState::class : PendingIndividualFederationState::class;
+            // Determine the appropriate status based on who is adding the individual
+            // Active if added by federation OR entity, pending otherwise
+            $statusClass = ($addedByFederation || $addedByEntity) ? ActiveIndividualFederationState::class : PendingIndividualFederationState::class;
 
-        foreach ($federationList as $federation) {
-            $pivotData = [
-                'active' => ($addedByFederation || $addedByEntity) ? 1 : 0,
-                'status_class' => $statusClass,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
-            $individual->federations()->attach($federation, $pivotData);
+            foreach ($federationList as $federation) {
+                $pivotData = [
+                    'active' => ($addedByFederation || $addedByEntity) ? 1 : 0,
+                    'status_class' => $statusClass,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+                $individual->federations()->attach($federation, $pivotData);
+            }
         }
     }
 
@@ -115,7 +117,7 @@ class CreateIndividualAction
         }
     }
 
-    private function getSpecialFederationId(): int
+    private function getSpecialFederationId(): ?int
     {
         return Federation::where('is_default_federation', true)->value('id');
     }

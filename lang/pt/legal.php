@@ -62,7 +62,7 @@ return [
 
         'processing_purposes' => 'Finalidades do Tratamento',
         'processing_purposes_intro' => 'Os dados pessoais sao tratados para as seguintes finalidades:',
-        'purpose_member_management' => 'Registo e gestao de membros individuais e entidades filiadas',
+        'purpose_member_management' => 'Registro e gestao de membros individuais e entidades filiadas',
         'purpose_license_management' => 'Emissao, renovacao e gestao de licencas federativas',
         'purpose_certification_management' => 'Emissao e gestao de certificacoes e brevets de mergulho',
         'purpose_event_management' => 'Organizacao e gestao de eventos, competicoes e formacoes',
@@ -179,7 +179,7 @@ return [
 
         'services_description' => 'Descricao dos Servicos',
         'services_description_intro' => "O Portal {$portalName} disponibiliza os seguintes servicos:",
-        'service_profile_management' => 'Registo e gestao de perfil de membros e entidades',
+        'service_profile_management' => 'Registro e gestao de perfil de membros e entidades',
         'service_license_acquisition' => 'Aquisicao e renovacao de licencas federativas',
         'service_certification_management' => 'Gestao de certificacoes e brevets de mergulho',
         'service_event_registration' => 'Inscricao em eventos, competicoes e formacoes',
@@ -188,8 +188,8 @@ return [
         'service_insurance_management' => 'Gestao de seguros desportivos',
         'service_institutional_info' => 'Consulta de informacoes institucionais',
 
-        'user_registration' => 'Registo de Utilizadores',
-        'user_registration_intro' => 'Para aceder a determinadas funcionalidades do Portal, e necessario efetuar registo. Ao registar-se, o utilizador compromete-se a:',
+        'user_registration' => 'Registro de Utilizadores',
+        'user_registration_intro' => 'Para aceder a determinadas funcionalidades do Portal, e necessario efetuar registro. Ao registar-se, o utilizador compromete-se a:',
         'registration_true_info' => 'Fornecer informacoes verdadeiras, precisas, atuais e completas',
         'registration_keep_updated' => 'Manter os seus dados atualizados',
         'registration_credentials' => 'Manter a confidencialidade das suas credenciais de acesso',

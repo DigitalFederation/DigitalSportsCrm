@@ -108,7 +108,7 @@ return [
     // Check labels
     'check_federation_membership' => 'Filiação em Federação',
     'check_entity_membership' => 'Filiação em Entidade',
-    'check_athlete_registration' => 'Registo de Atleta',
+    'check_athlete_registration' => 'Registro de Atleta',
     'check_coach_role' => 'Função Profissional de Treinador',
     'check_referee_role' => 'Função Profissional de Árbitro',
     'check_referee_cert_exists' => 'Certificação de Árbitro Existe',

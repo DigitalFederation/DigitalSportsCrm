@@ -29,10 +29,10 @@ return [
     // Validation Step
     'validation_results' => 'Resultados da Validação',
     'review_before_importing' => 'Revise os seus dados antes de importar',
-    'valid_records' => 'Registos Válidos',
+    'valid_records' => 'Registros Válidos',
     'warnings' => 'Avisos',
     'errors' => 'Erros',
-    'sample_valid_records' => 'Amostra de Registos Válidos',
+    'sample_valid_records' => 'Amostra de Registros Válidos',
 
     // Advanced Options
     'advanced_options' => 'Opções Avançadas',
@@ -83,8 +83,8 @@ return [
     'error_details' => 'Detalhes do Erro',
 
     // Import with errors
-    'import_valid_only' => 'Importar Apenas Registos Válidos',
-    'confirm_import_with_errors' => 'Existem :count registos com erros. Deseja prosseguir e importar apenas os registos válidos?',
+    'import_valid_only' => 'Importar Apenas Registros Válidos',
+    'confirm_import_with_errors' => 'Existem :count registros com erros. Deseja prosseguir e importar apenas os registros válidos?',
 
     // Entity Import
     'entity_import_title' => 'Importar Entidades',

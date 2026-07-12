@@ -6,7 +6,7 @@ return [
     'roles' => 'Roles',
     'permissions' => 'Permissões',
     'templates' => 'Modelos de Roles',
-    'audit_logs' => 'Registos de Auditoria',
+    'audit_logs' => 'Registros de Auditoria',
 
     'create_role' => 'Criar Role',
     'edit_role' => 'Editar Role',
@@ -103,7 +103,7 @@ return [
         'general' => 'Geral',
         'permissions' => 'Permissões',
         'users' => 'Utilizadores',
-        'audit' => 'Registo de Auditoria',
+        'audit' => 'Registro de Auditoria',
         'templates' => 'Modelos',
     ],
 

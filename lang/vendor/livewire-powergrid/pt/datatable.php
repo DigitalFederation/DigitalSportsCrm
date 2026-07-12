@@ -7,9 +7,9 @@ return [
     ],
     'labels' => [
         'action' => 'Ações',
-        'results_per_page' => 'Registos por página',
+        'results_per_page' => 'Registros por página',
         'clear_filter' => 'Limpar filtro',
-        'no_data' => 'Nenhum registo encontrado',
+        'no_data' => 'Nenhum registro encontrado',
         'all' => 'Todos',
         'selected' => 'Selecionados',
         'filtered' => 'Filtrados',
@@ -55,8 +55,8 @@ return [
         'completed' => 'Exportação concluída! Os seus ficheiros estão prontos para transferir',
     ],
     'soft_deletes' => [
-        'message_with_trashed' => 'A exibir todos os registos, incluindo os eliminados.',
-        'message_only_trashed' => 'A exibir apenas os registos eliminados.',
+        'message_with_trashed' => 'A exibir todos os registros, incluindo os eliminados.',
+        'message_only_trashed' => 'A exibir apenas os registros eliminados.',
         'without_trashed' => 'Sem eliminados',
         'with_trashed' => 'Com eliminados',
         'only_trashed' => 'Apenas eliminados',

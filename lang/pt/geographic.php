@@ -6,7 +6,7 @@ return [
     'select_country' => '-- Selecionar País --',
 
     // Districts
-    'select_district' => '-- Selecionar Distrito --',
+    'select_district' => '-- Selecionar Estado --',
     'no_districts_for_country' => 'Nenhum distrito disponível para o país selecionado',
     'no_districts_available' => 'Nenhum distrito disponível',
     'selected_district' => 'Distrito Selecionado',

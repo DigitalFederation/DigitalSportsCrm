@@ -12,7 +12,7 @@
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full mx-auto">
                     <!-- Page header -->
                     <div class="mb-8 text-center">
-                        <h1 class="text-2xl md:text-3xl text-slate-600 font-bold">{{ __('Registo de Entidade') }}</h1>
+                        <h1 class="text-2xl md:text-3xl text-slate-600 font-bold">{{ __('Registro de Entidade') }}</h1>
                     </div>
 
                     @include('components.layout.banner_message')
@@ -102,7 +102,7 @@
 
                                                 <div class="sm:w-1/2">
                                                     <label class="block text-sm font-medium mb-1" for="legal-name">
-                                                        {{ __('Nome de Registo Fiscal') }} <span class="text-rose-500">*</span>
+                                                        {{ __('Nome de Registro Fiscal') }} <span class="text-rose-500">*</span>
                                                     </label>
                                                     <input id="legal-name"
                                                            x-ref="legalName"
