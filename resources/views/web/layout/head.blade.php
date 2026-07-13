@@ -3,7 +3,7 @@
 <meta name="view-transition" content="same-origin" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title') {{ config('app.name', 'DIGITAL FEDERATION') }}</title>
+<title>@yield('title') {{ config('app.name', 'Digital Sports CRM') }}</title>
 
 <!-- Critical CSS to prevent UI flashing -->
 <style>
