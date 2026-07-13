@@ -1,5 +1,6 @@
 {
     "name": "digital-sports/digital-sports-crm",
+    "version": "1.0.0",
     "type": "project",
     "description": "Open-source federation management platform built with Laravel and Vite.",
     "keywords": [
