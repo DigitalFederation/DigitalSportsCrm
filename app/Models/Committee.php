@@ -108,17 +108,17 @@ class Committee extends Model
         return $query->where('is_international', false);
     }
 
-    public function getLogoPath(): string
+    public function getLogoPath(): ?string
     {
         if ($this->isInternational()) {
             $internationalLogo = config('branding.international.logo_path', 'img/international-logo.svg');
 
             return file_exists(public_path($internationalLogo))
                 ? $internationalLogo
-                : config('branding.primary.logo_path', 'img/project-logo.svg');
+                : config('branding.primary.logo_path');
         }
 
-        return config('branding.primary.logo_path', 'img/project-logo.svg');
+        return config('branding.primary.logo_path');
     }
 
     /**

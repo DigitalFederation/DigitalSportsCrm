@@ -36,9 +36,9 @@
         }
 
         $brand = config('branding.primary');
-        $brandLogoPath = public_path($brand['logo_path']);
+        $brandLogoPath = $brand['logo_path'] ? public_path($brand['logo_path']) : null;
         $brandLogoDataUri = null;
-        if (file_exists($brandLogoPath)) {
+        if ($brandLogoPath && file_exists($brandLogoPath)) {
             $brandLogoDataUri = 'data:' . mime_content_type($brandLogoPath) . ';base64,' . base64_encode(file_get_contents($brandLogoPath));
         }
     @endphp

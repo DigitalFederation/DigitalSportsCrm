@@ -101,7 +101,7 @@
                     <!-- About federation -->
                     <div class="lg:col-span-2">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset($brand['logo_path']) }}" class="h-10 w-auto mr-3" alt="{{ $brand['short_name'] }} Logo">
+                            <x-brand-logo class="h-10 w-auto mr-3" text-class="hidden" />
                             <div>
                                 <div class="text-lg font-bold">{{ $brand['short_name'] }}</div>
                                 <div class="text-sm text-slate-400">{{ $brand['name'] }}</div>
