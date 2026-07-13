@@ -13,6 +13,7 @@
         $internationalLogoPath = $internationalBrand['logo_path'];
         $primaryLogoPath = $primaryBrand['logo_path'];
         $logoSrc = $isSportCommittee ? $primaryLogoPath : (file_exists(public_path($internationalLogoPath)) ? $internationalLogoPath : $primaryLogoPath);
+        $logoSrc = ($logoSrc && file_exists(public_path($logoSrc))) ? $logoSrc : null;
         $logoAlt = $isSportCommittee ? $primaryBrand['short_name'] : $internationalBrand['short_name'];
         $organizationStandard = $isSportCommittee ? $primaryBrand['short_name'] : $internationalBrand['short_name'];
         $websiteUrl = $isSportCommittee ? $primaryBrand['website_label'] : ($isDivingOrScientific ? $internationalBrand['website_label'] : $primaryBrand['website_label']);
@@ -30,7 +31,11 @@
         <div class="inner-container-border">
             {{-- Header with Logo --}}
             <div class="text-center mb-8">
-                <img src="{{ $logoSrc }}" alt="{{ $logoAlt }}" class="card_logo mx-auto mb-4">
+                @if($logoSrc)
+                    <img src="{{ $logoSrc }}" alt="{{ $logoAlt }}" class="card_logo mx-auto mb-4">
+                @else
+                    <div class="text-lg font-bold mb-4">{{ $logoAlt }}</div>
+                @endif
                 <h1 class="text-sm letter-spacing-lg text-blue-cmas">{{ __('certifications.pdf.title') }}</h1>
                 <div class="horizontal-separator my-4"></div>
             </div>

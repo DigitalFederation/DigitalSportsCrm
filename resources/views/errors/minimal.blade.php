@@ -17,7 +17,7 @@
 
     <div class="max-w-xl mx-auto px-4 lg:px-8 items-center text-center">
 
-        <img src="{{ asset(config('branding.primary.logo_path', 'img/project-logo.svg')) }}" alt="{{ config('branding.primary.short_name', 'DF') }}" class="w-32 mx-auto mb-2">
+        <x-brand-logo class="w-32 mx-auto mb-2" text-class="text-2xl font-bold text-slate-800 block mb-2" />
         <div class="flex flex-col items-center pt-4 sm:justify-start sm:pt-0">
 
             <div class="px-4 mb-4 text-sm text-gray-200 tracking-wider">

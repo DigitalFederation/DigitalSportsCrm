@@ -81,7 +81,7 @@
             {{-- Logo (Left) --}}
             <div class="flex items-center">
                 <a href="/" title="{{ $brand['short_name'] }} Home" class="flex items-center gap-2">
-                    <img src="{{ asset($brand['logo_path']) }}" alt="{{ $brand['short_name'] }} Logo" class="h-9">
+                    <x-brand-logo class="h-9" text-class="text-base font-bold text-slate-800 mr-2" />
                     <span class="hidden md:inline-block text-sm font-medium text-gray-600 dark:text-gray-300">{{ $brand['short_name'] }}</span>
                 </a>
             </div>
@@ -683,7 +683,7 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <div class="flex items-center mb-4 md:mb-0">
-                        <img src="{{ asset($brand['logo_path']) }}" alt="{{ $brand['short_name'] }} Logo" class="h-8 mr-2">
+                        <x-brand-logo class="h-8 mr-2" text-class="text-base font-bold text-slate-800 mr-2" />
                         <p class="text-sm text-gray-600 dark:text-gray-400">© {{ date('Y') }} {{ $brand['short_name'] }}.
                             {{ __('All rights reserved.') }}</p>
                     </div>

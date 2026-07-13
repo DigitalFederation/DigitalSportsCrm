@@ -3,7 +3,7 @@
     @php($brand = config('branding.primary'))
     <main>
         <div class="mx-auto pt-4 w-24">
-            <img src="{{ asset($brand['logo_path']) }}" class="w-24" alt="{{ $brand['short_name'] }}">
+            <x-brand-logo class="w-24" text-class="text-2xl font-bold text-slate-800" />
         </div>
 
         <div class="max-w-4xl mx-auto p-6 text-gray-700">

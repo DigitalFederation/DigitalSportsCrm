@@ -13,7 +13,7 @@
             <!-- Project logo -->
             <div class="flex items-center space-x-4">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3">
-                    <img src="{{ asset($brand['logo_path']) }}" class="h-10 w-auto" alt="{{ $brand['short_name'] }} Logo">
+                    <x-brand-logo class="h-10 w-auto" text-class="text-slate-800 font-bold text-lg" />
                     <div class="hidden sm:block">
                         <div class="text-slate-800 font-bold text-base">{{ $brand['short_name'] }}</div>
                     </div>

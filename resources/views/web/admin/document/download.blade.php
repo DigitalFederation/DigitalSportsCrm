@@ -8,7 +8,7 @@
                     <div class="justify-between flex flex-wrap -mx-4">
                         <div class="text-left px-4 relative w-full md:w-4/12">
                           <div class="text-left">
-                              <img alt="..." src="{{ asset(config('branding.primary.logo_path', 'img/project-logo.svg'))}}" class="w-60 mb-2">
+                              <x-brand-logo class="w-60 mb-2" text-class="text-xl font-bold text-slate-800 block mb-2" />
 
                               <h6 class="block capitalize text-gray-700 mt-6">Confederation Mondiale Des Activites Subatiques</h6>
                               <h6 class="text-gray-700">Viale Tiziano, 74 <br> 00196 Rome <br> Italy <br> C.F. 97091690582</h6>
