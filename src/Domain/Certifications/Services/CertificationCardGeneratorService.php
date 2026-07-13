@@ -223,11 +223,10 @@ class CertificationCardGeneratorService
 
         try {
             if (! $isInternational) {
-                $logoPath = $committee
-                    ? public_path($committee->getLogoPath())
-                    : public_path(config('branding.primary.logo_path', 'img/project-logo.svg'));
+                $logoRelativePath = $committee?->getLogoPath() ?? config('branding.primary.logo_path');
+                $logoPath = $logoRelativePath ? public_path($logoRelativePath) : null;
 
-                if (! file_exists($logoPath)) {
+                if (! $logoPath || ! file_exists($logoPath)) {
                     Log::warning('No logo file found, skipping logo', [
                         'certification_id' => $certification->id,
                     ]);
