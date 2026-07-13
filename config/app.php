@@ -256,13 +256,12 @@ return [
     | Application Version
     |--------------------------------------------------------------------------
     |
-    | The release version shown in the UI (sidebar footer). The source of
-    | truth is the "version" field in composer.json, bumped as part of
-    | tagging a release. Packagers and deployments may override it with
-    | the APP_VERSION environment variable.
+    | The release version shown in the UI (sidebar footer). This value is
+    | the source of truth: bump it here as part of tagging a vX.Y.Z release.
+    | Packagers and deployments may override it with the APP_VERSION
+    | environment variable.
     |
     */
 
-    'version' => env('APP_VERSION')
-        ?: (json_decode((string) file_get_contents(base_path('composer.json')), true)['version'] ?? '1.0.0'),
+    'version' => env('APP_VERSION', '1.0.0'),
 ];
