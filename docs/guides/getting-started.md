@@ -55,7 +55,7 @@ npm run dev         # optional: Vite dev server with HMR (instead of npm run bui
 ## First admin login
 
 A fresh `migrate --seed` does **not** create a login account by default. Opt in to a default
-admin **before** seeding by setting these in `.env`:
+admin by setting these in `.env` **before** running `migrate --seed`:
 
 ```ini
 SEED_DEFAULT_ADMIN=true
@@ -64,11 +64,12 @@ DEFAULT_ADMIN_EMAIL=admin@example.test   # defaults to admin@example.test if lef
 DEFAULT_ADMIN_PASSWORD=change-me-now      # required when SEED_DEFAULT_ADMIN=true
 ```
 
-Then run (or re-run) the seeder:
+If you already seeded without these set, run the user seeder on its own (clear any cached
+config first so the new `.env` values are picked up):
 
 ```bash
+php artisan config:clear
 php artisan db:seed --class=UserSeeder
-# or re-run the full seed: php artisan migrate:fresh --seed
 ```
 
 The seeded user receives the `admin` role (full platform access). Use these credentials only

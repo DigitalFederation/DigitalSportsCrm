@@ -50,6 +50,30 @@ it('does not seed a default admin unless explicitly enabled', function () {
     expect(User::where('email', 'admin@example.test')->exists())->toBeFalse();
 });
 
+it('seeds the default admin when explicitly enabled', function () {
+    Config::set('seeding.default_admin.enabled', true);
+    Config::set('seeding.default_admin.password', 'change-me-now');
+    Config::set('seeding.default_admin.email', 'seeded.admin@example.test');
+
+    $this->artisan('db:seed --class=UserSeeder')->assertExitCode(Command::SUCCESS);
+
+    $user = User::where('email', 'seeded.admin@example.test')->firstOrFail();
+
+    expect(Hash::check('change-me-now', $user->password))->toBeTrue()
+        ->and($user->hasRole('admin'))->toBeTrue()
+        ->and((bool) $user->active)->toBeTrue();
+});
+
+it('seeds the default admin as part of the full database seed when enabled', function () {
+    Config::set('seeding.default_admin.enabled', true);
+    Config::set('seeding.default_admin.password', 'change-me-now');
+    Config::set('seeding.default_admin.email', 'seeded.admin@example.test');
+
+    $this->artisan('db:seed')->assertExitCode(Command::SUCCESS);
+
+    expect(User::where('email', 'seeded.admin@example.test')->firstOrFail()->hasRole('admin'))->toBeTrue();
+});
+
 it('requires an explicit email before restoring admin access', function () {
     User::factory()->create(['email' => 'first.user@example.test']);
 
