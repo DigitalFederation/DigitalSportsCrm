@@ -29,5 +29,10 @@ class FreshInstallSeeder extends Seeder
         $this->call(LicenseTypeSeeder::class);
         $this->call(DocumentTypeSeeder::class);
         $this->call(PaymentMethodSeeder::class);
+
+        // Optional first admin account. No-op unless SEED_DEFAULT_ADMIN=true
+        // and DEFAULT_ADMIN_PASSWORD are set. Must run after
+        // RoleAndPermissionSeeder and UserGroupSeeder.
+        $this->call(UserSeeder::class);
     }
 }
