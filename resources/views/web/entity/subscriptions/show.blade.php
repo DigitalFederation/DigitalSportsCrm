@@ -100,7 +100,7 @@
                             </td>
                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                 @if($affiliation->entity_fee)
-                                    {{ config('squidflex.currency_symbol') }}{{ number_format($affiliation->entity_fee, 2) }}
+                                    {{ money($affiliation->entity_fee) }}
                                 @else
                                     <span class="text-slate-500">{{ __('main.free') }}</span>
                                 @endif
@@ -139,7 +139,7 @@
                             </td>
                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                 @if($insurance->entity_fee)
-                                    {{ config('squidflex.currency_symbol') }}{{ number_format($insurance->entity_fee, 2) }}
+                                    {{ money($insurance->entity_fee) }}
                                 @else
                                     <span class="text-slate-500">{{ __('main.free') }}</span>
                                 @endif

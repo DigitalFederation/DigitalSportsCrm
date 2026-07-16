@@ -36,9 +36,9 @@ class CalculateInvoiceAccountSummaryAction
         $currentBalance = $total - $totalPaid;
 
         return [
-            'total' => number_format($total, 2, ',', '.'),
-            'total_paid' => number_format($totalPaid, 2, ',', '.'),
-            'current_balance' => number_format($currentBalance * -1, 2, ',', '.'),
+            'total' => (float) $total,
+            'total_paid' => (float) $totalPaid,
+            'current_balance' => (float) ($currentBalance * -1),
             'invoices' => $allInvoices, // Return the full collection for display
         ];
     }

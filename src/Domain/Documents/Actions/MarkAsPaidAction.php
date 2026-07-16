@@ -140,6 +140,7 @@ class MarkAsPaidAction
             'tax_value' => -(float) $document->tax_value,
             'tax_percentage' => $document->tax_percentage,
             'total_value' => -(float) $document->total_value,
+            'currency' => $document->currency,
             'method_id' => $document->method_id,
             'number' => $generatedNumber['number'],
             'number_pad' => $generatedNumber['number_pad'],

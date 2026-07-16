@@ -94,13 +94,21 @@ class PaymentGatewayManager
             $gatewayClass = $gatewayConfig['gateway'] ?? null;
 
             if ($gatewayClass) {
-                $this->register($name, $gatewayClass);
+                try {
+                    $this->register($name, $gatewayClass);
+                } catch (InvalidArgumentException $e) {
+                    // A misconfigured/removed plugin gateway must not take
+                    // down every page that inspects payment methods.
+                    \Illuminate\Support\Facades\Log::warning("Skipping payment gateway {$name}: {$e->getMessage()}");
+                }
             }
         }
     }
 
     /**
      * Whether the named gateway can charge in the given currency.
+     * A gateway that cannot be instantiated (broken config, removed
+     * plugin) is reported as unsupported instead of taking the page down.
      */
     public function supportsCurrency(string $name, string $currency): bool
     {
@@ -108,7 +116,15 @@ class PaymentGatewayManager
             return false;
         }
 
-        $supported = $this->gateway($name)->supportedCurrencies();
+        try {
+            $supported = $this->gateway($name)->supportedCurrencies();
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::warning("Payment gateway {$name} could not be inspected for currency support", [
+                'error' => $e->getMessage(),
+            ]);
+
+            return false;
+        }
 
         return in_array('*', $supported, true) || in_array($currency, $supported, true);
     }

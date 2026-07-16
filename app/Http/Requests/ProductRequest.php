@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'code' => 'required|string|max:50|unique:products',
-            'price' => 'nullable|numeric',
+            'price' => ['nullable', 'numeric', new \App\Rules\CurrencyScale],
             'tax_percentage' => 'nullable|numeric',
             'description' => 'nullable|string',
         ];

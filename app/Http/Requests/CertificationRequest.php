@@ -69,7 +69,7 @@ class CertificationRequest extends FormRequest
             'unit_value' => ['nullable', 'numeric', 'min:0', 'max:9999.99', new \App\Rules\CurrencyScale],
             'unit_value_individual' => ['nullable', 'numeric', 'min:0', 'max:9999.99', new \App\Rules\CurrencyScale],
             'unit_value_entity' => ['nullable', 'numeric', 'min:0', 'max:9999.99', new \App\Rules\CurrencyScale],
-            'tax_value' => 'nullable|numeric|min:0|max:999.99',
+            'tax_value' => ['nullable', 'numeric', 'min:0', 'max:999.99', new \App\Rules\CurrencyScale],
             'tax_percentage' => 'nullable|numeric|min:0|max:100',
             'moloni_reference' => 'nullable|string|max:50',
             // New pricing fields

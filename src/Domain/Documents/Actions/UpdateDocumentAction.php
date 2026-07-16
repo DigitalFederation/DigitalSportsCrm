@@ -23,8 +23,13 @@ class UpdateDocumentAction
             $document->type()->associate($documentType);
         }
 
-        // Update the document fields
-        $document->fill($data->toArray());
+        // Update the document fields. A DTO built without a currency must
+        // not null out the stamped value (NOT NULL column).
+        $payload = $data->toArray();
+        if ($payload['currency'] === null) {
+            unset($payload['currency']);
+        }
+        $document->fill($payload);
         $document->save();
 
         activity('document')

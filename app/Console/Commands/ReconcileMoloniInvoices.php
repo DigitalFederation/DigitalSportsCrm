@@ -42,12 +42,6 @@ class ReconcileMoloniInvoices extends Command
             return self::SUCCESS;
         }
 
-        if (config('app.currency', 'EUR') !== 'EUR') {
-            $this->warn('Moloni invoicing only supports EUR; installation currency is ' . config('app.currency') . '. Skipping reconciliation.');
-
-            return self::SUCCESS;
-        }
-
         if (! $settingsService->isConfigured()) {
             $this->warn('Moloni is not fully configured. Skipping reconciliation.');
 
@@ -156,6 +150,7 @@ class ReconcileMoloniInvoices extends Command
     {
         return Document::with('owner')
             ->where('status_class', PaidDocumentState::class)
+            ->where('currency', 'EUR') // Moloni is a Portuguese fiscal system: EUR only
             ->whereDoesntHave('moloniInvoice')
             ->whereHas('type', fn ($q) => $q->where('code', 'ORD'))
             ->whereNotNull('owner_id') // Must have an owner for invoice

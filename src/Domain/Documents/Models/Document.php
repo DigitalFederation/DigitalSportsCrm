@@ -399,28 +399,6 @@ class Document extends Model
      *
      * @return bool True if the payment is initiated successfully, false otherwise.
      */
-    public function initiatePayment(): bool
-    {
-        // Check if the document is payable
-        if (! $this->isPayable()) {
-            return false;
-        }
-
-        $paymentMethod = $this->method;
-
-        if (is_null($paymentMethod)) {
-
-            return false;
-        }
-
-        $handler = $paymentMethod->getHandlerInstance($this);
-
-        // Handle mixed return types from payment handlers
-        $result = $handler->pay($this);
-
-        // Convert result to boolean for backward compatibility
-        return $result === true;
-    }
 
     /**
      * Check if the document is payable.

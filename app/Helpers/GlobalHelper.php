@@ -78,6 +78,11 @@ if (! function_exists('money')) {
     {
         $currencyEnum = \App\Enums\CurrencyEnum::tryFrom((string) ($currency ?? config('app.currency', 'EUR')))
             ?? \App\Enums\CurrencyEnum::Eur;
+
+        if (is_string($amount) && preg_match('/^-?\d+,\d+$/', $amount)) {
+            // Comma-decimal input ("12,50") would be truncated by the float cast.
+            $amount = str_replace(',', '.', $amount);
+        }
         $amount = (float) ($amount ?? 0);
         $locale ??= app()->getLocale();
 

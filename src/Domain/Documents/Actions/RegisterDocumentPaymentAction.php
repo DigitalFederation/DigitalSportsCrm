@@ -71,7 +71,8 @@ class RegisterDocumentPaymentAction
                 status: 'success',
                 payment_data: $paymentAuditDetails,
                 comment: $comment,
-                payment_method_id: $paymentMethod->id
+                payment_method_id: $paymentMethod->id,
+                currency: $document->currency
             );
 
             /** @var PaymentTransaction $transaction */

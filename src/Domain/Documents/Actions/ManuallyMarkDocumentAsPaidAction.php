@@ -45,6 +45,7 @@ class ManuallyMarkDocumentAsPaidAction
             $transactionData = PaymentTransactionData::fromArray([
                 'document_id' => $document->id,
                 'amount' => $document->total_value,
+                'currency' => $document->currency,
                 'status' => 'success',
                 'payment_data' => [],
                 'comment' => $comment,

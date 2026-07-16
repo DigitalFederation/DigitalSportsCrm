@@ -28,7 +28,7 @@ class InsuranceUpdateRequest extends FormRequest
         return [
             'start_date' => ['required', 'date'],
             'end_date' => ['required', 'date', 'after:start_date'],
-            'fee' => ['required', 'numeric', 'min:0'],
+            'fee' => ['required', 'numeric', 'min:0', new \App\Rules\CurrencyScale],
             'is_external' => ['required', 'boolean'],
             'policy_number' => [
                 'nullable',

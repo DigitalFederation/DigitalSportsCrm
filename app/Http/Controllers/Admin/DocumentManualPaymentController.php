@@ -22,7 +22,7 @@ class DocumentManualPaymentController extends Controller
 
         // Validate the input
         $validated = Validator::make($request->all(), [
-            'amount' => 'required|numeric|min:0.01', // Adjust validation rules as necessary
+            'amount' => ['required', 'numeric', 'min:0.01', new \App\Rules\CurrencyScale],
             'comment' => 'nullable|string',
         ])->validate();
 
