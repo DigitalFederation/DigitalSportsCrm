@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'currency_no_decimals' => 'O campo :attribute deve ser um número inteiro — :currency não tem casas decimais.',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'currency_no_decimals' => 'The :attribute must be a whole number — :currency has no decimal places.',
 
     /*
     |--------------------------------------------------------------------------

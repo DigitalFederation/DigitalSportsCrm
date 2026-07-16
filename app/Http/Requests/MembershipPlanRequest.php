@@ -26,7 +26,7 @@ class MembershipPlanRequest extends FormRequest
             'committee_id' => 'nullable',
             'name' => 'required|string|max:45',
             'friendly_name' => 'nullable|string|max:45',
-            'price' => 'nullable|numeric',
+            'price' => ['nullable', 'numeric', new \App\Rules\CurrencyScale],
             'interval' => 'required|integer',
             'interval_unit' => ['required', 'in' => config('enum.interval_unit')],
             'licenses' => 'nullable|array',

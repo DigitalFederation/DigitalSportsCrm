@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'currency_no_decimals' => 'Das Feld :attribute muss eine ganze Zahl sein — :currency hat keine Nachkommastellen.',
 
     /*
     |--------------------------------------------------------------------------
