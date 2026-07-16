@@ -84,6 +84,19 @@ return [
 
     'locale' => 'pt_PT',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Installation Currency
+    |--------------------------------------------------------------------------
+    |
+    | ISO 4217 code of the single currency this installation operates in.
+    | All catalog prices are expressed in this currency; issued documents
+    | stamp it at creation time. See App\Enums\CurrencyEnum for the list.
+    |
+    */
+
+    'currency' => env('APP_CURRENCY', 'EUR'),
+
     'locales' => ['pt_PT', 'pt_BR', 'es', 'en', 'fr', 'de'],
     'available_locales' => [
         'pt_PT' => ['label' => 'Português', 'flag' => 'pt_PT'],

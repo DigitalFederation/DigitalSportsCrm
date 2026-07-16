@@ -68,3 +68,46 @@ if (! function_exists('getSimplifiedFileType')) {
         return $types[$mimeType] ?? 'Other';
     }
 }
+
+if (! function_exists('money')) {
+    /**
+     * Format a monetary amount in the given (or installation) currency,
+     * localized to the given (or active) locale.
+     */
+    function money(int|float|string|null $amount, ?string $currency = null, ?string $locale = null): string
+    {
+        $currencyEnum = \App\Enums\CurrencyEnum::tryFrom((string) ($currency ?? config('app.currency', 'EUR')))
+            ?? \App\Enums\CurrencyEnum::Eur;
+        $amount = (float) ($amount ?? 0);
+        $locale ??= app()->getLocale();
+
+        if (extension_loaded('intl')) {
+            $formatted = \Illuminate\Support\Number::currency($amount, in: $currencyEnum->value, locale: $locale);
+            if ($formatted !== false) {
+                return $formatted;
+            }
+        }
+
+        return $currencyEnum->symbol() . ' ' . number_format($amount, $currencyEnum->decimals(), ',', '.');
+    }
+}
+
+if (! function_exists('currency_code')) {
+    /**
+     * ISO 4217 code of the installation currency.
+     */
+    function currency_code(): string
+    {
+        return \App\Enums\CurrencyEnum::current()->value;
+    }
+}
+
+if (! function_exists('currency_symbol')) {
+    /**
+     * Symbol of the installation currency (€, R$, £, ...).
+     */
+    function currency_symbol(): string
+    {
+        return \App\Enums\CurrencyEnum::current()->symbol();
+    }
+}
