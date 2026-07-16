@@ -231,6 +231,12 @@ $menu = [
                     'route' => ['admin.role-mappings.index'],
                     'active' => ['role-mappings'],
                 ],
+                [
+                    'name' => 'menu.dynamic.admin.menu_management',
+                    'route' => ['admin.menu-management.index'],
+                    'active' => ['menu-management'],
+                    'can' => 'access users',
+                ],
             ],
         ],
         [
@@ -297,8 +303,13 @@ $menu = [
             'icon' => 'chart-bar',
             'route' => '',
             'can' => 'access settings',
-            'active' => ['districts', 'zones', 'member-number-settings', 'professional-roles', 'backups'],
+            'active' => ['districts', 'zones', 'member-number-settings', 'professional-roles', 'backups', 'homepage-settings'],
             'children' => [
+                [
+                    'name' => 'menu.admin.home_page',
+                    'route' => ['admin.homepage-settings.index'],
+                    'active' => ['homepage-settings'],
+                ],
                 [
                     'name' => 'menu.admin.reports',
                     'route' => ['admin.reports.index'],
