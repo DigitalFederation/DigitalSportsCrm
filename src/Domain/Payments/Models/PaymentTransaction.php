@@ -20,10 +20,18 @@ class PaymentTransaction extends Model
         'document_id',
         'payment_method_id',
         'amount',
+        'currency',
         'status',
         'payment_data',
         'comment',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'amount' => 'float',
+        ];
+    }
 
     protected static function newFactory(): PaymentTransactionFactory
     {

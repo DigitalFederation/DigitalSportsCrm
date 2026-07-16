@@ -93,6 +93,7 @@ class Document extends Model
         'net_value',
         'tax_value',
         'total_value',
+        'currency',
         'due_date',
         'notes',
         'owner_type',

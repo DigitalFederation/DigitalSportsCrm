@@ -20,6 +20,7 @@ class MoloniInvoice extends Model
         'moloni_number',
         'moloni_status',
         'moloni_total',
+        'currency',
         'moloni_response',
         'synced_at',
     ];
