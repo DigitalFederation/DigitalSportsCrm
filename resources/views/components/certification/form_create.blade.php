@@ -349,7 +349,7 @@
                 <h3 class="text-lg font-semibold text-slate-800">{{ __('certifications.form.sections.pricing') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-sm font-medium mb-1" for="digital_price">{{ __('certifications.form.fields.digital_price') }} (€)</label>
+                        <label class="block text-sm font-medium mb-1" for="digital_price">{{ __('certifications.form.fields.digital_price') }} ({{ currency_symbol() }})</label>
                         <input type="number" name="digital_price" id="digital_price" step="0.01" min="0" class="form-input w-full @error('digital_price') border-rose-300 @enderror" value="{{ old('digital_price', $certification->digital_price ?? '0.00') }}" placeholder="0.00">
                         <p class="text-xs text-slate-500 mt-1">{{ __('certifications.form.helpers.digital_price_help') }}</p>
                         @error('digital_price')
@@ -357,7 +357,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-1" for="digital_plus_card_price">{{ __('certifications.form.fields.digital_plus_card_price') }} (€)</label>
+                        <label class="block text-sm font-medium mb-1" for="digital_plus_card_price">{{ __('certifications.form.fields.digital_plus_card_price') }} ({{ currency_symbol() }})</label>
                         <input type="number" name="digital_plus_card_price" id="digital_plus_card_price" step="0.01" min="0" class="form-input w-full @error('digital_plus_card_price') border-rose-300 @enderror" value="{{ old('digital_plus_card_price', $certification->digital_plus_card_price) }}" placeholder="{{ __('certifications.form.helpers.leave_empty_no_card') }}">
                         <p class="text-xs text-slate-500 mt-1">{{ __('certifications.form.helpers.digital_plus_card_price_help') }}</p>
                         @error('digital_plus_card_price')

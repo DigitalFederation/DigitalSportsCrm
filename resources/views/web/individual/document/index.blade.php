@@ -48,7 +48,7 @@
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-right">
 
-                            {{ $document->total_value }}€
+                            {{ money($document->total_value, $document->currency) }}
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px items-end">
                             <div class="space-x-1 flex justify-end items-end">

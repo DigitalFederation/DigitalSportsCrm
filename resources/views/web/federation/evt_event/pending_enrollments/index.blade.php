@@ -176,12 +176,12 @@
                             @foreach ($costBreakdown as $breakdown)
                                 <li class="flex justify-between items-center text-sm">
                                     <span class="font-medium text-gray-700">{{ ucfirst($breakdown['type']) }}</span>
-                                    <span class="text-gray-900">{{ number_format($breakdown['cost'], 2) }}€</span>
+                                    <span class="text-gray-900">{{ money($breakdown['cost']) }}</span>
                                 </li>
                             @endforeach
                             <li class="pt-3 mt-3 border-t border-gray-200 flex justify-between items-center">
                                 <span class="font-semibold text-gray-900">{{ __('Total Cost') }}</span>
-                                <span class="text-lg font-bold text-gray-900">{{ number_format($totalCost, 2) }}€</span>
+                                <span class="text-lg font-bold text-gray-900">{{ money($totalCost) }}</span>
                             </li>
                         </ul>
                     </div>

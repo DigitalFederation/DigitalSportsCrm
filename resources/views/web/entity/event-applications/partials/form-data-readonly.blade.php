@@ -680,15 +680,15 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-4 bg-rose-50 rounded-lg border border-rose-200">
                     <p class="text-xs font-medium text-rose-600">{{ __('event_applications.wizard.sections.expenses') }}</p>
-                    <p class="text-xl font-bold text-rose-700 tabular-nums">{{ number_format($totalExpenses, 2) }} EUR</p>
+                    <p class="text-xl font-bold text-rose-700 tabular-nums">{{ money($totalExpenses) }}</p>
                 </div>
                 <div class="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
                     <p class="text-xs font-medium text-emerald-600">{{ __('event_applications.wizard.sections.revenue') }}</p>
-                    <p class="text-xl font-bold text-emerald-700 tabular-nums">{{ number_format($totalRevenue, 2) }} EUR</p>
+                    <p class="text-xl font-bold text-emerald-700 tabular-nums">{{ money($totalRevenue) }}</p>
                 </div>
                 <div class="p-4 {{ ($totalRevenue - $totalExpenses) >= 0 ? 'bg-blue-50 border-blue-200' : 'bg-amber-50 border-amber-200' }} rounded-lg border">
                     <p class="text-xs font-medium {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-600' : 'text-amber-600' }}">{{ __('event_applications.wizard.labels.balance') }}</p>
-                    <p class="text-xl font-bold {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-700' : 'text-amber-700' }} tabular-nums">{{ number_format($totalRevenue - $totalExpenses, 2) }} EUR</p>
+                    <p class="text-xl font-bold {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-700' : 'text-amber-700' }} tabular-nums">{{ money($totalRevenue - $totalExpenses) }}</p>
                 </div>
             </div>
 

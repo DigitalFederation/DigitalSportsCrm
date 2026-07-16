@@ -65,7 +65,7 @@
                                 <div class="font-semibold text-left">{{ __('Federations') }}</div>
                             </th>
                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                <div class="font-semibold text-left">{{ __('Price (€)') }}</div>
+                                <div class="font-semibold text-left">{{ __('Price') }} ({{ currency_symbol() }})</div>
                             </th>
                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                 <div class="font-semibold text-right">{{ __('Actions') }}</div>
@@ -117,13 +117,13 @@
                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                     <div class="flex flex-col text-xs">
                                         @if(!empty($license->unit_value_individual))
-                                            <span>{{ __('Individual') }}: {{ $license->unit_value_individual }}€</span>
+                                            <span>{{ __('Individual') }}: {{ money($license->unit_value_individual) }}</span>
                                         @endif
                                         @if(!empty($license->unit_value_entity))
-                                            <span>{{ __('Entity') }}: {{ $license->unit_value_entity }}€</span>
+                                            <span>{{ __('Entity') }}: {{ money($license->unit_value_entity) }}</span>
                                         @endif
                                         @if(!empty($license->unit_value_federation))
-                                            <span>{{ __('Federation') }}: {{ $license->unit_value_federation }}€</span>
+                                            <span>{{ __('Federation') }}: {{ money($license->unit_value_federation) }}</span>
                                         @endif
                                         @if(empty($license->unit_value_individual) && empty($license->unit_value_entity) && empty($license->unit_value_federation))
                                             <span class="text-slate-400">{{ __('No price set') }}</span>

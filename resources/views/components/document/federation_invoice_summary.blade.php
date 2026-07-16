@@ -40,9 +40,9 @@
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-right">{{ ucfirst($document->stateName()) }}</td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-right">
                             @if($document->isCanceled())
-                                <span class="text-slate-300 line-through">{{ $document->total_value }}€</span>
+                                <span class="text-slate-300 line-through">{{ money($document->total_value, $document->currency) }}</span>
                             @else
-                                {{ $document->total_value }}€
+                                {{ money($document->total_value, $document->currency) }}
                             @endif
                         </td>
                     </tr>
@@ -59,15 +59,15 @@
                     <td class="pt-4 pr-5">
                         <div class="font-semibold text-left flex justify-between">
                             <span>{{ __('Total') }}: </span>
-                            <span>{{ $documents['total'] }}€ </span>
+                            <span>{{ money($documents['total']) }} </span>
                         </div>
                         <div class="font-semibold text-left flex justify-between">
                             <span>{{ __('Total Paid') }}: </span>
-                            <span>{{ $documents['total_paid'] }}€ </span>
+                            <span>{{ money($documents['total_paid']) }} </span>
                         </div>
                         <div class="font-semibold text-left flex justify-between">
                             <span>{{ __('Current Balance') }}: </span>
-                            <span class="@if($documents['current_balance'] < 0) text-red-600 @endif">{{ $documents['current_balance'] }}€ </span>
+                            <span class="@if($documents['current_balance'] < 0) text-red-600 @endif">{{ money($documents['current_balance']) }} </span>
                         </div>
                     </td>
                 </tr>

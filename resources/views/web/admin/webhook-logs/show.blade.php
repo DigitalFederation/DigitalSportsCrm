@@ -103,7 +103,7 @@
                                     {{ $webhookLog->transaction_id }}
                                 </a>
                                 <span class="text-sm text-gray-500 ml-2">
-                                    ({{ number_format($webhookLog->transaction->amount, 2) }}€)
+                                    ({{ money($webhookLog->transaction->amount, $webhookLog->transaction->currency) }})
                                 </span>
                             @else
                                 <span class="text-gray-400">{{ __('payment_admin.no_transaction') }}</span>

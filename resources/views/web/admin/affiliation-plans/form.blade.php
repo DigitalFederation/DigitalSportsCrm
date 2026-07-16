@@ -39,11 +39,11 @@
 
     <div class="flex gap-x-2">
         <div class="md:w-1/3">
-            <label for="individual_fee" class="block text-sm font-medium text-gray-700">{{ __('Individual Fee') }}(€)</label>
+            <label for="individual_fee" class="block text-sm font-medium text-gray-700">{{ __('Individual Fee') }}({{ currency_symbol() }})</label>
             <input type="number" name="individual_fee" id="individual_fee" value="{{ old('individual_fee', $plan->individual_fee ?? '') }}" step="0.01" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
         </div>
         <div class="md:w-1/3">
-            <label for="entity_fee" class="block text-sm font-medium text-gray-700">{{ __('Entity Fee') }}(€)</label>
+            <label for="entity_fee" class="block text-sm font-medium text-gray-700">{{ __('Entity Fee') }}({{ currency_symbol() }})</label>
             <input type="number" name="entity_fee" id="entity_fee" value="{{ old('entity_fee', $plan->entity_fee ?? '') }}" step="0.01" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" >
         </div>
         <div class="md:w-1/3">

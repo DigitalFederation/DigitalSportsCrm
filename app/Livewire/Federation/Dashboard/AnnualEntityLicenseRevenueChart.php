@@ -74,7 +74,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => __('dashboard.revenue_eur'),
+                        'label' => __('dashboard.revenue_eur', ['currency' => currency_code()]),
                         'data' => $data,
                         'backgroundColor' => 'rgba(139, 92, 246, 0.2)',
                         'borderColor' => '#8b5cf6',
@@ -100,7 +100,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __('dashboard.revenue_eur'),
+                    'label' => __('dashboard.revenue_eur', ['currency' => currency_code()]),
                     'data' => array_fill(0, 12, 0),
                     'backgroundColor' => 'rgba(139, 92, 246, 0.2)',
                     'borderColor' => '#8b5cf6',
@@ -123,7 +123,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
                     ],
                     'title' => [
                         'display' => true,
-                        'text' => 'EUR',
+                        'text' => currency_code(),
                         'font' => [
                             'size' => 12,
                             'weight' => 'bold',

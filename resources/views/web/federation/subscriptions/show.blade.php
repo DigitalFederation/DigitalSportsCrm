@@ -84,7 +84,7 @@
                                             <p class="text-sm text-slate-600 mb-2">{{ $plan->description }}</p>
                                         @endif
                                         <div class="text-xs text-slate-500">
-                                            {{ __('federation.entity_fee') }}: €{{ number_format($plan->entity_fee ?? 0, 2) }}
+                                            {{ __('federation.entity_fee') }}: {{ money($plan->entity_fee ?? 0) }}
                                         </div>
                                     </div>
                                 @endforeach
@@ -103,7 +103,7 @@
                                             <p class="text-sm text-slate-600 mb-2">{{ $plan->description }}</p>
                                         @endif
                                         <div class="text-xs text-slate-500">
-                                            {{ __('federation.entity_fee') }}: €{{ number_format($plan->entity_fee ?? 0, 2) }}
+                                            {{ __('federation.entity_fee') }}: {{ money($plan->entity_fee ?? 0) }}
                                         </div>
                                     </div>
                                 @endforeach
@@ -146,19 +146,19 @@
                         @if($subscription->membershipPackage->affiliationPlans->count() > 0)
                             <div class="flex justify-between">
                                 <span class="text-slate-500">{{ __('federation.total_affiliation_fee') }}:</span>
-                                <span class="text-slate-800">€{{ number_format($subscription->membershipPackage->affiliationPlans->sum('entity_fee'), 2) }}</span>
+                                <span class="text-slate-800">{{ money($subscription->membershipPackage->affiliationPlans->sum('entity_fee')) }}</span>
                             </div>
                         @endif
                         @if($subscription->membershipPackage->insurancePlans->count() > 0)
                             <div class="flex justify-between">
                                 <span class="text-slate-500">{{ __('federation.total_insurance_fee') }}:</span>
-                                <span class="text-slate-800">€{{ number_format($subscription->membershipPackage->insurancePlans->sum('entity_fee'), 2) }}</span>
+                                <span class="text-slate-800">{{ money($subscription->membershipPackage->insurancePlans->sum('entity_fee')) }}</span>
                             </div>
                         @endif
                         <hr class="border-slate-200">
                         <div class="flex justify-between font-semibold">
                             <span class="text-slate-800">{{ __('federation.total_package_fee') }}:</span>
-                            <span class="text-slate-800">€{{ number_format($subscription->membershipPackage->calculatePriceFor(\Domain\Entities\Models\Entity::class), 2) }}</span>
+                            <span class="text-slate-800">{{ money($subscription->membershipPackage->calculatePriceFor(\Domain\Entities\Models\Entity::class)) }}</span>
                         </div>
                     </div>
                 </div>

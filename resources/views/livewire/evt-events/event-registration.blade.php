@@ -229,7 +229,7 @@
                                         <h4 class="text-sm font-medium text-gray-900 flex justify-between items-center">
                                             {{ ucfirst($role) }}s
                                             <span class="text-gray-500 text-xs">
-                                                €{{ number_format($roleCosts[$role] ?? 0, 2) }}
+                                                {{ money($roleCosts[$role] ?? 0) }}
                                             </span>
                                         </h4>
 
@@ -300,7 +300,7 @@
                                     Enrollment #{{ $enrollment['document_number'] }}
                                 </h3>
                                 <p class="text-gray-600">
-                                    Total: {{ number_format($enrollment['total_price'], 2) }} €
+                                    Total: {{ money($enrollment['total_price']) }}
                                 </p>
                             </div>
                             <a target="_blank"
@@ -318,7 +318,7 @@
                                         <span class="text-gray-500 text-sm ml-2">({{ $participant['role'] }})</span>
                                     </div>
                                     <span class="text-gray-600">
-                                        {{ number_format($participant['price'], 2) }} €
+                                        {{ money($participant['price']) }}
                                     </span>
                                 </div>
                             @endforeach

@@ -1,4 +1,6 @@
 {
+  "or :price per month" : "ou :price por mês",
+  "Coverage up to :amount" : "Cobertura até :amount",
   "Create API Token" : "Criar Token de API",
   "API tokens allow third-party services to authenticate with our application on your behalf." : "Os tokens de API permitem que serviços de terceiros se autentiquem na nossa aplicação em seu nome.",
   "Token Name" : "Nome do Token",
@@ -324,6 +326,7 @@
   "Add Option" : "Adicionar Opção",
   "Quantity" : "Quantidade",
   "Price" : "Preço",
+  "* Price in :currency. Ex: 12,90" : "* Preço em :currency. Ex: 12,90",
   "Shipping Address" : "Endereço de Envio",
   "1234 Main St" : "Rua Principal 1234",
   "City/Town" : "Cidade",

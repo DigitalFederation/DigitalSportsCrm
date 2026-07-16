@@ -26,7 +26,7 @@
                     <dt class="text-sm font-medium text-gray-500">Total Cost</dt>
                     <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
                         <div class="flex items-baseline text-2xl font-semibold text-primary-600">
-                            €{{ number_format($totalCost, 2) }}
+                            {{ money($totalCost) }}
                         </div>
                     </dd>
                 </div>
@@ -119,7 +119,7 @@
                                         <h4 class="text-sm font-medium text-gray-900 flex justify-between items-center">
                                             {{ ucfirst($role) }}s
                                             <span class="text-gray-500 text-xs">
-                                                €{{ number_format($roleCosts[$role] ?? 0, 2) }}
+                                                {{ money($roleCosts[$role] ?? 0) }}
                                             </span>
                                         </h4>
 
@@ -191,7 +191,7 @@
                                                             ])
                                                         >
                                                             {{ $discipline->name }}
-                                                            <span class="font-medium">€{{ number_format($price, 2) }}</span>
+                                                            <span class="font-medium">{{ money($price) }}</span>
                                                         </button>
                                                     @endforeach
                                                 @else
@@ -208,7 +208,7 @@
                         <div class="mt-6 space-y-4">
                             <div class="flex justify-between items-center text-lg font-semibold">
                                 <span>Total</span>
-                                <span>€{{ number_format($totalCost, 2) }}</span>
+                                <span>{{ money($totalCost) }}</span>
                             </div>
 
                             <button
@@ -240,7 +240,7 @@
                                         Enrollment #{{ $enrollment['document_number'] }}
                                     </h3>
                                     <p class="text-gray-600">
-                                        Total: {{ number_format($enrollment['total_price'], 2) }} €
+                                        Total: {{ money($enrollment['total_price']) }}
                                     </p>
                                 </div>
                                 <a
@@ -258,7 +258,7 @@
                                             <span class="text-gray-500 text-sm ml-2">({{ $participant['role'] }})</span>
                                         </div>
                                         <span class="text-gray-600">
-                                            {{ number_format($participant['price'], 2) }} €
+                                            {{ money($participant['price']) }}
                                         </span>
                                     </div>
                                 @endforeach

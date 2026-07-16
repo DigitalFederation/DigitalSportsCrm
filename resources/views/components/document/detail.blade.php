@@ -72,25 +72,25 @@
                         <p>{{ $detail->enhanced_description }}</p>
                     </td>
                     <td class="py-3 text-right">{{ $detail->quantity }}</td>
-                    <td class="py-3 text-right">{{ $detail->unit_value }}€</td>
-                    <td class="py-3 text-right font-bold">{{ $detail->total_value }}€</td>
+                    <td class="py-3 text-right">{{ money($detail->unit_value, $document->currency) }}</td>
+                    <td class="py-3 text-right font-bold">{{ money($detail->total_value, $document->currency) }}</td>
                 </tr>
             @endforeach
             </tbody>
             <tfooter>
                 <tr>
                     <th colspan="3" class="text-right text-sm uppercase">{{ __('documents.subtotal') }}:</th>
-                    <th class="text-right">{{ number_format($document->total_value, 2) }}€</th>
+                    <th class="text-right">{{ money($document->total_value, $document->currency) }}</th>
                 </tr>
 
                 @if($document->amount_paid > 0)
                     <tr>
                         <th colspan="3" class="text-right text-sm  uppercase">{{ __('documents.amount_paid') }}:</th>
-                        <th class="text-right">{{ number_format($document->amount_paid, 2) }}€</th>
+                        <th class="text-right">{{ money($document->amount_paid, $document->currency) }}</th>
                     </tr>
                     <tr>
                         <th colspan="3" class="text-right text-sm  uppercase">{{ __('documents.remaining_balance') }}:</th>
-                        <th class="text-right">{{ number_format($document->total_value - $document->amount_paid, 2)}}€
+                        <th class="text-right">{{ money($document->total_value - $document->amount_paid, $document->currency) }}
                         </th>
                     </tr>
                 @endif

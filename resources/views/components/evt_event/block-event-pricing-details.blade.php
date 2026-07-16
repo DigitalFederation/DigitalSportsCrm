@@ -23,7 +23,7 @@
                     <span
                         class="font-bold text-sm">{{ __('events.price') }}: </span>
                     <div class="text-slate-400">
-                        <span>{{ $price->price }}€</span>
+                        <span>{{ money($price->price) }}</span>
                         <span
                             class="text-slate-400 text-xs">{{ \App\Enums\EvtEventFeeTypeEnum::toString($price->price_type) }}</span>
                     </div>

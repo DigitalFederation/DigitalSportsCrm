@@ -91,7 +91,7 @@
                         </td>
 
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-right">
-                            {{ number_format($document->total_value, 2, ',', '.') }}€
+                            {{ money($document->total_value, $document->currency) }}
                         </td>
 
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px items-end">

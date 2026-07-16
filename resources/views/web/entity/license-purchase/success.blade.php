@@ -45,7 +45,7 @@
 
                     <div class="flex justify-between">
                         <dt class="text-slate-600">{{ __('licenses.Total Amount') }}:</dt>
-                        <dd class="font-medium text-green-600">€{{ number_format($totalAmount ?? 0, 2) }}</dd>
+                        <dd class="font-medium text-green-600">{{ money($totalAmount ?? 0, $document?->currency) }}</dd>
                     </div>
 
                 </dl>

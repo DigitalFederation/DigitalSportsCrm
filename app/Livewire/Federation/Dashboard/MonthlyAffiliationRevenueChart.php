@@ -65,7 +65,7 @@ class MonthlyAffiliationRevenueChart extends ChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => __('dashboard.revenue_eur'),
+                        'label' => __('dashboard.revenue_eur', ['currency' => currency_code()]),
                         'data' => $data,
                         'backgroundColor' => 'rgba(16, 185, 129, 0.2)',
                         'borderColor' => '#10b981',
@@ -86,7 +86,7 @@ class MonthlyAffiliationRevenueChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __('dashboard.revenue_eur'),
+                    'label' => __('dashboard.revenue_eur', ['currency' => currency_code()]),
                     'data' => array_fill(0, 12, 0),
                 ],
             ],
@@ -106,7 +106,7 @@ class MonthlyAffiliationRevenueChart extends ChartWidget
                     ],
                     'title' => [
                         'display' => true,
-                        'text' => 'EUR',
+                        'text' => currency_code(),
                         'font' => [
                             'size' => 12,
                             'weight' => 'bold',

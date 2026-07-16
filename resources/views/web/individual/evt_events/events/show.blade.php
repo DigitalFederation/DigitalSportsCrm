@@ -69,7 +69,7 @@
                                     @foreach($event->pricing as $price)
                                         <tr class="hover:bg-slate-50">
                                             <td class="py-3 px-4">
-                                                <span class="text-lg font-bold text-indigo-600">{{ number_format($price->price, 2) }}&euro;</span>
+                                                <span class="text-lg font-bold text-indigo-600">{{ money($price->price) }}</span>
                                             </td>
                                             <td class="py-3 px-4">
                                                 <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">
@@ -146,7 +146,7 @@
                                                     <div class="flex justify-between items-center">
                                                         <span class="font-medium text-gray-900">{{ $pricing->description }}</span>
                                                         <span class="text-lg font-semibold text-gray-900">
-                                                            {{ $pricing->price }} &euro;
+                                                            {{ money($pricing->price) }}
                                                         </span>
                                                     </div>
                                                     @if ($pricing->details)
@@ -377,7 +377,7 @@
 
                                             @if ($activity->properties->has('total_price'))
                                                 <div>{{ __('Cost') }}:
-                                                    &euro;{{ number_format($activity->properties->get('total_price', 0), 2) }}
+                                                    {{ money($activity->properties->get('total_price', 0)) }}
                                                 </div>
                                             @endif
 

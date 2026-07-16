@@ -76,7 +76,7 @@
                 @if($licenseAttributed->total_value)
                 <div>
                     <dt class="text-sm font-medium text-gray-500">{{ __('licenses.Amount') }}</dt>
-                    <dd class="mt-1 text-sm text-gray-900">€ {{ number_format($licenseAttributed->total_value, 2, ',', '.') }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900">{{ money($licenseAttributed->total_value, $document?->currency) }}</dd>
                 </div>
                 @endif
             </dl>

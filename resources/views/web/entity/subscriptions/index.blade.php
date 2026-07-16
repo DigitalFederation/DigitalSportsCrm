@@ -335,7 +335,7 @@
                           @if($price > 0)
                               <div class="mb-4">
                                   <div class="flex items-baseline">
-                                      <span class="text-2xl font-bold text-slate-900">€{{ number_format($price, 2) }}</span>
+                                      <span class="text-2xl font-bold text-slate-900">{{ money($price) }}</span>
                                       <span class="text-sm text-slate-500 ml-1">/ ano</span>
                                   </div>
                               </div>
@@ -382,7 +382,7 @@
                                                       </svg>
                                                       <span class="flex-1">{{ $plan->name }}</span>
                                                       @if($plan->entity_fee > 0)
-                                                          <span class="text-xs text-slate-500">€{{ number_format($plan->entity_fee, 2) }}</span>
+                                                          <span class="text-xs text-slate-500">{{ money($plan->entity_fee) }}</span>
                                                       @endif
                                                   </div>
                                               @endforeach
@@ -404,7 +404,7 @@
                                                       </svg>
                                                       <span class="flex-1">{{ $plan->name }}</span>
                                                       @if($plan->entity_fee > 0)
-                                                          <span class="text-xs text-slate-500">€{{ number_format($plan->entity_fee, 2) }}</span>
+                                                          <span class="text-xs text-slate-500">{{ money($plan->entity_fee) }}</span>
                                                       @endif
                                                   </div>
                                               @endforeach

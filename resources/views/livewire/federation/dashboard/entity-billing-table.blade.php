@@ -29,7 +29,7 @@
                             {{ __('dashboard.district') }}
                         </th>
                         <th scope="col" class="px-4 sm:px-6 py-3 text-right text-xs font-bold text-gray-700 dark:text-gray-200 uppercase tracking-wider">
-                            {{ __('dashboard.total_billed') }}
+                            {{ __('dashboard.total_billed', ['currency' => currency_code()]) }}
                         </th>
                     </tr>
                 </thead>
@@ -94,15 +94,15 @@
                             <td class="px-4 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-right">
                                 @if($ranking === 1)
                                     <span class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-bold bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400">
-                                        {{ number_format($entity->total_affiliation_fee ?? 0, 2, ',', '.') }} €
+                                        {{ money($entity->total_affiliation_fee ?? 0) }}
                                     </span>
                                 @elseif($isTopThree)
                                     <span class="text-sm font-bold text-gray-900 dark:text-white">
-                                        {{ number_format($entity->total_affiliation_fee ?? 0, 2, ',', '.') }} €
+                                        {{ money($entity->total_affiliation_fee ?? 0) }}
                                     </span>
                                 @else
                                     <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                                        {{ number_format($entity->total_affiliation_fee ?? 0, 2, ',', '.') }} €
+                                        {{ money($entity->total_affiliation_fee ?? 0) }}
                                     </span>
                                 @endif
                             </td>

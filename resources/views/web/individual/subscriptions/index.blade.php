@@ -281,7 +281,7 @@
                             @if($price > 0)
                                 <div class="mb-4">
                                     <div class="flex items-baseline">
-                                        <span class="text-2xl font-bold text-slate-900">€{{ number_format($price, 2) }}</span>
+                                        <span class="text-2xl font-bold text-slate-900">{{ money($price) }}</span>
                                         <span class="text-sm text-slate-500 ml-1">/ ano</span>
                                     </div>
                                 </div>
@@ -328,7 +328,7 @@
                                                         </svg>
                                                         <span class="flex-1">{{ $plan->name }}</span>
                                                         @if($plan->individual_fee > 0)
-                                                            <span class="text-xs text-slate-500">€{{ number_format($plan->individual_fee, 2) }}</span>
+                                                            <span class="text-xs text-slate-500">{{ money($plan->individual_fee) }}</span>
                                                         @endif
                                                     </div>
                                                 @endforeach
@@ -350,7 +350,7 @@
                                                         </svg>
                                                         <span class="flex-1">{{ $plan->name }}</span>
                                                         @if($plan->individual_fee > 0)
-                                                            <span class="text-xs text-slate-500">€{{ number_format($plan->individual_fee, 2) }}</span>
+                                                            <span class="text-xs text-slate-500">{{ money($plan->individual_fee) }}</span>
                                                         @endif
                                                     </div>
                                                 @endforeach
@@ -423,7 +423,7 @@
                     <div class="mb-6">
                         <h4 class="text-md font-medium text-gray-900 mb-2" x-text="selectedPackageName"></h4>
                         <p class="text-sm text-gray-600 mb-2">
-                            {{ __('subscriptions.price') }} <span class="font-medium" x-text="`{{ config('squidflex.currency_symbol', '€') }}${selectedPackagePrice}`"></span>
+                            {{ __('subscriptions.price') }} <span class="font-medium" x-text="`{{ currency_symbol() }}${selectedPackagePrice}`"></span>
                         </p>
                         <div class="text-sm text-gray-600">
                             <p class="font-medium mb-1">{{ __('subscriptions.package_includes') }}</p>

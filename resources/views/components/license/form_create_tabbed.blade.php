@@ -499,7 +499,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium mb-1" for="unit_value_individual">
-                                            {{ __('Preço para Individual (€)') }}
+                                            {{ __('Preço para Individual') }} ({{ currency_symbol() }})
                                         </label>
                                         <input type="text"
                                                name="unit_value_individual"
@@ -517,7 +517,7 @@
 
                                     <div>
                                         <label class="block text-sm font-medium mb-1" for="unit_value_entity">
-                                            {{ __('Preço para Entidade (€)') }}
+                                            {{ __('Preço para Entidade') }} ({{ currency_symbol() }})
                                         </label>
                                         <input type="text"
                                                name="unit_value_entity"
@@ -535,7 +535,7 @@
 
                                     <div>
                                         <label class="block text-sm font-medium mb-1" for="unit_value_federation">
-                                            {{ __('Preço para Federação (€)') }}
+                                            {{ __('Preço para Federação') }} ({{ currency_symbol() }})
                                         </label>
                                         <input type="text"
                                                name="unit_value_federation"

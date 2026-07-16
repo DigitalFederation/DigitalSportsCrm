@@ -92,14 +92,14 @@
             <div class="mb-4">
                 <div class="flex items-baseline gap-2">
                     <span class="text-2xl font-bold text-slate-900">
-                        €{{ number_format($package->price, 2) }}
+                        {{ money($package->price) }}
                     </span>
                     <span class="text-sm text-slate-500">{{ __('per year') }}</span>
                 </div>
                 
                 @if($package->monthly_price ?? false)
                     <div class="text-sm text-slate-500">
-                        {{ __('or €:price per month', ['price' => number_format($package->monthly_price, 2)]) }}
+                        {{ __('or :price per month', ['price' => money($package->monthly_price)]) }}
                     </div>
                 @endif
             </div>
@@ -123,7 +123,7 @@
                     <div class="flex items-center gap-2">
                         <x-svg.check class="w-4 h-4 text-green-500 flex-shrink-0" />
                         <span class="text-sm text-slate-600">
-                            {{ __('Coverage up to €:amount', ['amount' => number_format($package->coverage_amount)]) }}
+                            {{ __('Coverage up to :amount', ['amount' => money($package->coverage_amount)]) }}
                         </span>
                     </div>
                 @endif

@@ -89,7 +89,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1" for="price">{{ __('Price') }}
-                                        (€)</label>
+                                        ({{ currency_symbol() }})</label>
                                     <input id="price"
                                            pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$"
                                            class="form-input {{ $errors->has('price') ? 'border-rose-300' : '' }}"
@@ -97,7 +97,7 @@
                                            min="0"
                                            name="price"
                                            value="{{ old('price') }}" />
-                                    <div class="text-xs mt-1"> {{ __('* Price in euros. Ex: 12,90') }} </div>
+                                    <div class="text-xs mt-1"> {{ __('* Price in :currency. Ex: 12,90', ['currency' => currency_code()]) }} </div>
 
                                     <div class="text-xs mt-1 text-rose-500 h-2">
                                         @if($errors->has('price'))

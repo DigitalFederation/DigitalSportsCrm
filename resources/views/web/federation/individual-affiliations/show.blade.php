@@ -182,7 +182,7 @@
                                 <dd class="mt-1 text-sm font-semibold text-slate-900">
                                     @if($affiliation->individual_fee)
                                         <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700">
-                                            {{ number_format($affiliation->individual_fee, 2, ',', '.') }} &euro;
+                                            {{ money($affiliation->individual_fee) }}
                                         </span>
                                     @else
                                         <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">

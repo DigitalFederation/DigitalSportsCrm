@@ -71,7 +71,7 @@
                                                             <span class="text-xs font-medium text-slate-700">{{ $plan->name }}</span>
                                                         </div>
                                                         @if($plan->entity_fee > 0)
-                                                            <span class="text-xs text-slate-500">€{{ number_format($plan->entity_fee, 2) }}</span>
+                                                            <span class="text-xs text-slate-500">{{ money($plan->entity_fee) }}</span>
                                                         @endif
                                                     </div>
                                                     @if($plan->description)

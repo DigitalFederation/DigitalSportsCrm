@@ -444,7 +444,7 @@
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="font-medium text-slate-500">{{ __('main.fee') }}</span>
-                                            <span class="text-slate-900" x-text="detailFee + ' EUR'"></span>
+                                            <span class="text-slate-900" x-text="detailFee + ' ' + @js(currency_symbol())"></span>
                                         </div>
                                     </div>
                                 </template>
@@ -458,7 +458,7 @@
                                                 <div class="border border-slate-200 rounded-lg p-4">
                                                     <div class="flex justify-between items-start mb-2">
                                                         <h5 class="font-medium text-slate-900" x-text="plan.name"></h5>
-                                                        <span class="text-sm font-medium text-blue-600" x-text="(plan.individual_fee || 0).toFixed(2) + ' EUR'"></span>
+                                                        <span class="text-sm font-medium text-blue-600" x-text="(plan.individual_fee || 0).toFixed(2) + ' ' + @js(currency_symbol())"></span>
                                                     </div>
                                                     <p x-show="plan.description" class="text-sm text-slate-600" x-text="plan.description"></p>
                                                 </div>
@@ -468,7 +468,7 @@
                                         <div class="bg-slate-50 px-4 py-3 rounded-md">
                                             <div class="flex justify-between items-center">
                                                 <span class="text-lg font-medium text-slate-900">{{ __('main.total_annual_price') }}</span>
-                                                <span class="text-2xl font-bold text-blue-600" x-text="detailPrice + ' EUR'"></span>
+                                                <span class="text-2xl font-bold text-blue-600" x-text="detailPrice + ' ' + @js(currency_symbol())"></span>
                                             </div>
                                             <p class="text-xs text-slate-500 mt-1">{{ __('main.price_includes_all_insurance_plans') }}</p>
                                         </div>

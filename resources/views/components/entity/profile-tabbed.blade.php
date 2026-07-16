@@ -323,8 +323,7 @@
                                         <x-tables.badge :color="$document->stateColor()" :status="__('documents.states.' . $document->stateName())" />
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right">
-                                        <span class="text-sm font-semibold text-gray-900">{{ number_format($document->total_value, 2, ',', '.') }}</span>
-                                        <span class="text-xs text-gray-500 ml-0.5">EUR</span>
+                                        <span class="text-sm font-semibold text-gray-900">{{ money($document->total_value, $document->currency) }}</span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         <a href="{{ route($namespace . '.document.show', $document->id) }}"

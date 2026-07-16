@@ -25,7 +25,7 @@
 
                     @if($totalCost > 0)
                         <p class="font-bold text-slate-600">Total: <span class="font-normal">
-                                {{ number_format($totalCost, 2, '.', '') }}€</span>
+                                {{ money($totalCost) }}</span>
                         </p>
                     @endif
                 </x-slot>
@@ -48,7 +48,7 @@
                                             @foreach($pricingTiersOptions as $key => $priceTier)
 
                                                 <option value="{{ $key }}">
-                                                    {{ $priceTier['price'] }}€ | {{ $priceTier['description'] }}
+                                                    {{ money($priceTier['price']) }} | {{ $priceTier['description'] }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -115,7 +115,7 @@
                                 @if($totalCost > 0)
                                     Are <u>you sure</u> you want to
                                     enroll {{ count($this->selectedIndividuals) }}
-                                    members for a total of {{ number_format($totalCost, 2, '.', '') }}€ ?
+                                    members for a total of {{ money($totalCost) }} ?
                                 @else
                                     Are <u>you sure</u> you want to
                                     enroll {{ count($this->selectedIndividuals) }}

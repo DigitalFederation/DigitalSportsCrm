@@ -105,7 +105,7 @@
             <div class="mb-4 pb-4 border-b border-slate-100">
                 <div class="flex items-baseline gap-2">
                     <span class="text-3xl font-bold text-slate-900">
-                        €{{ number_format($primaryPrice, 2) }}
+                        {{ money($primaryPrice) }}
                     </span>
                     <span class="text-sm text-slate-500">{{ __('starting from') }}</span>
                 </div>
@@ -164,7 +164,7 @@
                                         @foreach($package->affiliationPlans->take(3) as $plan)
                                             <div class="flex items-center justify-between text-xs text-slate-600">
                                                 <span>{{ $plan->name }}</span>
-                                                <span class="font-medium">€{{ number_format($plan->price, 2) }}</span>
+                                                <span class="font-medium">{{ money($plan->price) }}</span>
                                             </div>
                                         @endforeach
                                         
@@ -187,7 +187,7 @@
                                         @foreach($package->insurancePlans->take(3) as $plan)
                                             <div class="flex items-center justify-between text-xs text-slate-600">
                                                 <span>{{ $plan->name }}</span>
-                                                <span class="font-medium">€{{ number_format($plan->price, 2) }}</span>
+                                                <span class="font-medium">{{ money($plan->price) }}</span>
                                             </div>
                                         @endforeach
                                         

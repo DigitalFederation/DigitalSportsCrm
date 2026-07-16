@@ -100,7 +100,7 @@
         <div x-show="getFeeStructure(selectedScenario) === 'individual_only' || getFeeStructure(selectedScenario) === 'both'"
              class="mb-4">
             <label for="individual_fee" class="block text-sm font-medium text-gray-700">
-                {{ __('Individual Fee') }} ({{ config('squidflex.currency_symbol', '€') }})
+                {{ __('Individual Fee') }} ({{ currency_symbol() }})
             </label>
             <input type="number" name="individual_fee" id="individual_fee" 
                    value="{{ old('individual_fee', $plan->individual_fee ?? '') }}" 
@@ -120,7 +120,7 @@
         <div x-show="getFeeStructure(selectedScenario) === 'entity_only' || getFeeStructure(selectedScenario) === 'both'"
              class="mb-4">
             <label for="entity_fee" class="block text-sm font-medium text-gray-700">
-                {{ __('Entity Fee') }} ({{ config('squidflex.currency_symbol', '€') }})
+                {{ __('Entity Fee') }} ({{ currency_symbol() }})
             </label>
             <input type="number" name="entity_fee" id="entity_fee" 
                    value="{{ old('entity_fee', $plan->entity_fee ?? '') }}" 

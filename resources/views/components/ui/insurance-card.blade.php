@@ -126,7 +126,7 @@
                 <div class="mb-4 pb-4 border-b border-slate-100">
                     <div class="flex items-baseline gap-2">
                         <span class="text-2xl font-bold text-slate-900">
-                            €{{ number_format($price, 2) }}
+                            {{ money($price) }}
                         </span>
                         <span class="text-sm text-slate-500">{{ __('main.per_year') }}</span>
                     </div>
@@ -207,9 +207,9 @@
                                             @endif
                                         </div>
                                         @if($context === 'entity' && $insurancePlan->entity_fee)
-                                            <span class="text-xs text-slate-500">€{{ number_format($insurancePlan->entity_fee, 2) }}</span>
+                                            <span class="text-xs text-slate-500">{{ money($insurancePlan->entity_fee) }}</span>
                                         @elseif($context === 'individual' && $insurancePlan->individual_fee)
-                                            <span class="text-xs text-slate-500">€{{ number_format($insurancePlan->individual_fee, 2) }}</span>
+                                            <span class="text-xs text-slate-500">{{ money($insurancePlan->individual_fee) }}</span>
                                         @endif
                                     </div>
                                 @endforeach
@@ -328,7 +328,7 @@
                                                             <div class="text-sm">
                                                                 <div class="font-medium text-gray-900" x-text="packageName"></div>
                                                                 <div class="mt-1 text-gray-600">
-                                                                    {{ __('Valor Total') }}: <span class="font-semibold">€<span x-text="packagePrice"></span></span>
+                                                                    {{ __('Valor Total') }}: <span class="font-semibold">{{ currency_symbol() }}<span x-text="packagePrice"></span></span>
                                                                 </div>
                                                             </div>
                                                         </div>

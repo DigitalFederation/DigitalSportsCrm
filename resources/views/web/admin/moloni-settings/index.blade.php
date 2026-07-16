@@ -572,7 +572,7 @@
                                     @endif
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                    {{ number_format($doc->total_value, 2) }} EUR
+                                    {{ money($doc->total_value, $doc->currency) }}
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
                                     {{ $doc->updated_at->format('Y-m-d H:i') }}
@@ -635,7 +635,7 @@
                                 </span>
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
-                                {{ number_format($invoice->moloni_total, 2) }} EUR
+                                {{ money($invoice->moloni_total, $invoice->currency) }}
                             </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
                                 {{ $invoice->synced_at?->format('Y-m-d H:i') }}

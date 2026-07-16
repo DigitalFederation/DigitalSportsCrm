@@ -336,8 +336,8 @@
                                 <tr class="hover:bg-slate-50/50">
                                     <td class="py-2.5 text-sm text-slate-700">{{ $item['label'] }}</td>
                                     <td class="py-2.5 text-sm text-slate-600 text-center">{{ $item['count'] }}</td>
-                                    <td class="py-2.5 text-sm text-slate-600 text-right">{{ number_format($item['unit_price'], 2) }} &euro;</td>
-                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ number_format($item['total'], 2) }} &euro;</td>
+                                    <td class="py-2.5 text-sm text-slate-600 text-right">{{ money($item['unit_price']) }}</td>
+                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ money($item['total']) }}</td>
                                 </tr>
                             @endforeach
                         @endif
@@ -363,8 +363,8 @@
                                         {{ $discipline['entries'] }}
                                         <span class="text-xs text-slate-400">{{ $discipline['entries'] == 1 ? __('events.entry') : __('events.entries') }}</span>
                                     </td>
-                                    <td class="py-2.5 text-sm text-slate-600 text-right">{{ number_format($discipline['unit_price'], 2) }} &euro;</td>
-                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ number_format($discipline['total'], 2) }} &euro;</td>
+                                    <td class="py-2.5 text-sm text-slate-600 text-right">{{ money($discipline['unit_price']) }}</td>
+                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ money($discipline['total']) }}</td>
                                 </tr>
                             @endforeach
                         @endif
@@ -381,7 +381,7 @@
                                     <td class="py-2.5 text-sm text-slate-700">{{ $item['label'] }}</td>
                                     <td class="py-2.5 text-sm text-slate-600 text-center">{{ $item['count'] }}</td>
                                     <td class="py-2.5 text-sm text-slate-600 text-right">-</td>
-                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ number_format($item['total'], 2) }} &euro;</td>
+                                    <td class="py-2.5 text-sm font-semibold text-slate-900 text-right">{{ money($item['total']) }}</td>
                                 </tr>
                             @endforeach
                         @endif
@@ -394,9 +394,8 @@
                         <span class="text-lg font-bold text-slate-900">{{ __('events.grand_total') }}</span>
                         <div class="flex items-baseline gap-1">
                             <span class="text-3xl font-bold text-primary">
-                                {{ number_format($grandTotal, 2) }}
+                                {{ money($grandTotal) }}
                             </span>
-                            <span class="text-lg font-semibold text-primary">&euro;</span>
                         </div>
                     </div>
                 </div>
@@ -415,7 +414,7 @@
                             </div>
                             <div>
                                 <p class="text-sm font-medium text-slate-900">{{ __('events.payment_required_message') }}</p>
-                                <p class="text-xs text-slate-500">{{ __('events.total') }}: {{ number_format($grandTotal, 2) }} &euro;</p>
+                                <p class="text-xs text-slate-500">{{ __('events.total') }}: {{ money($grandTotal) }}</p>
                             </div>
                         @else
                             <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-100 ring-1 ring-emerald-200/50">

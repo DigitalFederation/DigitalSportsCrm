@@ -130,6 +130,7 @@ return [
     // Dynamic messages with parameters
     'Purchase for' => 'Adquirir por',
     'Purchase for €:amount' => 'Adquirir por €:amount',
+    'Purchase for :amount' => 'Adquirir por :amount',
     'Request Free License' => 'Solicitar Licencia Gratuita',
     ':count members selected' => ':count miembros seleccionados',
     'This license certifies you for: :role' => 'Esta licencia le certifica para: :role',

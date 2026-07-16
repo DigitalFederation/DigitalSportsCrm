@@ -186,7 +186,7 @@ class RegisterDocumentPaymentAction
 
         // Send notification to all users
         if (! $users->isEmpty() && $url) {
-            $message = __('notifications.payment_made', ['value' => number_format($document->total_value, 2) . ' EUR']);
+            $message = __('notifications.payment_made', ['value' => money($document->total_value, $document->currency)]);
             $notification = new UserAlert($message, $url);
             $users->each(function ($user) use ($notification) {
                 if ($user) {

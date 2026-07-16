@@ -78,7 +78,7 @@ class MarkAsPaidAction
                     }
 
                     if ($user) {
-                        $message = __('notifications.payment_made', ['value' => number_format($document->total_value, 2) . ' EUR']);
+                        $message = __('notifications.payment_made', ['value' => money($document->total_value, $document->currency)]);
                         $user->notify(new UserAlert($message));
                     }
                 }

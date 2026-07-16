@@ -69,8 +69,8 @@
                                   </div>
                               </td>
                               <td class="py-4 p-3 border-t">{{ $detail->quantity }}</td>
-                              <td class="py-4 p-3 border-t">{{ $detail->unit_value }}€</td>
-                              <td class="py-4 p-3 border-t">{{ $detail->total_value }}€</td>
+                              <td class="py-4 p-3 border-t">{{ money($detail->unit_value, $document->currency) }}</td>
+                              <td class="py-4 p-3 border-t">{{ money($detail->total_value, $document->currency) }}</td>
                           </tr>
                         @endforeach
                         </tbody>
@@ -80,7 +80,7 @@
                                 <p class="text-lg font-semibold pt-2">Total</p>
                               </th>
                               <th class="border-b-0 p-3 border-t" colspan="3">
-                                <p class="text-right text-lg font-semibold pt-2"> {{ $document->total_value }}€</p>
+                                <p class="text-right text-lg font-semibold pt-2"> {{ money($document->total_value, $document->currency) }}</p>
                               </th>
                           </tr>
                         </tfoot>

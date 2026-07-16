@@ -36,8 +36,7 @@
     @if($document->amount_paid < $document->total_value)
         <div class="mb-4">
             <p class="text-sm text-slate-500">
-                {{ __('Remaining Amount to be Paid:') }} {{ number_format($document->total_value - $document->amount_paid, 2) }}
-                €
+                {{ __('Remaining Amount to be Paid:') }} {{ money($document->total_value - $document->amount_paid, $document->currency) }}
             </p>
         </div>
     @endif

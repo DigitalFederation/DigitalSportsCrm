@@ -206,7 +206,7 @@
                 <select wire:model="selectedPricingIds.perPerson" class="form-select w-full">
                     <option value="">{{ __('events.select_per_person_pricing') }}</option>
                     @foreach ($pricingData->where('price_type', \App\Enums\EvtEventFeeTypeEnum::PER_PERSON->value) as $pricing)
-                        <option value="{{ $pricing->id }}">{{ $pricing->description }} - {{ $pricing->price }}€
+                        <option value="{{ $pricing->id }}">{{ $pricing->description }} - {{ money($pricing->price) }}
                         </option>
                     @endforeach
                 </select>
@@ -216,7 +216,7 @@
                 <select wire:model="selectedPricingIds.eventFee" class="form-select w-full">
                     <option value="">{{ __('events.select_event_fee_pricing') }}</option>
                     @foreach ($pricingData->where('price_type', \App\Enums\EvtEventFeeTypeEnum::EVENT_FEE->value) as $pricing)
-                        <option value="{{ $pricing->id }}">{{ $pricing->description }} - {{ $pricing->price }}€
+                        <option value="{{ $pricing->id }}">{{ $pricing->description }} - {{ money($pricing->price) }}
                         </option>
                     @endforeach
                 </select>

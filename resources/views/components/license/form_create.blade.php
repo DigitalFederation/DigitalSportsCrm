@@ -370,7 +370,7 @@
                             class="sm:flex sm:items-top space-y-4 sm:space-y-0 sm:space-x-4 mt-5 border-b border-slate-200 pb-4">
                             <div>
                                 <label class="block text-sm font-medium mb-1"
-                                       for="unit_value_individual"> {{ __('Preço para Individual (€)') }}</label>
+                                       for="unit_value_individual"> {{ __('Preço para Individual') }} ({{ currency_symbol() }})</label>
                                 <input type="text"
                                        name="unit_value_individual"
                                        id="unit_value_individual"
@@ -389,7 +389,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium mb-1"
-                                       for="unit_value_entity"> {{ __('Preço para Entidade (€)') }}</label>
+                                       for="unit_value_entity"> {{ __('Preço para Entidade') }} ({{ currency_symbol() }})</label>
                                 <input type="text"
                                        name="unit_value_entity"
                                        id="unit_value_entity"
@@ -408,7 +408,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium mb-1"
-                                       for="unit_value_federation"> {{ __('Preço para Federação (€)') }}</label>
+                                       for="unit_value_federation"> {{ __('Preço para Federação') }} ({{ currency_symbol() }})</label>
                                 <input type="text"
                                        name="unit_value_federation"
                                        id="unit_value_federation"

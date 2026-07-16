@@ -94,7 +94,7 @@
     <div class="sm:flex sm:items-top space-y-4 sm:space-y-0 sm:space-x-4 my-5">
         <div class="sm:w-1/5">
             <label class="block text-sm font-medium mb-1" for="individual_fee">{{ __('main.individual_fee') }}
-                (€)</label>
+                ({{ currency_symbol() }})</label>
             <input type="number"
                 class="form-input w-full {{ $errors->has('individual_fee') ? 'border-rose-300' : '' }}"
                 name="individual_fee" step="0.01" id="individual_fee"
@@ -106,7 +106,7 @@
             @endif
         </div>
         <div class="sm:w-1/5">
-            <label class="block text-sm font-medium mb-1" for="entity_fee">{{ __('main.entity_fee') }} (€)</label>
+            <label class="block text-sm font-medium mb-1" for="entity_fee">{{ __('main.entity_fee') }} ({{ currency_symbol() }})</label>
             <input type="number" class="form-input w-full {{ $errors->has('entity_fee') ? 'border-rose-300' : '' }}"
                 name="entity_fee" step="0.01" id="entity_fee"
                 value="{{ old('entity_fee', $insurance_plan->entity_fee ?? '') }}">

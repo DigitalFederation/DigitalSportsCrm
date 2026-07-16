@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="w-fit">
-                                    <label for="price_{{ $index }}">{{ __('events.price') }} (€)</label>
+                                    <label for="price_{{ $index }}">{{ __('events.price') }} ({{ currency_symbol() }})</label>
                                     <input class="form-input w-fit" wire:model="pricingTiers.{{ $index }}.price"
                                            type="number"
                                            id="price_{{ $index }}" step="0.01">

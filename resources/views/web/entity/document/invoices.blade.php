@@ -47,7 +47,7 @@
                                 <td class="px-2 py-3 whitespace-nowrap w-px text-center md:text-left">
                                   {{ \Carbon\Carbon::parse($document->created_at)->format('d-m-Y') }}
                                 </td>
-                                <td class="px-2 py-3 whitespace-nowrap w-px text-center md:text-left">{{ $document->total_value }}€</td>
+                                <td class="px-2 py-3 whitespace-nowrap w-px text-center md:text-left">{{ money($document->total_value, $document->currency) }}</td>
                                 <td class="px-2 last:pr-5 py-3 whitespace-nowrap">
 
                                     <div class="space-x-1 flex justify-end items-end">

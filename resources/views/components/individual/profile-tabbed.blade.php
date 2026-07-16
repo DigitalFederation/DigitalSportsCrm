@@ -381,7 +381,7 @@
                                                 {{ $document->created_at->format('d/m/Y') }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                €{{ number_format($document->total_value, 2) }}
+                                                {{ money($document->total_value, $document->currency) }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" 

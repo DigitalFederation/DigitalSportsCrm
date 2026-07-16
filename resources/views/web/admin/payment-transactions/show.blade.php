@@ -43,7 +43,7 @@
                     </div>
                     <div class="flex justify-between">
                         <dt class="text-sm font-medium text-gray-500">{{ __('payment_admin.amount') }}</dt>
-                        <dd class="text-sm font-semibold text-gray-900">{{ number_format($transaction->amount, 2) }}€</dd>
+                        <dd class="text-sm font-semibold text-gray-900">{{ money($transaction->amount, $transaction->currency) }}</dd>
                     </div>
                     <div class="flex justify-between">
                         <dt class="text-sm font-medium text-gray-500">{{ __('payment_admin.payment_method') }}</dt>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="flex justify-between">
                             <dt class="text-sm font-medium text-gray-500">{{ __('payment_admin.document_total') }}</dt>
-                            <dd class="text-sm font-semibold text-gray-900">{{ $transaction->document->total_value }}€</dd>
+                            <dd class="text-sm font-semibold text-gray-900">{{ money($transaction->document->total_value, $transaction->document->currency) }}</dd>
                         </div>
                         @if($transaction->document->owner)
                             <div class="flex justify-between">

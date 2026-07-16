@@ -160,7 +160,7 @@
                                     @if($license->total_value)
                                         <div>
                                             <dt class="text-sm text-gray-500">{{ __('Total Value') }}</dt>
-                                            <dd class="text-sm font-medium text-gray-900">€{{ number_format($license->total_value, 2) }}</dd>
+                                            <dd class="text-sm font-medium text-gray-900">{{ money($license->total_value) }}</dd>
                                         </div>
                                     @endif
                                     @if($license->request_type)

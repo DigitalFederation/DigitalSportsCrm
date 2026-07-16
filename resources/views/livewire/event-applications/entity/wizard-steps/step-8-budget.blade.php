@@ -10,7 +10,7 @@
         return total;
     },
     formatCurrency(val) {
-        return new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(val || 0);
+        return new Intl.NumberFormat('{{ str_replace('_', '-', app()->getLocale()) }}', { style: 'currency', currency: @js(currency_code()) }).format(val || 0);
     }
 }">
 

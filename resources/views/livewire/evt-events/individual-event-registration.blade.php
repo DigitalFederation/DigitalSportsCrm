@@ -85,7 +85,7 @@
                         </dt>
                         <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
                             <div class="flex items-baseline text-2xl font-semibold text-primary-600">
-                                €{{ number_format($totalCost, 2) }}
+                                {{ money($totalCost) }}
                             </div>
                         </dd>
                     </div>
@@ -258,7 +258,7 @@
                                             <span class="text-sm font-medium">{{ $participant['name'] }}</span>
                                             <span class="text-sm text-gray-500">
                                                 @if($participant['price'] > 0)
-                                                    €{{ number_format($participant['price'], 2) }}
+                                                    {{ money($participant['price']) }}
                                                 @else
                                                     {{ __('events.free') }}
                                                 @endif

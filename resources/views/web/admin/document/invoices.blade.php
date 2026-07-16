@@ -144,7 +144,7 @@
 
                                 </td>
                                 <td class="px-2 py-3 whitespace-nowrap w-px text-center md:text-left">
-                                    {{ $document->total_value }}€
+                                    {{ money($document->total_value, $document->currency) }}
                                 </td>
 
                                 <td class="pl-0 py-3 break-words w-px text-center md:text-left">

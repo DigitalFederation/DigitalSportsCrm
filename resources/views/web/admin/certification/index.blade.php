@@ -138,7 +138,7 @@
                                     {{-- Digital Price --}}
                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap text-center">
                                         @if($certification->digital_price && $certification->digital_price > 0)
-                                            <span class="font-medium text-sm">&euro;{{ number_format($certification->digital_price, 2) }}</span>
+                                            <span class="font-medium text-sm">{{ money($certification->digital_price) }}</span>
                                         @else
                                             <span class="text-slate-500 italic text-sm">{{ __('Free') }}</span>
                                         @endif
@@ -147,7 +147,7 @@
                                     {{-- Card Price --}}
                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap text-center">
                                         @if($certification->digital_plus_card_price && $certification->digital_plus_card_price > 0)
-                                            <span class="font-medium text-sm">&euro;{{ number_format($certification->digital_plus_card_price, 2) }}</span>
+                                            <span class="font-medium text-sm">{{ money($certification->digital_plus_card_price) }}</span>
                                         @else
                                             <span class="text-slate-400">-</span>
                                         @endif
@@ -168,15 +168,15 @@
                                         @else
                                             <div class="text-sm">
                                                 @if($certification->unit_value)
-                                                    <span class="font-medium">&euro;{{ number_format($certification->unit_value, 2) }}</span>
+                                                    <span class="font-medium">{{ money($certification->unit_value) }}</span>
                                                 @endif
                                                 @if($certification->unit_value_individual || $certification->unit_value_entity)
                                                     <div class="text-xs text-slate-500">
                                                         @if($certification->unit_value_individual)
-                                                            <span>{{ __('Ind') }}: &euro;{{ number_format($certification->unit_value_individual, 2) }}</span>
+                                                            <span>{{ __('Ind') }}: {{ money($certification->unit_value_individual) }}</span>
                                                         @endif
                                                         @if($certification->unit_value_entity)
-                                                            <span class="ml-1">{{ __('Ent') }}: &euro;{{ number_format($certification->unit_value_entity, 2) }}</span>
+                                                            <span class="ml-1">{{ __('Ent') }}: {{ money($certification->unit_value_entity) }}</span>
                                                         @endif
                                                     </div>
                                                 @endif

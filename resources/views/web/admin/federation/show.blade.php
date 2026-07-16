@@ -356,7 +356,7 @@
                                                                     {{ ($detail->quantity ?? 0) }}x {{ $detail->description ?? 'N/A' }}
                                                                 </span>
                                                                 <span class="ml-2 whitespace-nowrap">
-                                                                    {{ number_format($detail->unit_value ?? 0, 2) }}€
+                                                                    {{ money($detail->unit_value ?? 0, $document->currency) }}
                                                                 </span>
                                                             </div>
                                                         @empty
@@ -387,7 +387,7 @@
                                                 <!-- Amount -->
                                                 <div class="col-span-1">
                                                     <div class="text-sm font-medium text-gray-900">
-                                                        {{ number_format($document->total_value ?? 0, 2) }}€
+                                                        {{ money($document->total_value ?? 0, $document->currency) }}
                                                     </div>
                                                 </div>
 

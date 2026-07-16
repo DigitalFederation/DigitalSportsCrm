@@ -26,7 +26,7 @@
                                     {{ $document->stateName() }}
                                 </span>
                             </td>
-                            <td class="text-right">{{ number_format($document->total_value, 2) }}€</td>
+                            <td class="text-right">{{ money($document->total_value, $document->currency) }}</td>
                             <td class="text-center">
                                 <a href="{{ route('admin.document.show', $document->id) }}" class="btn btn-xs btn-outline">{{ __('entity.view') }}</a>
                             </td>

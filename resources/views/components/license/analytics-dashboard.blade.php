@@ -6,7 +6,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-blue-100 text-sm font-medium">{{ __('Total Revenue') }}</p>
-                    <p class="text-3xl font-bold">€{{ number_format($analytics['revenue']['total'] ?? 0, 0) }}</p>
+                    <p class="text-3xl font-bold">{{ money($analytics['revenue']['total'] ?? 0) }}</p>
                     @if(isset($analytics['revenue']['growth']))
                         <p class="text-blue-100 text-sm">
                             <span class="{{ $analytics['revenue']['growth'] >= 0 ? 'text-green-200' : 'text-red-200' }}">
@@ -125,7 +125,7 @@
                                             beginAtZero: true,
                                             ticks: {
                                                 callback: function(value) {
-                                                    return '€' + value.toLocaleString();
+                                                    return @js(currency_symbol()) + ' ' + value.toLocaleString();
                                                 }
                                             }
                                         }

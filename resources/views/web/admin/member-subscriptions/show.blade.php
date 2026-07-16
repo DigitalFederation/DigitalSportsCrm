@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="text-xs text-gray-500">
                                     {{ __('main.fee') }}:
-                                    {{ number_format($affiliation->individual_fee ?? $affiliation->entity_fee, 2) }} €
+                                    {{ money($affiliation->individual_fee ?? $affiliation->entity_fee) }}
                                 </div>
                             </li>
                         @endforeach
@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="text-xs text-gray-500">
                                     {{ __('main.fee') }}:
-                                    {{ number_format($insurance->individual_fee ?? $insurance->entity_fee, 2) }} €
+                                    {{ money($insurance->individual_fee ?? $insurance->entity_fee) }}
                                 </div>
                                 <div class="text-xs text-gray-500">
                                     {{ __('main.policy_number') }}:

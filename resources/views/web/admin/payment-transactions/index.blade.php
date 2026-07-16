@@ -32,7 +32,7 @@
                 <div class="text-sm text-gray-500">{{ __('payment_admin.failed') }}</div>
             </div>
             <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-2xl font-bold text-blue-600">{{ number_format($stats['total_amount'], 2) }}€</div>
+                <div class="text-2xl font-bold text-blue-600">{{ money($stats['total_amount']) }}</div>
                 <div class="text-sm text-gray-500">{{ __('payment_admin.total_amount') }}</div>
             </div>
         </div>
@@ -98,7 +98,7 @@
                             @endif
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap font-medium">
-                            {{ number_format($transaction->amount, 2) }}€
+                            {{ money($transaction->amount, $transaction->currency) }}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap">
                             @php

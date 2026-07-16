@@ -69,7 +69,7 @@
                             </div>
                             <div class="ml-3">
                                 <p class="text-sm font-medium text-green-900">{{ __('Total Revenue') }}</p>
-                                <p class="text-2xl font-bold text-green-600">€{{ number_format($analyticsData['total_revenue'] ?? 0) }}</p>
+                                <p class="text-2xl font-bold text-green-600">{{ money($analyticsData['total_revenue'] ?? 0) }}</p>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="ml-3">
                                 <p class="text-sm font-medium text-amber-900">{{ __('Avg. License Value') }}</p>
-                                <p class="text-2xl font-bold text-amber-600">€{{ number_format($analyticsData['avg_license_value'] ?? 0) }}</p>
+                                <p class="text-2xl font-bold text-amber-600">{{ money($analyticsData['avg_license_value'] ?? 0) }}</p>
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                                             <tr>
                                                 <td class="px-3 py-2 text-sm text-gray-900">{{ $license['name'] }}</td>
                                                 <td class="px-3 py-2 text-sm text-gray-900">{{ number_format($license['count']) }}</td>
-                                                <td class="px-3 py-2 text-sm text-gray-900">€{{ number_format($license['revenue'] ?? 0) }}</td>
+                                                <td class="px-3 py-2 text-sm text-gray-900">{{ money($license['revenue'] ?? 0) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

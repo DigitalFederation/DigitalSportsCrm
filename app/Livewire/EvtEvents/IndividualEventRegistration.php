@@ -93,7 +93,7 @@ class IndividualEventRegistration extends Component implements HasForms, HasTabl
             ->where('is_active', true)
             ->get()
             ->mapWithKeys(fn (Pricing $pricing) => [
-                $pricing->id => "{$pricing->description} - {$pricing->price}€",
+                $pricing->id => $pricing->description . ' - ' . money($pricing->price),
             ])
             ->toArray();
     }

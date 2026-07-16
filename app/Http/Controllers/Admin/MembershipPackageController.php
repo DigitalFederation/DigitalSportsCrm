@@ -191,15 +191,14 @@ class MembershipPackageController extends Controller
      */
     private function formatPriceInfo($plan): string
     {
-        $currencySymbol = config('squidflex.currency_symbol', '€');
         $parts = [];
 
         if ($plan->individual_fee !== null) {
-            $parts[] = __('Individual') . ': ' . $currencySymbol . number_format($plan->individual_fee, 2);
+            $parts[] = __('Individual') . ': ' . money($plan->individual_fee);
         }
 
         if ($plan->entity_fee !== null) {
-            $parts[] = __('Entity') . ': ' . $currencySymbol . number_format($plan->entity_fee, 2);
+            $parts[] = __('Entity') . ': ' . money($plan->entity_fee);
         }
 
         if (empty($parts)) {

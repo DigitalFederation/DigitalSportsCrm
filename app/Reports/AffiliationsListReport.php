@@ -175,7 +175,7 @@ class AffiliationsListReport implements ReportTemplate
             $fee = $affiliation->entity_fee;
         }
 
-        return number_format($fee, 2, ',', '.') . ' EUR';
+        return money($fee);
     }
 
     private function getStatusName(?string $statusClass): string
