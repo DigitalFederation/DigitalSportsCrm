@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Page titles
+    'title' => 'Centre des opérations',
+    'subtitle' => 'Surveillez et gérez les tâches en arrière-plan, les tâches planifiées et les commandes système',
+    'queue_management' => 'Gestion de la file d\'attente',
+    'scheduler' => 'Tableau de bord du planificateur',
+    'scheduler_subtitle' => 'Consultez et gérez les tâches planifiées',
+    'command_center' => 'Centre de commandes',
+    'command_center_subtitle' => 'Exécutez manuellement les commandes système',
+    'batch_monitor' => 'Moniteur de lots',
+    'batch_monitor_subtitle' => 'Suivez la progression des lots de tâches',
+    'queue_details' => 'Détails de la file d\'attente',
+
+    // Stats
+    'pending_jobs' => 'Tâches en attente',
+    'processing' => 'En cours de traitement',
+    'failed_jobs' => 'Tâches échouées',
+    'active_batches' => 'Lots actifs',
+
+    // System health
+    'system_health' => 'État du système',
+    'database' => 'Base de données',
+    'queue' => 'File d\'attente',
+    'storage' => 'Stockage',
+
+    // Scheduled tasks
+    'scheduled_tasks' => 'Tâches planifiées',
+    'scheduler_info' => 'Ces tâches s\'exécutent automatiquement selon leur planning. Vous pouvez également les exécuter manuellement.',
+    'command' => 'Commande',
+    'frequency' => 'Fréquence',
+    'next_run' => 'Prochaine exécution',
+    'last_run' => 'Dernière exécution',
+    'never_run' => 'Jamais exécutée',
+    'manual' => 'manuel',
+    'run_now' => 'Exécuter maintenant',
+    'running' => 'En cours...',
+
+    // Queue
+    'search_jobs' => 'Rechercher des tâches...',
+    'job_class' => 'Classe de tâche',
+    'status' => 'Statut',
+    'attempts' => 'Tentatives',
+    'created_at' => 'Créée',
+    'failed_at' => 'Échouée le',
+    'error' => 'Erreur',
+    'actions' => 'Actions',
+    'pending' => 'En attente',
+    'retry' => 'Réessayer',
+    'delete' => 'Supprimer',
+    'purge_all_failed' => 'Purger toutes les échouées',
+    'no_pending_jobs' => 'Aucune tâche en attente dans la file',
+    'no_failed_jobs' => 'Aucune tâche échouée',
+    'job_details' => 'Détails de la tâche',
+
+    // Commands
+    'search_commands' => 'Rechercher des commandes...',
+    'all_categories' => 'Toutes',
+    'category_license' => 'Gestion des licences',
+    'category_membership' => 'Gestion des adhésions',
+    'category_sync' => 'Synchronisation des rôles',
+    'category_qr' => 'Génération de codes QR',
+    'category_maintenance' => 'Maintenance des données',
+    'category_cache' => 'Gestion du cache',
+    'execute' => 'Exécuter',
+    'executing' => 'Exécution en cours...',
+    'dangerous' => 'Dangereux',
+    'supports_dry_run' => 'Simulation',
+    'last_executed' => 'Dernière exécution',
+    'no_commands_found' => 'Aucune commande trouvée',
+    'command_output' => 'Sortie de la commande',
+    'no_output' => 'Aucune sortie',
+
+    // Batches
+    'completed_batches' => 'Lots terminés',
+    'batch_name' => 'Nom du lot',
+    'total_jobs' => 'Nombre total de tâches',
+    'completed' => 'Terminées',
+    'failed' => 'Échouées',
+    'finished_at' => 'Terminé le',
+    'success' => 'Réussi',
+    'partial' => 'Partiel',
+    'started' => 'Démarré',
+    'progress' => 'Progression',
+    'jobs' => 'tâches',
+    'total' => 'Total',
+    'cancel' => 'Annuler',
+    'cancelled' => 'Annulé',
+    'no_active_batches' => 'Aucun lot de tâches actif',
+    'no_completed_batches' => 'Aucun lot terminé',
+
+    // Quick actions
+    'quick_actions' => 'Actions rapides',
+    'action_sync_all_user_roles' => 'Synchroniser tous les rôles',
+    'action_licenses_activate_paid' => 'Activer les licences payées',
+    'action_optimize_clear' => 'Vider les caches',
+    'action_qr_code_individuals_generate' => 'Générer les codes QR',
+
+    // Navigation
+    'view_all' => 'Voir tout',
+    'back_to_dashboard' => 'Retour au tableau de bord',
+    'close' => 'Fermer',
+    'recent_failed_jobs' => 'Tâches échouées récentes',
+
+    // Confirmations
+    'confirm_retry' => 'Êtes-vous sûr de vouloir réessayer cette tâche ?',
+    'confirm_delete' => 'Êtes-vous sûr de vouloir supprimer cette tâche échouée ?',
+    'confirm_purge_all' => 'Êtes-vous sûr de vouloir purger TOUTES les tâches échouées ? Cette action est irréversible.',
+    'confirm_run_task' => 'Êtes-vous sûr de vouloir exécuter la tâche « :task » maintenant ?',
+    'confirm_execute_command' => 'Êtes-vous sûr de vouloir exécuter la commande « :command » ?',
+    'confirm_execute_action' => 'Êtes-vous sûr de vouloir exécuter « :action » ?',
+    'confirm_cancel_batch' => 'Êtes-vous sûr de vouloir annuler ce lot ? Les tâches en cours continueront mais aucune nouvelle tâche ne sera traitée.',
+
+    // Messages
+    'job_retry_success' => 'La tâche a été mise en file d\'attente pour une nouvelle tentative.',
+    'job_retry_failed' => 'Échec de la nouvelle tentative de la tâche.',
+    'job_deleted' => 'La tâche échouée a été supprimée.',
+    'job_delete_failed' => 'Échec de la suppression de la tâche.',
+    'jobs_purged' => ':count tâche(s) échouée(s) ont été purgées.',
+    'task_executed_success' => 'Tâche exécutée avec succès.',
+    'task_executed_failed' => 'Échec de l\'exécution de la tâche.',
+    'command_executed_success' => 'Commande exécutée avec succès.',
+    'command_executed_failed' => 'Échec de l\'exécution de la commande.',
+    'action_executed_success' => 'Action exécutée avec succès.',
+    'action_executed_failed' => 'Échec de l\'exécution de l\'action.',
+    'batch_cancelled' => 'Le lot a été annulé.',
+    'batch_cancel_failed' => 'Échec de l\'annulation du lot.',
+    'rate_limit_exceeded' => 'Veuillez patienter :seconds secondes avant d\'exécuter une autre commande.',
+    'command_not_allowed' => 'Cette commande n\'est pas autorisée.',
+    'no_scheduled_tasks' => 'Aucune tâche planifiée configurée.',
+];

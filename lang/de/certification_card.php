@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'my_certifications' => 'Meine Zertifizierungen',
+    'my_international_certifications' => 'Meine internationalen Zertifizierungen',
+    'cmas_certifications' => 'Internationale Zertifizierungen',
+    'international_certifications_subtitle' => 'Internationale Tauch- und wissenschaftliche Zertifizierungen',
+    'total_certifications' => 'Zertifizierungen insgesamt',
+    'filter' => 'Filter',
+    'category' => 'Kategorie',
+    'all_categories' => 'Alle Kategorien',
+    'apply_filters' => 'Filter anwenden',
+    'no_certifications' => 'Keine Zertifizierungen',
+    'no_certifications_message' => 'Sie haben derzeit keine Zertifizierungen.',
+    'no_international_certifications' => 'Keine internationalen Zertifizierungen',
+    'no_international_certifications_message' => 'Sie haben derzeit keine internationalen Zertifizierungen.',
+    'view_details' => 'Details anzeigen',
+    'coach' => 'Trainer',
+    'referee_judge' => 'Schiedsrichter/Kampfrichter',
+    'generation_error' => 'Beim Erstellen der Zertifizierungskarte ist ein technischer Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
+
+    // Certification categories
+    'categories' => [
+        'Diver Career' => 'Taucherlaufbahn',
+        'Recreational Diver Speciality' => 'Spezialisierung Freizeittaucher',
+        'Technical Diver Speciality' => 'Spezialisierung technischer Taucher',
+        'Instructor Career' => 'Ausbilderlaufbahn',
+        'Instructor and Dive Leader' => 'Ausbilder und Tauchleiter',
+        'Recreational Instructor Speciality' => 'Spezialisierung Freizeitausbilder',
+        'Technical Instructor Speciality' => 'Spezialisierung technischer Ausbilder',
+        'Scientific Diver Career' => 'Laufbahn wissenschaftlicher Taucher',
+        'Scientific Speciality Diver' => 'Wissenschaftlicher Spezialtaucher',
+        'Scientific Speciality Instructor' => 'Wissenschaftlicher Spezialausbilder',
+        'Scientific Instructor Career' => 'Laufbahn wissenschaftlicher Ausbilder',
+        'Freediver' => 'Apnoetaucher',
+        'Freediving Instructor' => 'Apnoetauch-Ausbilder',
+        'Coach' => 'Trainer',
+        'Referee / Judge' => 'Schiedsrichter / Kampfrichter',
+    ],
+];
