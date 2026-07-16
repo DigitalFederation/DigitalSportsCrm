@@ -150,6 +150,9 @@
 
                     <!-- Notifications button with counter -->
                     <livewire:bell-notifications :user="auth()->user()"></livewire:bell-notifications>
+
+                    <!-- Language selector -->
+                    <x-language-switcher />
                 </div>
             </div>
         </div>

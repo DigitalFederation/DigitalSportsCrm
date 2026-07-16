@@ -47,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'group_id',
         'active',
+        'locale',
         'last_login_at',
         'email_verified_at',
         'welcome_email_sent_at',
