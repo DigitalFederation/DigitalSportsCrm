@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'homepage_localization' => 'Localisation',
+    'homepage_currency' => 'Devise',
+    'homepage_currency_hint' => 'Devise utilisée sur toute la plateforme. La modifier ne convertit pas les prix existants : les prix du catalogue conservent leurs valeurs numériques ; les documents déjà émis conservent leur devise d\'origine.',
     'homepage_legal' => 'Pages Légales',
     'homepage_legal_address_hint' => 'Affichée sur les pages Conditions d\'Utilisation, Politique de Confidentialité et Partage de Données.',
     'homepage_footer_support_email' => 'E-mail de Support',

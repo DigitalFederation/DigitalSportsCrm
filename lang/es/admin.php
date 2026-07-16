@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'homepage_localization' => 'Localización',
+    'homepage_currency' => 'Moneda',
+    'homepage_currency_hint' => 'Moneda utilizada en toda la plataforma. Cambiarla no convierte los precios existentes: los precios de catálogo conservan sus valores numéricos; los documentos ya emitidos conservan su moneda original.',
     'homepage_legal' => 'Páginas Legales',
     'homepage_legal_address_hint' => 'Se muestra en las páginas de Términos de Uso, Política de Privacidad y Compartición de Datos.',
     'homepage_footer_support_email' => 'Correo de Soporte',

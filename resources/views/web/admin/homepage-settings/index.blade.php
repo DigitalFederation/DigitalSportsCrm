@@ -127,6 +127,28 @@
                             </div>
                         </div>
 
+                        {{-- Localization --}}
+                        <h2 class="text-lg font-semibold text-slate-800 mt-8 mb-4">{{ __('admin.homepage_localization') }}</h2>
+                        <div class="flex flex-wrap -mx-4">
+                            <div class="w-full px-4 md:w-1/2">
+                                <label class="block text-sm font-medium mb-1" for="currency">
+                                    {{ __('admin.homepage_currency') }}
+                                </label>
+                                <select id="currency" name="currency" class="form-select w-full">
+                                    @foreach (\App\Enums\CurrencyEnum::options() as $code => $label)
+                                        <option value="{{ $code }}"
+                                            {{ old('currency', $settings['currency'] ?? config('app.currency')) === $code ? 'selected' : '' }}>
+                                            {{ $label }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <p class="text-xs text-slate-500 mt-1">{{ __('admin.homepage_currency_hint') }}</p>
+                                @error('currency')
+                                    <div class="text-xs mt-1 text-rose-500">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- Legal pages --}}
                         <h2 class="text-lg font-semibold text-slate-800 mt-8 mb-4">{{ __('admin.homepage_legal') }}</h2>
                         <div class="flex flex-wrap -mx-4">

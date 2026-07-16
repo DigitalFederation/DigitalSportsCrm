@@ -27,6 +27,7 @@ class HomePageSettingsRequest extends FormRequest
             'federation_about' => ['nullable', 'string', 'max:2000'],
             'federation_address' => ['nullable', 'string', 'max:255'],
             'federation_support_email' => ['nullable', 'email', 'max:150'],
+            'currency' => ['nullable', \Illuminate\Validation\Rule::enum(\App\Enums\CurrencyEnum::class)],
             'hero_background' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:4096'],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,svg,webp', 'max:2048'],
             'remove_hero_background' => ['nullable', 'boolean'],

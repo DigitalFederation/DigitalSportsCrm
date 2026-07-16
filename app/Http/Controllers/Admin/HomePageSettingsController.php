@@ -17,6 +17,7 @@ class HomePageSettingsController extends Controller
         'federation_about',
         'federation_address',
         'federation_support_email',
+        'currency',
     ];
 
     public function index(): View

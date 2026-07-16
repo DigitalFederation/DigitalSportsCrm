@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'homepage_localization' => 'Lokalisierung',
+    'homepage_currency' => 'Währung',
+    'homepage_currency_hint' => 'Währung, die auf der gesamten Plattform verwendet wird. Eine Änderung rechnet bestehende Preise nicht um — Katalogpreise behalten ihre Zahlenwerte; bereits ausgestellte Dokumente behalten ihre ursprüngliche Währung.',
     'homepage_legal' => 'Rechtliche Seiten',
     'homepage_legal_address_hint' => 'Wird auf den Seiten Nutzungsbedingungen, Datenschutzerklärung und Datenweitergabe angezeigt.',
     'homepage_footer_support_email' => 'Support-E-Mail',

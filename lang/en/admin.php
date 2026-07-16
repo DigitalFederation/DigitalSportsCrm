@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'homepage_localization' => 'Localization',
+    'homepage_currency' => 'Currency',
+    'homepage_currency_hint' => 'Currency used across the whole platform. Changing it does not convert existing prices — catalog prices keep their numeric values; already-issued documents keep their original currency.',
     'homepage_legal' => 'Legal Pages',
     'homepage_legal_address_hint' => 'Shown on the Terms of Use, Privacy Policy and Data Sharing pages.',
     'homepage_footer_support_email' => 'Support Email',

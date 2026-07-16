@@ -86,5 +86,10 @@ class AppServiceProvider extends ServiceProvider
         if (! empty($settings['app_name'])) {
             config(['branding.primary.portal_name' => $settings['app_name']]);
         }
+
+        $currency = $settings['currency'] ?? null;
+        if ($currency !== null && \App\Enums\CurrencyEnum::tryFrom($currency) !== null) {
+            config(['app.currency' => $currency]);
+        }
     }
 }
