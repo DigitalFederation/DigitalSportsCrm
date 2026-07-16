@@ -24,6 +24,7 @@ abstract class BasePaymentHandler
         $this->paymentTransaction->fill([
             'document_id' => $this->document->id,
             'amount' => $amount,
+            'currency' => $this->document->currency ?? config('app.currency', 'EUR'),
             'status' => $status,
         ])->save();
     }

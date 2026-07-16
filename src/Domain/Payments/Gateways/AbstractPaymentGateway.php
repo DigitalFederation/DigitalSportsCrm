@@ -18,6 +18,23 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
     }
 
     /**
+     * Gateways are currency-agnostic unless they declare otherwise.
+     *
+     * @return string[]
+     */
+    public function supportedCurrencies(): array
+    {
+        return ['*'];
+    }
+
+    public function supportsCurrency(string $currency): bool
+    {
+        $supported = $this->supportedCurrencies();
+
+        return in_array('*', $supported, true) || in_array($currency, $supported, true);
+    }
+
+    /**
      * Create a payment transaction record
      */
     protected function createPaymentTransaction(
@@ -31,6 +48,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
             'document_id' => $document->id,
             'payment_method_id' => $document->method_id,
             'amount' => $document->total_value,
+            'currency' => $document->currency ?? config('app.currency', 'EUR'),
             'status' => $status,
             'payment_data' => $paymentData ? json_encode($paymentData) : null,
             'comment' => $gatewayReference ? "Gateway Reference: {$gatewayReference}" : null,

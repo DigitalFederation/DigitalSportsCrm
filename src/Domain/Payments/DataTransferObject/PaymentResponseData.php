@@ -19,7 +19,7 @@ class PaymentResponseData
         string $transactionId,
         ?string $gatewayReference = null,
         ?float $amount = null,
-        ?string $currency = 'EUR',
+        ?string $currency = null,
         ?array $metadata = null
     ): self {
         return new self(
@@ -27,7 +27,7 @@ class PaymentResponseData
             transactionId: $transactionId,
             gatewayReference: $gatewayReference,
             amount: $amount,
-            currency: $currency,
+            currency: $currency ?? config('app.currency', 'EUR'),
             metadata: $metadata
         );
     }

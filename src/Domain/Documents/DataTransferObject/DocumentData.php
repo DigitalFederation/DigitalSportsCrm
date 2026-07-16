@@ -43,7 +43,8 @@ class DocumentData
         public ?string $customer_city = null,
         public ?string $customer_address = null,
         public ?string $customer_country = null,
-        public ?string $customer_postal_code = null
+        public ?string $customer_postal_code = null,
+        public ?string $currency = null
     ) {
         if (! $this->type_id) {
             $this->type_id = DocumentType::where('code', self::DEFAULT_TYPE_CODE)->first()->id;
@@ -73,7 +74,8 @@ class DocumentData
             $data['customer_city'] ?? null,
             $data['customer_address'] ?? null,
             $data['customer_country'] ?? null,
-            $data['customer_postal_code'] ?? null
+            $data['customer_postal_code'] ?? null,
+            $data['currency'] ?? null
         );
     }
 
@@ -101,6 +103,7 @@ class DocumentData
             'customer_address' => $this->customer_address,
             'customer_country' => $this->customer_country,
             'customer_postal_code' => $this->customer_postal_code,
+            'currency' => $this->currency,
         ];
     }
 
@@ -128,6 +131,7 @@ class DocumentData
         $model->customer_address = $dto->customer_address;
         $model->customer_country = $dto->customer_country;
         $model->customer_postal_code = $dto->customer_postal_code;
+        $model->currency = $dto->currency ?? config('app.currency', 'EUR');
 
         return $model;
     }
@@ -155,7 +159,8 @@ class DocumentData
             $model->customer_city,
             $model->customer_address,
             $model->customer_country,
-            $model->customer_postal_code
+            $model->customer_postal_code,
+            $model->currency
         );
     }
 }

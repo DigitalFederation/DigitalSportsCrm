@@ -20,6 +20,7 @@ class CreateDocumentAction
         $data->number_pad = $generatedNumber['number_pad'];
         $data->number_year = $generatedNumber['number_year'];
         $data->number_extended = $generatedNumber['number_extended'];
+        $data->currency ??= config('app.currency', 'EUR');
 
         if (! $is_draft) {
             $data->status_class = PendingDocumentState::class;

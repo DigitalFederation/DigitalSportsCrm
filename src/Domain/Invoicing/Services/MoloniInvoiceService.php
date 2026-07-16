@@ -20,6 +20,16 @@ class MoloniInvoiceService
 
     public function createInvoiceReceipt(Document $document): MoloniInvoice
     {
+        $documentCurrency = $document->currency ?? config('app.currency', 'EUR');
+        if ($documentCurrency !== 'EUR') {
+            Log::warning('MoloniInvoiceService: skipped — Moloni only supports EUR invoicing', [
+                'document_id' => $document->id,
+                'currency' => $documentCurrency,
+            ]);
+
+            throw new MoloniNotConfiguredException('Moloni invoicing only supports EUR.');
+        }
+
         $existingInvoice = MoloniInvoice::findByDocument($document->id);
         if ($existingInvoice) {
             Log::info('MoloniInvoiceService: Invoice already exists for document', [
@@ -86,6 +96,7 @@ class MoloniInvoiceService
                 'moloni_number' => $response['document_number'] ?? $response['number'] ?? 'PENDING',
                 'moloni_status' => ($response['status'] ?? 0) == 1 ? 'closed' : 'draft',
                 'moloni_total' => $document->total_value,
+                'currency' => $document->currency ?? config('app.currency', 'EUR'),
                 'moloni_response' => $response,
                 'synced_at' => now(),
             ]);

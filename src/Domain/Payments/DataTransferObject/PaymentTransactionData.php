@@ -12,7 +12,8 @@ class PaymentTransactionData
         public ?string $status = 'pending',
         public ?array $payment_data = null,
         public ?string $comment = null,
-        public ?int $payment_method_id = null
+        public ?int $payment_method_id = null,
+        public ?string $currency = null
 
     ) {}
 
@@ -24,7 +25,8 @@ class PaymentTransactionData
             $data['status'] ?? 'pending',
             $data['payment_data'] ?? null,
             $data['comment'] ?? null,
-            $data['payment_method_id'] ?? null
+            $data['payment_method_id'] ?? null,
+            $data['currency'] ?? null
         );
     }
 
@@ -37,6 +39,7 @@ class PaymentTransactionData
             'payment_data' => $this->payment_data,
             'comment' => $this->comment,
             'payment_method_id' => $this->payment_method_id,
+            'currency' => $this->currency,
         ];
     }
 
@@ -49,6 +52,7 @@ class PaymentTransactionData
         $model->payment_data = json_encode($dto->payment_data);
         $model->comment = $dto->comment;
         $model->payment_method_id = $dto->payment_method_id;
+        $model->currency = $dto->currency ?? config('app.currency', 'EUR');
 
         return $model;
     }
@@ -61,7 +65,8 @@ class PaymentTransactionData
             $model->status,
             json_decode($model->payment_data, true),
             $model->comment,
-            $model->payment_method_id
+            $model->payment_method_id,
+            $model->currency
         );
     }
 }
