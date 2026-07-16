@@ -1,18 +1,25 @@
 {{-- resources/views/welcome.blade.php --}}
 
-<x-public-layout>
+<x-public-layout :language-switcher="false">
     @php
         $brand = config('branding.primary');
     @endphp
-    <div class="min-h-screen bg-slate-50">
+    <div class="min-h-screen bg-slate-50 flex flex-col">
         {{-- Shared Header Component --}}
         <x-public.header currentPage="home" />
 
         <!-- ───────────────────────────────────────────
               HERO + REGISTRATION SECTION
         ──────────────────────────────────────────── -->
-        <section class="text-white" style="background-color: #213165;">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        @php
+            $heroBackground = \App\Models\SiteSetting::get('hero_background_path');
+        @endphp
+        <section class="relative flex-1 flex items-center text-white bg-cover bg-center"
+                 style="background-color: #213165;@if($heroBackground) background-image: url('{{ asset($heroBackground) }}');@endif">
+            @if ($heroBackground)
+                <div class="absolute inset-0 bg-slate-900/60"></div>
+            @endif
+            <div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
                 <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                     <!-- Left Column: Hero Content -->
@@ -95,91 +102,31 @@
         <!-- ───────────────────────────────────────────
               FOOTER SECTION
         ──────────────────────────────────────────── -->
-        <footer class="bg-slate-800 text-white py-12">
+        <footer class="bg-slate-800 text-white py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-4 gap-8 mb-8">
+                <div class="mb-4">
                     <!-- About federation -->
-                    <div class="lg:col-span-2">
-                        <div class="flex items-center mb-4">
-                            <img src="{{ asset($brand['logo_path']) }}" class="h-10 w-auto mr-3" alt="{{ $brand['short_name'] }} Logo">
-                            <div>
-                                <div class="text-lg font-bold">{{ $brand['short_name'] }}</div>
-                                <div class="text-sm text-slate-400">{{ $brand['name'] }}</div>
-                            </div>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4 max-w-md">
-                            {{ __('welcome.about_federation') }}
-                        </p>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h3 class="text-base font-bold mb-4 text-white">{{ __('welcome.quick_links') }}</h3>
-                        <ul class="space-y-2">
-                            <li>
-                                <a href="{{ $brand['website_url'] }}" target="_blank" class="text-slate-300 hover:text-white transition-colors text-sm">
-                                    {{ __('welcome.official_website') }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('public.map.locations') }}" class="text-slate-300 hover:text-white transition-colors text-sm">
-                                    {{ __('welcome.community_map') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact -->
-                    <div>
-                        <h3 class="text-base font-bold mb-4 text-white">{{ __('welcome.contact') }}</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 mr-2 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                                <div>
-                                    <div class="text-slate-300 text-sm">{{ __('welcome.address') }}</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 mr-2 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                                <div>
-                                    <div class="text-slate-300 text-sm">{{ __('welcome.phone') }}</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 mr-2 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                                </svg>
-                                <div>
-                                    <div class="text-slate-300 text-sm">{{ __('welcome.mobile') }}</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 mr-2 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                                <div>
-                                    <div class="text-slate-300 text-sm">{{ __('welcome.email_address') }}</div>
-                                </div>
-                            </div>
+                    <div class="flex items-center mb-2">
+                        <img src="{{ asset($brand['logo_path']) }}" class="h-8 w-auto mr-3" alt="{{ $brand['short_name'] }} Logo">
+                        <div>
+                            <div class="text-sm text-slate-400">{{ $brand['name'] }}</div>
                         </div>
                     </div>
+                    <p class="text-slate-300 text-sm leading-relaxed max-w-md">
+                        {{ __('welcome.about_federation') }}
+                    </p>
                 </div>
 
                 <!-- Bottom Section -->
-                <div class="pt-6 border-t border-slate-700">
+                <div class="pt-4 border-t border-slate-700">
                     <div class="flex flex-col md:flex-row justify-between items-center">
-                        <div class="text-slate-400 text-sm mb-4 md:mb-0">
+                        <div class="text-slate-400 text-sm mb-2 md:mb-0">
                             &copy; {{ date('Y') }} {{ $brand['short_name'] }} - {{ $brand['name'] }}. {{ __('welcome.all_rights') }}
                         </div>
                         <div class="flex items-center space-x-6 text-sm">
                             <a href="{{ route('privacy-policy') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Política de Privacidade</a>
                             <a href="{{ route('terms-of-service') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Termos de Uso</a>
-                            <a href="#" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
+                            <a href="mailto:{{ \App\Models\SiteSetting::get('federation_support_email', $brand['support_email']) }}" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
                         </div>
                     </div>
                 </div>

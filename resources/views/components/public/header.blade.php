@@ -14,9 +14,6 @@
             <div class="flex items-center space-x-4">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3">
                     <img src="{{ asset($brand['logo_path']) }}" class="h-10 w-auto" alt="{{ $brand['short_name'] }} Logo">
-                    <div class="hidden sm:block">
-                        <div class="text-slate-800 font-bold text-base">{{ $brand['short_name'] }}</div>
-                    </div>
                 </a>
             </div>
 
@@ -33,20 +30,25 @@
 
                     {{-- 2. Mapa de Entidades --}}
                     <a href="{{ route('public.map.locations') }}"
-                        class="text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ $currentPage === 'map' ? 'text-blue-600' : '' }}">
+                        class="text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ $currentPage === 'map' ? 'text-blue-600 underline decoration-2 underline-offset-8' : '' }}">
                         {{ __('welcome.community_map') }}
                     </a>
 
                     {{-- 3. Eventos --}}
                     <a href="{{ route('public.events') }}"
-                        class="text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ $currentPage === 'events' ? 'text-blue-600' : '' }}">
+                        class="text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ $currentPage === 'events' ? 'text-blue-600 underline decoration-2 underline-offset-8' : '' }}">
                         {{ __('welcome.events') }}
                     </a>
 
                     {{-- 4. Desporto Subaquatico (Dropdown) --}}
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative" x-data="{ open: false, timer: null }"
+                        @mouseenter="clearTimeout(timer); open = true"
+                        @mouseleave="timer = setTimeout(() => open = false, 200)"
+                        @click.outside="open = false"
+                        @keydown.escape.window="open = false">
                         <button type="button"
-                            class="flex items-center text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ in_array($currentPage, $underwaterSportsPages) ? 'text-blue-600' : '' }}"
+                            class="flex items-center text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ in_array($currentPage, $underwaterSportsPages) ? 'text-blue-600 underline decoration-2 underline-offset-8' : '' }}"
+                            :aria-expanded="open" aria-haspopup="true"
                             @click="open = !open">
                             {{ __('welcome.underwater_sports') }}
                             <svg class="ml-1 h-4 w-4 transition-transform duration-200" :class="{ 'rotate-180': open }"
@@ -81,9 +83,14 @@
                     </div>
 
                     {{-- 4. Mergulho Recreativo e Cientifico (Dropdown) --}}
-                    <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <div class="relative" x-data="{ open: false, timer: null }"
+                        @mouseenter="clearTimeout(timer); open = true"
+                        @mouseleave="timer = setTimeout(() => open = false, 200)"
+                        @click.outside="open = false"
+                        @keydown.escape.window="open = false">
                         <button type="button"
-                            class="flex items-center text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ in_array($currentPage, $divingPages) ? 'text-blue-600' : '' }}"
+                            class="flex items-center text-slate-700 hover:text-blue-600 transition-colors duration-200 font-medium {{ in_array($currentPage, $divingPages) ? 'text-blue-600 underline decoration-2 underline-offset-8' : '' }}"
+                            :aria-expanded="open" aria-haspopup="true"
                             @click="open = !open">
                             {{ __('welcome.recreational_scientific_diving') }}
                             <svg class="ml-1 h-4 w-4 transition-transform duration-200" :class="{ 'rotate-180': open }"
@@ -113,6 +120,9 @@
                         </div>
                     </div>
                 </nav>
+
+                <!-- Language selector -->
+                <x-language-switcher />
 
                 <!-- Auth button -->
                 <a href="{{ route('login') }}"
@@ -208,6 +218,16 @@
             </div>
 
             <div class="pt-3 border-t border-slate-200">
+                <div class="flex items-center justify-center gap-3 pb-3">
+                    @foreach(config('app.available_locales', []) as $code => $meta)
+                        <a href="{{ route('language.switch', $code) }}"
+                           class="p-1.5 rounded-lg {{ $code === app()->getLocale() ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:bg-slate-100' }}"
+                           title="{{ $meta['label'] }}">
+                            <img src="{{ asset('images/flags/' . ($meta['flag'] ?? $code) . '.svg') }}"
+                                 alt="{{ $meta['label'] }}" class="w-6 h-6 rounded-sm object-cover">
+                        </a>
+                    @endforeach
+                </div>
                 <a href="{{ route('login') }}"
                     class="block w-full text-center bg-blue-600 hover:bg-blue-700 !text-white px-4 py-2.5 rounded-lg font-medium">
                     {{ __('welcome.sign_in') }}
