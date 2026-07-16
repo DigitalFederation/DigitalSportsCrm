@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'currency_unsupported' => 'Não suporta :currency',
+    'currency_unsupported_hint' => 'Este gateway não cobra em :currency, a moeda da instalação. Está oculto no checkout.',
     // Page titles
     'payment_methods' => 'Metodos de Pagamento',
     'payment_transactions' => 'Transações de Pagamento',

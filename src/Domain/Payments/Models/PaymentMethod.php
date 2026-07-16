@@ -39,6 +39,18 @@ class PaymentMethod extends Model
         });
     }
 
+    /**
+     * Only methods whose gateway can charge in the given currency
+     * (defaults to the installation currency).
+     */
+    public function scopeSupportingCurrency(Builder $query, ?string $currency = null): Builder
+    {
+        $gateways = \Domain\Payments\Services\PaymentGatewayManager::createFromConfig()
+            ->gatewaysSupporting($currency);
+
+        return $query->whereIn('driver', $gateways);
+    }
+
     protected static function newFactory(): PaymentMethodFactory
     {
         return PaymentMethodFactory::new();

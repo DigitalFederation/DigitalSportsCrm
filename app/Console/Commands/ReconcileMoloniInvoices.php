@@ -42,6 +42,12 @@ class ReconcileMoloniInvoices extends Command
             return self::SUCCESS;
         }
 
+        if (config('app.currency', 'EUR') !== 'EUR') {
+            $this->warn('Moloni invoicing only supports EUR; installation currency is ' . config('app.currency') . '. Skipping reconciliation.');
+
+            return self::SUCCESS;
+        }
+
         if (! $settingsService->isConfigured()) {
             $this->warn('Moloni is not fully configured. Skipping reconciliation.');
 
@@ -71,7 +77,7 @@ class ReconcileMoloniInvoices extends Command
                     $doc->id,
                     $doc->number_extended,
                     $doc->owner?->name ?? 'N/A',
-                    number_format($doc->total_value, 2) . ' EUR',
+                    money($doc->total_value, $doc->currency),
                     $doc->updated_at->format('Y-m-d H:i'),
                 ])
             );

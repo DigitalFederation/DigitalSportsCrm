@@ -35,6 +35,16 @@ class EasyPayGateway extends AbstractPaymentGateway
         return 'easypay';
     }
 
+    /**
+     * EasyPay is a Portuguese (SIBS/Multibanco/MB WAY) gateway — EUR only.
+     *
+     * @return string[]
+     */
+    public function supportedCurrencies(): array
+    {
+        return ['EUR'];
+    }
+
     public function createPayment(Document $document): PaymentResponseData
     {
         $this->validateConfig(['account_id', 'api_key']);

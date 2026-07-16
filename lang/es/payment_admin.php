@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'currency_unsupported' => 'No admite :currency',
+    'currency_unsupported_hint' => 'Esta pasarela no puede cobrar en :currency, la moneda de la instalación. Está oculta en el pago.',
     // Page titles
     'payment_methods' => 'Métodos de pago',
     'payment_transactions' => 'Transacciones de pago',

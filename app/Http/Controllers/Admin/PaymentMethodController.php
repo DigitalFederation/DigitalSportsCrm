@@ -67,6 +67,8 @@ class PaymentMethodController extends Controller
     private function getGatewayStatuses(): array
     {
         $easyPayConfig = config('payment.gateways.easypay', []);
+        $manager = \Domain\Payments\Services\PaymentGatewayManager::createFromConfig();
+        $currency = (string) config('app.currency', 'EUR');
 
         return [
             'easypay' => [
@@ -74,12 +76,16 @@ class PaymentMethodController extends Controller
                 'webhook_configured' => ! empty($easyPayConfig['webhook_secret'] ?? null) && $easyPayConfig['webhook_secret'] !== 'your-webhook-secret',
                 'sandbox' => $easyPayConfig['sandbox'] ?? true,
                 'webhook_url' => route('api.payment.webhook.easypay'),
+                'currency_supported' => $manager->hasGateway('easypay')
+                    ? $manager->supportsCurrency('easypay', $currency)
+                    : false,
             ],
             'offline' => [
                 'configured' => true,
                 'webhook_configured' => false,
                 'sandbox' => false,
                 'webhook_url' => null,
+                'currency_supported' => true,
             ],
         ];
     }

@@ -23,6 +23,12 @@ class InitiatePaymentAction
             throw new \Exception('Payment method is currently disabled.');
         }
 
+        $documentCurrency = $document->currency ?? config('app.currency', 'EUR');
+        $manager = \Domain\Payments\Services\PaymentGatewayManager::createFromConfig();
+        if (! $manager->supportsCurrency($paymentMethod->driver, $documentCurrency)) {
+            throw new \Exception("Payment method {$paymentMethod->driver} does not support {$documentCurrency}.");
+        }
+
         // Get the handler instance for this payment method
         $handler = $this->getHandlerInstance($paymentMethod->driver, $document);
 

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'currency_unsupported' => 'Ne prend pas en charge :currency',
+    'currency_unsupported_hint' => 'Cette passerelle ne peut pas facturer en :currency, la devise de l\'installation. Elle est masquée au paiement.',
     // Page titles
     'payment_methods' => 'Moyens de paiement',
     'payment_transactions' => 'Transactions de paiement',

@@ -177,6 +177,7 @@ class DocumentController extends Controller
 
         // Get payment methods with translated names based on driver
         $paymentMethods = PaymentMethod::where('is_enabled', true)
+            ->supportingCurrency()
             ->get()
             ->mapWithKeys(function ($method) {
                 $translationKey = 'payments.method_' . $method->driver;

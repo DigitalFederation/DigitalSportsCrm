@@ -14,15 +14,23 @@
                 <div class="bg-white rounded-lg shadow p-4">
                     <div class="flex items-center justify-between mb-2">
                         <h3 class="font-semibold text-lg">{{ ucfirst($gateway) }}</h3>
-                        @if($status['configured'])
-                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                                {{ __('payment_admin.configured') }}
-                            </span>
-                        @else
-                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">
-                                {{ __('payment_admin.not_configured') }}
-                            </span>
-                        @endif
+                        <div class="flex items-center gap-2">
+                            @if(($status['currency_supported'] ?? true) === false)
+                                <span class="px-2 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-800"
+                                      title="{{ __('payment_admin.currency_unsupported_hint', ['currency' => currency_code()]) }}">
+                                    {{ __('payment_admin.currency_unsupported', ['currency' => currency_code()]) }}
+                                </span>
+                            @endif
+                            @if($status['configured'])
+                                <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                                    {{ __('payment_admin.configured') }}
+                                </span>
+                            @else
+                                <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">
+                                    {{ __('payment_admin.not_configured') }}
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="text-sm text-gray-600 space-y-1">

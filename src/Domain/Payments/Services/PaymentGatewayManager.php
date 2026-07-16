@@ -100,6 +100,35 @@ class PaymentGatewayManager
     }
 
     /**
+     * Whether the named gateway can charge in the given currency.
+     */
+    public function supportsCurrency(string $name, string $currency): bool
+    {
+        if (! $this->hasGateway($name)) {
+            return false;
+        }
+
+        $supported = $this->gateway($name)->supportedCurrencies();
+
+        return in_array('*', $supported, true) || in_array($currency, $supported, true);
+    }
+
+    /**
+     * Registered gateway names that can charge in the given currency.
+     *
+     * @return string[]
+     */
+    public function gatewaysSupporting(?string $currency = null): array
+    {
+        $currency ??= (string) config('app.currency', 'EUR');
+
+        return array_values(array_filter(
+            $this->getAvailableGateways(),
+            fn (string $name): bool => $this->supportsCurrency($name, $currency)
+        ));
+    }
+
+    /**
      * Create manager instance from Laravel config
      */
     public static function createFromConfig(): self

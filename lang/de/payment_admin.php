@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'currency_unsupported' => 'Unterstützt :currency nicht',
+    'currency_unsupported_hint' => 'Dieses Gateway kann nicht in :currency abrechnen, der Währung der Installation. Es wird beim Bezahlen ausgeblendet.',
     // Page titles
     'payment_methods' => 'Zahlungsmethoden',
     'payment_transactions' => 'Zahlungstransaktionen',

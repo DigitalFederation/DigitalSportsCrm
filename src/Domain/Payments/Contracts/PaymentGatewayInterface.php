@@ -43,4 +43,11 @@ interface PaymentGatewayInterface
      * Validate webhook signature/authenticity
      */
     public function validateWebhookSignature(array $headers, string $payload): bool;
+
+    /**
+     * ISO 4217 codes this gateway can charge in, or ['*'] for any currency.
+     *
+     * @return string[]
+     */
+    public function supportedCurrencies(): array;
 }
