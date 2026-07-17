@@ -179,7 +179,7 @@
                         <div class="flex items-center space-x-6 text-sm">
                             <a href="{{ route('privacy-policy') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Política de Privacidade</a>
                             <a href="{{ route('terms-of-service') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Termos de Uso</a>
-                            <a href="#" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
+                            <a href="mailto:{{ \App\Models\SiteSetting::get('federation_support_email', $brand['support_email']) }}" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
                         </div>
                     </div>
                 </div>
