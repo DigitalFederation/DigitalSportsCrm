@@ -40,7 +40,7 @@
 
         <!-- Data table -->
         @if(!empty($zones) && $zones->isNotEmpty())
-            <div class="sm:flex sm:justify-center sm:items-center mb-5 mt-5">
+            <div class="mb-5 mt-5">
                 <x-dynamic-table :headers="[
                     __('zones.name'),
                     __('zones.code'),
