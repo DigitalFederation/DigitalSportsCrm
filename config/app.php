@@ -84,15 +84,15 @@ return [
 
     'locale' => 'pt_PT',
 
-    'locales' => ['pt_PT', 'pt_BR', 'es', 'en', 'fr', 'de'],
-    'available_locales' => [
-        'pt_PT' => ['label' => 'Português', 'flag' => 'pt_PT'],
-        'pt_BR' => ['label' => 'Português', 'flag' => 'pt_BR'],
+    'locales' => array_keys($availableLocales = [
+        'pt_PT' => ['label' => 'Português (Portugal)', 'flag' => 'pt_PT'],
+        'pt_BR' => ['label' => 'Português (Brasil)', 'flag' => 'pt_BR'],
         'es' => ['label' => 'Español', 'flag' => 'es'],
         'en' => ['label' => 'English', 'flag' => 'en'],
         'fr' => ['label' => 'Français', 'flag' => 'fr'],
         'de' => ['label' => 'Deutsch', 'flag' => 'de'],
-    ],
+    ]),
+    'available_locales' => $availableLocales,
 
     /*
     |--------------------------------------------------------------------------
