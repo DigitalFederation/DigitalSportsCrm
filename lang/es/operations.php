@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Page titles
+    'title' => 'Centro de operaciones',
+    'subtitle' => 'Supervisa y gestiona trabajos en segundo plano, tareas programadas y comandos del sistema',
+    'queue_management' => 'Gestión de colas',
+    'scheduler' => 'Panel del programador',
+    'scheduler_subtitle' => 'Ver y gestionar tareas programadas',
+    'command_center' => 'Centro de comandos',
+    'command_center_subtitle' => 'Ejecutar comandos del sistema manualmente',
+    'batch_monitor' => 'Monitor de lotes',
+    'batch_monitor_subtitle' => 'Seguir el progreso de los lotes de trabajos',
+    'queue_details' => 'Detalles de la cola',
+
+    // Stats
+    'pending_jobs' => 'Trabajos pendientes',
+    'processing' => 'En proceso',
+    'failed_jobs' => 'Trabajos fallidos',
+    'active_batches' => 'Lotes activos',
+
+    // System health
+    'system_health' => 'Estado del sistema',
+    'database' => 'Base de datos',
+    'queue' => 'Cola',
+    'storage' => 'Almacenamiento',
+
+    // Scheduled tasks
+    'scheduled_tasks' => 'Tareas programadas',
+    'scheduler_info' => 'Estas tareas se ejecutan automáticamente según su programación. También puedes ejecutarlas manualmente.',
+    'command' => 'Comando',
+    'frequency' => 'Frecuencia',
+    'next_run' => 'Próxima ejecución',
+    'last_run' => 'Última ejecución',
+    'never_run' => 'Nunca ejecutado',
+    'manual' => 'manual',
+    'run_now' => 'Ejecutar ahora',
+    'running' => 'Ejecutando...',
+
+    // Queue
+    'search_jobs' => 'Buscar trabajos...',
+    'job_class' => 'Clase del trabajo',
+    'status' => 'Estado',
+    'attempts' => 'Intentos',
+    'created_at' => 'Creado',
+    'failed_at' => 'Fallido el',
+    'error' => 'Error',
+    'actions' => 'Acciones',
+    'pending' => 'Pendiente',
+    'retry' => 'Reintentar',
+    'delete' => 'Eliminar',
+    'purge_all_failed' => 'Purgar todos los fallidos',
+    'no_pending_jobs' => 'No hay trabajos pendientes en la cola',
+    'no_failed_jobs' => 'No hay trabajos fallidos',
+    'job_details' => 'Detalles del trabajo',
+
+    // Commands
+    'search_commands' => 'Buscar comandos...',
+    'all_categories' => 'Todos',
+    'category_license' => 'Gestión de licencias',
+    'category_membership' => 'Gestión de afiliaciones',
+    'category_sync' => 'Sincronización de roles',
+    'category_qr' => 'Generación de códigos QR',
+    'category_maintenance' => 'Mantenimiento de datos',
+    'category_cache' => 'Gestión de caché',
+    'execute' => 'Ejecutar',
+    'executing' => 'Ejecutando...',
+    'dangerous' => 'Peligroso',
+    'supports_dry_run' => 'Simulación',
+    'last_executed' => 'Última ejecución',
+    'no_commands_found' => 'No se han encontrado comandos',
+    'command_output' => 'Salida del comando',
+    'no_output' => 'Sin salida',
+
+    // Batches
+    'completed_batches' => 'Lotes completados',
+    'batch_name' => 'Nombre del lote',
+    'total_jobs' => 'Total de trabajos',
+    'completed' => 'Completado',
+    'failed' => 'Fallido',
+    'finished_at' => 'Finalizado el',
+    'success' => 'Correcto',
+    'partial' => 'Parcial',
+    'started' => 'Iniciado',
+    'progress' => 'Progreso',
+    'jobs' => 'trabajos',
+    'total' => 'Total',
+    'cancel' => 'Cancelar',
+    'cancelled' => 'Cancelado',
+    'no_active_batches' => 'No hay lotes de trabajos activos',
+    'no_completed_batches' => 'No hay lotes completados',
+
+    // Quick actions
+    'quick_actions' => 'Acciones rápidas',
+    'action_sync_all_user_roles' => 'Sincronizar todos los roles',
+    'action_licenses_activate_paid' => 'Activar licencias pagadas',
+    'action_optimize_clear' => 'Limpiar cachés',
+    'action_qr_code_individuals_generate' => 'Generar códigos QR',
+
+    // Navigation
+    'view_all' => 'Ver todo',
+    'back_to_dashboard' => 'Volver al panel',
+    'close' => 'Cerrar',
+    'recent_failed_jobs' => 'Trabajos fallidos recientes',
+
+    // Confirmations
+    'confirm_retry' => '¿Seguro que quieres reintentar este trabajo?',
+    'confirm_delete' => '¿Seguro que quieres eliminar este trabajo fallido?',
+    'confirm_purge_all' => '¿Seguro que quieres purgar TODOS los trabajos fallidos? Esta acción no se puede deshacer.',
+    'confirm_run_task' => '¿Seguro que quieres ejecutar la tarea ":task" ahora?',
+    'confirm_execute_command' => '¿Seguro que quieres ejecutar el comando ":command"?',
+    'confirm_execute_action' => '¿Seguro que quieres ejecutar ":action"?',
+    'confirm_cancel_batch' => '¿Seguro que quieres cancelar este lote? Los trabajos en ejecución continuarán, pero no se procesarán nuevos trabajos.',
+
+    // Messages
+    'job_retry_success' => 'El trabajo se ha puesto en cola para reintentarlo.',
+    'job_retry_failed' => 'No se ha podido reintentar el trabajo.',
+    'job_deleted' => 'El trabajo fallido se ha eliminado.',
+    'job_delete_failed' => 'No se ha podido eliminar el trabajo.',
+    'jobs_purged' => ':count trabajo(s) fallido(s) purgado(s).',
+    'task_executed_success' => 'Tarea ejecutada correctamente.',
+    'task_executed_failed' => 'La ejecución de la tarea ha fallado.',
+    'command_executed_success' => 'Comando ejecutado correctamente.',
+    'command_executed_failed' => 'La ejecución del comando ha fallado.',
+    'action_executed_success' => 'Acción ejecutada correctamente.',
+    'action_executed_failed' => 'La ejecución de la acción ha fallado.',
+    'batch_cancelled' => 'El lote se ha cancelado.',
+    'batch_cancel_failed' => 'No se ha podido cancelar el lote.',
+    'rate_limit_exceeded' => 'Espera :seconds segundos antes de ejecutar otro comando.',
+    'command_not_allowed' => 'Este comando no está permitido.',
+    'no_scheduled_tasks' => 'No hay tareas programadas configuradas.',
+];
