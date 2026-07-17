@@ -82,15 +82,16 @@ return [
     |
     */
 
-    'locale' => 'pt',
+    'locale' => 'pt_PT',
 
-    'locales' => ['en', 'es', 'pt'],
+    'locales' => ['pt_PT', 'pt_BR', 'es', 'en', 'fr', 'de'],
     'available_locales' => [
-        'en' => '🇬🇧 English',
-        'es' => '🇪🇸 Español',
-        'fr' => '🇫🇷 Français',
-        'it' => '🇮🇹 Italiano',
-        'pt' => '🇵🇹 Português',
+        'pt_PT' => ['label' => 'Português', 'flag' => 'pt_PT'],
+        'pt_BR' => ['label' => 'Português', 'flag' => 'pt_BR'],
+        'es' => ['label' => 'Español', 'flag' => 'es'],
+        'en' => ['label' => 'English', 'flag' => 'en'],
+        'fr' => ['label' => 'Français', 'flag' => 'fr'],
+        'de' => ['label' => 'Deutsch', 'flag' => 'de'],
     ],
 
     /*
