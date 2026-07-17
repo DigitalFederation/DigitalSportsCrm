@@ -42,32 +42,32 @@ test('admin can update text settings', function () {
     $this->actingAs($this->admin);
 
     $response = $this->put(route('admin.homepage-settings.update'), [
-        'app_name' => 'CBES Portal',
-        'federation_name' => 'Confederação Brasileira',
-        'federation_about' => 'Portal da CBES',
-        'federation_address' => 'Rua Exemplo 1, São Paulo',
+        'app_name' => 'Example Sports Portal',
+        'federation_name' => 'Example Federation',
+        'federation_about' => 'Portal of the Example Federation',
+        'federation_address' => 'Rua Exemplo 1, Example City',
     ]);
 
     $response->assertRedirect(route('admin.homepage-settings.index'));
 
     SiteSetting::flushCache();
-    expect(SiteSetting::get('app_name'))->toBe('CBES Portal');
-    expect(SiteSetting::get('federation_address'))->toBe('Rua Exemplo 1, São Paulo');
+    expect(SiteSetting::get('app_name'))->toBe('Example Sports Portal');
+    expect(SiteSetting::get('federation_address'))->toBe('Rua Exemplo 1, Example City');
 });
 
 test('support email is saved and drives the public footer support link', function () {
     $this->actingAs($this->admin);
 
     $this->put(route('admin.homepage-settings.update'), [
-        'federation_support_email' => 'suporte@cbes.org.br',
+        'federation_support_email' => 'support@example.test',
     ])->assertRedirect(route('admin.homepage-settings.index'));
 
     SiteSetting::flushCache();
-    expect(SiteSetting::get('federation_support_email'))->toBe('suporte@cbes.org.br');
+    expect(SiteSetting::get('federation_support_email'))->toBe('support@example.test');
 
     auth()->logout();
     $response = $this->get('/');
-    $response->assertSee('mailto:suporte@cbes.org.br', false);
+    $response->assertSee('mailto:support@example.test', false);
 });
 
 test('invalid support email is rejected', function () {
@@ -83,8 +83,8 @@ test('fields removed from the public page are no longer persisted', function () 
 
     $this->put(route('admin.homepage-settings.update'), [
         'federation_phone' => '+55 11 0000 0000',
-        'federation_email' => 'geral@cbes.org.br',
-        'federation_website_url' => 'https://cbes.org.br',
+        'federation_email' => 'info@example.test',
+        'federation_website_url' => 'https://example.test',
     ])->assertRedirect(route('admin.homepage-settings.index'));
 
     SiteSetting::flushCache();
