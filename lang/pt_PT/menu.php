@@ -4,10 +4,13 @@ return [
     // Rótulos genéricos usados em vários contextos
     'federation_details' => 'Detalhes da Federação',
     'admin' => [
+        'home_page' => 'Página Inicial',
+        'permission_management' => 'Gestão de Permissões',
+        'route_permissions' => 'Permissões de Rotas',
         'dashboard' => 'Dashboard',
-        'federation' => 'Associações',
-        'national_federations' => 'Associações Nacionais',
-        'local_organizations' => 'Organizações Nacionais',
+        'federation' => 'Organizações Nacionais',
+        'national_federations' => 'Federação',
+        'local_organizations' => 'Organizações Regionais',
         'affiliation_plans' => 'Planos de Filiação',
         'memberships' => 'Planos',
         'membership_plans' => 'Planos de Filiação',
