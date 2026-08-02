@@ -42,4 +42,11 @@ return [
         'summary_send_empty' => env('SCHEDULER_SUMMARY_SEND_EMPTY', false),
     ],
 
+    'microsoft_graph' => [
+        'tenant_id' => env('MS_GRAPH_TENANT_ID'),
+        'client_id' => env('MS_GRAPH_CLIENT_ID'),
+        'client_secret' => env('MS_GRAPH_CLIENT_SECRET'),
+        'from_address' => env('MS_GRAPH_FROM_ADDRESS', env('MAIL_FROM_ADDRESS')),
+    ],
+
 ];

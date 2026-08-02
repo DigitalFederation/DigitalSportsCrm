@@ -34,6 +34,10 @@ return [
     */
 
     'mailers' => [
+
+        'microsoft-graph' => [
+            'transport' => 'microsoft-graph',
+        ],
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
