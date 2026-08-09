@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use InvalidArgumentException;
 
 /**
  * Minimal seeder for fresh installations.
@@ -18,10 +19,11 @@ class FreshInstallSeeder extends Seeder
      */
     public function run(): void
     {
+        $geographySeeder = $this->resolveGeographySeeder();
+
         $this->call(RoleAndPermissionSeeder::class);
         $this->call(CountrySeeder::class);
-        $this->call(DistrictSeeder::class);
-        $this->call(ZoneSeeder::class);
+        $this->call($geographySeeder);
         $this->call(UserGroupSeeder::class);
         $this->call(CommitteeSeeder::class);
         $this->call(ProfessionalRoleSeeder::class);
@@ -29,5 +31,27 @@ class FreshInstallSeeder extends Seeder
         $this->call(LicenseTypeSeeder::class);
         $this->call(DocumentTypeSeeder::class);
         $this->call(PaymentMethodSeeder::class);
+
+        // Optional first admin account. No-op unless SEED_DEFAULT_ADMIN=true
+        // and DEFAULT_ADMIN_PASSWORD are set. Must run after
+        // RoleAndPermissionSeeder and UserGroupSeeder.
+        $this->call(UserSeeder::class);
+    }
+
+    /**
+     * @return class-string<Seeder>
+     */
+    private function resolveGeographySeeder(): string
+    {
+        $dataset = strtolower(trim((string) config('geography.dataset')));
+        $seeder = config("geography.datasets.{$dataset}");
+
+        if (! is_string($seeder) || ! is_subclass_of($seeder, Seeder::class)) {
+            throw new InvalidArgumentException(
+                "Unsupported geography dataset [{$dataset}]. Configure a dataset registered in config/geography.php."
+            );
+        }
+
+        return $seeder;
     }
 }

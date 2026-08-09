@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Page titles
+    'title' => 'Betriebszentrale',
+    'subtitle' => 'Hintergrundaufträge, geplante Aufgaben und Systembefehle überwachen und verwalten',
+    'queue_management' => 'Warteschlangenverwaltung',
+    'scheduler' => 'Scheduler-Dashboard',
+    'scheduler_subtitle' => 'Geplante Aufgaben anzeigen und verwalten',
+    'command_center' => 'Befehlszentrale',
+    'command_center_subtitle' => 'Systembefehle manuell ausführen',
+    'batch_monitor' => 'Stapel-Monitor',
+    'batch_monitor_subtitle' => 'Fortschritt von Auftragsstapeln verfolgen',
+    'queue_details' => 'Warteschlangendetails',
+
+    // Stats
+    'pending_jobs' => 'Ausstehende Aufträge',
+    'processing' => 'In Bearbeitung',
+    'failed_jobs' => 'Fehlgeschlagene Aufträge',
+    'active_batches' => 'Aktive Stapel',
+
+    // System health
+    'system_health' => 'Systemzustand',
+    'database' => 'Datenbank',
+    'queue' => 'Warteschlange',
+    'storage' => 'Speicher',
+
+    // Scheduled tasks
+    'scheduled_tasks' => 'Geplante Aufgaben',
+    'scheduler_info' => 'Diese Aufgaben werden automatisch nach ihrem Zeitplan ausgeführt. Sie können sie auch manuell ausführen.',
+    'command' => 'Befehl',
+    'frequency' => 'Häufigkeit',
+    'next_run' => 'Nächste Ausführung',
+    'last_run' => 'Letzte Ausführung',
+    'never_run' => 'Nie ausgeführt',
+    'manual' => 'manuell',
+    'run_now' => 'Jetzt ausführen',
+    'running' => 'Wird ausgeführt...',
+
+    // Queue
+    'search_jobs' => 'Aufträge suchen...',
+    'job_class' => 'Auftragsklasse',
+    'status' => 'Status',
+    'attempts' => 'Versuche',
+    'created_at' => 'Erstellt',
+    'failed_at' => 'Fehlgeschlagen am',
+    'error' => 'Fehler',
+    'actions' => 'Aktionen',
+    'pending' => 'Ausstehend',
+    'retry' => 'Wiederholen',
+    'delete' => 'Löschen',
+    'purge_all_failed' => 'Alle fehlgeschlagenen löschen',
+    'no_pending_jobs' => 'Keine ausstehenden Aufträge in der Warteschlange',
+    'no_failed_jobs' => 'Keine fehlgeschlagenen Aufträge',
+    'job_details' => 'Auftragsdetails',
+
+    // Commands
+    'search_commands' => 'Befehle suchen...',
+    'all_categories' => 'Alle',
+    'category_license' => 'Lizenzverwaltung',
+    'category_membership' => 'Mitgliedschaftsverwaltung',
+    'category_sync' => 'Rollensynchronisierung',
+    'category_qr' => 'QR-Code-Generierung',
+    'category_maintenance' => 'Datenpflege',
+    'category_cache' => 'Cache-Verwaltung',
+    'execute' => 'Ausführen',
+    'executing' => 'Wird ausgeführt...',
+    'dangerous' => 'Gefährlich',
+    'supports_dry_run' => 'Testlauf',
+    'last_executed' => 'Zuletzt ausgeführt',
+    'no_commands_found' => 'Keine Befehle gefunden',
+    'command_output' => 'Befehlsausgabe',
+    'no_output' => 'Keine Ausgabe',
+
+    // Batches
+    'completed_batches' => 'Abgeschlossene Stapel',
+    'batch_name' => 'Stapelname',
+    'total_jobs' => 'Aufträge gesamt',
+    'completed' => 'Abgeschlossen',
+    'failed' => 'Fehlgeschlagen',
+    'finished_at' => 'Beendet am',
+    'success' => 'Erfolg',
+    'partial' => 'Teilweise',
+    'started' => 'Gestartet',
+    'progress' => 'Fortschritt',
+    'jobs' => 'Aufträge',
+    'total' => 'Gesamt',
+    'cancel' => 'Abbrechen',
+    'cancelled' => 'Abgebrochen',
+    'no_active_batches' => 'Keine aktiven Auftragsstapel',
+    'no_completed_batches' => 'Keine abgeschlossenen Stapel',
+
+    // Quick actions
+    'quick_actions' => 'Schnellaktionen',
+    'action_sync_all_user_roles' => 'Alle Rollen synchronisieren',
+    'action_licenses_activate_paid' => 'Bezahlte Lizenzen aktivieren',
+    'action_optimize_clear' => 'Caches leeren',
+    'action_qr_code_individuals_generate' => 'QR-Codes generieren',
+
+    // Navigation
+    'view_all' => 'Alle anzeigen',
+    'back_to_dashboard' => 'Zurück zum Dashboard',
+    'close' => 'Schließen',
+    'recent_failed_jobs' => 'Kürzlich fehlgeschlagene Aufträge',
+
+    // Confirmations
+    'confirm_retry' => 'Sind Sie sicher, dass Sie diesen Auftrag wiederholen möchten?',
+    'confirm_delete' => 'Sind Sie sicher, dass Sie diesen fehlgeschlagenen Auftrag löschen möchten?',
+    'confirm_purge_all' => 'Sind Sie sicher, dass Sie ALLE fehlgeschlagenen Aufträge löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.',
+    'confirm_run_task' => 'Sind Sie sicher, dass Sie die Aufgabe ":task" jetzt ausführen möchten?',
+    'confirm_execute_command' => 'Sind Sie sicher, dass Sie den Befehl ":command" ausführen möchten?',
+    'confirm_execute_action' => 'Sind Sie sicher, dass Sie ":action" ausführen möchten?',
+    'confirm_cancel_batch' => 'Sind Sie sicher, dass Sie diesen Stapel abbrechen möchten? Laufende Aufträge werden fortgesetzt, aber es werden keine neuen Aufträge verarbeitet.',
+
+    // Messages
+    'job_retry_success' => 'Der Auftrag wurde zur Wiederholung in die Warteschlange gestellt.',
+    'job_retry_failed' => 'Auftrag konnte nicht wiederholt werden.',
+    'job_deleted' => 'Der fehlgeschlagene Auftrag wurde gelöscht.',
+    'job_delete_failed' => 'Auftrag konnte nicht gelöscht werden.',
+    'jobs_purged' => ':count fehlgeschlagene(r) Auftrag/Aufträge wurde(n) gelöscht.',
+    'task_executed_success' => 'Aufgabe erfolgreich ausgeführt.',
+    'task_executed_failed' => 'Aufgabenausführung fehlgeschlagen.',
+    'command_executed_success' => 'Befehl erfolgreich ausgeführt.',
+    'command_executed_failed' => 'Befehlsausführung fehlgeschlagen.',
+    'action_executed_success' => 'Aktion erfolgreich ausgeführt.',
+    'action_executed_failed' => 'Aktionsausführung fehlgeschlagen.',
+    'batch_cancelled' => 'Der Stapel wurde abgebrochen.',
+    'batch_cancel_failed' => 'Stapel konnte nicht abgebrochen werden.',
+    'rate_limit_exceeded' => 'Bitte warten Sie :seconds Sekunden, bevor Sie einen weiteren Befehl ausführen.',
+    'command_not_allowed' => 'Dieser Befehl ist nicht zulässig.',
+    'no_scheduled_tasks' => 'Keine geplanten Aufgaben konfiguriert.',
+];

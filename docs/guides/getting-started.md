@@ -55,7 +55,7 @@ npm run dev         # optional: Vite dev server with HMR (instead of npm run bui
 ## First admin login
 
 A fresh `migrate --seed` does **not** create a login account by default. Opt in to a default
-admin **before** seeding by setting these in `.env`:
+admin by setting these in `.env` **before** running `migrate --seed`:
 
 ```ini
 SEED_DEFAULT_ADMIN=true
@@ -64,11 +64,12 @@ DEFAULT_ADMIN_EMAIL=admin@example.test   # defaults to admin@example.test if lef
 DEFAULT_ADMIN_PASSWORD=change-me-now      # required when SEED_DEFAULT_ADMIN=true
 ```
 
-Then run (or re-run) the seeder:
+If you already seeded without these set, run the user seeder on its own (clear any cached
+config first so the new `.env` values are picked up):
 
 ```bash
+php artisan config:clear
 php artisan db:seed --class=UserSeeder
-# or re-run the full seed: php artisan migrate:fresh --seed
 ```
 
 The seeded user receives the `admin` role (full platform access). Use these credentials only
@@ -83,6 +84,7 @@ from `.env.example`, which is grouped and commented. Key areas:
 | Area | Env keys |
 |------|----------|
 | Application | `APP_NAME`, `APP_ENV`, `APP_KEY`, `APP_DEBUG`, `APP_URL` |
+| Localization and geography | `APP_LOCALE`, `APP_FALLBACK_LOCALE`, `APP_TIMEZONE`, `DEFAULT_COUNTRY_CODE`, `GEOGRAPHY_DATASET` — see [Localization and Geography](/guides/localization-and-geography) |
 | Database | `DB_CONNECTION`, `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` |
 | Branding | `FEDERATION_*` (name, short name, contact, logo) and `INTERNATIONAL_FEDERATION_*` — see `config/branding.php` |
 | Committees | Not env — define your federation's committees (and their licenses-attributed, purchase, and menu wiring) in `config/committees.php`. See [Configuring Committees](/guides/configuring-committees). |
@@ -175,6 +177,9 @@ maintenance commands from the in-app Operations Center — see
 [Platform Utilities](/features/platform-utilities).
 
 ## Updating an existing deployment
+
+Before upgrading an installation that relied on `DEFAULT_COUNTRY_ID`, follow the
+[localization and geography upgrade notes](/guides/localization-and-geography#updating-an-existing-installation).
 
 ```bash
 git pull

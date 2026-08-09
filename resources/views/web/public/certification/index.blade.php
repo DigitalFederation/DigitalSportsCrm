@@ -5,7 +5,7 @@
 
         <section class="relative">
             <div class="mx-auto pt-4 w-24">
-                <img src="{{ asset($brand['logo_path']) }}" class="w-24 " alt="{{ $brand['short_name'] }} Logo">
+                <x-brand-logo class="w-24" text-class="text-2xl font-bold text-slate-800" />
             </div>
 
             <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

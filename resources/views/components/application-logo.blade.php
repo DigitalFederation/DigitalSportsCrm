@@ -1,1 +1,1 @@
-<img src="{{ asset(config('branding.primary.logo_path', 'img/project-logo.svg')) }}" class="h-40" alt="{{ config('branding.primary.short_name', 'DF') }} logo">
+<x-brand-logo class="h-40" text-class="text-4xl font-bold text-slate-800" />

@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'my_certifications' => 'Mes certifications',
+    'my_international_certifications' => 'Mes certifications internationales',
+    'cmas_certifications' => 'Certifications internationales',
+    'international_certifications_subtitle' => 'Certifications internationales de plongée et scientifiques',
+    'total_certifications' => 'total des certifications',
+    'filter' => 'Filtrer',
+    'category' => 'Catégorie',
+    'all_categories' => 'Toutes les catégories',
+    'apply_filters' => 'Appliquer les filtres',
+    'no_certifications' => 'Aucune certification',
+    'no_certifications_message' => 'Vous n\'avez actuellement aucune certification.',
+    'no_international_certifications' => 'Aucune certification internationale',
+    'no_international_certifications_message' => 'Vous n\'avez actuellement aucune certification internationale.',
+    'view_details' => 'Voir les détails',
+    'coach' => 'Entraîneur',
+    'referee_judge' => 'Arbitre/Juge',
+    'generation_error' => 'Une erreur technique s\'est produite lors de la génération de la carte de certification. Veuillez réessayer plus tard.',
+
+    // Certification categories
+    'categories' => [
+        'Diver Career' => 'Cursus de plongeur',
+        'Recreational Diver Speciality' => 'Spécialité de plongeur de loisir',
+        'Technical Diver Speciality' => 'Spécialité de plongeur technique',
+        'Instructor Career' => 'Cursus de moniteur',
+        'Instructor and Dive Leader' => 'Moniteur et guide de palanquée',
+        'Recreational Instructor Speciality' => 'Spécialité de moniteur de loisir',
+        'Technical Instructor Speciality' => 'Spécialité de moniteur technique',
+        'Scientific Diver Career' => 'Cursus de plongeur scientifique',
+        'Scientific Speciality Diver' => 'Plongeur de spécialité scientifique',
+        'Scientific Speciality Instructor' => 'Moniteur de spécialité scientifique',
+        'Scientific Instructor Career' => 'Cursus de moniteur scientifique',
+        'Freediver' => 'Apnéiste',
+        'Freediving Instructor' => 'Moniteur d\'apnée',
+        'Coach' => 'Entraîneur',
+        'Referee / Judge' => 'Arbitre / Juge',
+    ],
+];

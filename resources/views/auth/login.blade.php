@@ -9,7 +9,7 @@
         <!-- Logo with enhanced styling -->
         <div class="flex flex-col items-center mt-6">
             <a href="/" class="transition-transform hover:scale-105 duration-300">
-                <img src="{{ asset($brand['logo_path']) }}" class="h-20 sm:h-24" alt="{{ $brand['short_name'] }} logo">
+                <x-brand-logo class="h-20 sm:h-24" text-class="text-3xl font-bold text-slate-800" />
             </a>
         </div>
 

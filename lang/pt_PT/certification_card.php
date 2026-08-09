@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'my_certifications' => 'As Minhas Certificações',
+    'my_international_certifications' => 'As Minhas Certificações Internacionais',
+    'cmas_certifications' => 'Certificações Internacionais',
+    'international_certifications_subtitle' => 'Certificações de Mergulho Internacional e Científico',
+    'total_certifications' => 'certificações no total',
+    'filter' => 'Filtrar',
+    'category' => 'Categoria',
+    'all_categories' => 'Todas as Categorias',
+    'apply_filters' => 'Aplicar Filtros',
+    'no_certifications' => 'Sem Certificações',
+    'no_certifications_message' => 'Atualmente não possui certificações.',
+    'no_international_certifications' => 'Sem Certificações Internacionais',
+    'no_international_certifications_message' => 'Atualmente não possui certificações internacionais.',
+    'view_details' => 'Ver Detalhes',
+    'coach' => 'Treinador',
+    'referee_judge' => 'Arbitragem',
+    'generation_error' => 'Ocorreu um erro ao gerar o cartao de certificacao. Por favor, tente novamente mais tarde.',
+
+    // Certification categories
+    'categories' => [
+        'Diver Career' => 'Carreira de Mergulhador',
+        'Recreational Diver Speciality' => 'Especialidade de Mergulhador Recreativo',
+        'Technical Diver Speciality' => 'Especialidade de Mergulhador Tecnico',
+        'Instructor Career' => 'Carreira de Instrutor',
+        'Instructor and Dive Leader' => 'Instrutor e Lider de Mergulho',
+        'Recreational Instructor Speciality' => 'Especialidade de Instrutor Recreativo',
+        'Technical Instructor Speciality' => 'Especialidade de Instrutor Tecnico',
+        'Scientific Diver Career' => 'Carreira de Mergulhador Cientifico',
+        'Scientific Speciality Diver' => 'Especialidade Cientifica de Mergulhador',
+        'Scientific Speciality Instructor' => 'Especialidade Cientifica de Instrutor',
+        'Scientific Instructor Career' => 'Carreira de Instrutor Cientifico',
+        'Freediver' => 'Mergulho Livre',
+        'Freediving Instructor' => 'Instrutor de Mergulho Livre',
+        'Coach' => 'Treinador',
+        'Referee / Judge' => 'Arbitro / Juiz',
+    ],
+];

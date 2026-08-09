@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Page titles
+    'title' => 'Centro de Operações',
+    'subtitle' => 'Monitorizar e gerir tarefas em segundo plano, agendamentos e comandos do sistema',
+    'queue_management' => 'Gestao de Filas',
+    'scheduler' => 'Painel de Agendamentos',
+    'scheduler_subtitle' => 'Ver e gerir tarefas agendadas',
+    'command_center' => 'Centro de Comandos',
+    'command_center_subtitle' => 'Executar comandos do sistema manualmente',
+    'batch_monitor' => 'Monitor de Lotes',
+    'batch_monitor_subtitle' => 'Acompanhar progresso de lotes de tarefas',
+    'queue_details' => 'Detalhes da Fila',
+
+    // Stats
+    'pending_jobs' => 'Tarefas Pendentes',
+    'processing' => 'Em Processamento',
+    'failed_jobs' => 'Tarefas Falhadas',
+    'active_batches' => 'Lotes Ativos',
+
+    // System health
+    'system_health' => 'Estado do Sistema',
+    'database' => 'Base de Dados',
+    'queue' => 'Fila',
+    'storage' => 'Armazenamento',
+
+    // Scheduled tasks
+    'scheduled_tasks' => 'Tarefas Agendadas',
+    'scheduler_info' => 'Estas tarefas executam automaticamente conforme o agendamento. Pode tambem executa-las manualmente.',
+    'command' => 'Comando',
+    'frequency' => 'Frequencia',
+    'next_run' => 'Proxima Execucao',
+    'last_run' => 'Ultima Execucao',
+    'never_run' => 'Nunca executado',
+    'manual' => 'manual',
+    'run_now' => 'Executar Agora',
+    'running' => 'A executar...',
+
+    // Queue
+    'search_jobs' => 'Pesquisar tarefas...',
+    'job_class' => 'Classe da Tarefa',
+    'status' => 'Estado',
+    'attempts' => 'Tentativas',
+    'created_at' => 'Criado',
+    'failed_at' => 'Falhou Em',
+    'error' => 'Erro',
+    'actions' => 'Ações',
+    'pending' => 'Pendente',
+    'retry' => 'Repetir',
+    'delete' => 'Eliminar',
+    'purge_all_failed' => 'Limpar Todas Falhadas',
+    'no_pending_jobs' => 'Nenhuma tarefa pendente na fila',
+    'no_failed_jobs' => 'Nenhuma tarefa falhada',
+    'job_details' => 'Detalhes da Tarefa',
+
+    // Commands
+    'search_commands' => 'Pesquisar comandos...',
+    'all_categories' => 'Todos',
+    'category_license' => 'Gestao de Licenças',
+    'category_membership' => 'Gestao de Membros',
+    'category_sync' => 'Sincronização de Roles',
+    'category_qr' => 'Geração de Codigos QR',
+    'category_maintenance' => 'Manutencao de Dados',
+    'category_cache' => 'Gestao de Cache',
+    'execute' => 'Executar',
+    'executing' => 'A executar...',
+    'dangerous' => 'Perigoso',
+    'supports_dry_run' => 'Simulação',
+    'last_executed' => 'Ultima execucao',
+    'no_commands_found' => 'Nenhum comando encontrado',
+    'command_output' => 'Resultado do Comando',
+    'no_output' => 'Sem resultado',
+
+    // Batches
+    'completed_batches' => 'Lotes Concluidos',
+    'batch_name' => 'Nome do Lote',
+    'total_jobs' => 'Total de Tarefas',
+    'completed' => 'Concluidas',
+    'failed' => 'Falhadas',
+    'finished_at' => 'Concluido Em',
+    'success' => 'Sucesso',
+    'partial' => 'Parcial',
+    'started' => 'Iniciado',
+    'progress' => 'Progresso',
+    'jobs' => 'tarefas',
+    'total' => 'Total',
+    'cancel' => 'Cancelar',
+    'cancelled' => 'Cancelado',
+    'no_active_batches' => 'Nenhum lote de tarefas ativo',
+    'no_completed_batches' => 'Nenhum lote concluido',
+
+    // Quick actions
+    'quick_actions' => 'Ações Rapidas',
+    'action_sync_all_user_roles' => 'Sincronizar Roles',
+    'action_licenses_activate_paid' => 'Ativar Licenças Pagas',
+    'action_optimize_clear' => 'Limpar Caches',
+    'action_qr_code_individuals_generate' => 'Gerar Codigos QR',
+
+    // Navigation
+    'view_all' => 'Ver todos',
+    'back_to_dashboard' => 'Voltar ao Painel',
+    'close' => 'Fechar',
+    'recent_failed_jobs' => 'Tarefas Falhadas Recentes',
+
+    // Confirmations
+    'confirm_retry' => 'Tem a certeza que pretende repetir esta tarefa?',
+    'confirm_delete' => 'Tem a certeza que pretende eliminar esta tarefa falhada?',
+    'confirm_purge_all' => 'Tem a certeza que pretende limpar TODAS as tarefas falhadas? Esta ação não pode ser desfeita.',
+    'confirm_run_task' => 'Tem a certeza que pretende executar a tarefa ":task" agora?',
+    'confirm_execute_command' => 'Tem a certeza que pretende executar o comando ":command"?',
+    'confirm_execute_action' => 'Tem a certeza que pretende executar ":action"?',
+    'confirm_cancel_batch' => 'Tem a certeza que pretende cancelar este lote? As tarefas em execucao continuarao mas nenhuma nova tarefa sera processada.',
+
+    // Messages
+    'job_retry_success' => 'A tarefa foi adicionada a fila para repeticao.',
+    'job_retry_failed' => 'Falha ao repetir a tarefa.',
+    'job_deleted' => 'A tarefa falhada foi eliminada.',
+    'job_delete_failed' => 'Falha ao eliminar a tarefa.',
+    'jobs_purged' => ':count tarefa(s) falhada(s) foram limpas.',
+    'task_executed_success' => 'Tarefa executada com sucesso.',
+    'task_executed_failed' => 'Falha na execucao da tarefa.',
+    'command_executed_success' => 'Comando executado com sucesso.',
+    'command_executed_failed' => 'Falha na execucao do comando.',
+    'action_executed_success' => 'Ação executada com sucesso.',
+    'action_executed_failed' => 'Falha na execucao da ação.',
+    'batch_cancelled' => 'O lote foi cancelado.',
+    'batch_cancel_failed' => 'Falha ao cancelar o lote.',
+    'rate_limit_exceeded' => 'Por favor aguarde :seconds segundos antes de executar outro comando.',
+    'command_not_allowed' => 'Este comando não e permitido.',
+    'no_scheduled_tasks' => 'Nenhuma tarefa agendada configurada.',
+];

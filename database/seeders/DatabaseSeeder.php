@@ -31,5 +31,10 @@ class DatabaseSeeder extends Seeder
         // Navigation menus (DB-driven sidebar). Without this a fresh install
         // renders no sidebar at all.
         $this->call(MenuSeeder::class);
+
+        // Optional first admin account. No-op unless SEED_DEFAULT_ADMIN=true
+        // and DEFAULT_ADMIN_PASSWORD are set. Must run after
+        // RoleAndPermissionSeeder and UserGroupSeeder.
+        $this->call(UserSeeder::class);
     }
 }

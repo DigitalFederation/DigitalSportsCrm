@@ -50,6 +50,29 @@ it('does not seed a default admin unless explicitly enabled', function () {
     expect(User::where('email', 'admin@example.test')->exists())->toBeFalse();
 });
 
+it('seeds the default admin when explicitly enabled', function () {
+    Config::set('seeding.default_admin.enabled', true);
+    Config::set('seeding.default_admin.password', 'change-me-now');
+    Config::set('seeding.default_admin.email', 'seeded.admin@example.test');
+
+    $this->artisan('db:seed --class=UserSeeder')->assertExitCode(Command::SUCCESS);
+
+    $user = User::where('email', 'seeded.admin@example.test')->firstOrFail();
+
+    expect(Hash::check('change-me-now', $user->password))->toBeTrue()
+        ->and($user->hasRole('admin'))->toBeTrue()
+        ->and((bool) $user->active)->toBeTrue();
+});
+
+// Running the full DatabaseSeeder inside the test suite is not viable
+// (some seeders assume fresh auto-increment ids), so guard the wiring
+// statically: the install-time seeders must keep calling UserSeeder,
+// or `migrate --seed` silently creates no login account.
+it('keeps the default admin seeder wired into the install seeders', function (string $seeder) {
+    expect(file_get_contents(database_path("seeders/{$seeder}.php")))
+        ->toContain('$this->call(UserSeeder::class);');
+})->with(['DatabaseSeeder', 'FreshInstallSeeder']);
+
 it('requires an explicit email before restoring admin access', function () {
     User::factory()->create(['email' => 'first.user@example.test']);
 

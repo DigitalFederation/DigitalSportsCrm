@@ -1,7 +1,7 @@
 
 @php
     $mainFederation = \Domain\Federations\Models\Federation::where('is_default_federation', true)->first();
-    $brandLogoPath = public_path(config('branding.primary.logo_path', 'img/project-logo.svg'));
+    $brandLogoPath = config('branding.primary.logo_path') ? public_path(config('branding.primary.logo_path')) : null;
 @endphp
 <!doctype html>
 <html lang="en">
@@ -57,7 +57,11 @@
 
 <table width="100%">
     <td>
-        <img src="{{ $brandLogoPath }}" alt="" width="150" />
+        @if($brandLogoPath && file_exists($brandLogoPath))
+            <img src="{{ $brandLogoPath }}" alt="" width="150" />
+        @else
+            <p style="font-size:16px; font-weight:bold">{{ config('branding.primary.name') }}</p>
+        @endif
     </td>
     <td valign="top" style="text-align:right">
         <p style="font-size:14px; font-weight:bold">{{ $document->invoice_extended ?? $document->number_extended }}</p>

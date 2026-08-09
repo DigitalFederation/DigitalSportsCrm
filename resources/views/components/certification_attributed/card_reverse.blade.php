@@ -57,9 +57,13 @@
                             alt="{{ $certificationAttributed->entity->name }}">
                     @endif
                 @else
-                    <img class="w-full object-contain"
-                         src="{{ asset($logoPath) }}"
-                         alt="{{ $primaryBrand['short_name'] }} Logo">
+                    @if($logoPath)
+                        <img class="w-full object-contain"
+                             src="{{ asset($logoPath) }}"
+                             alt="{{ $primaryBrand['short_name'] }} Logo">
+                    @else
+                        <div class="text-xs font-bold text-slate-800 text-center">{{ $primaryBrand['short_name'] }}</div>
+                    @endif
                 @endif
             </div>
 

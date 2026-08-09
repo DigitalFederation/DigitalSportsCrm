@@ -4,7 +4,7 @@
     <main class="bg-slate-900 h-screen">
 
         <div class="mx-auto pt-4 w-24">
-            <img src="{{ asset($brand['logo_path']) }}" class="w-24 " alt="{{ $brand['short_name'] }}">
+            <x-brand-logo class="w-24" text-class="text-2xl font-bold text-slate-800" />
         </div>
 
         <div class="w-full md:max-w-lg md:mx-auto mt-40">

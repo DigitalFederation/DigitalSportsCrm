@@ -210,8 +210,8 @@
                                         class="form-select w-full {{ $errors->has('district_id') ? 'border-rose-300' : '' }}"
                                         required>
                                     <option value="" selected disabled>{{ __('common.select_option') }}</option>
-                                    <option value="outside_portugal" @selected(old('district_id') == 'outside_portugal')>
-                                        {{ __('main.outside_portugal') }}
+                                    <option value="{{ \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value }}" @selected(old('district_id') === \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value)>
+                                        {{ __('main.territory_not_listed') }}
                                     </option>
                                     @foreach($districts as $district)
                                         <option value="{{ $district->id }}" @selected(old('district_id') == $district->id)>

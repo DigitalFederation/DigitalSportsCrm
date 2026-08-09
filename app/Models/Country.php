@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static select(string ...$column)
  *
  * @property int $id
+ * @property string|null $iso
  * @property string|null $ioc
  * @property string|null $name
  * @property string|null $region_name
@@ -34,7 +35,7 @@ class Country extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['ioc', 'name', 'region_name', 'sub_region_name', 'supported', 'lat', 'lng'];
+    protected $fillable = ['iso', 'ioc', 'name', 'region_name', 'sub_region_name', 'supported', 'lat', 'lng'];
 
     protected static function newFactory(): CountryFactory
     {

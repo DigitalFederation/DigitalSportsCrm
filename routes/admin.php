@@ -18,11 +18,11 @@ use App\Http\Controllers\Admin\CertificationController as AdminCertificationCont
 use App\Http\Controllers\Admin\CertificationRoleMappingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
 /* ------------------------------------------------------------------------
  |  Controller imports – kept together for easy scanning
  |  (⌘/Ctrl-F on the filename to jump straight here)
  * --------------------------------------------------------------------- */
-use App\Http\Controllers\Admin\DocumentController as AdminDocumentController;
 use App\Http\Controllers\Admin\DocumentManualPaymentController;
 use App\Http\Controllers\Admin\EntityController as AdminEntityController;
 use App\Http\Controllers\Admin\EntityImportController;
@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\FederationController as AdminFederationController
 use App\Http\Controllers\Admin\FederationRoleMappingController;
 use App\Http\Controllers\Admin\FederationVotingRightController as AdminFederationVotingRightController;
 use App\Http\Controllers\Admin\GeneratedReportsController;
+use App\Http\Controllers\Admin\HomePageSettingsController;
 use App\Http\Controllers\Admin\ImpersonateController;
 use App\Http\Controllers\Admin\IndividualController as AdminIndividualController;
 use App\Http\Controllers\Admin\IndividualImportController;
@@ -960,6 +961,15 @@ Route::prefix('admin')
                     Route::put('{district}', 'update')->name('update');
                     Route::delete('{district}', 'destroy')->name('destroy');
                     Route::patch('{district}/toggle-status', 'toggleStatus')->name('toggle-status');
+                });
+
+            // Home page settings
+            Route::controller(HomePageSettingsController::class)
+                ->prefix('homepage-settings')
+                ->name('homepage-settings.')
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::put('/', 'update')->name('update');
                 });
 
             // Zones

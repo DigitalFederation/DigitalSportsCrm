@@ -2,7 +2,7 @@
     <div class="min-h-screen flex items-center justify-center px-4 md:px-6 bg-cover bg-waves animate-in">
         <div class="max-w-xl w-full">
             <div class="flex flex-col items-center mb-6">
-                <img src="{{ asset(config('branding.primary.logo_path', 'img/project-logo.svg')) }}" alt="{{ config('branding.primary.short_name', 'DF') }}" class="h-28 md:h-32 lg:h-40">
+                <x-brand-logo class="h-28 md:h-32 lg:h-40" text-class="text-3xl md:text-4xl font-bold text-slate-800" />
                 <div class="mt-3">
                     <x-ui.badge variant="blue" size="sm">419</x-ui.badge>
                 </div>

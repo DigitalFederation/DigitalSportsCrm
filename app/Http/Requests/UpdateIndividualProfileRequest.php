@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\IndividualDocumentTypeEnum;
+use Domain\Geographic\Enums\TerritorySelection;
 use Domain\Geographic\Models\District;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -43,7 +44,7 @@ class UpdateIndividualProfileRequest extends FormRequest
             'district_id' => [
                 'required',
                 function ($attribute, $value, $fail) {
-                    if ($value === 'outside_portugal') {
+                    if (TerritorySelection::isNotListed($value)) {
                         return;
                     }
                     if (! District::where('id', $value)->exists()) {

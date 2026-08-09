@@ -10,6 +10,7 @@ use App\Models\GeoZone;
 use App\Models\SubRegion;
 use Domain\Entities\Models\Entity;
 use Domain\Federations\Models\Federation;
+use Domain\Geographic\Enums\TerritorySelection;
 use Domain\Individuals\Actions\CreateIndividualAction;
 use Domain\Individuals\Actions\DetectIfIndividualIsInstructorAction;
 use Domain\Individuals\Actions\EditIndividualAction;
@@ -146,8 +147,8 @@ class IndividualController extends Controller
 
             $validatedData = $request->validated();
 
-            // Convert "outside_portugal" to null for district_id
-            if (isset($validatedData['district_id']) && $validatedData['district_id'] === 'outside_portugal') {
+            // A non-listed territory has no district reference.
+            if (TerritorySelection::isNotListed($validatedData['district_id'] ?? null)) {
                 $validatedData['district_id'] = null;
             }
 

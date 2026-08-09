@@ -15,7 +15,9 @@ return [
         'address' => env('FEDERATION_ADDRESS', 'Example Street 1, 0000-000 Example City'),
         'phone' => env('FEDERATION_PHONE', '+000 000 000 000'),
         'mobile' => env('FEDERATION_MOBILE', '+000 000 000 000'),
-        'logo_path' => env('FEDERATION_LOGO_PATH', 'img/project-logo.svg'),
+        // Optional: path (relative to public/) to the federation's logo.
+        // When empty, the federation name is written as text instead.
+        'logo_path' => env('FEDERATION_LOGO_PATH'),
     ],
 
     'international' => [

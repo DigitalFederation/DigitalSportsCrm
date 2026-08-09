@@ -101,7 +101,7 @@
                     <!-- About federation -->
                     <div class="lg:col-span-2">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset($brand['logo_path']) }}" class="h-10 w-auto mr-3" alt="{{ $brand['short_name'] }} Logo">
+                            <x-brand-logo class="h-10 w-auto mr-3" text-class="hidden" />
                             <div>
                                 <div class="text-lg font-bold">{{ $brand['short_name'] }}</div>
                                 <div class="text-sm text-slate-400">{{ $brand['name'] }}</div>
@@ -179,7 +179,7 @@
                         <div class="flex items-center space-x-6 text-sm">
                             <a href="{{ route('privacy-policy') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Política de Privacidade</a>
                             <a href="{{ route('terms-of-service') }}" class="text-slate-400 hover:text-slate-300 transition-colors">Termos de Uso</a>
-                            <a href="#" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
+                            <a href="mailto:{{ \App\Models\SiteSetting::get('federation_support_email', $brand['support_email']) }}" class="text-slate-400 hover:text-slate-300 transition-colors">Suporte</a>
                         </div>
                     </div>
                 </div>

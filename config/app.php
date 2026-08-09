@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,16 +82,17 @@ return [
     |
     */
 
-    'locale' => 'pt',
+    'locale' => env('APP_LOCALE', 'pt_PT'),
 
-    'locales' => ['en', 'es', 'pt'],
-    'available_locales' => [
-        'en' => '🇬🇧 English',
-        'es' => '🇪🇸 Español',
-        'fr' => '🇫🇷 Français',
-        'it' => '🇮🇹 Italiano',
-        'pt' => '🇵🇹 Português',
-    ],
+    'locales' => array_keys($availableLocales = [
+        'pt_PT' => ['label' => 'Português (Portugal)', 'flag' => 'pt_PT'],
+        'pt_BR' => ['label' => 'Português (Brasil)', 'flag' => 'pt_BR'],
+        'es' => ['label' => 'Español', 'flag' => 'es'],
+        'en' => ['label' => 'English', 'flag' => 'en'],
+        'fr' => ['label' => 'Français', 'flag' => 'fr'],
+        'de' => ['label' => 'Deutsch', 'flag' => 'de'],
+    ]),
+    'available_locales' => $availableLocales,
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +105,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,16 +155,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Country ID
+    | Default Country Code
     |--------------------------------------------------------------------------
     |
-    | This value is the default country ID used when a country cannot be
-    | determined from other sources (e.g., district). This should be set
-    | to the country ID that matches your primary operating country.
+    | This ISO 3166-1 alpha-2 code identifies the country used when a country
+    | cannot be determined from other sources (e.g., a district). Codes are
+    | stable across installations, unlike database IDs.
     |
     */
 
-    'default_country_id' => env('DEFAULT_COUNTRY_ID', 173),
+    'default_country_code' => env('DEFAULT_COUNTRY_CODE'),
+
+    // Deprecated compatibility fallback. Prefer DEFAULT_COUNTRY_CODE.
+    'legacy_default_country_id' => env('DEFAULT_COUNTRY_ID'),
 
     /*
     |--------------------------------------------------------------------------
@@ -251,5 +255,17 @@ return [
         'SPD' => 'Sport Diving',
     ],
 
-    'version' => '1.0.0',
+    /*
+    |--------------------------------------------------------------------------
+    | Application Version
+    |--------------------------------------------------------------------------
+    |
+    | The release version shown in the UI (sidebar footer). This value is
+    | the source of truth: bump it here as part of tagging a vX.Y.Z release.
+    | Packagers and deployments may override it with the APP_VERSION
+    | environment variable.
+    |
+    */
+
+    'version' => env('APP_VERSION', '1.1.0'),
 ];

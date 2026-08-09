@@ -20,13 +20,17 @@
 
             @php
                 $committee = optional($certificationAttributed->certification)->committee;
-                $logoPath = $committee?->getLogoPath() ?? config('branding.primary.logo_path', 'img/project-logo.svg');
+                $logoPath = $committee?->getLogoPath() ?? config('branding.primary.logo_path');
                 $logoAlt = $committee?->isInternational()
                     ? config('branding.international.short_name', 'IF')
                     : config('branding.primary.short_name', 'DF');
             @endphp
             <div class="float-right">
-                <img class="w-12" src="{{ asset($logoPath) }}" alt="{{ $logoAlt }} Logo">
+                @if($logoPath)
+                    <img class="w-12" src="{{ asset($logoPath) }}" alt="{{ $logoAlt }} Logo">
+                @else
+                    <div class="text-sm font-bold">{{ $logoAlt }}</div>
+                @endif
             </div>
 
             <div class="clear-both"></div>
