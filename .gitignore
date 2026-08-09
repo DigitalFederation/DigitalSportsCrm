@@ -111,3 +111,4 @@ club-registry-empty-state.png
 # Keep the squashed schema dump (loaded by migrate on fresh installs)
 !database/schema/
 !database/schema/mysql-schema.sql
+*:Zone.Identifier
