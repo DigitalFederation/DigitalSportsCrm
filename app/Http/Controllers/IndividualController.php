@@ -9,6 +9,7 @@ use App\Models\Sport;
 use App\Support\DefaultCountryResolver;
 use Domain\Entities\Models\Entity;
 use Domain\Geographic\Enums\TerritorySelection;
+use Domain\Geographic\Models\Zone;
 use Domain\Individuals\Actions\CreateIndividualAction;
 use Domain\Individuals\Actions\CreateIndividualEntityAction;
 use Domain\Individuals\DataTransferObject\IndividualData;
@@ -16,9 +17,11 @@ use Domain\Memberships\Services\MemberNumberService;
 use Domain\Users\Actions\CreateUserAction;
 use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class IndividualController extends Controller
 {
@@ -38,6 +41,51 @@ class IndividualController extends Controller
             ->orderBy('name')
             ->pluck('name', 'id');
 
+        return view('web.public.individual.create', compact(
+            'countries', 
+            'sports', 
+            'committees', 
+            'defaultCountryId',
+            'entities'));
+    }
+
+    /**
+     * Return only zones that are actually linked to districts of the selected country.
+     *
+     * The current schema has no country_id on zones, so the country/zone relationship
+     * is derived through districts.country_id + district_zone.
+     */
+    public function zones(Country $country): JsonResponse
+    {
+        $zones = Zone::query()
+            ->select(['zones.id', 'zones.name', 'zones.code'])
+            ->join('district_zone', 'district_zone.zone_id', '=', 'zones.id')
+            ->join('districts', 'districts.id', '=', 'district_zone.district_id')
+            ->where('districts.country_id', $country->id)
+            ->where('zones.is_active', true)
+            ->where('districts.is_active', true)
+            ->distinct()
+            ->orderBy('zones.name')
+            ->get();
+
+        return response()->json($zones);
+    }
+    
+    /**
+     * Return only districts/cities belonging to the selected country and zone.
+     */
+    public function districts(Country $country, Zone $zone): JsonResponse
+    {
+        $districts = District::query()
+            ->select(['districts.id', 'districts.name', 'districts.code'])
+            ->join('district_zone', 'district_zone.district_id', '=', 'districts.id')
+            ->where('district_zone.zone_id', $zone->id)
+            ->where('districts.country_id', $country->id)
+            ->where('districts.is_active', true)
+            ->orderBy('districts.name')
+            ->get();
+
+        return response()->json($districts);
         return view('web.public.individual.create', compact(
             'countries',
             'sports',
@@ -142,4 +190,48 @@ class IndividualController extends Controller
 
         return redirect()->route('public.individual.create')->with('success', 'Individual created with success. Please check your email to complete the verification process.');
     }
+
+    /**
+     * Resolve the city selected by the user and reject forged country/zone/district
+     * combinations. "outside_portugal" is kept as the legacy sentinel used by the
+     * existing request/form and now means "Vide endereço".
+     */
+    private function validatedDistrictId(CreatePublicIndividualRequest $request): ?int
+    {
+        $districtId = $request->input('district_id');
+        $zoneId = $request->input('zone_id');
+        $countryId = $request->input('individual_country_id');
+
+        if ($districtId === 'outside_portugal' || $districtId === null || $districtId === '') {
+            if (blank($request->input('address'))) {
+                throw ValidationException::withMessages([
+                    'address' => 'Como a UF/cidade não está cadastrada, informe a UF/estado/província e a cidade no campo Endereço.',
+                ]);
+            }
+
+            return null;
+        }
+
+        if (! ctype_digit((string) $districtId) || ! ctype_digit((string) $zoneId) || ! ctype_digit((string) $countryId)) {
+            throw ValidationException::withMessages([
+                'district_id' => 'Selecione uma cidade válida ou use a opção “Vide endereço”.',
+            ]);
+        }
+
+        $isValid = District::query()
+            ->join('district_zone', 'district_zone.district_id', '=', 'districts.id')
+            ->where('districts.id', (int) $districtId)
+            ->where('districts.country_id', (int) $countryId)
+            ->where('district_zone.zone_id', (int) $zoneId)
+            ->exists();
+
+        if (! $isValid) {
+            throw ValidationException::withMessages([
+                'district_id' => 'A cidade selecionada não pertence ao país/UF informados.',
+            ]);
+        }
+
+        return (int) $districtId;
+    }
+
 }
