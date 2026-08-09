@@ -4,6 +4,9 @@ namespace Domain\Individuals\Actions;
 
 use Domain\Entities\Models\Entity;
 use Domain\Entities\States\ActiveEntityFederationState;
+use Domain\Federations\Actions\ReconcileIndividualTerritorialFederationAction;
+use Domain\Federations\Actions\ResolveIndividualTerritorialFederationAction;
+use Domain\Federations\Enums\TerritorialAssignmentSource;
 use Domain\Individuals\Models\Individual;
 use Domain\Individuals\Models\IndividualFederation;
 use Domain\Individuals\States\ActiveIndividualEntityState;
@@ -12,50 +15,34 @@ use Illuminate\Support\Collection;
 
 class SyncIndividualLocalFederationsAction
 {
+    public function __construct(
+        private readonly ResolveIndividualTerritorialFederationAction $resolver = new ResolveIndividualTerritorialFederationAction,
+        private readonly ReconcileIndividualTerritorialFederationAction $reconciler = new ReconcileIndividualTerritorialFederationAction,
+    ) {}
+
     /**
      * Sync individual's local federation memberships based on entity's memberships.
      * Called when an individual joins an entity (accepts invitation or is approved).
      */
     public function execute(Individual $individual, Entity $entity): Collection
     {
-        $syncedFederations = collect();
+        $resolution = $this->resolver->execute($individual, preferredEntity: $entity);
 
-        // Get entity's active local federation memberships
-        $entityLocalFederations = $entity->entityFederations()
-            ->where('status_class', ActiveEntityFederationState::class)
-            ->whereHas('federation', fn ($q) => $q->where('is_local', true))
-            ->with('federation')
-            ->get();
+        if (! $resolution->isResolved() || $resolution->source !== TerritorialAssignmentSource::CLUB) {
+            $this->reconciler->execute($individual, preferredEntity: $entity);
 
-        foreach ($entityLocalFederations as $entityFederation) {
-            // Check if record already exists and is active
-            $existing = IndividualFederation::where('individual_id', $individual->id)
-                ->where('federation_id', $entityFederation->federation_id)
-                ->first();
-
-            if ($existing && $existing->status_class === ActiveIndividualFederationState::class) {
-                // Already active, skip
-                continue;
-            }
-
-            if ($existing) {
-                // Exists but not active, update it
-                $existing->update([
-                    'status_class' => ActiveIndividualFederationState::class,
-                    'active' => 1,
-                ]);
-            } else {
-                // Create new record
-                IndividualFederation::create([
-                    'individual_id' => $individual->id,
-                    'federation_id' => $entityFederation->federation_id,
-                    'status_class' => ActiveIndividualFederationState::class,
-                    'active' => 1,
-                ]);
-            }
-
-            $syncedFederations->push($entityFederation->federation);
+            return collect();
         }
+
+        $existing = IndividualFederation::query()
+            ->where('individual_id', $individual->id)
+            ->where('federation_id', $resolution->federation->id)
+            ->first();
+        $wasActive = $existing?->status_class === ActiveIndividualFederationState::class;
+
+        $this->reconciler->execute($individual, preferredEntity: $entity);
+
+        $syncedFederations = $wasActive ? collect() : collect([$resolution->federation]);
 
         if ($syncedFederations->isNotEmpty()) {
             activity('Individual Local Federation Sync')
@@ -99,6 +86,10 @@ class SyncIndividualLocalFederationsAction
             if (! $hasOtherEntity) {
                 $deleted = IndividualFederation::where('individual_id', $individual->id)
                     ->where('federation_id', $entityFederation->federation_id)
+                    ->where(function ($query) {
+                        $query->whereNull('assignment_source')
+                            ->orWhere('assignment_source', TerritorialAssignmentSource::CLUB->value);
+                    })
                     ->delete();
 
                 if ($deleted) {
@@ -106,6 +97,8 @@ class SyncIndividualLocalFederationsAction
                 }
             }
         }
+
+        $this->reconciler->execute($individual, $entity->id);
 
         if ($removedFederations->isNotEmpty()) {
             activity('Individual Local Federation Sync')

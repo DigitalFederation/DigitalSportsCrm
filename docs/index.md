@@ -133,6 +133,7 @@ How-to guides and style references for developers.
 | [Development Style Guide](/guides/development-style-guide) | Code style, UI patterns, component usage for LLMs |
 | [Frontend Style Guide](/guides/frontend-style-guide) | Tailwind CSS patterns for public pages |
 | [Localization and Geography](/guides/localization-and-geography) | Configure locales, default country, geographic terminology, datasets, and upgrades |
+| [Territorial Federation Assignment](/guides/territorial-federation-assignment) | Configure club precedence, residence fallback, ambiguity handling, and assignment provenance |
 | [Creating a Plugin](/guides/creating-a-plugin) | Build domain-specific verticals as auto-discovered Composer packages |
 
 ---

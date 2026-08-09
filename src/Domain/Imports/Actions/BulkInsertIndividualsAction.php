@@ -4,6 +4,7 @@ namespace Domain\Imports\Actions;
 
 use App\Models\Group;
 use App\Models\User;
+use Domain\Federations\Enums\TerritorialAssignmentSource;
 use Domain\Federations\Models\Federation;
 use Domain\Geographic\Models\District;
 use Domain\Geographic\Models\Zone;
@@ -143,7 +144,8 @@ class BulkInsertIndividualsAction
                         $individual = ($this->createIndividualAction)(
                             $individualData,
                             $addedByFederation,
-                            $isAddedByEntity
+                            $isAddedByEntity,
+                            TerritorialAssignmentSource::IMPORT,
                         );
 
                         if ($individual) {
