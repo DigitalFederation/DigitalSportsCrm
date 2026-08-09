@@ -190,6 +190,39 @@ test('returns zero counts for empty input', function () {
         ->and($this->action->updateExisting([]))->toBe(0);
 });
 
+test('records import as the origin of a residence territorial assignment', function () {
+    $zone = \Database\Factories\ZoneFactory::new()->create([
+        'country_id' => $this->country->id,
+        'kind' => \Domain\Geographic\Enums\ZoneKind::ADMINISTRATIVE_LEVEL_1,
+    ]);
+    $district = \Database\Factories\DistrictFactory::new()->create([
+        'country_id' => $this->country->id,
+        'administrative_zone_id' => $zone->id,
+    ]);
+    $territorialFederation = \Domain\Federations\Models\Federation::factory()->create([
+        'country_id' => $this->country->id,
+        'is_local' => true,
+    ]);
+    $territorialFederation->zones()->attach($zone);
+
+    $this->action->execute([[
+        'name' => 'Imported',
+        'surname' => 'Member',
+        'email' => 'imported.member@example.test',
+        'birthdate' => '1990-01-01',
+        'country_id' => $this->country->id,
+        'district_id' => $district->id,
+    ]]);
+
+    $individual = Individual::query()->where('email', 'imported.member@example.test')->firstOrFail();
+    $membership = $individual->individualFederations()
+        ->where('federation_id', $territorialFederation->id)
+        ->firstOrFail();
+
+    expect($membership->assignment_source)
+        ->toBe(\Domain\Federations\Enums\TerritorialAssignmentSource::IMPORT);
+});
+
 test('handles string values from csv import for integer fields', function () {
     $district = \Domain\Geographic\Models\District::factory()->create();
     $zone1 = \Database\Factories\ZoneFactory::new()->create();
