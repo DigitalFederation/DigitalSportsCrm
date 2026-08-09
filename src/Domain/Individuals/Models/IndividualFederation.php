@@ -2,6 +2,7 @@
 
 namespace Domain\Individuals\Models;
 
+use Domain\Federations\Enums\TerritorialAssignmentSource;
 use Domain\Federations\Models\Federation;
 use Domain\Individuals\States\ActiveIndividualFederationState;
 use Domain\Individuals\States\IndividualFederationState;
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property class-string<IndividualFederationState>|null $status_class
  * @property IndividualFederationState $state
  * @property int $federation_id
+ * @property TerritorialAssignmentSource|null $assignment_source
  * @property \Illuminate\Support\Carbon|null $created_at
  */
 class IndividualFederation extends Model
@@ -28,8 +30,18 @@ class IndividualFederation extends Model
         'federation_id',
         'individual_id',
         'status_class',
+        'assignment_source',
+        'assignment_entity_id',
+        'assignment_zone_id',
+        'assignment_district_id',
+        'assigned_at',
         'active',
         'rejected_at',
+    ];
+
+    protected $casts = [
+        'assignment_source' => TerritorialAssignmentSource::class,
+        'assigned_at' => 'datetime',
     ];
 
     public function federation(): BelongsTo

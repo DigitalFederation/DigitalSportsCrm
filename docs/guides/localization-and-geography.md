@@ -163,8 +163,11 @@ The geography layer does not yet:
 - provide an address-country switcher in the public registration form (it uses the configured
   installation country);
 - migrate existing custom records into administrative parents automatically;
-- derive an individual's territorial federation from club or residence;
-- record whether federation assignment came from club, residence, import, or a manual decision.
+- provide a bulk operator command for reconciling historical territorial memberships;
+- infer assignment provenance for historical `individual_federation` rows.
+
+Territorial federation resolution for new and actively reconciled relationships is documented in
+[Territorial Federation Assignment](/guides/territorial-federation-assignment).
 
 Those changes require schema, data-migration, UI, and affiliation-policy work and should be delivered
 in subsequent focused pull requests.
