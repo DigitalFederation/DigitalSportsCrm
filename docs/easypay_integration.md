@@ -8,7 +8,7 @@
 
 This document describes the EasyPay payment gateway integration, including API usage, webhook handling, and authorization/capture flows.
 
-**Last Updated**: January 2026
+**Last Updated**: July 2026
 
 ---
 

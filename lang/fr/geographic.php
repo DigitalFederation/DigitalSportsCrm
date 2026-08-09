@@ -6,6 +6,7 @@ return [
     'select_country' => '-- Sélectionner un pays --',
 
     // Districts
+    'district' => 'District',
     'select_district' => '-- Sélectionner un district --',
     'no_districts_for_country' => 'Aucun district disponible pour le pays sélectionné',
     'no_districts_available' => 'Aucun district disponible',
@@ -15,6 +16,7 @@ return [
     'individuals' => 'personnes',
 
     // Zones
+    'zone' => 'Zone',
     'no_zones_available' => 'Aucune zone disponible',
     'selected_zones' => 'Zones sélectionnées',
     'zone_selected' => ':count zone sélectionnée|:count zones sélectionnées',

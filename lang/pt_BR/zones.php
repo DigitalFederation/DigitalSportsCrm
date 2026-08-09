@@ -2,14 +2,14 @@
 
 return [
     // Page titles
-    'title' => 'Zonas',
-    'create_zone' => 'Criar Zona',
-    'manage_districts' => 'Gerir Distritos',
+    'title' => 'Estados',
+    'create_zone' => 'Criar Estado',
+    'manage_districts' => 'Gerir Municípios',
 
     // Table headers
     'name' => 'Nome',
     'code' => 'Código',
-    'districts' => 'Distritos',
+    'districts' => 'Municípios',
     'status' => 'Estado',
     'associations' => 'Associações',
     'creator' => 'Criador',
@@ -25,7 +25,7 @@ return [
 
     // Content
     'no_code' => 'Sem código',
-    'districts_lowercase' => 'distritos',
+    'districts_lowercase' => 'municípios',
     'system' => 'Sistema',
 
     // Actions
@@ -33,5 +33,5 @@ return [
     'deactivate' => 'Desativar',
 
     // Confirmations
-    'confirm_deactivate' => 'Tem a certeza de que deseja desativar esta zona?',
+    'confirm_deactivate' => 'Tem a certeza de que deseja desativar este estado?',
 ];

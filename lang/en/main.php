@@ -153,7 +153,7 @@ return [
     'rejected' => 'Rejected',
     'approved' => 'Approved',
     'pending_invitation' => 'Pending Invitation',
-    'outside_portugal' => 'Outside Portugal',
+    'territory_not_listed' => 'Territory not listed',
     'membership_subscription_details' => 'Membership Subscription Details',
     'membership_subscription_info_title' => 'Information',
     'membership_subscription_info_body' => 'Here you can view all details of the selected membership subscription, including affiliations, insurances, and licenses.',

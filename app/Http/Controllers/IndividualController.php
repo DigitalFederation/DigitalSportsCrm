@@ -7,6 +7,7 @@ use App\Models\Committee;
 use App\Models\Country;
 use App\Models\Sport;
 use Domain\Entities\Models\Entity;
+use Domain\Geographic\Enums\TerritorySelection;
 use Domain\Geographic\Models\District;
 use Domain\Individuals\Actions\CreateIndividualAction;
 use Domain\Individuals\Actions\CreateIndividualEntityAction;
@@ -68,8 +69,8 @@ class IndividualController extends Controller
             $data['country_id'] = $request['individual_country_id'];
             $data['district_id'] = $request['district_id'];
 
-            // Convert "outside_portugal" to null for district_id
-            if (isset($data['district_id']) && $data['district_id'] === 'outside_portugal') {
+            // A non-listed territory has no district reference.
+            if (TerritorySelection::isNotListed($data['district_id'] ?? null)) {
                 $data['district_id'] = null;
             }
 

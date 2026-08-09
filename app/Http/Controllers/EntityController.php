@@ -6,6 +6,7 @@ use App\Http\Requests\EntityCreateRequest;
 use App\Models\Committee;
 use App\Models\Country;
 use App\Models\Sport;
+use App\Support\DefaultCountryResolver;
 use Domain\Entities\Actions\AssociateUserToEntityAction;
 use Domain\Entities\Actions\CreateEntityAction;
 use Domain\Entities\DataTransferObject\EntityData;
@@ -29,7 +30,8 @@ class EntityController extends Controller
 
     public function store(
         EntityCreateRequest $request,
-        CreateEntityAction $createEntityAction
+        CreateEntityAction $createEntityAction,
+        DefaultCountryResolver $defaultCountryResolver
     ): RedirectResponse {
 
         try {
@@ -42,7 +44,7 @@ class EntityController extends Controller
                 $validated['country_id'] = $district->country_id;
             } else {
                 // Fallback to configured default country
-                $validated['country_id'] = config('app.default_country_id');
+                $validated['country_id'] = $defaultCountryResolver->resolve()->id;
             }
 
             // Find federations based on selected district and entity type
