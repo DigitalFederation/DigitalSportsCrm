@@ -70,7 +70,10 @@ All secrets and deployment-specific values belong in `.env`, never in committed 
 `.env.example` and configure application/database/cache/queue/mail settings, branding
 (`FEDERATION_*` / `INTERNATIONAL_FEDERATION_*`), the public map (`PUBLIC_MAP_*`), and the optional
 EasyPay, Moloni, Sentry, and object-storage integrations. Your committees are defined in
-`config/committees.php`. See the
+`config/committees.php`. Locale, timezone, default country, and the install-time geography package
+are controlled by `APP_LOCALE`, `APP_TIMEZONE`, `DEFAULT_COUNTRY_CODE`, and
+`GEOGRAPHY_DATASET`; see [Localization and Geography](docs/guides/localization-and-geography.md).
+See the
 [configuration reference](https://digitalfederation.github.io/DigitalSportsCrm/guides/getting-started#configuration).
 
 Deployment-specific configuration, branding, logos, uploaded files, production data, business

@@ -8,7 +8,7 @@ return [
     'federation' => 'Federação',
     'entity_billing_title' => 'Total por Entidade',
     'entity_name' => 'Entidade',
-    'district' => 'Distrito',
+    'district' => 'Município',
     'total_billed' => 'Total (EUR)',
     'no_billing_data' => 'Sem dados de faturação.',
     'entity_billing_explanation' => 'Total calculado a partir de todos os documentos pagos no ano corrente, incluindo: planos de filiação, planos de seguros, inscrições em eventos, certificações, licenças e encomendas manuais.',

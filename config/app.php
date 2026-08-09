@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'pt_PT',
+    'locale' => env('APP_LOCALE', 'pt_PT'),
 
     'locales' => array_keys($availableLocales = [
         'pt_PT' => ['label' => 'Português (Portugal)', 'flag' => 'pt_PT'],
@@ -105,7 +105,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,16 +155,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Country ID
+    | Default Country Code
     |--------------------------------------------------------------------------
     |
-    | This value is the default country ID used when a country cannot be
-    | determined from other sources (e.g., district). This should be set
-    | to the country ID that matches your primary operating country.
+    | This ISO 3166-1 alpha-2 code identifies the country used when a country
+    | cannot be determined from other sources (e.g., a district). Codes are
+    | stable across installations, unlike database IDs.
     |
     */
 
-    'default_country_id' => env('DEFAULT_COUNTRY_ID', 173),
+    'default_country_code' => env('DEFAULT_COUNTRY_CODE'),
+
+    // Deprecated compatibility fallback. Prefer DEFAULT_COUNTRY_CODE.
+    'legacy_default_country_id' => env('DEFAULT_COUNTRY_ID'),
 
     /*
     |--------------------------------------------------------------------------

@@ -226,8 +226,8 @@
                                                     name="district_id"
                                                     required>
                                                 <option disabled selected>{{ __('common.select_option') }}</option>
-                                                <option value="outside_portugal" @selected(old('district_id') == 'outside_portugal')>
-                                                    {{ __('main.outside_portugal') }}
+                                                <option value="{{ \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value }}" @selected(old('district_id') === \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value)>
+                                                    {{ __('main.territory_not_listed') }}
                                                 </option>
                                                 @foreach($districts as $key => $district)
                                                     <option value="{{ $key }}" @selected(old('district_id') == $key)>{{ $district }}</option>

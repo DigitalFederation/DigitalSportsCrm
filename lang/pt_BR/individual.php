@@ -35,7 +35,7 @@ return [
     'photo' => 'Fotografia',
     'first_name' => 'Nome próprio',
     'address' => 'Endereço',
-    'district' => 'Distrito',
+    'district' => 'Município',
     'location' => 'Localidade',
     'postal_code' => 'Código postal',
     'identification_document' => 'Documento de identificação',
@@ -72,7 +72,7 @@ return [
 
     // Validation messages
     'duplicate_individual_exists' => 'Já existe um indivíduo com o mesmo nome, apelido, data de nascimento e país.',
-    'invalid_district' => 'O distrito selecionado é inválido.',
+    'invalid_district' => 'O município selecionado é inválido.',
     'validation' => [
         'photo_required' => 'A fotografia é obrigatória.',
         'file_must_be_image' => 'O arquivo deve ser uma imagem.',
@@ -83,8 +83,8 @@ return [
         'full_name_required' => 'O campo nome completo é obrigatório.',
         'birthdate_required' => 'O campo data de nascimento é obrigatório.',
         'country_required' => 'O campo país é obrigatório.',
-        'district_required' => 'O campo distrito é obrigatório.',
-        'district_invalid' => 'O distrito selecionado é inválido.',
+        'district_required' => 'O campo município é obrigatório.',
+        'district_invalid' => 'O município selecionado é inválido.',
         'gender_required' => 'O campo género é obrigatório.',
         'vat_number_required' => 'O campo NIF é obrigatório.',
         'doc_type_required' => 'O campo tipo de documento é obrigatório.',

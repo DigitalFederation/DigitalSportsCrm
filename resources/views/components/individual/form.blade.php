@@ -269,13 +269,13 @@
                         <div class="sm:w-1/2">
                             <livewire:geographic.district-selector 
                                 :model="$individual" 
-                                :label="__('District')" 
+                                :label="__('geographic.district')"
                                 :required="false" />
                         </div>
                         <div class="sm:w-1/2">
                             <livewire:geographic.zone-selector 
                                 :model="$individual" 
-                                :label="__('Zone')" 
+                                :label="__('geographic.zone')"
                                 :allow-multiple="false" />
                         </div>
                     </div>

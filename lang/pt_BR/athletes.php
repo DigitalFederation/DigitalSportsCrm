@@ -52,7 +52,7 @@ return [
     'athlete' => 'Atleta',
     'club' => 'Clube',
     'sport' => 'Modalidade',
-    'district' => 'Distrito',
+    'district' => 'Município',
     'joined' => 'Aderiu',
     'status' => 'Estado',
     'license_status' => 'Estado da Licença',

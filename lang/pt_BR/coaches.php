@@ -37,7 +37,7 @@ return [
     'info_body_active' => 'Aqui pode ver todos os clubes aos quais está associado como treinador. Pode sair de um clube a qualquer momento clicando no botão de eliminar.',
     'coach_type' => 'Tipo de Treinador',
     'modality' => 'Modalidade',
-    'district' => 'Distrito',
+    'district' => 'Município',
     'license_status' => 'Estado da Licença',
     'license_expiry' => 'Validade',
     'leave_entity' => 'Sair do Clube',
