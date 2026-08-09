@@ -213,30 +213,14 @@
                                         @enderror
                                     </div>
 
-                                    <!-- District, Location, Postal Code -->
+                                    <!-- Administrative area, Location, Postal Code -->
                                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                        <!-- District -->
-                                        <div>
-                                            <label class="block text-sm font-medium mb-1" for="district_id">
-                                                {{ __('individual.district') }}
-                                                <span class="text-rose-500">*</span>
-                                            </label>
-                                            <select id="district_id"
-                                                    class="form-select w-full {{ $errors->has('district_id') ? 'border-rose-300' : '' }}"
-                                                    name="district_id"
-                                                    required>
-                                                <option disabled selected>{{ __('common.select_option') }}</option>
-                                                <option value="{{ \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value }}" @selected(old('district_id') === \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value)>
-                                                    {{ __('main.territory_not_listed') }}
-                                                </option>
-                                                @foreach($districts as $key => $district)
-                                                    <option value="{{ $key }}" @selected(old('district_id') == $key)>{{ $district }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('district_id')
-                                                <div class="text-xs mt-1 text-rose-500">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        <livewire:geographic.administrative-area-selector
+                                            :country-id="$defaultCountryId"
+                                            :selected-zone-id="old('administrative_zone_id') ? (int) old('administrative_zone_id') : null"
+                                            :selected-district-id="old('district_id')"
+                                            :required="true"
+                                        />
 
                                         <!-- Location -->
                                         <div>

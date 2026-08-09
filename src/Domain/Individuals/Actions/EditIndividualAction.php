@@ -2,6 +2,7 @@
 
 namespace Domain\Individuals\Actions;
 
+use Domain\Federations\Enums\TerritorialAssignmentSource;
 use Domain\Federations\Models\Federation;
 use Domain\Individuals\DataTransferObject\IndividualData;
 use Domain\Individuals\Models\Individual;
@@ -77,6 +78,11 @@ class EditIndividualAction
             ->whereIn('federation_id', $newFederations)
             ->get()
             ->keyBy('federation_id');
+        $localFederationIds = Federation::query()
+            ->whereIn('id', $newFederations)
+            ->where('is_local', true)
+            ->pluck('id')
+            ->all();
 
         // Remove old associations that are not in the new list
         $individual->federations()->detach(
@@ -94,6 +100,11 @@ class EditIndividualAction
                 'created_at' => $existingFederation?->created_at ?? now(),
                 'updated_at' => now(),
             ];
+
+            if (in_array((int) $federationId, $localFederationIds, true)) {
+                $federationData['assignment_source'] = TerritorialAssignmentSource::MANUAL->value;
+                $federationData['assigned_at'] = now();
+            }
 
             // Sync without detaching to preserve existing relationships
             $individual->federations()->syncWithoutDetaching([

@@ -4,6 +4,8 @@ namespace Domain\Individuals\Actions;
 
 use App\Jobs\GenerateModelQrCode;
 use Domain\Entities\Models\Entity;
+use Domain\Federations\Actions\ReconcileIndividualTerritorialFederationAction;
+use Domain\Federations\Enums\TerritorialAssignmentSource;
 use Domain\Federations\Models\Federation;
 use Domain\Individuals\DataTransferObject\IndividualData;
 use Domain\Individuals\Models\Individual;
@@ -16,8 +18,12 @@ use Support\UtilityMethods;
 
 class CreateIndividualAction
 {
-    public function __invoke(IndividualData $individualData, bool $addedByFederation = false, bool $addedByEntity = false)
-    {
+    public function __invoke(
+        IndividualData $individualData,
+        bool $addedByFederation = false,
+        bool $addedByEntity = false,
+        ?TerritorialAssignmentSource $territorialSourceOverride = null,
+    ) {
         $syncUserRolesAction = new SyncUserRolesAction;
 
         try {
@@ -44,6 +50,11 @@ class CreateIndividualAction
 
             if (! empty($individualData->entity_id)) {
                 $this->syncEntities($individualData->entity_id, $individual);
+            } else {
+                (new ReconcileIndividualTerritorialFederationAction)->execute(
+                    $individual,
+                    sourceOverride: $territorialSourceOverride,
+                );
             }
 
             // Sync zones and districts

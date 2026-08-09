@@ -21,6 +21,7 @@ class District extends Model
         'name',
         'code',
         'country_id',
+        'administrative_zone_id',
         'description',
         'is_active',
     ];
@@ -32,6 +33,11 @@ class District extends Model
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function administrativeZone(): BelongsTo
+    {
+        return $this->belongsTo(Zone::class, 'administrative_zone_id');
     }
 
     public function zones(): BelongsToMany

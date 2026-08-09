@@ -6,6 +6,7 @@ use Database\Factories\CountryFactory;
 use Domain\Entities\Models\Entity;
 use Domain\Federations\Models\Federation;
 use Domain\Geographic\Models\District;
+use Domain\Geographic\Models\Zone;
 use Domain\Individuals\Models\Individual;
 use Domain\OfficialDocuments\Models\OfficialDocument;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -75,5 +76,10 @@ class Country extends Model
     public function districts(): HasMany
     {
         return $this->hasMany(District::class);
+    }
+
+    public function zones(): HasMany
+    {
+        return $this->hasMany(Zone::class);
     }
 }
