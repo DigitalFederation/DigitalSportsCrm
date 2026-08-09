@@ -17,6 +17,7 @@ return [
 
     // States (Zone in the internal domain model)
     'zone' => 'Estado',
+    'select_zone_first' => 'Selecione um estado antes de escolher o município.',
     'no_zones_available' => 'Nenhum estado disponível',
     'selected_zones' => 'Estados Selecionados',
     'zone_selected' => ':count estado selecionado|:count estados selecionados',

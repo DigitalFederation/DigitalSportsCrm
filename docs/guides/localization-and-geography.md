@@ -65,11 +65,21 @@ that installs the districts and zones for one deployment profile. The currently 
 | Dataset | Seeder | Status |
 |---------|--------|--------|
 | `portugal` | `PortugalGeographySeeder` | Supported: 20 districts and 5 operational zones |
-| `brazil` | — | Not yet bundled; states and IBGE municipalities require the next geography-data PR |
+| `brazil` | `BrazilGeographySeeder` | Supported: 27 federation units and 5,571 municipality-level localities |
 
-Do not set `GEOGRAPHY_DATASET=brazil` yet. Unsupported values deliberately stop
-`FreshInstallSeeder` before it can insert Portuguese geography into a different country's
-installation.
+For a Brazilian installation, configure the deployment before running the seeder:
+
+```ini
+APP_LOCALE=pt_BR
+APP_TIMEZONE=America/Sao_Paulo
+DEFAULT_COUNTRY_CODE=BR
+GEOGRAPHY_DATASET=brazil
+```
+
+The dataset selector and default country are intentionally independent. `FreshInstallSeeder`
+rejects an unsupported dataset, while each country seeder fails if its expected ISO country is not
+present. This prevents a partially configured installation from silently receiving data for the
+wrong country.
 
 For a new database that should use the minimal, country-aware installation seeder, run:
 
@@ -84,6 +94,40 @@ database.
 
 The dataset selector is install-time behavior. Changing `GEOGRAPHY_DATASET` does not migrate,
 replace, or delete geographic records in an existing database.
+
+### Brazilian administrative geography
+
+The existing `zones` table continues to support deployment-defined operational groupings. Brazilian
+states use the separate `administrative_level_1` zone kind and carry both a namespaced application
+code such as `BR-SP` and the official two-digit IBGE external code. Each Brazilian municipality
+record has one direct `administrative_zone_id` parent. The existing `district_zone` many-to-many
+relationship is not repurposed or constrained, preserving compatibility with operational zones.
+
+The browser selector follows State → Municipality and only queries municipalities for the selected
+state. Server-side validation verifies that the submitted municipality belongs to the configured
+default country and, when applicable, to the submitted state. The nationality field remains
+independent from the address geography.
+
+### IBGE source and updates
+
+The checked-in files under `database/data/brazil/` are a snapshot retrieved on 2026-08-09 from the
+official IBGE Localidades API. Installation never calls the remote API. The snapshot contains the
+5,569 municipalities in the current territorial structure plus Brasília and Fernando de Noronha,
+which the IBGE includes as municipality-level records for statistical dissemination.
+
+IBGE assigns seven-digit municipality codes whose first two digits identify the federation unit.
+These official codes are stored in `districts.code`; the official state codes are stored in
+`zones.external_code`. See the dataset README for endpoints, scope, and refresh instructions.
+
+To propose an update after an IBGE territorial change:
+
+```bash
+php scripts/update-brazil-geography.php
+```
+
+Review the upstream change, adjust the seeder's expected record count, run the geography tests, and
+commit the regenerated CSV files with the code change. Do not update the snapshot without recording
+the new retrieval date and explaining additions, removals, or renames in the PR.
 
 ## Territory not listed
 
@@ -114,12 +158,11 @@ territory mappings.
 
 ## Current limits and next steps
 
-This foundation does not yet:
+The geography layer does not yet:
 
-- import Brazilian states or IBGE municipalities;
-- enforce one state per municipality in the database;
-- add `country_id` to zones;
-- provide a dependent Country → State → Municipality search flow;
+- provide an address-country switcher in the public registration form (it uses the configured
+  installation country);
+- migrate existing custom records into administrative parents automatically;
 - derive an individual's territorial federation from club or residence;
 - record whether federation assignment came from club, residence, import, or a manual decision.
 

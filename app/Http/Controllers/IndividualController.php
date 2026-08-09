@@ -6,9 +6,9 @@ use App\Http\Requests\CreatePublicIndividualRequest;
 use App\Models\Committee;
 use App\Models\Country;
 use App\Models\Sport;
+use App\Support\DefaultCountryResolver;
 use Domain\Entities\Models\Entity;
 use Domain\Geographic\Enums\TerritorySelection;
-use Domain\Geographic\Models\District;
 use Domain\Individuals\Actions\CreateIndividualAction;
 use Domain\Individuals\Actions\CreateIndividualEntityAction;
 use Domain\Individuals\DataTransferObject\IndividualData;
@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Log;
 
 class IndividualController extends Controller
 {
-    public function create(): View
+    public function create(DefaultCountryResolver $defaultCountryResolver): View
     {
         // List of sports
         $sports = Sport::query()->orderBy('name')->pluck('name', 'id');
@@ -30,8 +30,7 @@ class IndividualController extends Controller
         $committees = Committee::query()->orderBy('name')->pluck('name', 'id');
         // Countries - still needed for individual nationality
         $countries = Country::query()->orderBy('name')->pluck('name', 'id');
-        // Districts
-        $districts = District::query()->orderBy('name')->pluck('name', 'id');
+        $defaultCountryId = $defaultCountryResolver->resolve()->id;
         // List of active entities (entities with active federation status)
         $entities = Entity::whereHas('federations', function ($query) {
             $query->where('entity_federation.status_class', \Domain\Entities\States\ActiveEntityFederationState::class);
@@ -39,7 +38,13 @@ class IndividualController extends Controller
             ->orderBy('name')
             ->pluck('name', 'id');
 
-        return view('web.public.individual.create', compact('countries', 'sports', 'committees', 'districts', 'entities'));
+        return view('web.public.individual.create', compact(
+            'countries',
+            'sports',
+            'committees',
+            'defaultCountryId',
+            'entities'
+        ));
     }
 
     public function store(

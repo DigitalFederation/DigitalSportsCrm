@@ -25,8 +25,8 @@ beforeEach(function () {
     artisan('db:seed --class=RoleAndPermissionSeeder');
     artisan('db:seed --class=UserGroupSeeder');
     artisan('db:seed --class=CommitteeSeeder');
-    $this->country = Country::factory()->create();
-    $this->district = District::factory()->create();
+    $this->country = Country::factory()->create(['iso' => 'PT']);
+    $this->district = District::factory()->create(['country_id' => $this->country->id]);
     $this->federation = Federation::factory()->create(['is_default_federation' => true]);
 
     // Create active membership for the default federation

@@ -17,6 +17,7 @@ return [
 
     // Zones
     'zone' => 'Zone',
+    'select_zone_first' => 'Wählen Sie zuerst eine Zone und dann einen Bezirk.',
     'no_zones_available' => 'Keine Zonen verfügbar',
     'selected_zones' => 'Ausgewählte Zonen',
     'zone_selected' => ':count Zone ausgewählt|:count Zonen ausgewählt',

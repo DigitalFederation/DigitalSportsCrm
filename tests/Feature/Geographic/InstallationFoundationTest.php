@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Requests\CreatePublicIndividualRequest;
+use Database\Seeders\BrazilGeographySeeder;
 use Database\Seeders\FreshInstallSeeder;
 use Database\Seeders\PortugalGeographySeeder;
 use Domain\Geographic\Enums\TerritorySelection;
@@ -15,13 +16,20 @@ it('registers the Portuguese geography dataset explicitly', function () {
         ->and(is_subclass_of($seeder, Seeder::class))->toBeTrue();
 });
 
+it('registers the Brazilian geography dataset explicitly', function () {
+    $seeder = config('geography.datasets.brazil');
+
+    expect($seeder)->toBe(BrazilGeographySeeder::class)
+        ->and(is_subclass_of($seeder, Seeder::class))->toBeTrue();
+});
+
 it('rejects an unsupported geography dataset before running install seeders', function () {
-    config()->set('geography.dataset', 'brazil');
+    config()->set('geography.dataset', 'unknown');
 
     expect(fn () => app(FreshInstallSeeder::class)->run())
         ->toThrow(
             \InvalidArgumentException::class,
-            'Unsupported geography dataset [brazil].'
+            'Unsupported geography dataset [unknown].'
         );
 });
 
