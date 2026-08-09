@@ -94,6 +94,37 @@ it('can store a individual using the public store method', function () {
     expect($individual->name)->toEqual($name);
 });
 
+it('stores a non-listed territory without a district through public registration', function () {
+    $response = $this->post(route('public.individual.store'), [
+        'logo' => UploadedFile::fake()->image('territory.jpg'),
+        'name' => 'Maria',
+        'surname' => 'Example',
+        'native_name' => 'Maria Example',
+        'gender' => 'female',
+        'individual_country_id' => $this->country->id,
+        'district_id' => \Domain\Geographic\Enums\TerritorySelection::NOT_LISTED->value,
+        'birthdate' => '1992-04-10',
+        'doc_ref_type' => 'passport',
+        'doc_ref_validation_date' => now()->addYears(5)->toDateString(),
+        'doc_ref' => 'EXAMPLE-123',
+        'vat_number' => '000000000',
+        'email' => 'maria.territory@example.test',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+        'terms' => true,
+        'data_sharing' => true,
+    ]);
+
+    $response->assertRedirect(route('public.individual.create'));
+
+    $individual = Individual::whereHas(
+        'user',
+        fn ($query) => $query->where('email', 'maria.territory@example.test')
+    )->firstOrFail();
+
+    expect($individual->district_id)->toBeNull();
+});
+
 it('prevents creation of duplicate individuals through public store method', function () {
     // Create first individual
     $name = 'John';

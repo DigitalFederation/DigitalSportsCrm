@@ -2,6 +2,7 @@
 
 namespace Domain\Individuals\Actions;
 
+use Domain\Geographic\Enums\TerritorySelection;
 use Domain\Individuals\Models\Individual;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
@@ -20,7 +21,7 @@ class EditIndividualProfileAction
             'country_id' => $data['country_id'],
             'birthdate' => $data['birthdate'],
             'gender' => $data['gender'],
-            'district_id' => $data['district_id'] === 'outside_portugal' ? null : $data['district_id'],
+            'district_id' => TerritorySelection::isNotListed($data['district_id']) ? null : $data['district_id'],
             'vat_number' => $data['vat_number'],
             'address' => $data['address'] ?? null,
             'location' => $data['location'] ?? null,

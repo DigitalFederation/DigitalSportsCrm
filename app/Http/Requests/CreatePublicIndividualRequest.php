@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\IndividualDocumentTypeEnum;
+use Domain\Geographic\Enums\TerritorySelection;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -57,7 +58,7 @@ class CreatePublicIndividualRequest extends FormRequest
             'district_id' => [
                 'required',
                 function ($attribute, $value, $fail) {
-                    if ($value === 'outside_portugal') {
+                    if (TerritorySelection::isNotListed($value)) {
                         return;
                     }
                     if (! \Domain\Geographic\Models\District::where('id', $value)->exists()) {

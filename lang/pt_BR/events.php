@@ -548,8 +548,8 @@ return [
         'geographic_filters_hint' => 'Filtrar visibilidade do evento por região e país.',
         'geo_zone' => 'Região (Zona Geográfica)',
         'countries' => 'Países',
-        'zones' => 'Zonas',
-        'districts' => 'Distritos',
+        'zones' => 'Estados',
+        'districts' => 'Municípios',
 
         // Section 5: Geography
         'geography_section' => 'Geografia',

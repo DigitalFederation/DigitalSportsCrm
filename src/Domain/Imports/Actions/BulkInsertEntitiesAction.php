@@ -5,6 +5,7 @@ namespace Domain\Imports\Actions;
 use App\Jobs\GenerateModelQrCode;
 use App\Models\Group;
 use App\Models\User;
+use App\Support\DefaultCountryResolver;
 use Domain\Entities\Actions\AssociateUserToEntityAction;
 use Domain\Entities\Models\Entity;
 use Domain\Entities\States\ActiveEntityFederationState;
@@ -17,6 +18,10 @@ use Support\UtilityMethods;
 
 class BulkInsertEntitiesAction
 {
+    public function __construct(
+        private readonly DefaultCountryResolver $defaultCountryResolver
+    ) {}
+
     protected int $successCount = 0;
 
     protected int $errorCount = 0;
@@ -78,10 +83,10 @@ class BulkInsertEntitiesAction
                 $data['legal_name'] = $data['name'];
             }
 
-            // Auto-set country_id: from data, then Main Federation, then app default (Portugal)
+            // Auto-set country_id: from data, then main federation, then configured default.
             $countryId = $data['country_id']
                 ?? $this->getMainFederationCountryId()
-                ?? config('app.default_country_id');
+                ?? $this->defaultCountryResolver->resolve()->id;
 
             // Create entity
             $entity = Entity::create([

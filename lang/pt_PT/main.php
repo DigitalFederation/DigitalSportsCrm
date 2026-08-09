@@ -165,7 +165,7 @@ return [
     'rejected' => 'Rejeitado',
     'approved' => 'Aprovado',
     'pending_invitation' => 'Convite Pendente',
-    'outside_portugal' => 'Fora de Portugal',
+    'territory_not_listed' => 'Território não listado',
     'membership_subscription_details' => 'Detalhes do Plano Subscrito',
     'membership_subscription_info_title' => 'Informação',
     'membership_subscription_info_body' => 'Aqui pode consultar todos os detalhes do plano subscrito selecionado, incluindo filiações e seguros.',
