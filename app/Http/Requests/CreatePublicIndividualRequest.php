@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\IndividualDocumentTypeEnum;
+use App\Support\DefaultCountryResolver;
 use Domain\Geographic\Enums\TerritorySelection;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -55,13 +56,33 @@ class CreatePublicIndividualRequest extends FormRequest
                 },
             ],
             'individual_country_id' => 'required|integer|exists:country,id',
+            'administrative_zone_id' => 'nullable|integer|exists:zones,id',
             'district_id' => [
                 'required',
                 function ($attribute, $value, $fail) {
                     if (TerritorySelection::isNotListed($value)) {
                         return;
                     }
-                    if (! \Domain\Geographic\Models\District::where('id', $value)->exists()) {
+                    $district = \Domain\Geographic\Models\District::query()
+                        ->active()
+                        ->find($value);
+
+                    if ($district === null) {
+                        $fail(__('individual.invalid_district'));
+
+                        return;
+                    }
+
+                    $defaultCountry = app(DefaultCountryResolver::class)->resolve();
+
+                    if ((int) $district->country_id !== $defaultCountry->id) {
+                        $fail(__('individual.invalid_district'));
+
+                        return;
+                    }
+
+                    if ($district->administrative_zone_id !== null
+                        && $district->administrative_zone_id !== $this->integer('administrative_zone_id')) {
                         $fail(__('individual.invalid_district'));
                     }
                 },

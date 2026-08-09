@@ -2,23 +2,29 @@
 
 namespace Domain\Geographic\Models;
 
+use App\Models\Country;
 use App\Models\User;
 use Domain\Entities\Models\Entity;
 use Domain\Federations\Models\Federation;
+use Domain\Geographic\Enums\ZoneKind;
 use Domain\Individuals\Models\Individual;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Zone extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'country_id',
         'name',
         'code',
+        'kind',
+        'external_code',
         'description',
         'is_active',
         'created_by',
@@ -26,7 +32,13 @@ class Zone extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'kind' => ZoneKind::class,
     ];
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
+    }
 
     public function creator(): BelongsTo
     {
@@ -37,6 +49,16 @@ class Zone extends Model
     {
         return $this->belongsToMany(District::class, 'district_zone')
             ->withTimestamps();
+    }
+
+    public function administrativeDistricts(): HasMany
+    {
+        return $this->hasMany(District::class, 'administrative_zone_id');
+    }
+
+    public function scopeAdministrativeLevelOne(Builder $query): Builder
+    {
+        return $query->where('kind', ZoneKind::ADMINISTRATIVE_LEVEL_1->value);
     }
 
     public function entities(): BelongsToMany

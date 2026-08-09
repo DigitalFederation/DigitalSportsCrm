@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\BrazilGeographySeeder;
 use Database\Seeders\PortugalGeographySeeder;
 
 return [
@@ -7,5 +8,6 @@ return [
 
     'datasets' => [
         'portugal' => PortugalGeographySeeder::class,
+        'brazil' => BrazilGeographySeeder::class,
     ],
 ];
