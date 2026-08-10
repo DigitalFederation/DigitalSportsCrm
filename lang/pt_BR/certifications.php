@@ -116,7 +116,7 @@ return [
     // Table headers
     'name' => 'Nome',
     'given_name' => 'Nome Próprio',
-    'family_name' => 'Apelido',
+    'family_name' => 'Sobrenome',
     'cmas_code' => 'Nº Filiado',
     'schools' => 'Escola(s)',
     'birthdate' => 'Data de Nascimento',
@@ -138,7 +138,7 @@ return [
     'no_eligible_directors' => 'Nenhum Diretor Elegível Encontrado',
     'no_eligible_assistants' => 'Nenhum Assistente Elegível Encontrado',
     'no_individuals_found' => 'Nenhum Indivíduo Encontrado',
-    'check_registration' => 'Verifique se os indivíduos estão registados na escola/federação selecionada ou refine a pesquisa/filtros.',
+    'check_registration' => 'Verifique se os indivíduos estão registrados na escola/federação selecionada ou refine a pesquisa/filtros.',
     'ensure_instructors_associated' => 'Certifique-se de que os instrutores estão corretamente associados à escola/federação selecionada e correspondem aos filtros.',
     'ensure_assistants_are_instructors' => 'Certifique-se de que os potenciais assistentes são instrutores associados à escola/federação e não são o Diretor selecionado.',
 
@@ -344,7 +344,7 @@ return [
     'training_entity' => [
         'school' => 'Escola',
         'address' => 'Endereço',
-        'postal_code' => 'Código Postal',
+        'postal_code' => 'CEP',
         'location' => 'Localidade',
         'country' => 'País',
         'phone' => 'Telefone',
@@ -373,7 +373,7 @@ return [
             'committee' => 'Comité',
             'available' => 'Disponivel',
             'student_name' => 'Nome do Aluno',
-            'student_surname' => 'Apelido do Aluno',
+            'student_surname' => 'Sobrenome do Aluno',
         ],
         'table' => [
             'certifications' => 'Certificação',
@@ -414,7 +414,7 @@ return [
             'status' => 'Estado',
         ],
         'no_certifications' => 'Nenhuma certificacao encontrada',
-        'no_certifications_description' => 'Nao existem registos de certificacao correspondentes aos filtros atuais.',
+        'no_certifications_description' => 'Nao existem registros de certificacao correspondentes aos filtros atuais.',
         'total_certifications' => 'Total de Certificações',
         'last_five_years' => 'Últimos 5 Anos',
         'course_director_assistant' => 'Diretor de Curso / Assistente',

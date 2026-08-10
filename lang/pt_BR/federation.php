@@ -30,7 +30,7 @@ return [
     'entity_affiliation' => 'Filiação a Entidade',
     'entity_affiliation_info' => 'Se necessário, uma relação com uma entidade pode ser definida neste passo',
     'user_login_information' => 'Informação de Login do Usuário',
-    'user_login_information_desc' => 'Após escolher o endereço de email do usuário, um email será enviado para que a pessoa registe as suas próprias credenciais.',
+    'user_login_information_desc' => 'Após escolher o endereço de email do usuário, um email será enviado para que a pessoa registre as suas próprias credenciais.',
     'email_credential_desc' => 'Credencial de email para o Individual fazer login',
 
     // Facilitation and Notice Messages
@@ -203,7 +203,7 @@ return [
     'search_placeholder' => 'Pesquisar membros...',
     'photo' => 'Foto',
     'name' => 'Nome',
-    'surname' => 'Apelido',
+    'surname' => 'Sobrenome',
     'birthdate' => 'Data de Nascimento',
     'member_number' => 'Número de Filiado',
     'gender' => 'Sexo',
@@ -569,7 +569,7 @@ return [
     'headquarters_address' => 'Endereço da Sede',
     'address_example' => 'Ex.: Rua Principal, 123',
     'city' => 'Cidade',
-    'postal_code' => 'Código Postal',
+    'postal_code' => 'CEP',
     'postal_code_example' => 'Ex.: 1000-001',
     'latitude' => 'Latitude',
     'latitude_example' => 'Ex.: 38.7223',

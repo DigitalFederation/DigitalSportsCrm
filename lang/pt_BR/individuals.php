@@ -7,9 +7,9 @@ $internationalShortName = config('branding.international.short_name', 'IF');
 return [
     'title' => 'Membros Individuais',
     'name' => 'Nome',
-    'surname' => 'Apelido',
+    'surname' => 'Sobrenome',
     'given_name' => 'Nome Próprio',
-    'family_name' => 'Apelido',
+    'family_name' => 'Sobrenome',
     'nationality' => 'Nacionalidade',
     'member_number' => 'Nº Filiado',
     'id_number' => 'Nº ID',

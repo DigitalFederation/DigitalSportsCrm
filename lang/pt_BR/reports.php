@@ -67,7 +67,7 @@ return [
         'zone' => 'Estado',
         'address' => 'Endereço',
         'locality' => 'Localidade',
-        'postal_code' => 'Código Postal',
+        'postal_code' => 'CEP',
         'email' => 'Email',
         'phone' => 'Telefone',
         'website' => 'Website',

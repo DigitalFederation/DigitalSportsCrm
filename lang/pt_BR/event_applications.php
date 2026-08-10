@@ -757,7 +757,7 @@ return [
     'header' => [
         'subtitle' => 'Gerir candidaturas abertas e rever propostas de eventos submetidas por entidades e associações.',
         'entity_subtitle' => 'Consulte as convocatórias disponíveis e gira as suas candidaturas a eventos.',
-        'total_records' => 'Total de Registos',
+        'total_records' => 'Total de Registros',
         'create_template_subtitle' => 'Crie um novo modelo para definir os requisitos e prazos para submissão de eventos.',
         'edit_template_subtitle' => 'Atualize os detalhes, prazos e definições do modelo de candidatura.',
     ],
@@ -830,7 +830,7 @@ return [
 
         'labels' => [
             'address' => 'Endereço',
-            'postal_code' => 'Código Postal',
+            'postal_code' => 'CEP',
             'location' => 'Local / Recinto',
             'registration_type' => 'Tipo de Inscrição',
             'age_groups' => 'Escalões Etários',
@@ -839,7 +839,7 @@ return [
             'entity_name' => 'Nome da Entidade',
             'national_federation_number' => "Numero {$primaryShortName}",
             'entity_address' => 'Endereço',
-            'entity_postal_code' => 'Código Postal',
+            'entity_postal_code' => 'CEP',
             'entity_location' => 'Localidade',
             'entity_nipc' => 'NIPC',
             'entity_phone' => 'Telefone',
@@ -1052,7 +1052,7 @@ return [
         'pdf_generated_at' => 'Gerado em',
 
         'no_entries' => 'Sem entradas. Clique em "Adicionar" para começar.',
-        'no_entries_readonly' => 'Sem entradas registadas.',
+        'no_entries_readonly' => 'Sem entradas registradas.',
         'upload_docs_hint' => 'Pode carregar documentos de suporte a partir da página de detalhe da candidatura após guardar o rascunho.',
         'documents_info' => 'A entidade promotora deverá submeter obrigatoriamente o Plano de Segurança e Emergência, e Apólice de seguro de acidentes pessoais e responsabilidade civil. Poderá submeter a restante documentação de acordo com a regulamentação do evento a que se candidata.',
     ],

@@ -41,7 +41,7 @@ return [
     'female_46_plus' => 'Feminino 46+ anos',
     'male_46_plus' => 'Masculino 46+ anos',
     'no_members_data' => 'Sem dados de membros disponíveis.',
-    'members_registered_help' => 'Membros registados na plataforma',
+    'members_registered_help' => 'Membros registrados na plataforma',
     'members_affiliated_help' => 'Membros com filiação ativa',
 
     // Welcome Banner

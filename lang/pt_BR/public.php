@@ -172,7 +172,7 @@ return [
     // Pagina de Registro de Clubes
     'club_registry' => [
         'title' => 'Registro Nacional de Clubes',
-        'subtitle' => "Encontre clubes de desporto subaquático registados em {$country}",
+        'subtitle' => "Encontre clubes de desporto subaquático registrados em {$country}",
         'filters' => [
             'name' => 'Nome do Clube',
             'name_placeholder' => 'Pesquisar por nome...',

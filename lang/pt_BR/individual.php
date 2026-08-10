@@ -7,12 +7,12 @@ return [
     'sex' => 'Sexo',
     'male' => 'Masculino',
     'female' => 'Feminino',
-    'vat_number' => 'Número de Identificação Fiscal (NIF)',
+    'vat_number' => 'Cadastro de Pessoa Física (CPF)',
     'phone' => 'Telefone',
 
     // User login information section
     'user_login_information' => 'Informações de login do usuário',
-    'user_login_description' => 'Escolha o email para a autenticação deste usuário. Será enviado um email para a pessoa registar as suas próprias credenciais.',
+    'user_login_description' => 'Escolha o email para a autenticação deste usuário. Será enviado um email para a pessoa registrar as suas próprias credenciais.',
     'login_email' => 'Email de login',
     'email_credential_help' => 'Credencial de email para o Individual fazer login',
 
@@ -36,8 +36,8 @@ return [
     'first_name' => 'Nome próprio',
     'address' => 'Endereço',
     'district' => 'Município',
-    'location' => 'Localidade',
-    'postal_code' => 'Código postal',
+    'location' => 'Bairro',
+    'postal_code' => 'CEP',
     'identification_document' => 'Documento de identificação',
     'document_type' => 'Tipo de documento',
     'document_number' => 'N.º do documento',
@@ -57,10 +57,10 @@ return [
 
     // Document type options
     'doc_types' => [
-        'identity_card' => 'Bilhete de Identidade',
-        'citizen_card' => 'Cartão do Cidadão',
-        'foreign_identity_card' => 'Bilhete de Identidade Estrangeiro',
-        'permanent_residence_card' => 'Cartão de Residência Permanente',
+        'identity_card' => 'Carteira de Identidade (RG)',
+        'citizen_card' => 'Carteira de Identidade Nacional (CIN)',
+        'foreign_identity_card' => 'Registro Nacional Migratório (RNM)',
+        'permanent_residence_card' => 'Autorização de Residência Permanente',
         'passport' => 'Passaporte',
     ],
 
@@ -71,7 +71,7 @@ return [
     'image_upload_failed' => 'Falha no upload da imagem - por favor tente uma imagem diferente ou comprima a atual.',
 
     // Validation messages
-    'duplicate_individual_exists' => 'Já existe um indivíduo com o mesmo nome, apelido, data de nascimento e país.',
+    'duplicate_individual_exists' => 'Já existe um indivíduo com o mesmo nome, sobrenome, data de nascimento e país.',
     'invalid_district' => 'O município selecionado é inválido.',
     'validation' => [
         'photo_required' => 'A fotografia é obrigatória.',
@@ -79,18 +79,18 @@ return [
         'photo_mimes' => 'A fotografia deve ser um arquivo JPEG ou PNG.',
         'photo_max_size' => 'A fotografia não pode ter mais de 2MB.',
         'name_required' => 'O campo nome é obrigatório.',
-        'surname_required' => 'O campo apelido é obrigatório.',
+        'surname_required' => 'O campo sobrenome é obrigatório.',
         'full_name_required' => 'O campo nome completo é obrigatório.',
         'birthdate_required' => 'O campo data de nascimento é obrigatório.',
         'country_required' => 'O campo país é obrigatório.',
         'district_required' => 'O campo município é obrigatório.',
         'district_invalid' => 'O município selecionado é inválido.',
         'gender_required' => 'O campo género é obrigatório.',
-        'vat_number_required' => 'O campo NIF é obrigatório.',
+        'vat_number_required' => 'O campo CPF é obrigatório.',
         'doc_type_required' => 'O campo tipo de documento é obrigatório.',
         'doc_number_required' => 'O campo número do documento é obrigatório.',
         'doc_validity_required' => 'O campo data de validade do documento é obrigatório.',
-        'email_already_registered' => 'Este endereço de email já está registado.',
+        'email_already_registered' => 'Este endereço de email já está registrado.',
         'terms_accepted' => 'Deve aceitar os termos de serviço.',
         'data_sharing_accepted' => 'Deve aceitar a política de partilha de dados.',
         'entity_invalid' => 'A entidade selecionada é inválida.',

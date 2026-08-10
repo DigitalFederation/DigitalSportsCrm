@@ -3,11 +3,11 @@
 return [
     // Registro de Atleta na Modalidade da Entidade
     'requires_athlete_entity_sport_registration' => 'Exigir o registro do membro individual como atleta do clube',
-    'requires_athlete_entity_sport_registration_hint' => 'Os atletas devem estar registados como atletas na modalidade do evento no clube que os inscreve.',
+    'requires_athlete_entity_sport_registration_hint' => 'Os atletas devem estar registrados como atletas na modalidade do evento no clube que os inscreve.',
 
     // Registro de Treinador na Modalidade da Entidade
     'requires_coach_entity_sport_registration' => 'Exigir o registro do membro individual como treinador do clube',
-    'requires_coach_entity_sport_registration_hint' => 'Os treinadores devem estar registados como treinadores na modalidade do evento no clube que os inscreve.',
+    'requires_coach_entity_sport_registration_hint' => 'Os treinadores devem estar registrados como treinadores na modalidade do evento no clube que os inscreve.',
 
     // Filiação à Federação Local (existente)
     'local_federation_requirements' => 'Requisitos de Filiação',

@@ -119,7 +119,7 @@ return [
 
     // Help text
     'help' => [
-        'route_scanning' => 'A análise examina todas as rotas registadas na aplicação para identificar quais têm permissões e quais precisam delas.',
+        'route_scanning' => 'A análise examina todas as rotas registradas na aplicação para identificar quais têm permissões e quais precisam delas.',
         'permission_suggestions' => 'As sugestões são baseadas em padrões de nomenclatura de rotas e operações CRUD comuns.',
         'dynamic_mappings' => 'Os mapeamentos dinâmicos permitem atribuir permissões a rotas sem modificar código.',
         'bulk_assignment' => 'Selecione múltiplas rotas e atribua a mesma permissão a todas de uma vez.',

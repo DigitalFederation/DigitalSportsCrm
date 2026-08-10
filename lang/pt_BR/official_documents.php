@@ -60,7 +60,7 @@ return [
         'FacilityLicense' => 'Licença de Instalações',
         'SafetyCompliance' => 'Conformidade de Segurança',
         'EmergencyActionPlan' => 'Plano de Ação de Emergência',
-        'EquipmentMaintenanceRecords' => 'Registos de Manutenção de Equipamentos',
+        'EquipmentMaintenanceRecords' => 'Registros de Manutenção de Equipamentos',
         'SafetyEquipmentInventory' => 'Inventário de Equipamentos de Segurança',
         'OperatingProcedures' => 'Procedimentos Operacionais',
         'EquipmentInspectionCertificates' => 'Certificados de Inspeção de Equipamentos',
@@ -92,7 +92,7 @@ return [
     // Filter labels
     'documents' => 'Documentos',
     'given_name' => 'Nome',
-    'family_name' => 'Apelido',
+    'family_name' => 'Sobrenome',
     'member_number' => 'Nº Filiado',
 
     // Status translations

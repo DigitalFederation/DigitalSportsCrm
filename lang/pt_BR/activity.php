@@ -25,7 +25,7 @@ return [
     'entries' => 'entradas',
     'details' => 'Detalhes',
     'no_recent_actions' => 'Sem ações recentes',
-    'no_activity_recorded' => 'Ainda não foi registada nenhuma atividade.',
+    'no_activity_recorded' => 'Ainda não foi registrada nenhuma atividade.',
 
     // Certification activity logs
     'certification_activated_after_payment' => 'Certificação ativada após pagamento',

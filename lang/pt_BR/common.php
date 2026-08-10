@@ -68,14 +68,14 @@ return [
     'instructions' => 'Instruções',
     'example' => 'Exemplo',
     'max_file_size' => 'Tamanho máximo do arquivo',
-    'skip_existing_records' => 'Ignorar registos existentes',
+    'skip_existing_records' => 'Ignorar registros existentes',
     'validate_only' => 'Validar apenas',
     'no_import' => 'sem importação',
     'no_suggestions' => 'Sem sugestões',
 
     // Field names
     'name' => 'Nome',
-    'surname' => 'Apelido',
+    'surname' => 'Sobrenome',
     'email' => 'Email',
     'phone' => 'Telefone',
     'birthdate' => 'Data de Nascimento',
