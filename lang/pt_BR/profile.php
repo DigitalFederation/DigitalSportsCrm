@@ -40,20 +40,20 @@ return [
     'instagram_url' => 'URL do Instagram',
     'linkedin_url' => 'URL do LinkedIn',
     'first_name_latin' => 'Nome (alfabeto latino)',
-    'last_name_latin' => 'Apelido (alfabeto latino)',
+    'last_name_latin' => 'Sobrenome (alfabeto latino)',
     'latin_name_hint' => 'Preencha apenas se o seu nome original não estiver em alfabeto latino.',
     'form_has_errors' => 'Existem campos por preencher ou inválidos. Reveja os erros abaixo.',
 
     // Privacidade
-    'privacy_settings' => 'Privacidade nos Registos Publicos',
-    'privacy_settings_description' => 'Controle a sua visibilidade nos registos publicos. Quando ativado, o seu nome e informacao de licenca serao exibidos na pagina publica correspondente.',
+    'privacy_settings' => 'Privacidade nos Registros Publicos',
+    'privacy_settings_description' => 'Controle a sua visibilidade nos registros publicos. Quando ativado, o seu nome e informacao de licenca serao exibidos na pagina publica correspondente.',
     'visible_in_coach_registry' => 'Mostrar o meu perfil no Registro de Treinadores',
     'visible_in_technical_official_registry' => 'Mostrar o meu perfil no Registro de Oficiais Tecnicos',
     'visible_in_diving_professional_registry' => 'Mostrar o meu perfil no Registro de Profissionais de Mergulho',
 
     // Privacidade da Entidade
-    'entity_privacy_settings' => 'Privacidade nos Registos Publicos',
-    'entity_privacy_settings_description' => 'Controle a visibilidade da sua entidade nos registos publicos. Quando ativado, a sua entidade sera exibida na pagina publica correspondente.',
+    'entity_privacy_settings' => 'Privacidade nos Registros Publicos',
+    'entity_privacy_settings_description' => 'Controle a visibilidade da sua entidade nos registros publicos. Quando ativado, a sua entidade sera exibida na pagina publica correspondente.',
     'visible_in_club_registry' => 'Mostrar no Registro de Clubes',
     'visible_in_diving_service_provider_registry' => 'Mostrar no Registro de Prestadores de Servicos de Mergulho',
     'visible_in_map' => 'Mostrar no Mapa',

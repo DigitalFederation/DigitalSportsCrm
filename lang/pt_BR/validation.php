@@ -172,11 +172,11 @@ return [
 
     // Individual form validation
     'name_required' => 'O campo nome é obrigatório.',
-    'surname_required' => 'O campo apelido é obrigatório.',
+    'surname_required' => 'O campo sobrenome é obrigatório.',
     'full_name_required' => 'O campo nome completo é obrigatório.',
     'birthdate_required' => 'O campo data de nascimento é obrigatório.',
     'country_required' => 'O campo nacionalidade é obrigatório.',
-    'email_already_registered' => 'Este endereço de email já está registado.',
+    'email_already_registered' => 'Este endereço de email já está registrado.',
     'photo_required' => 'A foto de perfil é obrigatória.',
     'file_must_be_image' => 'O arquivo deve ser uma imagem.',
     'photo_must_be_jpeg_png' => 'A foto deve ser um arquivo JPEG ou PNG.',
@@ -193,7 +193,7 @@ return [
     'doc_type_required' => 'O tipo de documento de identificação é obrigatório.',
     'doc_number_required' => 'O número do documento de identificação é obrigatório.',
     'doc_expiry_required' => 'A data de validade do documento é obrigatória.',
-    'individual_already_exists' => 'Já existe um indivíduo com o mesmo nome, apelido, data de nascimento e país.',
+    'individual_already_exists' => 'Já existe um indivíduo com o mesmo nome, sobrenome, data de nascimento e país.',
 
     // Event attribute validation messages
     'attributes' => [

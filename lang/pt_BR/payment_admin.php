@@ -4,7 +4,7 @@ return [
     // Page titles
     'payment_methods' => 'Metodos de Pagamento',
     'payment_transactions' => 'Transações de Pagamento',
-    'webhook_logs' => 'Registos de Webhook',
+    'webhook_logs' => 'Registros de Webhook',
     'edit_method' => 'Editar Metodo de Pagamento',
     'transaction_details' => 'Detalhes da Transação',
     'webhook_log_details' => 'Detalhes do Registro de Webhook',
@@ -12,7 +12,7 @@ return [
     // Navigation
     'manage_payment_methods' => 'Gerir Metodos de Pagamento',
     'view_transactions' => 'Ver Transações',
-    'view_webhook_logs' => 'Ver Registos de Webhook',
+    'view_webhook_logs' => 'Ver Registros de Webhook',
 
     // Statistics
     'total_transactions' => 'Total de Transações',
@@ -80,7 +80,7 @@ return [
 
     // Webhook log details
     'request_info' => 'Informação do Pedido',
-    'related_records' => 'Registos Relacionados',
+    'related_records' => 'Registros Relacionados',
     'ip_address' => 'Endereco IP',
     'received_at' => 'Recebido Em',
     'request_headers' => 'Cabecalhos do Pedido',

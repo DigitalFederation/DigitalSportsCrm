@@ -45,7 +45,7 @@ return [
     'athletes_coaches' => 'Atletas, Treinadores e Oficiais Técnicos',
     'divers_instructors' => 'Mergulhadores Recreativos, Técnicos e Científicos',
     'scientific_divers' => 'Profissionais de Mergulho',
-    'register_as_individual' => 'Registar como Individual',
+    'register_as_individual' => 'Registrar como Individual',
     'join_community' => 'Junte-se à comunidade subaquática nacional',
 
     // Organisation Account
@@ -54,7 +54,7 @@ return [
     'diving_schools' => 'Prestadores de Serviços de Mergulho',
     'diving_clubs' => 'Clubes Desportivos',
     'scientific_facilities' => 'Centros de Mergulho Científico',
-    'register_as_organisation' => 'Registar como Organização',
+    'register_as_organisation' => 'Registrar como Organização',
     'get_recognised' => "Obtenha reconhecimento oficial da {$brand['short_name']}",
     'already_have_account' => 'Já tem conta?',
 
@@ -65,7 +65,7 @@ return [
     'forgot_password' => 'Esqueceu a senha?',
     'log_in' => 'Entrar',
     'need_account' => 'Precisa de uma conta?',
-    'register_here' => 'Registe-se aqui',
+    'register_here' => 'Registre-se aqui',
 
     // Footer Info
     'about_federation' => $brand['about'],

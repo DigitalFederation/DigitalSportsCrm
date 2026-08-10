@@ -203,7 +203,7 @@ return [
     'pending_director_invitations' => 'Convites de Diretor Técnico Pendentes',
     'invitations_sent_professionals' => 'Convites enviados a profissionais para servir como diretores técnicos',
     'important' => 'Importante',
-    'license_director_requirement' => 'Para obter a licença de prestador de serviços de mergulho, é obrigatório:<br><br>1. A entidade ter uma filiação ativa<br>2. Carregar previamente a documentação legalmente exigida na área "Documentos da Entidade"<br>3. Garantir que o profissional de mergulho indicado está registado e associado à entidade como Instrutor ou líder de mergulho antes da submissão do pedido na área "Profissionais de Mergulho"',
+    'license_director_requirement' => 'Para obter a licença de prestador de serviços de mergulho, é obrigatório:<br><br>1. A entidade ter uma filiação ativa<br>2. Carregar previamente a documentação legalmente exigida na área "Documentos da Entidade"<br>3. Garantir que o profissional de mergulho indicado está registrado e associado à entidade como Instrutor ou líder de mergulho antes da submissão do pedido na área "Profissionais de Mergulho"',
     'license_information' => 'Informação da Licença',
     'technical_director_invitation' => 'Convite de Diretor Técnico',
     'inviting_director_for' => 'Está a convidar um diretor técnico para',
@@ -443,7 +443,7 @@ return [
     'no_diving_licenses' => 'Sem licenças de mergulho.',
 
     // Diving Professionals
-    'diving_professionals_description' => 'Lista completa de profissionais de mergulho registados no sistema.',
+    'diving_professionals_description' => 'Lista completa de profissionais de mergulho registrados no sistema.',
     'view_all_diving_professionals' => 'Ver todos os profissionais de mergulho com certificações e posições de diretor técnico',
     'search_professional_name_code' => 'Pesquisar por nome ou código de filiado',
     'active_certifications_only' => 'Apenas certificações ativas',
@@ -671,8 +671,8 @@ return [
 
     // Diving Professionals List
     'diving_professionals_description' => 'Ver e gerir profissionais de mergulho e diretores técnicos em todo o sistema',
-    'view_all_diving_professionals' => 'Ver todos os profissionais de mergulho registados no sistema',
-    'search_professional_name_code' => 'Pesquisar por nome, apelido ou código de filiado',
+    'view_all_diving_professionals' => 'Ver todos os profissionais de mergulho registrados no sistema',
+    'search_professional_name_code' => 'Pesquisar por nome, sobrenome ou código de filiado',
     'professional_name' => 'Nome do Profissional',
     'role' => 'Função',
     'instructor' => 'Instrutor',

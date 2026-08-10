@@ -101,7 +101,7 @@ return [
     'Your License Certificate' => 'O Seu Certificado de Licença',
     'Your license certificate is now available for download' => 'O seu certificado de licença está agora disponível para download',
     'License certificates are now available for download' => 'Os certificados de licença estão agora disponíveis para download',
-    'A confirmation email has been sent to your registered email address' => 'Foi enviado um email de confirmação para o seu endereço de email registado',
+    'A confirmation email has been sent to your registered email address' => 'Foi enviado um email de confirmação para o seu endereço de email registrado',
     'You will receive email confirmation shortly' => 'Receberá uma confirmação por email em breve',
 
     // Next steps and information
@@ -194,7 +194,7 @@ return [
     'Your license certificate is now available for download' => 'O seu certificado de licença está agora disponível para download',
     'Your license certificate will be available after payment confirmation' => 'O seu certificado de licença estará disponível após confirmação do pagamento',
     'You can view and manage your license in the "My Licenses" section' => 'Pode visualizar e gerir a sua licença na secção "As Minhas Licenças"',
-    'A confirmation email has been sent to your registered email address' => 'Foi enviado um email de confirmação para o seu endereço de email registado',
+    'A confirmation email has been sent to your registered email address' => 'Foi enviado um email de confirmação para o seu endereço de email registrado',
     'You will receive a confirmation email once payment is processed' => 'Receberá um email de confirmação assim que o pagamento for processado',
     'Important Information' => 'Informação Importante',
     'This license certifies you for: :role' => 'Esta licença certifica-o para: :role',
@@ -446,7 +446,7 @@ return [
     // Filter labels
     'filters' => [
         'first_name' => 'Nome',
-        'surname' => 'Apelido',
+        'surname' => 'Sobrenome',
         'member_number' => 'N. Filiado',
         'sport' => 'Modalidade',
         'entity_name' => 'Entidade',

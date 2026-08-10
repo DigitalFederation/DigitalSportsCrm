@@ -40,7 +40,7 @@ return [
     'vat_number' => 'NIF',
     'city' => 'Cidade',
     'address' => 'Endereço',
-    'postal_code' => 'Código Postal',
+    'postal_code' => 'CEP',
     'country' => 'País',
 
     // Table columns

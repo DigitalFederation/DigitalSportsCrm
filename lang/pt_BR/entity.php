@@ -49,7 +49,7 @@ return [
     // Rótulos de formulário
     'name' => 'Nome da Entidade',
     'given_name' => 'Nome Próprio',
-    'family_name' => 'Apelido',
+    'family_name' => 'Sobrenome',
     'nationality' => 'Nacionalidade',
     'federation' => 'Federação',
     'birthdate' => 'Data de Nascimento',
@@ -74,7 +74,7 @@ return [
     'no_zones_assigned' => 'Sem estados atribuídos',
     'address' => 'Endereço',
     'location' => 'Localidade',
-    'zip_code' => 'Código Postal',
+    'zip_code' => 'CEP',
     'country' => 'País',
     'select_option' => '-- Selecione uma opção --',
     'public_contacts' => 'Contatos Públicos',
@@ -99,12 +99,12 @@ return [
 
     // Secção de login do usuário
     'user_login_information' => 'Informação de login do usuário',
-    'user_login_info_description' => 'Após escolher o email do usuário, será enviado um email para que a pessoa possa registar as suas credenciais.',
+    'user_login_info_description' => 'Após escolher o email do usuário, será enviado um email para que a pessoa possa registrar as suas credenciais.',
     'user_login_email' => 'Email de login do usuário',
     'confirm_user_login_email' => 'Confirmar email de login do usuário',
     'confirm_email_address' => 'Confirmar o endereço de email',
     'email_credential_hint' => 'Credencial de email para o usuário fazer login',
-    'entity_creation_info' => 'Quando um registro de Entidade é criado, um usuário é também automaticamente associado a este registro. Será enviado um email para o endereço escolhido para que o usuário possa registar as suas credenciais. Depois disso, a pessoa pode fazer login na plataforma.',
+    'entity_creation_info' => 'Quando um registro de Entidade é criado, um usuário é também automaticamente associado a este registro. Será enviado um email para o endereço escolhido para que o usuário possa registrar as suas credenciais. Depois disso, a pessoa pode fazer login na plataforma.',
 
     // Conteúdo do modal
     'member_invitation_form' => 'Formulário de Convite de Membro',
@@ -125,7 +125,7 @@ return [
 
     // Página de visualização
     'tax_identification_number' => 'Número de Identificação Fiscal',
-    'hq_address_city_postal' => 'Endereço da Sede, Cidade, Código Postal',
+    'hq_address_city_postal' => 'Endereço da Sede, Cidade, CEP',
     'individuals' => 'Individuais',
     'diving_certifications' => 'Certificações de Mergulho',
     'scientific_certifications' => 'Certificações Científicas',

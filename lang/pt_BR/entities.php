@@ -16,7 +16,7 @@ return [
     'entity_phone' => 'Telefone da Entidade',
     'country' => 'País',
     'address' => 'Endereço',
-    'postal_code' => 'Código Postal',
+    'postal_code' => 'CEP',
     'city' => 'Cidade',
     'federation_affiliations' => 'Filiações de Federação',
     'federation_name' => 'Nome da Federação',

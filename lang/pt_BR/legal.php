@@ -169,7 +169,7 @@ return [
         'user' => 'Usuário',
         'user_definition' => 'Qualquer pessoa que aceda ao Portal',
         'member' => 'Membro',
-        'member_definition' => "Pessoa singular registada na {$federationShortName}",
+        'member_definition' => "Pessoa singular registrada na {$federationShortName}",
         'entity_definition' => "Organizacao filiada na {$federationShortName}",
         'services' => 'Servicos',
         'services_definition' => 'Conjunto de funcionalidades disponibilizadas atraves do Portal',
@@ -189,7 +189,7 @@ return [
         'service_institutional_info' => 'Consulta de informacoes institucionais',
 
         'user_registration' => 'Registro de Usuários',
-        'user_registration_intro' => 'Para aceder a determinadas funcionalidades do Portal, e necessario efetuar registro. Ao registar-se, o usuário compromete-se a:',
+        'user_registration_intro' => 'Para aceder a determinadas funcionalidades do Portal, e necessario efetuar registro. Ao registrar-se, o usuário compromete-se a:',
         'registration_true_info' => 'Fornecer informacoes verdadeiras, precisas, atuais e completas',
         'registration_keep_updated' => 'Manter os seus dados atualizados',
         'registration_credentials' => 'Manter a confidencialidade das suas credenciais de acesso',
