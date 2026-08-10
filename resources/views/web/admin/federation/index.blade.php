@@ -1,8 +1,12 @@
 @php
     $isLocal = $title === 'Associations';
+    // Page title mirrors the sidebar entry that leads here, so both stay in sync.
+    $pageTitle = $isLocal
+        ? __('menu.admin.local_organizations')
+        : __('menu.admin.national_federations');
 @endphp
 
-@section('title', $isLocal ? __('Associations') : __('National Organizations'))
+@section('title', $pageTitle)
 <x-layout>
     <div class="previous-layout-classes">
 
@@ -11,7 +15,7 @@
 
             <!-- Left: Title -->
             <div class="mb-4 sm:mb-0">
-                <h1 class="page-first-title">{{ $isLocal ? __('Associations') : __('National Organizations') }}</h1>
+                <h1 class="page-first-title">{{ $pageTitle }}</h1>
             </div>
 
             <!-- Right: Actions -->
@@ -40,7 +44,7 @@
         <!-- FILTER RESULTS COUNT -->
         <div class="sm:flex flex-row gap-4">
 
-            <x-utility.card-total :title="$isLocal ? __('Associations') : __('National Organizations')" :count="$federations->total()"></x-utility.card-total>
+            <x-utility.card-total :title="$pageTitle" :count="$federations->total()"></x-utility.card-total>
 
             <!-- FILTER RESULTS -->
             <x-filter-form :post="route('admin.federation.index')">
