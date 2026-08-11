@@ -10,6 +10,7 @@ use App\Support\DefaultCountryResolver;
 use Domain\Entities\Models\Entity;
 use Domain\Geographic\Enums\TerritorySelection;
 use Domain\Geographic\Models\Zone;
+use Domain\Geographic\Models\District;
 use Domain\Individuals\Actions\CreateIndividualAction;
 use Domain\Individuals\Actions\CreateIndividualEntityAction;
 use Domain\Individuals\DataTransferObject\IndividualData;
@@ -85,14 +86,7 @@ class IndividualController extends Controller
             ->orderBy('districts.name')
             ->get();
 
-        return response()->json($districts);
-        return view('web.public.individual.create', compact(
-            'countries',
-            'sports',
-            'committees',
-            'defaultCountryId',
-            'entities'
-        ));
+        return response()->json($districts);        
     }
 
     public function store(
