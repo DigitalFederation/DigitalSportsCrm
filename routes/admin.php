@@ -49,6 +49,7 @@ use App\Http\Controllers\Admin\FederationRoleMappingController;
 use App\Http\Controllers\Admin\FederationVotingRightController as AdminFederationVotingRightController;
 use App\Http\Controllers\Admin\GeneratedReportsController;
 use App\Http\Controllers\Admin\HomePageSettingsController;
+use App\Http\Controllers\Admin\LegalPageController;
 use App\Http\Controllers\Admin\ImpersonateController;
 use App\Http\Controllers\Admin\IndividualController as AdminIndividualController;
 use App\Http\Controllers\Admin\IndividualImportController;
@@ -970,6 +971,17 @@ Route::prefix('admin')
                 ->group(function () {
                     Route::get('/', 'index')->name('index');
                     Route::put('/', 'update')->name('update');
+                });
+
+            // Legal pages (Terms of Use / Privacy Policy / Data Sharing Policy)
+            Route::controller(LegalPageController::class)
+                ->prefix('legal-pages')
+                ->name('legal-pages.')
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::put('/', 'update')->name('update');
+                    Route::put('publish', 'publish')->name('publish');
+                    Route::get('{type}/{locale}', 'edit')->name('edit');
                 });
 
             // Zones

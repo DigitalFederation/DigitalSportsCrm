@@ -297,8 +297,18 @@ $menu = [
             'icon' => 'chart-bar',
             'route' => '',
             'can' => 'access settings',
-            'active' => ['districts', 'zones', 'member-number-settings', 'professional-roles', 'backups'],
+            'active' => ['districts', 'zones', 'member-number-settings', 'professional-roles', 'backups', 'legal-pages'],
             'children' => [
+                [
+                    'name' => 'menu.admin.legal_pages',
+                    'route' => ['admin.legal-pages.index'],
+                    'active' => ['legal-pages'],
+                    'can' => 'access settings',
+                    // Unlike `can` (which MenuSeeder does not consult), `permissions`
+                    // is written to the database row and enforced by
+                    // MenuBuilderService::userCanAccessItem().
+                    'permissions' => ['access settings'],
+                ],
                 [
                     'name' => 'menu.admin.reports',
                     'route' => ['admin.reports.index'],

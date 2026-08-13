@@ -98,8 +98,9 @@ class MenuSeeder extends Seeder
                 'active_patterns' => $item['active'] ?? null,
                 // Preserve today's behaviour: items are visible regardless of the
                 // config `can` gate (the database menu can be permission-gated by
-                // editing it directly).
-                'permissions' => [],
+                // editing it directly). An item may opt in by declaring an explicit
+                // `permissions` list, which MenuBuilderService does enforce.
+                'permissions' => $item['permissions'] ?? [],
                 'visible' => true,
             ]);
 
