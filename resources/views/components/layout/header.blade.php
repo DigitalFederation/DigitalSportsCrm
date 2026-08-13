@@ -44,6 +44,13 @@
                             'individual' => '',
                             default => ucfirst($segment)
                         };
+
+                        // The centre nav links to the public-facing registries and map.
+                        // Those are content pages for members and visitors; inside the
+                        // back office they are noise competing with the admin sidebar,
+                        // so they are hidden there. Member portals keep them, since this
+                        // header is their only in-app route to those pages.
+                        $showPublicNav = $segment !== 'admin';
                     @endphp
 
                     @if($title)
@@ -57,7 +64,8 @@
                     @endif
                 </div>
 
-                <!-- Header: Center - Public navigation (desktop only) -->
+                <!-- Header: Center - Public navigation (desktop only, not in the back office) -->
+                @if ($showPublicNav)
                 <nav class="hidden lg:flex items-center space-x-8">
                     {{-- Mapa de Entidades --}}
                     <a href="{{ route('public.map.locations') }}"
@@ -141,6 +149,7 @@
                         </div>
                     </div>
                 </nav>
+                @endif
 
                 <!-- Header: Right side -->
                 <div class="flex items-center space-x-1 md:space-x-3">
