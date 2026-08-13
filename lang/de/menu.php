@@ -4,6 +4,7 @@ return [
     // Generic labels used across contexts
     'federation_details' => 'Verbandsdetails',
     'admin' => [
+        'legal_pages' => 'Rechtliche Seiten',
         'home_page' => 'Startseite',
         'affiliation_plans' => 'Zugehörigkeitspläne',
         'permission_management' => 'Berechtigungsverwaltung',

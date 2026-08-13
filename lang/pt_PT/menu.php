@@ -4,6 +4,7 @@ return [
     // Rótulos genéricos usados em vários contextos
     'federation_details' => 'Detalhes da Federação',
     'admin' => [
+        'legal_pages' => 'Paginas Legais',
         'home_page' => 'Página Inicial',
         'permission_management' => 'Gestão de Permissões',
         'route_permissions' => 'Permissões de Rotas',
