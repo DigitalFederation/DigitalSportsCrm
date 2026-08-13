@@ -5,6 +5,7 @@ use App\Services\LegalHtmlSanitizer;
 use App\Services\LegalPageRenderer;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
@@ -96,16 +97,24 @@ return new class extends Migration
     }
 
     /**
-     * Render the legacy view for the active locale and pull out the content block,
-     * separating the heading and "last update" line from the body.
+     * Render the legacy template for the active locale and pull out the content
+     * block, separating the heading and "last update" line from the body.
+     *
+     * Deliberately compiles only the template's own markup instead of rendering
+     * the view through its layout. The public layout pulls in @vite, which throws
+     * when the frontend assets have not been built — and `php artisan migrate`
+     * routinely runs before `npm run build` on a deploy (CI never builds at all).
+     * Rendering the full page here would make the import silently skip everything
+     * in exactly the situations it exists to cover.
      *
      * @return array{title: string, body: string, effective_date: ?string}|null
      */
     private function extractLegacyContent(string $type, string $locale): ?array
     {
         try {
-            $html = View::make(self::LEGACY_VIEWS[$type])->render();
+            $html = Blade::render($this->templateBody($type));
         } catch (\Throwable $e) {
+            report($e);
             info("Skipped legal import for {$type}/{$locale}: " . $e->getMessage());
 
             return null;
@@ -157,6 +166,27 @@ return new class extends Migration
             'body' => $body,
             'effective_date' => $effectiveDate,
         ];
+    }
+
+    /**
+     * The legacy template's markup with its layout wrapper removed, so it can be
+     * compiled standalone. The remaining markup only uses __() and config(), which
+     * need nothing beyond a booted application.
+     */
+    private function templateBody(string $type): string
+    {
+        $path = resource_path('views/' . str_replace('.', '/', self::LEGACY_VIEWS[$type]) . '.blade.php');
+        $source = (string) file_get_contents($path);
+
+        return preg_replace(
+            [
+                '/@section\([^\n]*\)\s*/',          // page title directive
+                '/<\/?x-public-layout[^>]*>/',      // layout wrapper
+                '/<x-brand-logo[^>]*\/?>/',         // logo component (asset dependent)
+            ],
+            '',
+            $source
+        ) ?? $source;
     }
 
     private function fallbackTitle(string $type): string
