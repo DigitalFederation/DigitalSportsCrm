@@ -134,7 +134,22 @@ Route::controller(OnboardingController::class)->group(function () {
  * Public views of Individuals
  */
 Route::controller(IndividualController::class)->group(function () {
-    Route::get('/individual', 'create')->name('public.individual.create');
+    Route::get('/individual', 'create')
+        ->name('public.individual.create');
+
+    // AJAX: nacionalidade/país -> UFs/zonas existentes para aquele país.
+    Route::get('/individual/geography/zones/{country}', 'zones')
+        ->whereNumber('country')
+        ->middleware('throttle:60,1')
+        ->name('public.individual.zones');
+
+    // AJAX: país + UF/zona -> cidades/distritos daquela combinação.
+    Route::get('/individual/geography/districts/{country}/{zone}', 'districts')
+        ->whereNumber('country')
+        ->whereNumber('zone')
+        ->middleware('throttle:60,1')
+        ->name('public.individual.districts');
+
     Route::post('/individual', 'store')
         ->middleware([ProtectAgainstSpam::class, 'throttle:5,1'])
         ->name('public.individual.store');

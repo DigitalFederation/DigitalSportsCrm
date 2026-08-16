@@ -213,14 +213,43 @@
                                         @enderror
                                     </div>
 
-                                    <!-- Administrative area, Location, Postal Code -->
-                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                        <livewire:geographic.administrative-area-selector
-                                            :country-id="$defaultCountryId"
-                                            :selected-zone-id="old('administrative_zone_id') ? (int) old('administrative_zone_id') : null"
-                                            :selected-district-id="old('district_id')"
-                                            :required="true"
-                                        />
+                                    <!-- UF, Cidade, Location, Postal Code -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                                        <!-- Zone / UF -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1" for="zone_id">
+                                                UF
+                                                <span class="text-rose-500">*</span>
+                                            </label>
+                                            <select id="zone_id"
+                                                    class="form-select w-full {{ $errors->has('zone_id') ? 'border-rose-300' : '' }}"
+                                                    name="zone_id"
+                                                    disabled
+                                                    required>
+                                                <option value="">Selecione primeiro a nacionalidade</option>
+                                            </select>
+                                            @error('zone_id')
+                                                <div class="text-xs mt-1 text-rose-500">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- District / City -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1" for="district_id">
+                                                Cidade
+                                                <span class="text-rose-500">*</span>
+                                            </label>
+                                            <select id="district_id"
+                                                    class="form-select w-full {{ $errors->has('district_id') ? 'border-rose-300' : '' }}"
+                                                    name="district_id"
+                                                    disabled
+                                                    required>
+                                                <option value="">Selecione primeiro a UF</option>
+                                            </select>
+                                            @error('district_id')
+                                                <div class="text-xs mt-1 text-rose-500">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
                                         <!-- Location -->
                                         <div>
@@ -251,6 +280,10 @@
                                                 <div class="text-xs mt-1 text-rose-500">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                    </div>
+
+                                    <div id="geography-help"
+                                         class="hidden mt-3 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
                                     </div>
                                 </div>
                             </div>
@@ -500,4 +533,218 @@
         </section>
 
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countrySelect = document.getElementById('individual_country_id');
+            const zoneSelect = document.getElementById('zone_id');
+            const districtSelect = document.getElementById('district_id');
+            const geographyHelp = document.getElementById('geography-help');
+            const addressInput = document.getElementById('address');
+
+            if (!countrySelect || !zoneSelect || !districtSelect || !geographyHelp || !addressInput) {
+                return;
+            }
+
+            // Kept for compatibility with the existing CreatePublicIndividualRequest/controller.
+            // The visible label is now "Vide endereço".
+            const addressOnlyValue = 'outside_portugal';
+            const oldZoneId = @json(old('zone_id'));
+            const oldDistrictId = @json(old('district_id'));
+
+            const zonesUrlTemplate = @json(route('public.individual.zones', ['country' => '__COUNTRY__']));
+            const districtsUrlTemplate = @json(route('public.individual.districts', ['country' => '__COUNTRY__', 'zone' => '__ZONE__' ]));
+
+            const setHelp = (message = '') => {
+                geographyHelp.textContent = message;
+                geographyHelp.classList.toggle('hidden', !message);
+            };
+
+            const setAddressRequired = (required) => {
+                addressInput.required = required;
+            };
+
+            const clearSelect = (select, placeholder) => {
+                select.innerHTML = '';
+                select.appendChild(new Option(placeholder, ''));
+                select.value = '';
+            };
+
+            const addAddressOnlyOption = (select, selected = false) => {
+                const option = new Option('Vide endereço', addressOnlyValue, selected, selected);
+                select.appendChild(option);
+            };
+
+            const fetchJson = async (url) => {
+                const response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                return response.json();
+            };
+
+            const enableAddressOnlyForDistrict = (message) => {
+                clearSelect(districtSelect, 'Selecione uma opção');
+                addAddressOnlyOption(districtSelect, true);
+                districtSelect.disabled = false;
+                setAddressRequired(true);
+                setHelp(message);
+            };
+
+            const loadDistricts = async (countryId, zoneId, selectedDistrictId = null) => {
+                if (!zoneId || zoneId === addressOnlyValue) {
+                    enableAddressOnlyForDistrict(
+                        'Informe a UF/estado/província e a cidade no campo Endereço.'
+                    );
+                    return;
+                }
+
+                clearSelect(districtSelect, 'Carregando cidades...');
+                districtSelect.disabled = true;
+
+                const url = districtsUrlTemplate
+                    .replace('__COUNTRY__', encodeURIComponent(countryId))
+                    .replace('__ZONE__', encodeURIComponent(zoneId));
+
+                try {
+                    const districts = await fetchJson(url);
+
+                    clearSelect(districtSelect, 'Selecione a cidade');
+
+                    if (districts.length === 0) {
+                        addAddressOnlyOption(districtSelect, true);
+                        districtSelect.disabled = false;
+                        setHelp(
+                            'Não há cidades cadastradas para esta UF/zona. Informe a cidade e a UF/estado/província no campo Endereço.'
+                        );
+                        return;
+                    }
+
+                    districts.forEach((district) => {
+                        districtSelect.appendChild(new Option(district.name, district.id));
+                    });
+
+                    // Always keep a non-blocking escape hatch for an incomplete database.
+                    addAddressOnlyOption(districtSelect, selectedDistrictId === addressOnlyValue);
+                    districtSelect.disabled = false;
+                    setAddressRequired(selectedDistrictId === addressOnlyValue);
+
+                    if (selectedDistrictId && selectedDistrictId !== addressOnlyValue) {
+                        const exists = Array.from(districtSelect.options)
+                            .some((option) => option.value === String(selectedDistrictId));
+
+                        districtSelect.value = exists ? String(selectedDistrictId) : addressOnlyValue;
+
+                        if (!exists) {
+                            setHelp(
+                                'A cidade anteriormente informada não está disponível. Informe a cidade e a UF/estado/província no campo Endereço.'
+                            );
+                        }
+                    }
+                } catch (error) {
+                    console.error('Erro ao carregar cidades:', error);
+                    enableAddressOnlyForDistrict(
+                        'Não foi possível carregar as cidades. Você pode continuar o cadastro: informe a cidade e a UF/estado/província no campo Endereço.'
+                    );
+                }
+            };
+
+            const loadZones = async (countryId, selectedZoneId = null, selectedDistrictId = null) => {
+                clearSelect(zoneSelect, 'Carregando UFs/zonas...');
+                clearSelect(districtSelect, 'Selecione primeiro a UF');
+                zoneSelect.disabled = true;
+                districtSelect.disabled = true;
+                setHelp('');
+                setAddressRequired(false);
+
+                if (!countryId) {
+                    clearSelect(zoneSelect, 'Selecione primeiro a nacionalidade');
+                    return;
+                }
+
+                const url = zonesUrlTemplate.replace('__COUNTRY__', encodeURIComponent(countryId));
+
+                try {
+                    const zones = await fetchJson(url);
+
+                    clearSelect(zoneSelect, 'Selecione a UF/zona');
+
+                    if (zones.length === 0) {
+                        addAddressOnlyOption(zoneSelect, true);
+                        zoneSelect.disabled = false;
+                        enableAddressOnlyForDistrict(
+                            'Não há UFs/zonas cadastradas para este país. Informe a UF/estado/província e a cidade no campo Endereço.'
+                        );
+                        return;
+                    }
+
+                    zones.forEach((zone) => {
+                        const label = zone.code ? `${zone.name} (${zone.code})` : zone.name;
+                        zoneSelect.appendChild(new Option(label, zone.id));
+                    });
+
+                    // Allows registration even when only part of the country's zones exist.
+                    addAddressOnlyOption(zoneSelect, selectedZoneId === addressOnlyValue);
+                    zoneSelect.disabled = false;
+
+                    if (selectedZoneId) {
+                        const exists = Array.from(zoneSelect.options)
+                            .some((option) => option.value === String(selectedZoneId));
+                        zoneSelect.value = exists ? String(selectedZoneId) : addressOnlyValue;
+
+                        if (zoneSelect.value === addressOnlyValue) {
+                            enableAddressOnlyForDistrict(
+                                'A UF/zona não está cadastrada. Informe a UF/estado/província e a cidade no campo Endereço.'
+                            );
+                            return;
+                        }
+
+                        await loadDistricts(countryId, zoneSelect.value, selectedDistrictId);
+                    }
+                } catch (error) {
+                    console.error('Erro ao carregar UFs/zonas:', error);
+                    clearSelect(zoneSelect, 'Selecione uma opção');
+                    addAddressOnlyOption(zoneSelect, true);
+                    zoneSelect.disabled = false;
+                    enableAddressOnlyForDistrict(
+                        'Não foi possível carregar as UFs/zonas. Você pode continuar o cadastro: informe a UF/estado/província e a cidade no campo Endereço.'
+                    );
+                }
+            };
+
+            countrySelect.addEventListener('change', () => {
+                loadZones(countrySelect.value);
+            });
+
+            zoneSelect.addEventListener('change', () => {
+                setHelp('');
+                loadDistricts(countrySelect.value, zoneSelect.value);
+            });
+
+            districtSelect.addEventListener('change', () => {
+                if (districtSelect.value === addressOnlyValue) {
+                    setAddressRequired(true);
+                    setHelp(
+                        'Informe a cidade e a UF/estado/província no campo Endereço.'
+                    );
+                } else if (zoneSelect.value !== addressOnlyValue) {
+                    setAddressRequired(false);
+                    setHelp('');
+                }
+            });
+
+            // Restore dependent fields after validation errors without loading every district.
+            if (countrySelect.value) {
+                loadZones(countrySelect.value, oldZoneId, oldDistrictId);
+            }
+        });
+    </script>
+
 </x-public-layout>
