@@ -767,8 +767,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ __('event_applications.wizard.expense_items.' . $itemKey) }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -776,7 +776,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? number_format($groupTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? \Support\Money::amount($groupTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -833,8 +833,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ $p['entity'] ?? '-' }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -842,7 +842,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $partnersTotal ? number_format($partnersTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $partnersTotal ? \Support\Money::amount($partnersTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -907,8 +907,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ __('event_applications.wizard.revenue_items.' . $itemKey) }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -916,7 +916,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? number_format($groupTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? \Support\Money::amount($groupTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>

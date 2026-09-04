@@ -394,9 +394,8 @@
                         <span class="text-lg font-bold text-slate-900">{{ __('events.grand_total') }}</span>
                         <div class="flex items-baseline gap-1">
                             <span class="text-3xl font-bold text-primary">
-                                {{ number_format($grandTotal, 2) }}
+                                {{ money($grandTotal) }}
                             </span>
-                            <span class="text-lg font-semibold text-primary">{{ \Support\Money::symbol() }}</span>
                         </div>
                     </div>
                 </div>

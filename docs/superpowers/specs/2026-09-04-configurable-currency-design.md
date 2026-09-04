@@ -208,8 +208,9 @@ Two snags the implementation must handle:
    same change, or the lookup silently falls through to the raw key.
 2. **`lang/*/main.php` uses the full English sentence as its key.** No `__()`
    call site references it (the live key is `memberships.free_plan_option`), so
-   it is a stale duplicate — update the string in place for consistency and do
-   not add a new call site.
+   it is a stale duplicate. *Implemented differently:* rather than rewrite a dead
+   entry, it was deleted from all six locales, which also let the regression fence
+   scan `lang/` without an exception for it.
 
 **Plugins are out of scope.** `app/Plugins/` is a Composer package loader; a
 plugin ships its own views and adopts `money()` on its own schedule. The helper
@@ -286,11 +287,12 @@ above are quoted in the CHANGELOG and pull request.
    including the event-application PDF, the Moloni settings screen, and a JavaScript
    `Intl.NumberFormat` pinned to `currency: 'EUR'` — wrote the ISO code instead of the
    symbol. That is **21 additional occurrences**, so the true total is 233, not 212.
-4. **A stale `squidflex.currency_symbol` config key.** Seven templates read a config
-   key belonging to an unrelated project; no `config/squidflex.php` exists. Four passed
-   `'€'` as a fallback and rendered correctly by accident. The other three — both club
-   subscriptions views — passed no default and have been rendering amounts with **no
-   currency symbol at all**. All replaced with `money()`; the dead key is gone.
+4. **A stale `squidflex.currency_symbol` config key.** Five templates and one
+   controller read a config key belonging to an unrelated project — 11 occurrences,
+   and no `config/squidflex.php` exists. Eight passed `'€'` as a fallback and rendered
+   correctly by accident. The other three, both club subscriptions views, passed no
+   default and have been rendering amounts with **no currency symbol at all**. All
+   replaced with `money()`; the dead key is gone.
 5. **Four spellings of the euro, not one.** The sweep and the first version of the
    fence matched only the literal `€` and the ISO code. The templates also spell it
    `&euro;` and `&#8364;`, which left **26 further occurrences** across 10 files —

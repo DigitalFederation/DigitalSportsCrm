@@ -24,8 +24,8 @@ update procedure.
   `config/currency.php` now drives the symbol, its position, whether a space separates it from
   the number, the decimal places, and the separator characters — so an installation can bill in
   reais, dollars, or anything else. Amounts render through a single `money()` helper backed by
-  `Support\Money`, and a test fails the build if a currency symbol is written into a template or
-  a translation again. Presets for the Euro, the US dollar, and the Brazilian real are in
+  `Support\Money`, and a test fails the build if a hardcoded euro — the symbol, the ISO code, or
+  the HTML entities — is written into a template, a class, or a translation again. Presets for the Euro, the US dollar, and the Brazilian real are in
   [Currency](https://digitalfederation.github.io/DigitalSportsCrm/guides/localization-and-geography#currency).
 
   This also fixes the club subscriptions screens, which showed amounts with no currency symbol at

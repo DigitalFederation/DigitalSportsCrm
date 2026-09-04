@@ -441,7 +441,7 @@
                                             @endphp
                                             @if($totalPrice > 0)
                                                 <span class="text-xs font-semibold text-blue-800">
-                                                    {{ __('membership.estimated_total') }}: {{ number_format($totalPrice, 2) }}
+                                                    {{ __('membership.estimated_total') }}: {{ money($totalPrice) }}
                                                 </span>
                                             @endif
                                         @endif

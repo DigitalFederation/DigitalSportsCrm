@@ -293,7 +293,7 @@
                             <div class="mb-4 pb-4 border-b border-slate-100">
                                 <div class="flex items-baseline gap-2">
                                     <span class="text-2xl font-bold text-slate-900">
-                                        {{ number_format($package->calculated_price, 2) }}
+                                        {{ money($package->calculated_price) }}
                                     </span>
                                     <span class="text-sm text-slate-500">{{ __('main.per_year') }}</span>
                                 </div>
@@ -324,7 +324,7 @@
                                                         @endif
                                                     </div>
                                                     @if($insurancePlan->individual_fee)
-                                                        <span class="text-xs text-slate-500">{{ number_format($insurancePlan->individual_fee, 2) }}</span>
+                                                        <span class="text-xs text-slate-500">{{ money($insurancePlan->individual_fee) }}</span>
                                                     @endif
                                                 </div>
                                             @endforeach

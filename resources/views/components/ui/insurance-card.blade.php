@@ -270,7 +270,7 @@
                              x-data="{
                                  showConfirmModal: false,
                                  packageName: {{ json_encode($package->name) }},
-                                 packagePrice: {{ json_encode(number_format($price, 2)) }}
+                                 packagePrice: {{ json_encode(money($price)) }}
                              }">
                             <x-ui.button
                                 variant="primary"
@@ -328,7 +328,7 @@
                                                             <div class="text-sm">
                                                                 <div class="font-medium text-gray-900" x-text="packageName"></div>
                                                                 <div class="mt-1 text-gray-600">
-                                                                    {{ __('Valor Total') }}: <span class="font-semibold">{{ \Support\Money::symbol() }}<span x-text="packagePrice"></span></span>
+                                                                    {{ __('Valor Total') }}: <span class="font-semibold"><span x-text="packagePrice"></span></span>
                                                                 </div>
                                                             </div>
                                                         </div>

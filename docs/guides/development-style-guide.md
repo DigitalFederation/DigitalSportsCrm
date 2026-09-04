@@ -618,18 +618,18 @@ For labels that name the currency rather than print an amount — a chart axis, 
 `Support\Money::code()` and pass it into the translation as a placeholder:
 
 ```php
-// Translation file:  'revenue' => 'Revenue (:currency)'
-__('dashboard.revenue', ['currency' => Money::code()])
+// Translation file:  'revenue_in_currency' => 'Revenue (:currency)'
+__('dashboard.revenue_in_currency', ['currency' => Money::code()])
 ```
 
 Where a translated sentence embeds an amount, the amount is a placeholder filled by the caller, not
 part of the translated text:
 
 ```php
-// Correct:  'purchase' => 'Purchase for :amount'
-__('licenses.purchase', ['amount' => money($totalPrice)])
+// Correct:  'Purchase for :amount' => 'Purchase for :amount'
+__('licenses.Purchase for :amount', ['amount' => money($totalPrice)])
 
-// Wrong:    'purchase' => 'Purchase for €:amount'
+// Wrong:    'Purchase for €:amount' => 'Purchase for €:amount'
 ```
 
 `Support\Money::amount()` returns the formatted number without a symbol, for the rare case where a

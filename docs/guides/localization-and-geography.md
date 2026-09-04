@@ -122,9 +122,10 @@ and `php artisan config:cache`, as with the other installation defaults above.
 
 A few screens format an amount in the browser rather than on the server: a Chart.js axis callback
 on the licence analytics dashboard, and some Alpine `x-text` bindings on the subscription and
-insurance pages. These use the configured symbol and ISO code, but always place the symbol before
-the number and use the browser's own separators — they do not honour `CURRENCY_SYMBOL_POSITION`,
-`CURRENCY_DECIMAL_SEPARATOR`, or `CURRENCY_THOUSANDS_SEPARATOR`.
+insurance pages. These use the configured symbol or ISO code, but fix its placement in the markup — the analytics
+chart prefixes the symbol, the insurance bindings append the ISO code — and they use the browser's
+own separators. They do not honour `CURRENCY_SYMBOL_POSITION`, `CURRENCY_DECIMAL_SEPARATOR`, or
+`CURRENCY_THOUSANDS_SEPARATOR`.
 
 Every server-rendered amount does, as does the event-application budget step, whose client-side
 totals are formatted from the same configuration.

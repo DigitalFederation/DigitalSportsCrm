@@ -43,9 +43,9 @@
 
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                             @if ($plan->target_audience === \App\Enums\InsurancePlansTargetAudienceEnum::INDIVIDUAL->value)
-                                {{ number_format($plan->individual_fee, 2) }}
+                                {{ money($plan->individual_fee) }}
                             @else
-                                {{ number_format($plan->entity_fee, 2) }}
+                                {{ money($plan->entity_fee) }}
                             @endif
                         </td>
 

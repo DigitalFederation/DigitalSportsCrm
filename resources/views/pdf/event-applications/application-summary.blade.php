@@ -679,8 +679,8 @@
                                     <tr>
                                         <td>{{ __('event_applications.wizard.expense_items.' . $itemKey) }}</td>
                                         <td class="text-right">{{ $qty }}</td>
-                                        <td class="text-right">{{ number_format($val, 2) }}</td>
-                                        <td class="text-right">{{ number_format($subtotal, 2) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($val) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($subtotal) }}</td>
                                     </tr>
                                 @endif
                             @endforeach
@@ -715,8 +715,8 @@
                                     <tr>
                                         <td>{{ $label }}</td>
                                         <td class="text-right">{{ $qty }}</td>
-                                        <td class="text-right">{{ number_format($val, 2) }}</td>
-                                        <td class="text-right">{{ number_format($subtotal, 2) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($val) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($subtotal) }}</td>
                                     </tr>
                                 @endif
                             @endforeach

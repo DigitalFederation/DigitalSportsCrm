@@ -379,7 +379,7 @@
                                     @click="
                                         selectedPackage = {{ $package->id }};
                                         selectedPackageName = {{ json_encode($package->name) }};
-                                        selectedPackagePrice = {{ $package->calculatePriceFor(get_class($individual)) }};
+                                        selectedPackagePrice = {{ json_encode(money($package->calculatePriceFor(get_class($individual)))) }};
                                         selectedPackageItems = {{ json_encode($packageItems) }};
                                         showConfirmModal = true;
                                     "
@@ -423,7 +423,7 @@
                     <div class="mb-6">
                         <h4 class="text-md font-medium text-gray-900 mb-2" x-text="selectedPackageName"></h4>
                         <p class="text-sm text-gray-600 mb-2">
-                            {{ __('subscriptions.price') }} <span class="font-medium" x-text="`{{ \Support\Money::symbol() }}${selectedPackagePrice}`"></span>
+                            {{ __('subscriptions.price') }} <span class="font-medium" x-text="selectedPackagePrice"></span>
                         </p>
                         <div class="text-sm text-gray-600">
                             <p class="font-medium mb-1">{{ __('subscriptions.package_includes') }}</p>

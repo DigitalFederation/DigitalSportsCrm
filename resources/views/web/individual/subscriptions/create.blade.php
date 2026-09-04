@@ -8,7 +8,7 @@
                     <h2 class="font-semibold text-slate-800 mb-4">{{ __('subscriptions.selected_package') }}: {{ $selectedPackage->name }}</h2>
                     <p class="text-sm text-slate-600 mb-4">{{ $selectedPackage->description }}</p>
                     <div class="text-sm text-slate-800 mb-4">
-                        <div><span class="font-semibold">{{ __('subscriptions.price') }}:</span> ${{ number_format($selectedPackage->calculatePrice(), 2) }}/year</div>
+                        <div><span class="font-semibold">{{ __('subscriptions.price') }}:</span> {{ money($selectedPackage->calculatePrice()) }}/year</div>
                         <div class="mt-2"><span class="font-semibold">{{ __('subscriptions.includes') }}:</span></div>
                         <ul class="list-disc list-inside ml-2">
                             @foreach($selectedPackage->affiliationPlans as $affiliation)
@@ -38,7 +38,7 @@
                                 <h3 class="font-semibold text-slate-800 mb-2">{{ $package->name }}</h3>
                                 <p class="text-sm text-slate-600 mb-4">{{ Str::limit($package->description, 100) }}</p>
                                 <div class="text-sm text-slate-800 mb-4">
-                                    <div><span class="font-semibold">{{ __('subscriptions.price') }}:</span> ${{ number_format($package->calculatePrice(), 2) }}/year</div>
+                                    <div><span class="font-semibold">{{ __('subscriptions.price') }}:</span> {{ money($package->calculatePrice()) }}/year</div>
                                     <div class="mt-2"><span class="font-semibold">{{ __('subscriptions.includes') }}:</span></div>
                                     <ul class="list-disc list-inside ml-2">
                                         @foreach($package->affiliationPlans as $affiliation)

@@ -37,11 +37,11 @@
                         @foreach($months as $monthNum => $monthLabel)
                             @php $value = $monthlyData[$categoryKey][$monthNum] ?? 0; @endphp
                             <td class="px-2 py-2 whitespace-nowrap text-center text-sm text-gray-700 dark:text-gray-300 border-r border-gray-200 dark:border-gray-600">
-                                {{ $value > 0 ? number_format($value, 2, ',', '.') : '-' }}
+                                {{ $value > 0 ? \Support\Money::amount($value) : '-' }}
                             </td>
                         @endforeach
                         <td class="px-2 py-2 whitespace-nowrap text-center text-sm font-semibold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-600">
-                            {{ number_format($categoryTotals[$categoryKey] ?? 0, 2, ',', '.') }}
+                            {{ \Support\Money::amount($categoryTotals[$categoryKey] ?? 0) }}
                         </td>
                     </tr>
                 @endforeach
@@ -53,11 +53,11 @@
                     </td>
                     @foreach($months as $monthNum => $monthLabel)
                         <td class="px-2 py-2 whitespace-nowrap text-center text-sm font-bold text-gray-900 dark:text-white border-r border-gray-200 dark:border-gray-600">
-                            {{ ($monthTotals[$monthNum] ?? 0) > 0 ? number_format($monthTotals[$monthNum], 2, ',', '.') : '-' }}
+                            {{ ($monthTotals[$monthNum] ?? 0) > 0 ? \Support\Money::amount($monthTotals[$monthNum]) : '-' }}
                         </td>
                     @endforeach
                     <td class="px-2 py-2 whitespace-nowrap text-center text-sm font-bold text-gray-900 dark:text-white bg-gray-200 dark:bg-gray-600">
-                        {{ number_format($grandTotal, 2, ',', '.') }}
+                        {{ \Support\Money::amount($grandTotal) }}
                     </td>
                 </tr>
             </tbody>
