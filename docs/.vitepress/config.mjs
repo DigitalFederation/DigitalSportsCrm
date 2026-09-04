@@ -14,11 +14,16 @@ export default defineConfig({
     'Documentation for Digital Sports CRM — an open-source Laravel platform for federation management.',
   cleanUrls: true,
 
-  // Internal design/implementation plans live under docs/plans/. They are working
-  // notes, not operator documentation, and they contain Blade snippets like
-  // `{{ config(...) }}` that VitePress would otherwise parse as Vue expressions
-  // and fail the build on. Keep them in the repo, out of the published site.
-  srcExclude: ['plans/**'],
+  // Internal design notes and specs are working notes, not operator documentation,
+  // and they contain Blade snippets like `{{ config(...) }}` that VitePress would
+  // otherwise parse as Vue expressions and fail the build on. Keep them in the
+  // repo, out of the published site.
+  //
+  // This is a list of directory names, so it does NOT cover a notes directory
+  // added later: adding one without listing it here breaks the docs build with a
+  // "Error parsing JavaScript expression" on the first Blade snippet it contains.
+  // Add new internal-notes directories here.
+  srcExclude: ['plans/**', 'superpowers/**'],
   lastUpdated: true,
   ignoreDeadLinks: true,
 
