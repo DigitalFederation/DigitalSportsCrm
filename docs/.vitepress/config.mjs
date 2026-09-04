@@ -95,6 +95,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Getting Started', link: '/guides/getting-started' },
+          { text: 'Upgrading', link: '/guides/upgrading' },
           { text: 'Configuring Committees', link: '/guides/configuring-committees' },
           { text: 'Navigation & Menus', link: '/guides/navigation-and-menus' },
           { text: 'Building Integrations', link: '/guides/building-integrations' },

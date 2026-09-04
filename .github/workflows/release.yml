@@ -1,0 +1,83 @@
+name: Release
+
+# Publishing a release is a single action: push a `vX.Y.Z` tag. The release notes
+# are taken verbatim from that version's CHANGELOG.md section, so the changelog in
+# the repo and the notes on GitHub can never disagree.
+#
+#   1. Add the `## [X.Y.Z] — YYYY-MM-DD` section to CHANGELOG.md
+#   2. Bump `version` in config/app.php to X.Y.Z (CI enforces the match)
+#   3. git tag vX.Y.Z && git push origin vX.Y.Z
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish GitHub release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve version from tag
+        id: version
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          # A pre-release tag (v1.3.0-rc.1) is published as a GitHub pre-release.
+          if [[ "$version" == *-* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify config/app.php matches the tag
+        run: |
+          version="${{ steps.version.outputs.version }}"
+          configured=$(grep -oE "'version' => env\('APP_VERSION', '[^']+'\)" config/app.php | grep -oE "[0-9][^']*" | tail -1)
+          if [ "$configured" != "$version" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match config/app.php version '$configured'."
+            echo "Bump 'version' in config/app.php to $version before tagging."
+            exit 1
+          fi
+          echo "config/app.php version: $configured ✓"
+
+      - name: Extract release notes from CHANGELOG.md
+        id: notes
+        run: |
+          version="${{ steps.version.outputs.version }}"
+          # Print the lines between this version's heading and the next `## ` heading.
+          awk -v v="$version" '
+            $0 ~ "^## \\[" v "\\]" { capture = 1; next }
+            capture && /^## / { exit }
+            capture { print }
+          ' CHANGELOG.md | sed -e '/./,$!d' > notes.md
+
+          if [ ! -s notes.md ]; then
+            echo "::error::No '## [$version]' section found in CHANGELOG.md."
+            exit 1
+          fi
+
+          {
+            cat notes.md
+            echo
+            echo "**Upgrading:** see the [upgrade guide](https://digitalfederation.github.io/DigitalSportsCrm/guides/upgrading)."
+          } > release-notes.md
+
+          cat release-notes.md
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file release-notes.md \
+            --verify-tag \
+            ${{ steps.version.outputs.prerelease == 'true' && '--prerelease' || '' }}

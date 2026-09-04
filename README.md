@@ -1,6 +1,7 @@
 # Digital Sports CRM
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/DigitalFederation/DigitalSportsCrm?label=latest%20release)](https://github.com/DigitalFederation/DigitalSportsCrm/releases/latest)
 
 Digital Sports CRM is an open-source **Laravel 11 + Vite** platform for federation management. It
 provides operational workflows for members, entities, certifications, licenses, events, documents,
@@ -63,6 +64,45 @@ A fresh `migrate --seed` does **not** create a login account. To seed a first ad
 `SEED_DEFAULT_ADMIN=true` and `DEFAULT_ADMIN_PASSWORD` in `.env` before seeding — see
 **[Getting Started](https://digitalfederation.github.io/DigitalSportsCrm/guides/getting-started)**
 for the full guide, including the required scheduler (cron) and queue worker for production.
+
+## Versions & Updates
+
+Releases follow [Semantic Versioning](https://semver.org/) and are published as
+[GitHub releases](https://github.com/DigitalFederation/DigitalSportsCrm/releases), each with
+notes describing what changed. `CHANGELOG.md` in this repository carries the same history.
+
+**Am I running the latest version?**
+
+```bash
+git describe --tags                     # e.g. v1.2.0
+```
+
+The version is also shown in the app's sidebar footer and on its **Version & Changelog** page.
+Compare it with the
+[latest release](https://github.com/DigitalFederation/DigitalSportsCrm/releases/latest).
+
+> A bare tag (`v1.2.0`) means you are on that release. Something like `v1.2.0-5-g168f401` means
+> you are 5 commits past it — a development snapshot of `main`, not a release.
+
+**Update to the latest release:**
+
+```bash
+git fetch --tags
+git checkout $(git tag -l 'v*' --sort=-v:refname | head -n1)
+composer install --no-dev --optimize-autoloader
+npm ci && npm run build
+php artisan migrate --force
+php artisan optimize:clear && php artisan optimize
+php artisan queue:restart
+```
+
+**Back up your database and `storage/` first**, and read the notes for every release between
+yours and the target — the *Changed* sections are where manual steps appear. The full
+procedure, including rollback, is in the
+**[Upgrading guide](https://digitalfederation.github.io/DigitalSportsCrm/guides/upgrading)**.
+
+To be notified of new versions, choose **Watch → Custom → Releases** on this repository. The
+application itself never phones home to check for updates.
 
 ## Configuration
 
