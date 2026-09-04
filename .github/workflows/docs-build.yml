@@ -1,0 +1,42 @@
+name: Docs Build
+
+# The Deploy Docs workflow only runs on push to main, so until now a docs build
+# error was discovered after merge, on the deploy — which is how the site stayed
+# broken from 2026-08-13 to 2026-09-04. This builds the docs on pull requests so
+# the failure surfaces before merge instead.
+#
+# Build only: no Pages permissions, no artifact upload, no deploy.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/docs-build.yml'
+      - '.github/workflows/docs.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    env:
+      # The docs build doesn't need the app's heavyweight runtime deps.
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # No DOCS_BASE here: the config falls back to '/', which is what a
+      # build-only check wants. The real base is resolved at deploy time.
+      - run: npm run docs:build
