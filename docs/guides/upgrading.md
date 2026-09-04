@@ -14,7 +14,8 @@ Three ways, in order of convenience:
 
 1. **In the app** — the version is shown in the sidebar footer, and on the
    **Version & Changelog** page (`/changelog`), which also renders the full changelog.
-2. **On the server** — `php artisan tinker --execute="echo config('app.version');"`
+2. **On the server** — `php artisan version:check`, which prints the installed version and
+   compares it with the latest release (see [below](#being-told-instead-of-checking)).
 3. **From git** — `git describe --tags`
 
 ::: tip Reading `git describe`
@@ -30,12 +31,65 @@ Compare it with the
 GitHub. Every release there lists what changed, and the same notes are in
 [`CHANGELOG.md`](https://github.com/DigitalFederation/DigitalSportsCrm/blob/main/CHANGELOG.md).
 
-To be told about new releases instead of checking, open the
-[repository](https://github.com/DigitalFederation/DigitalSportsCrm) and choose
-**Watch → Custom → Releases**. GitHub then emails you on each new version.
+## Being told, instead of checking
 
-The application never contacts GitHub on its own — a self-hosted instance makes no outbound
-calls to check for updates.
+Three ways, depending on how you operate the deployment.
+
+### Ask the installation itself
+
+```bash
+php artisan version:check
+```
+
+```
+Installed version: 1.2.0
+Latest release:    1.3.0
+
+An update is available: 1.2.0 -> 1.3.0
+Release notes: https://github.com/DigitalFederation/DigitalSportsCrm/releases/tag/v1.3.0
+```
+
+The exit codes are meant for monitoring, so you can schedule it and be alerted rather than
+remembering to look:
+
+| Exit code | Meaning |
+| --- | --- |
+| `0` | Up to date (or ahead of the latest release). |
+| `1` | An update is available. |
+| `2` | The check failed — offline, rate-limited, or an unexpected response. |
+
+A failed check is deliberately *not* reported as "outdated", so a flaky network never pages you
+about a release that does not exist. A weekly cron entry is usually enough:
+
+```cron
+0 9 * * 1 cd /path/to/app && php artisan version:check || true
+```
+
+This command is the **only** thing that contacts GitHub, and only when you run it. It sends
+nothing about your deployment — no identifiers, no configuration, no usage data — just the
+request for the latest release number. Forks can point it elsewhere with
+`UPDATE_CHECK_REPOSITORY=owner/repo`, or disable it by setting that variable empty.
+
+### Email from GitHub
+
+Open the [repository](https://github.com/DigitalFederation/DigitalSportsCrm) and choose
+**Watch → Custom → Releases**. GitHub emails you on each new version. Best for a person; it
+needs a GitHub account.
+
+### Release feed
+
+```
+https://github.com/DigitalFederation/DigitalSportsCrm/releases.atom
+```
+
+A standard Atom feed — no account needed. Point an RSS reader at it, or pipe it into Slack,
+Teams, or a monitoring job.
+
+### What the application does not do
+
+Nothing checks for updates automatically. The application makes no outbound calls of its own,
+shows no update banner, and never reports anything about your installation anywhere. Whichever
+of the above you choose, you are the one initiating it.
 
 ## What the version number means
 

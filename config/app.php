@@ -270,4 +270,19 @@ return [
     */
 
     'version' => env('APP_VERSION', '1.2.0'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Update Check Repository
+    |--------------------------------------------------------------------------
+    |
+    | The GitHub "owner/repo" that `php artisan version:check` compares this
+    | installation against. That command is the only thing that reads it, and
+    | it only runs when an operator invokes it — the application never contacts
+    | GitHub on its own. Forks may point this at their own repository, or set
+    | it empty to disable the check.
+    |
+    */
+
+    'update_check_repository' => env('UPDATE_CHECK_REPOSITORY', 'DigitalFederation/DigitalSportsCrm'),
 ];

@@ -22,10 +22,37 @@ this will be familiar if you have deployed Laravel before.
 
 ## Quick start (local)
 
-```bash
-git clone <your-repo-url>
-cd <repo>
+### Get the code
 
+Install a **release**, not `main`. Releases are tested, changelogged, and give you a version
+number that means something; `main` is the development branch and may contain unreleased work.
+
+```bash
+git clone --branch v1.2.0 https://github.com/DigitalFederation/DigitalSportsCrm.git
+cd DigitalSportsCrm
+```
+
+Replace `v1.2.0` with the
+[latest release](https://github.com/DigitalFederation/DigitalSportsCrm/releases/latest).
+Cloning at a tag leaves git in "detached HEAD" state and prints a notice about it — that is
+expected and correct for a deployment, which should sit on a fixed release rather than follow a
+branch.
+
+::: details Tracking `main` instead
+Only if you intend to run unreleased code:
+
+```bash
+git clone https://github.com/DigitalFederation/DigitalSportsCrm.git
+```
+
+Be aware that the version shown in the app is the *last released* number until the next release
+is cut, so a `main` install reports `1.2.0` while actually being ahead of it. Use
+`git describe --tags` — output like `v1.2.0-7-gabc1234` means 7 commits past the release.
+:::
+
+### Install dependencies
+
+```bash
 composer install
 npm ci
 
