@@ -13,7 +13,21 @@ update procedure.
 
 ## [Unreleased]
 
-_Nothing yet._
+### Added
+
+- **`php artisan version:check`.** Compares the installed version against the latest published
+  release and exits `1` when an update is available, `2` when the check itself failed, so it can
+  be scheduled and monitored. It is the only thing that contacts GitHub, and only when invoked —
+  the application still makes no outbound calls of its own and shows no update banner. Point it
+  elsewhere with `UPDATE_CHECK_REPOSITORY`, or set that empty to disable it.
+
+### Documentation
+
+- The install guide now installs a **release** (`git clone --branch vX.Y.Z`) rather than `main`,
+  and explains that a `main` install reports the last released version number while being ahead
+  of it.
+- The upgrade guide documents three ways to learn about a new release: `version:check`, GitHub's
+  Watch → Releases, and the `releases.atom` feed.
 
 ## [1.2.0] — 2026-09-04
 

@@ -44,7 +44,12 @@ access control, and every feature. Start here:
 
 ## Quick Start
 
+Install a **release**, not `main` — see [Versions & Updates](#versions--updates) below.
+
 ```bash
+git clone --branch v1.2.0 https://github.com/DigitalFederation/DigitalSportsCrm.git
+cd DigitalSportsCrm
+
 composer install
 npm ci
 cp .env.example .env
@@ -71,15 +76,23 @@ Releases follow [Semantic Versioning](https://semver.org/) and are published as
 [GitHub releases](https://github.com/DigitalFederation/DigitalSportsCrm/releases), each with
 notes describing what changed. `CHANGELOG.md` in this repository carries the same history.
 
+**Install a specific release:**
+
+```bash
+git clone --branch v1.2.0 https://github.com/DigitalFederation/DigitalSportsCrm.git
+```
+
+Cloning at a tag leaves git in detached HEAD, which is correct for a deployment. Clone without
+`--branch` only if you intend to run unreleased code from `main`.
+
 **Am I running the latest version?**
 
 ```bash
+php artisan version:check               # compares against the latest GitHub release
 git describe --tags                     # e.g. v1.2.0
 ```
 
 The version is also shown in the app's sidebar footer and on its **Version & Changelog** page.
-Compare it with the
-[latest release](https://github.com/DigitalFederation/DigitalSportsCrm/releases/latest).
 
 > A bare tag (`v1.2.0`) means you are on that release. Something like `v1.2.0-5-g168f401` means
 > you are 5 commits past it — a development snapshot of `main`, not a release.
@@ -101,8 +114,15 @@ yours and the target — the *Changed* sections are where manual steps appear. T
 procedure, including rollback, is in the
 **[Upgrading guide](https://digitalfederation.github.io/DigitalSportsCrm/guides/upgrading)**.
 
-To be notified of new versions, choose **Watch → Custom → Releases** on this repository. The
-application itself never phones home to check for updates.
+**To be notified** rather than remembering to check: choose **Watch → Custom → Releases** on
+this repository, subscribe to the
+[release feed](https://github.com/DigitalFederation/DigitalSportsCrm/releases.atom), or cron
+`php artisan version:check` — it exits `1` when an update is available and `2` if the check
+itself failed, so monitoring can tell the two apart.
+
+That command is the only thing that contacts GitHub, and only when you run it. The application
+never phones home on its own, shows no update banner, and reports nothing about your
+installation anywhere.
 
 ## Configuration
 
