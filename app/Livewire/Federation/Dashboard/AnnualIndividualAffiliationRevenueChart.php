@@ -7,6 +7,7 @@ use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Support\Money;
 
 class AnnualIndividualAffiliationRevenueChart extends ChartWidget
 {
@@ -58,7 +59,7 @@ class AnnualIndividualAffiliationRevenueChart extends ChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => __('dashboard.revenue_eur'),
+                        'label' => __('dashboard.revenue_in_currency', ['currency' => Money::code()]),
                         'data' => $data,
                         'backgroundColor' => 'rgba(16, 185, 129, 0.2)',
                         'borderColor' => '#10b981',
@@ -84,7 +85,7 @@ class AnnualIndividualAffiliationRevenueChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __('dashboard.revenue_eur'),
+                    'label' => __('dashboard.revenue_in_currency', ['currency' => Money::code()]),
                     'data' => array_fill(0, 12, 0),
                     'backgroundColor' => 'rgba(16, 185, 129, 0.2)',
                     'borderColor' => '#10b981',
@@ -107,7 +108,7 @@ class AnnualIndividualAffiliationRevenueChart extends ChartWidget
                     ],
                     'title' => [
                         'display' => true,
-                        'text' => 'EUR',
+                        'text' => Money::code(),
                         'font' => [
                             'size' => 12,
                             'weight' => 'bold',

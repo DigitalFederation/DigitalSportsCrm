@@ -337,7 +337,7 @@ class ExportLicensesAction
         $content[] = 'REVENUE STATISTICS';
         $content[] = '-' . str_repeat('-', 20);
         foreach ($analytics['revenue'] as $key => $value) {
-            $content[] = ucwords(str_replace('_', ' ', $key)) . ': $' . number_format($value, 2);
+            $content[] = ucwords(str_replace('_', ' ', $key)) . ': ' . money($value);
         }
         $content[] = '';
 

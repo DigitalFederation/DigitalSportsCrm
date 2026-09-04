@@ -82,7 +82,7 @@
 
                         <div class="mb-2">
                             <div class="text-secondary font-semibold">{{ __('certifications.total_price')}}</div>
-                            <p class="text-slate-500">{{ number_format($totalPriceForOrder, 2) }} €</p>
+                            <p class="text-slate-500">{{ money($totalPriceForOrder) }}</p>
                         </div>
                         <div class="mb-2">
                             <div class="text-secondary font-semibold">{{ __('certifications.status')}}</div>
@@ -155,10 +155,10 @@
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-left">{{ $slot->quantity_original }}</td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                            {{ number_format($slot->unit_price, 2) }}€
+                            {{ money($slot->unit_price) }}
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px text-right">
-                            {{ number_format($slot->total_price, 2) }}€
+                            {{ money($slot->total_price) }}
                         </td>
                     </tr>
                 @endforeach

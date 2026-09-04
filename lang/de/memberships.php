@@ -77,7 +77,7 @@ return [
     'fee_individual_subscription' => 'Gebühr bei Abonnement durch Einzelpersonen',
     'fee_entity_institution' => 'Der Einrichtung (Institution) berechnete Gebühr',
     'fee_entity_subscription' => 'Gebühr bei Abonnement durch Einrichtungen',
-    'free_plan_option' => 'Dies ist ein kostenloser Plan (Gebühren auf 0 € setzen)',
+    'free_plan_option' => 'Dies ist ein kostenloser Plan (Gebühren auf :amount setzen)',
     'immediate_availability' => 'Für sofortige Verfügbarkeit leer lassen',
     'no_expiration' => 'Für keinen Ablauf leer lassen',
     'description_help' => 'Geben Sie ausführliche Informationen darüber an, was dieser Plan umfasst, Voraussetzungen, Vorteile usw.',

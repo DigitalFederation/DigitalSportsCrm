@@ -77,7 +77,7 @@ return [
     'fee_individual_subscription' => 'Tarifa cuando lo suscriben particulares',
     'fee_entity_institution' => 'Tarifa cobrada a la entidad (institución)',
     'fee_entity_subscription' => 'Tarifa cuando lo suscriben entidades',
-    'free_plan_option' => 'Este es un plan gratuito (establece las tarifas en 0 €)',
+    'free_plan_option' => 'Este es un plan gratuito (establece las tarifas en :amount)',
     'immediate_availability' => 'Déjalo vacío para disponibilidad inmediata',
     'no_expiration' => 'Déjalo vacío para que no caduque',
     'description_help' => 'Proporciona información detallada sobre lo que incluye este plan, requisitos, beneficios, etc.',

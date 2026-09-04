@@ -121,7 +121,7 @@
                                 @endif
                                 <td class="px-4 py-4 whitespace-nowrap text-sm text-right">
                                     @if($license->calculated_price > 0)
-                                        <span class="font-semibold text-gray-900">{{ number_format($license->calculated_price, 2) }} &euro;</span>
+                                        <span class="font-semibold text-gray-900">{{ money($license->calculated_price) }}</span>
                                     @elseif($license->calculated_price == 0)
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                             {{ __('licenses.Free') }}
@@ -204,7 +204,7 @@
                     <dt class="text-lg font-bold text-slate-900">{{ __('licenses.Total') }}</dt>
                     <dd class="text-xl font-bold {{ $calculatedPrice > 0 ? 'text-slate-900' : 'text-green-600' }}">
                         @if($calculatedPrice > 0)
-                            {{ number_format($calculatedPrice, 2) }} &euro;
+                            {{ money($calculatedPrice) }}
                         @else
                             {{ __('licenses.Free') }}
                         @endif
@@ -229,7 +229,7 @@
                     <svg wire:loading.remove wire:target="purchaseLicense" class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                     </svg>
-                    {{ __('licenses.Purchase for') }} {{ number_format($calculatedPrice, 2) }} &euro;
+                    {{ __('licenses.Purchase for') }} {{ money($calculatedPrice) }}
                 </button>
             @else
                 <button wire:click="requestFreeLicense"

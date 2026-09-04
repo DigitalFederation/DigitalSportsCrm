@@ -60,7 +60,7 @@
 
     @if($showConfirmation)
         <div class="mt-4">
-            <p>{{ __('events.enrollment_confirmation', ['count' => count($selectedIndividuals), 'type' => ucfirst($enrollmentType) . 's', 'total' => $totalCost]) }}</p>
+            <p>{{ __('events.enrollment_confirmation', ['count' => count($selectedIndividuals), 'type' => ucfirst($enrollmentType) . 's', 'total' => money($totalCost)]) }}</p>
             <button wire:click="submitEnrollment" class="btn btn-success">{{ __('events.confirm') }}</button>
             <button wire:click="$set('showConfirmation', false)" class="btn btn-secondary">{{ __('events.cancel') }}</button>
         </div>

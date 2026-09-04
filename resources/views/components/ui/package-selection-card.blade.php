@@ -88,7 +88,7 @@
                 @if($primaryPrice)
                     <div class="text-right">
                         <div class="text-sm font-semibold text-slate-900">
-                            €{{ number_format($primaryPrice, 2) }}
+                            {{ money($primaryPrice) }}
                         </div>
                         <div class="text-xs text-slate-500">
                             {{ __('from') }}

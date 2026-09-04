@@ -82,7 +82,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                     @if($license->calculated_price !== null)
                                         @if($license->calculated_price > 0)
-                                            <span class="font-semibold">€{{ number_format($license->calculated_price, 2) }}</span>
+                                            <span class="font-semibold">{{ money($license->calculated_price) }}</span>
                                         @else
                                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                                 {{ __('licenses.Free') }}
@@ -400,7 +400,7 @@
                                     <dt class="text-sm font-medium text-slate-600">{{ __('licenses.Price per License') }}</dt>
                                     <dd class="text-sm font-semibold text-slate-900">
                                         @if($calculatedPrice > 0)
-                                            €{{ number_format($calculatedPrice, 2) }}
+                                            {{ money($calculatedPrice) }}
                                         @else
                                             {{ __('licenses.Free') }}
                                         @endif
@@ -420,7 +420,7 @@
                             <dt class="text-lg font-bold text-slate-900">{{ __('licenses.Total') }}</dt>
                             <dd class="text-2xl font-bold {{ $totalPrice > 0 ? 'text-green-600' : 'text-blue-600' }}">
                                 @if($totalPrice > 0)
-                                    €{{ number_format($totalPrice, 2) }}
+                                    {{ money($totalPrice) }}
                                 @else
                                     {{ __('licenses.Free') }}
                                 @endif
@@ -474,7 +474,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
             </svg>
             @if($totalPrice > 0)
-                {{ __('licenses.Purchase for €:amount', ['amount' => number_format($totalPrice, 2)]) }}
+                {{ __('licenses.Purchase for :amount', ['amount' => money($totalPrice)]) }}
             @else
                 {{ __('licenses.Request Free License') }}
             @endif

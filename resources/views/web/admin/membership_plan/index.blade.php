@@ -45,7 +45,7 @@
         <div class="sm:flex sm:justify-center sm:items-center mb-5">
 
             <x-dynamic-table
-                :headers="['Committee', 'Name', 'Price (€)', 'Interval', 'Period', 'Actions']">
+                :headers="['Committee', 'Name', 'Price (' . \Support\Money::symbol() . ')', 'Interval', 'Period', 'Actions']">
                 @foreach($plans as $plan)
                     <tr>
 

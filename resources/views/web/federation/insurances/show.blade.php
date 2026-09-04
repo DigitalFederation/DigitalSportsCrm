@@ -86,7 +86,7 @@
                             <label class="block text-sm font-medium mb-1">{{ __('federation.individual_fee') }}</label>
                             <p class="text-sm text-slate-600">
                                 @if($insurance->individual_fee)
-                                    € {{ number_format($insurance->individual_fee, 2, ',', '.') }}
+                                    {{ money($insurance->individual_fee) }}
                                 @else
                                     {{ __('common.na') }}
                                 @endif
@@ -96,7 +96,7 @@
                             <label class="block text-sm font-medium mb-1">{{ __('federation.entity_fee') }}</label>
                             <p class="text-sm text-slate-600">
                                 @if($insurance->entity_fee)
-                                    € {{ number_format($insurance->entity_fee, 2, ',', '.') }}
+                                    {{ money($insurance->entity_fee) }}
                                 @else
                                     {{ __('common.na') }}
                                 @endif

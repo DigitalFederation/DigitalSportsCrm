@@ -76,7 +76,8 @@
         },
         "files": [
             "app/Helpers/InlineCssHelper.php",
-            "app/Helpers/GlobalHelper.php"
+            "app/Helpers/GlobalHelper.php",
+            "app/Helpers/CurrencyHelper.php"
         ]
     },
     "autoload-dev": {

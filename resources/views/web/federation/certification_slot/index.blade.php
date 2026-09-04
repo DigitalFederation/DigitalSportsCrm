@@ -42,8 +42,7 @@
                 @foreach($slots as $slot)
                     <tr>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">{{ \Carbon\Carbon::parse($slot->created_at)->format('d/m/Y') }}</td>
-                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">{{ number_format($slot->total_price_sum, 2) }}
-                            €
+                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">{{ money($slot->total_price_sum) }}
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                             <x-tables.badge :status="ucfirst($slot->stateName())" :color="$slot->stateColor()" />

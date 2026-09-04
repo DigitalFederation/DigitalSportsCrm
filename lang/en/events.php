@@ -358,7 +358,7 @@ return [
     'search_individuals_placeholder' => 'Search individuals...',
     'selected_participants' => 'Selected :type',
     'submit_enrollment' => 'Submit Enrollment',
-    'enrollment_confirmation' => 'Are you sure you want to enroll :count :type for a total of €:total?',
+    'enrollment_confirmation' => 'Are you sure you want to enroll :count :type for a total of :total?',
     'confirm' => 'Confirm',
 
     // Forms

@@ -324,7 +324,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right">
                                         <span class="text-sm font-semibold text-gray-900">{{ number_format($document->total_value, 2, ',', '.') }}</span>
-                                        <span class="text-xs text-gray-500 ml-0.5">EUR</span>
+                                        <span class="text-xs text-gray-500 ml-0.5">{{ \Support\Money::code() }}</span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center">
                                         <a href="{{ route($namespace . '.document.show', $document->id) }}"

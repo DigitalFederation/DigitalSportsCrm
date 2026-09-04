@@ -76,7 +76,7 @@
                                 @if($price > 0)
                                     <div class="mb-4">
                                         <div class="flex items-baseline">
-                                            <span class="text-2xl font-bold text-slate-900">€{{ number_format($price, 2) }}</span>
+                                            <span class="text-2xl font-bold text-slate-900">{{ money($price) }}</span>
                                             <span class="text-sm text-slate-500 ml-1">/ ano</span>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                                             </svg>
                                                             <span class="flex-1">{{ $plan->name }}</span>
                                                             @if($plan->entity_fee > 0)
-                                                                <span class="text-xs text-slate-500">€{{ number_format($plan->entity_fee, 2) }}</span>
+                                                                <span class="text-xs text-slate-500">{{ money($plan->entity_fee) }}</span>
                                                             @endif
                                                         </div>
                                                     @endforeach
@@ -144,7 +144,7 @@
                                                             </svg>
                                                             <span class="flex-1">{{ $plan->name }}</span>
                                                             @if($plan->entity_fee > 0)
-                                                                <span class="text-xs text-slate-500">€{{ number_format($plan->entity_fee, 2) }}</span>
+                                                                <span class="text-xs text-slate-500">{{ money($plan->entity_fee) }}</span>
                                                             @endif
                                                         </div>
                                                     @endforeach
@@ -497,7 +497,7 @@
                         <p class="text-sm text-gray-500 mt-1">{{ $this->selectedPackage->description }}</p>
                         <div class="mt-2 text-sm">
                             <span class="font-medium text-gray-900">{{ __('membership.modal.price') }}</span>
-                            <span class="text-gray-600">€{{ number_format($this->selectedPackage->calculatePriceForType('entity'), 2) }}</span>
+                            <span class="text-gray-600">{{ money($this->selectedPackage->calculatePriceForType('entity')) }}</span>
                         </div>
                     </div>
                 @endif

@@ -70,7 +70,7 @@
             <div class="flex items-center">
                 <!-- Display Total Cost -->
                 @if($totalCost > 0)
-                    <p class="font-bold text-slate-600">Total: <span class="font-normal">{{ number_format($totalCost, 2, '.', '') }}€</span>
+                    <p class="font-bold text-slate-600">Total: <span class="font-normal">{{ money($totalCost) }}</span>
                     </p>
                 @endif
             </div>
@@ -101,7 +101,7 @@
                     <div class="w-auto block px-2">
                         @if($totalCost > 0)
                             Are <u>you sure</u> you want to enroll {{ count($this->getFlattenedSelectedIndividuals()) }}
-                            members for a total of {{ number_format($totalCost, 2, '.', '') }}€ ?
+                            members for a total of {{ money($totalCost) }} ?
                         @else
                             Are <u>you sure</u> you want to enroll {{ count($this->getFlattenedSelectedIndividuals()) }}
                             members?

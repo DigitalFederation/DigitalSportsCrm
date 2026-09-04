@@ -409,9 +409,9 @@
                 <div class="flex flex-row gap-x-4 items-end justify-end text-right mt-4">
                     <span>{{ __('documents.subtotal') }}:</span>
                     <div class="font-bold">
-                        {{ array_reduce($documentDetailDataArray, function ($carry, $item) {
+                        {{ money(array_reduce($documentDetailDataArray, function ($carry, $item) {
                             return $carry + ($item['total_value'] ?? 0);
-                        }, 0) }} €
+                        }, 0)) }}
                     </div>
                 </div>
             </div>

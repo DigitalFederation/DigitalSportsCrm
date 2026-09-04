@@ -35,6 +35,28 @@ The payment system is designed to be flexible and accommodate multiple payment g
 3.  **Webhook**: The gateway receives a webhook notification from the payment provider. It validates the signature and verifies the payment status.
 4.  **Completion**: If the payment is successful, the associated document (e.g., subscription invoice) is marked as paid, and the service is activated.
 
+### Currency
+
+The displayed currency is an installation-wide presentation setting (`config/currency.php`,
+documented under [Localization and Geography](/guides/localization-and-geography#currency)). It is
+**not** transmitted to gateways or invoicing providers, and it does not influence what a provider
+charges or issues.
+
+This matters because two bundled integrations operate in Euro only:
+
+-   **EasyPay** (`config/payment.php`) is a Portugal-specific gateway.
+-   **Moloni** (`config/invoicing.php`, `api.moloni.pt`) is a Portuguese e-invoicing provider.
+
+Enabling either while `CURRENCY_CODE` is set to something other than `EUR` produces an installation
+that **displays one currency and charges or invoices in another** — a page reading `R$ 250,00` would
+result in a €250 invoice. Nothing in the platform detects or prevents this combination.
+
+Both integrations are opt-in and disabled by default (`EASYPAY_ENABLED=false`,
+`MOLONI_ENABLED=false`), so this only arises when an operator deliberately enables a
+Portugal-specific provider. If your installation bills in a currency other than the Euro, use the
+`offline` gateway or supply a gateway that operates in your currency (see "Adding New Gateways"
+below).
+
 ### Adding New Gateways
 
 1.  Create a new gateway class extending `AbstractPaymentGateway`.

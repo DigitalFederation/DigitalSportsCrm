@@ -10,7 +10,26 @@
         return total;
     },
     formatCurrency(val) {
-        return new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(val || 0);
+        {{-- Mirrors Support\Money::format() so this client-side total matches every
+             server-rendered amount. Intl.NumberFormat is deliberately not used: it
+             imposes its own locale's separators and symbol placement, and throws a
+             RangeError if CURRENCY_CODE is not a valid ISO 4217 code. --}}
+        const decimals = {{ max((int) config('currency.decimals', 2), 0) }};
+        const decimalSep = '{{ config('currency.decimal_separator') ?? ',' }}';
+        const thousandsSep = '{{ config('currency.thousands_separator') ?? '.' }}';
+        const symbol = '{{ \Support\Money::symbol() }}';
+        const symbolBefore = {{ strtolower(trim((string) config('currency.position', 'after'))) === 'before' ? 'true' : 'false' }};
+        const space = {{ filter_var(config('currency.space', true), FILTER_VALIDATE_BOOL) ? "' '" : "''" }};
+
+        const amount = Number(val) || 0;
+        const sign = amount < 0 ? '-' : '';
+        const parts = Math.abs(amount).toFixed(decimals).split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+        const number = parts.join(decimalSep);
+
+        return symbolBefore
+            ? sign + symbol + space + number
+            : sign + number + space + symbol;
     }
 }">
 

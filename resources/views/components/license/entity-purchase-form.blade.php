@@ -56,7 +56,7 @@
                             
                             <div class="text-right">
                                 <div class="font-semibold text-slate-900">
-                                    €{{ number_format($license->unit_value ?? 0, 2) }}
+                                    {{ money($license->unit_value ?? 0) }}
                                 </div>
                                 @if($license->tax_percentage)
                                     <div class="text-xs text-slate-500">+{{ $license->tax_percentage }}% tax</div>
@@ -160,20 +160,20 @@
                 
                 <div class="flex justify-between">
                     <span>{{ __('Unit Price') }}:</span>
-                    <span class="font-medium">€{{ number_format($unitPrice ?? 0, 2) }}</span>
+                    <span class="font-medium">{{ money($unitPrice ?? 0) }}</span>
                 </div>
                 
                 @if($taxAmount > 0)
                     <div class="flex justify-between text-sm text-slate-600">
                         <span>{{ __('Tax') }} ({{ $selectedLicense->tax_percentage ?? 0 }}%):</span>
-                        <span>€{{ number_format($taxAmount, 2) }}</span>
+                        <span>{{ money($taxAmount) }}</span>
                     </div>
                 @endif
                 
                 <div class="border-t border-slate-200 pt-3">
                     <div class="flex justify-between text-lg font-semibold">
                         <span>{{ __('Total') }}:</span>
-                        <span class="text-primary-600">€{{ number_format($totalCost ?? 0, 2) }}</span>
+                        <span class="text-primary-600">{{ money($totalCost ?? 0) }}</span>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
            
         @if($selectedLicenseId && ($purchaseType !== 'group' || count($selectedMembers) > 0))
             <button type="submit" class="btn btn-primary">
-                {{ __('Proceed to Payment') }} (€{{ number_format($totalCost ?? 0, 2) }})
+                {{ __('Proceed to Payment') }} ({{ money($totalCost ?? 0) }})
             </button>
         @else
             <button type="button" class="btn btn-primary opacity-50 cursor-not-allowed" disabled>

@@ -75,7 +75,6 @@ return [
     'Fee when subscribed by individuals' => 'Taxa quando subscrito por indivíduos',
     'Fee charged to the entity (institution)' => 'Taxa cobrada à entidade (instituição)',
     'Fee when subscribed by entities' => 'Taxa quando subscrito por entidades',
-    'This is a free plan (set fees to €0)' => 'Este é um plano gratuito (definir taxas para €0)',
     'Leave empty for immediate availability' => 'Deixe vazio para disponibilidade imediata',
     'Leave empty for no expiration' => 'Deixe vazio para sem expiração',
     'Provide detailed information about what this plan includes, requirements, benefits, etc.' => 'Forneça informações detalhadas sobre o que este plano inclui, requisitos, benefícios, etc.',

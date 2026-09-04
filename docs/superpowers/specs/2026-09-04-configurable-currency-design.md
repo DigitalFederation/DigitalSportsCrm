@@ -108,10 +108,10 @@ namespace Support;
 final class Money
 {
     /** Full string with symbol: "1.234,56 €" */
-    public static function format(int|float|string|null $amount, bool $withSymbol = true): string;
+    public static function format(int|float|string|null $amount, bool $withSymbol = true, ?int $decimals = null): string;
 
     /** Number only, no symbol: "1.234,56" */
-    public static function amount(int|float|string|null $amount): string;
+    public static function amount(int|float|string|null $amount, ?int $decimals = null): string;
 
     /** The configured symbol: "€" */
     public static function symbol(): string;
@@ -123,9 +123,15 @@ final class Money
 
 Behavioural requirements:
 
-- `null` formats as zero. Call sites already lean on `?? 0`, and a blank cell
-  where a price belongs is worse than `0,00 €`.
-- Numeric strings are accepted (Eloquent decimal casts hand back strings).
+- `null` and `''` format as zero. Call sites already lean on `?? 0`, and a blank
+  cell where a price belongs is worse than `0,00 €`.
+- Numeric strings are accepted (Eloquent decimal casts hand back strings). Any
+  other string throws `InvalidArgumentException` — almost always an amount that
+  has already been through `number_format()`, which would otherwise render as
+  `0,00 €` and silently misreport a total as zero.
+- `$decimals` overrides the configured decimal places for the few call sites that
+  deliberately show whole units (licence revenue analytics, insurance coverage
+  ceilings).
 - **Negative amounts keep the sign outside the symbol**: `-1,00 €` and `-$1.00`,
   never `1,00- €` or `$-1.00`.
 - `decimals => 0` produces no separator and no trailing zeros.
@@ -259,6 +265,58 @@ a template.
 | `docs/guides/getting-started.md` | Currency named in the initial `.env` walkthrough. |
 | `.env.example` | The commented seven-key block with presets. |
 | `CHANGELOG.md` | Under `[Unreleased]`: `Added` for the configuration, `Changed` for the EUR formatting normalization (decision 5). Per the project's versioning process, a config addition is a **minor**, not a major. |
+
+## Corrections found during implementation
+
+The survey behind this spec undercounted the affected surface in four ways. All are
+fixed in the implementation; they are recorded here because the original numbers
+above are quoted in the CHANGELOG and pull request.
+
+1. **`src/` was never scanned.** The survey covered `app/` and `resources/views/`
+   only. The Domain layer hardcoded the currency in four more places: three
+   payment-notification actions building `number_format(...) . ' EUR'`
+   (`ManuallyMarkDocumentAsPaidAction`, `MarkAsPaidAction`,
+   `RegisterDocumentPaymentAction`) and `PaymentResponseData`, whose `currency`
+   parameter defaults to `'EUR'`. The three actions now use `money()`.
+   `PaymentResponseData` is allowlisted: it sits at the gateway boundary, where the
+   configured currency is deliberately not transmitted.
+2. **PHP was only grepped for `'EUR'`, never for `€`.** `IndividualEventRegistration`
+   built a dropdown label with a literal `€`. Converted.
+3. **Views were only grepped for `€`, never for `EUR`.** Nine further templates —
+   including the event-application PDF, the Moloni settings screen, and a JavaScript
+   `Intl.NumberFormat` pinned to `currency: 'EUR'` — wrote the ISO code instead of the
+   symbol. That is **21 additional occurrences**, so the true total is 233, not 212.
+4. **A stale `squidflex.currency_symbol` config key.** Seven templates read a config
+   key belonging to an unrelated project; no `config/squidflex.php` exists. Four passed
+   `'€'` as a fallback and rendered correctly by accident. The other three — both club
+   subscriptions views — passed no default and have been rendering amounts with **no
+   currency symbol at all**. All replaced with `money()`; the dead key is gone.
+5. **Four spellings of the euro, not one.** The sweep and the first version of the
+   fence matched only the literal `€` and the ISO code. The templates also spell it
+   `&euro;` and `&#8364;`, which left **26 further occurrences** across 10 files —
+   including the event checkout page and both individual licence purchase forms — so a
+   BRL install would show `R$` on one screen and `€` two clicks later. The fence now
+   matches all four spellings and has a test guarding that pattern list.
+6. **A hardcoded US dollar.** `ExportLicensesAction` printed revenue statistics with a
+   literal `$`. The fence cannot catch non-euro symbols, so this was found only by
+   review.
+7. **`Money` silently zeroed pre-formatted input.** `is_numeric()` returning false fell
+   through to `0.0`, so passing an already-formatted `"1.234,56"` rendered `0,00 €`.
+   `CalculateInvoiceAccountSummaryAction` returned exactly such strings.
+   `Money::amount()` now throws `InvalidArgumentException` instead, and that action
+   returns raw floats.
+
+The regression fence now scans `resources/`, `app/`, `src/`, and `lang/`, matches all
+four spellings of the euro, and matches `EUR` on a word boundary — a substring search
+flags `EUROPEAN_GAMES` in `EvtCompetitionTypeEnum` and `DIRECTEUR` in the French
+translations. A further test asserts the pattern list itself still detects every
+spelling and still ignores those words.
+
+One test deviates from this spec. The feature test renders Blade snippets through
+`Blade::render()` rather than a full application page, because rendering a real
+money-bearing page requires authentication and substantial fixture setup. It proves
+the configuration reaches the template layer and that `money()` is autoloaded in
+Blade; it does not prove any particular production page is wired correctly.
 
 ## Risks
 

@@ -115,7 +115,7 @@
                                 </td>
                                 <td class="px-2 first:pl-5 last:pr-5 py-2 whitespace-nowrap">
                                     @if($license->total_value > 0)
-                                        <span class="text-slate-800">{{ number_format($license->total_value, 2) }}€</span>
+                                        <span class="text-slate-800">{{ money($license->total_value) }}</span>
                                     @else
                                         <span class="text-emerald-600 font-medium">{{ __('diving.free') }}</span>
                                     @endif

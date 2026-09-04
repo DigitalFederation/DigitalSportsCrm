@@ -36,7 +36,7 @@
                 <tr class="hover:bg-gray-100">
                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                         <div class="gap-2 items-center text-left">
-                            <span class="border border-active rounded-md p-2 font-bold">{{ $pricing->price }}€</span>
+                            <span class="border border-active rounded-md p-2 font-bold">{{ money($pricing->price) }}</span>
                         </div>
                     </td>
                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">

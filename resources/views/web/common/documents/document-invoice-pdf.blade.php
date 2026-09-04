@@ -133,8 +133,8 @@
             <td style="padding: 5px; text-align: left;">{{ $detail->owner->morphName ?? '' }}
                 - {{ $detail->description }}</td>
             <td style="padding: 5px; text-align: right;">{{ $detail->quantity }}</td>
-            <td style="padding: 5px; text-align: right;">{{ $detail->unit_value }}€</td>
-            <td style="padding: 5px; text-align: right;">{{ $detail->total_value }}€</td>
+            <td style="padding: 5px; text-align: right;">{{ money($detail->unit_value) }}</td>
+            <td style="padding: 5px; text-align: right;">{{ money($detail->total_value) }}</td>
         </tr>
     @endforeach
     </tbody>
@@ -142,17 +142,17 @@
     <tr>
         <td colspan="3" style="padding: 5px;"></td>
         <td style="padding: 5px; text-align: right;">{{ __('documents.pdf.subtotal') }}</td>
-        <td style="padding: 5px; text-align: right;">{{ $document->net_value }}€</td>
+        <td style="padding: 5px; text-align: right;">{{ money($document->net_value) }}</td>
     </tr>
     <tr>
         <td colspan="3" style="padding: 5px;"></td>
         <td style="padding: 5px; text-align: right;">{{ __('documents.pdf.tax') }}</td>
-        <td style="padding: 5px; text-align: right;">{{ $document->tax_value }}€</td>
+        <td style="padding: 5px; text-align: right;">{{ money($document->tax_value) }}</td>
     </tr>
     <tr>
         <td colspan="3" style="padding: 5px;"></td>
         <td style="padding: 5px; text-align: right;">{{ __('documents.pdf.total') }}</td>
-        <td style="padding: 5px; text-align: right;">{{ $document->total_value }}€</td>
+        <td style="padding: 5px; text-align: right;">{{ money($document->total_value) }}</td>
     </tr>
     </tfoot>
 </table>

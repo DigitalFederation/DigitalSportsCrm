@@ -200,7 +200,7 @@
                                                                     {{ $this->formatStateClass($value) }}
                                                                 </span>
                                                             @elseif($key === 'total_value')
-                                                                {{ number_format($value, 2) }} €
+                                                                {{ money($value) }}
                                                             @elseif($key === 'is_self_request')
                                                                 {{ $value ? __('Yes') : __('No') }}
                                                             @else
