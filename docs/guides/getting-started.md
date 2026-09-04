@@ -178,13 +178,17 @@ maintenance commands from the in-app Operations Center — see
 ## Updating an existing deployment
 
 ```bash
-git pull
+git fetch --tags
+git checkout v1.2.0                # the release you are moving to
 composer install --no-dev --optimize-autoloader
 npm ci && npm run build
 php artisan migrate --force
 php artisan optimize:clear && php artisan optimize
 php artisan queue:restart
 ```
+
+See [Upgrading](/guides/upgrading) for how to check which version you are running, what the
+version numbers mean, and what to back up first.
 
 ## Verifying the install
 

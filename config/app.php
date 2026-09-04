@@ -257,12 +257,14 @@ return [
     | Application Version
     |--------------------------------------------------------------------------
     |
-    | The release version shown in the UI (sidebar footer). This value is
-    | the source of truth: bump it here as part of tagging a vX.Y.Z release.
+    | The release version shown in the UI (sidebar footer and the Version &
+    | Changelog page). This value is the single source of truth: bump it here
+    | and add the matching CHANGELOG.md section as part of tagging a vX.Y.Z
+    | release. VersionConsistencyTest fails if the two drift apart.
     | Packagers and deployments may override it with the APP_VERSION
     | environment variable.
     |
     */
 
-    'version' => env('APP_VERSION', '1.1.0'),
+    'version' => env('APP_VERSION', '1.2.0'),
 ];

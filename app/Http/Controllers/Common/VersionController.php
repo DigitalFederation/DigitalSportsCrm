@@ -9,7 +9,7 @@ class VersionController extends Controller
 {
     public function index()
     {
-        $version = config('version.app_version');
+        $version = config('app.version');
         $changelog = file_get_contents(base_path('CHANGELOG.md'));
         $converter = new CommonMarkConverter([
             'html_input' => 'strip',
