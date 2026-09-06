@@ -6,6 +6,7 @@ use Domain\Licenses\Models\LicenseAttributed;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Support\Money;
 
 class AnnualEntityLicenseRevenueChart extends ChartWidget
 {
@@ -51,7 +52,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
             return [
                 'datasets' => [
                     [
-                        'label' => __('dashboard.revenue_eur'),
+                        'label' => __('dashboard.revenue_in_currency', ['currency' => Money::code()]),
                         'data' => $data,
                         'backgroundColor' => 'rgba(139, 92, 246, 0.2)',
                         'borderColor' => '#8b5cf6',
@@ -77,7 +78,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __('dashboard.revenue_eur'),
+                    'label' => __('dashboard.revenue_in_currency', ['currency' => Money::code()]),
                     'data' => array_fill(0, 12, 0),
                     'backgroundColor' => 'rgba(139, 92, 246, 0.2)',
                     'borderColor' => '#8b5cf6',
@@ -100,7 +101,7 @@ class AnnualEntityLicenseRevenueChart extends ChartWidget
                     ],
                     'title' => [
                         'display' => true,
-                        'text' => 'EUR',
+                        'text' => Money::code(),
                         'font' => [
                             'size' => 12,
                             'weight' => 'bold',

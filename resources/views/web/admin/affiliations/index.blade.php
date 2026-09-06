@@ -181,9 +181,9 @@
                     </td>
                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap text-sm text-gray-900">
                         @if(($affiliation->member_type === 'individual' || $affiliation->member_type === \Domain\Individuals\Models\Individual::class) && $affiliation->individual_fee)
-                            {{ number_format($affiliation->individual_fee, 2) }}€
+                            {{ money($affiliation->individual_fee) }}
                         @elseif(($affiliation->member_type === 'entity' || $affiliation->member_type === \Domain\Entities\Models\Entity::class) && $affiliation->entity_fee)
-                            {{ number_format($affiliation->entity_fee, 2) }}€
+                            {{ money($affiliation->entity_fee) }}
                         @else
                             <span class="text-gray-500">-</span>
                         @endif

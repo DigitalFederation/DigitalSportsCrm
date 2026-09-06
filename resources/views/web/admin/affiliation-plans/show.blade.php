@@ -56,7 +56,7 @@
                         <div>
                             <dt class="text-sm font-medium text-gray-600">{{ __('Individual Fee') }}</dt>
                             <dd class="mt-1 text-lg font-semibold text-gray-900">
-                                {{ config('squidflex.currency_symbol', '€') }}{{ number_format($plan->individual_fee, 2) }}
+                                {{ money($plan->individual_fee) }}
                             </dd>
                         </div>
                         @endif
@@ -65,7 +65,7 @@
                         <div>
                             <dt class="text-sm font-medium text-gray-600">{{ __('Entity Fee') }}</dt>
                             <dd class="mt-1 text-lg font-semibold text-gray-900">
-                                {{ config('squidflex.currency_symbol', '€') }}{{ number_format($plan->entity_fee, 2) }}
+                                {{ money($plan->entity_fee) }}
                             </dd>
                         </div>
                         @endif
@@ -80,7 +80,7 @@
                             <div class="flex justify-between">
                                 <span>{{ __('Individual Fee (inc. VAT)') }}:</span>
                                 <span class="font-medium">
-                                    {{ config('squidflex.currency_symbol', '€') }}{{ number_format($plan->individual_fee * (1 + $plan->getVatRatePercentage() / 100), 2) }}
+                                    {{ money($plan->individual_fee * (1 + $plan->getVatRatePercentage() / 100)) }}
                                 </span>
                             </div>
                             @endif
@@ -88,7 +88,7 @@
                             <div class="flex justify-between">
                                 <span>{{ __('Entity Fee (inc. VAT)') }}:</span>
                                 <span class="font-medium">
-                                    {{ config('squidflex.currency_symbol', '€') }}{{ number_format($plan->entity_fee * (1 + $plan->getVatRatePercentage() / 100), 2) }}
+                                    {{ money($plan->entity_fee * (1 + $plan->getVatRatePercentage() / 100)) }}
                                 </span>
                             </div>
                             @endif

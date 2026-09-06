@@ -205,7 +205,7 @@
                                     @foreach($event->pricing as $price)
                                         <tr class="hover:bg-slate-50">
                                             <td class="py-3 px-4">
-                                                <span class="text-lg font-bold text-indigo-600">{{ number_format($price->price, 2) }}&euro;</span>
+                                                <span class="text-lg font-bold text-indigo-600">{{ money($price->price) }}</span>
                                             </td>
                                             <td class="py-3 px-4">
                                                 <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">

@@ -112,6 +112,7 @@ from `.env.example`, which is grouped and commented. Key areas:
 |------|----------|
 | Application | `APP_NAME`, `APP_ENV`, `APP_KEY`, `APP_DEBUG`, `APP_URL` |
 | Localization and geography | `APP_LOCALE`, `APP_FALLBACK_LOCALE`, `APP_TIMEZONE`, `DEFAULT_COUNTRY_CODE`, `GEOGRAPHY_DATASET` — see [Localization and Geography](/guides/localization-and-geography) |
+| Currency | `CURRENCY_CODE`, `CURRENCY_SYMBOL`, `CURRENCY_SYMBOL_POSITION`, `CURRENCY_SYMBOL_SPACE`, `CURRENCY_DECIMALS`, `CURRENCY_DECIMAL_SEPARATOR`, `CURRENCY_THOUSANDS_SEPARATOR` — defaults to the Euro; set all seven together, see [Currency](/guides/localization-and-geography#currency) |
 | Database | `DB_CONNECTION`, `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` |
 | Branding | `FEDERATION_*` (name, short name, contact, logo) and `INTERNATIONAL_FEDERATION_*` — see `config/branding.php` |
 | Committees | Not env — define your federation's committees (and their licenses-attributed, purchase, and menu wiring) in `config/committees.php`. See [Configuring Committees](/guides/configuring-committees). |

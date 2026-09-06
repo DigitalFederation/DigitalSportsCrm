@@ -58,11 +58,11 @@
             <div class="sm:flex sm:items-top space-y-4 sm:space-y-0 sm:space-x-4 my-5">
                 <div class="sm:w-1/5">
                     <label class="block text-sm font-medium mb-1 text-gray-500">{{ __('main.individual_fee') }} </label>
-                    <p class="text-sm font-semibold">{{ $insurance_plan->individual_fee ? number_format($insurance_plan->individual_fee, 2) . ' EUR' : '-' }}</p>
+                    <p class="text-sm font-semibold">{{ $insurance_plan->individual_fee ? money($insurance_plan->individual_fee) : '-' }}</p>
                 </div>
                 <div class="sm:w-1/5">
                     <label class="block text-sm font-medium mb-1 text-gray-500">{{ __('main.entity_fee') }}</label>
-                    <p class="text-sm font-semibold">{{ $insurance_plan->entity_fee ? number_format($insurance_plan->entity_fee, 2) . ' EUR' : '-' }}</p>
+                    <p class="text-sm font-semibold">{{ $insurance_plan->entity_fee ? money($insurance_plan->entity_fee) : '-' }}</p>
                 </div>
                 <div class="sm:w-1/5">
                     <label class="block text-sm font-medium mb-1 text-gray-500">{{ __('main.vat_rate') }}</label>

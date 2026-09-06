@@ -85,7 +85,6 @@ return [
     'Fee when subscribed by individuals' => 'Fee when subscribed by individuals',
     'Fee charged to the entity (institution)' => 'Fee charged to the entity (institution)',
     'Fee when subscribed by entities' => 'Fee when subscribed by entities',
-    'This is a free plan (set fees to €0)' => 'This is a free plan (set fees to €0)',
     'Leave empty for immediate availability' => 'Leave empty for immediate availability',
     'Leave empty for no expiration' => 'Leave empty for no expiration',
     'Provide detailed information about what this plan includes, requirements, benefits, etc.' => 'Provide detailed information about what this plan includes, requirements, benefits, etc.',

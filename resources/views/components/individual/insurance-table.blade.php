@@ -114,7 +114,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-gray-900">
-                                    €{{ number_format($insurance->individual_fee ?? $insurance->entity_fee ?? 0, 2) }}
+                                    {{ money($insurance->individual_fee ?? $insurance->entity_fee ?? 0) }}
                                 </div>
                                 <div class="text-sm text-gray-500">
                                     {{ __('insurances.annual') }}

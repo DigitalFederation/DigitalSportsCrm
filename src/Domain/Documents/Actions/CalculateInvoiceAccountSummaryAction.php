@@ -35,10 +35,12 @@ class CalculateInvoiceAccountSummaryAction
 
         $currentBalance = $total - $totalPaid;
 
+        // Raw amounts, not formatted strings: the view formats them with money(),
+        // which rejects a value that has already been through number_format().
         return [
-            'total' => number_format($total, 2, ',', '.'),
-            'total_paid' => number_format($totalPaid, 2, ',', '.'),
-            'current_balance' => number_format($currentBalance * -1, 2, ',', '.'),
+            'total' => $total,
+            'total_paid' => $totalPaid,
+            'current_balance' => $currentBalance * -1,
             'invoices' => $allInvoices, // Return the full collection for display
         ];
     }

@@ -44,7 +44,7 @@
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">{{ __('Base Price (Annual)') }}</dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ number_format($package->calculatePrice(), 2) }}
+                            {{ money($package->calculatePrice()) }}
                         </dd>
                     </div>
                 </dl>
@@ -64,7 +64,7 @@
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             @forelse($package->affiliationPlans as $plan)
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mr-2 mb-2">
-                                    {{ $plan->name }} ({{ number_format($plan->base_fee, 2) }})
+                                    {{ $plan->name }} ({{ money($plan->base_fee) }})
                                 </span>
                             @empty
                                 {{ __('No affiliation plans included') }}
@@ -76,7 +76,7 @@
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             @forelse($package->insurancePlans as $plan)
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mr-2 mb-2">
-                                    {{ $plan->name }} ({{ number_format($plan->fee, 2) }})
+                                    {{ $plan->name }} ({{ money($plan->fee) }})
                                 </span>
                             @empty
                                 {{ __('No insurance plans included') }}
@@ -88,7 +88,7 @@
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                             @forelse($package->licenses as $license)
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 mr-2 mb-2">
-                                    {{ $license->name }} ({{ number_format($license->price, 2) }})
+                                    {{ $license->name }} ({{ money($license->price) }})
                                 </span>
                             @empty
                                 {{ __('No licenses included') }}

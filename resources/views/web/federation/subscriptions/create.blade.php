@@ -43,7 +43,7 @@
                             <div class="flex justify-between items-start mb-3">
                                 <h3 class="grow font-semibold text-slate-800 truncate mb-3">{{ $package->name }}</h3>
                                 <span class="text-lg font-bold text-indigo-600">
-                                    €{{ number_format($package->calculatePriceFor(\Domain\Entities\Models\Entity::class), 2) }}
+                                    {{ money($package->calculatePriceFor(\Domain\Entities\Models\Entity::class)) }}
                                 </span>
                             </div>
                             

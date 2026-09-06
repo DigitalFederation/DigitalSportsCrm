@@ -51,7 +51,7 @@
                         <span class="text-sm text-slate-700">
                             {{ __('diving.value') }}:
                             @if($requiresPayment)
-                                <strong>{{ number_format($licenseAttributed->total_value, 2) }}EUR</strong>
+                                <strong>{{ money($licenseAttributed->total_value) }}</strong>
                             @else
                                 <span class="text-emerald-600 font-medium">{{ __('diving.free') }}</span>
                             @endif
@@ -133,7 +133,7 @@
                                 <dt class="text-xs text-slate-500">{{ __('diving.fee') }}</dt>
                                 <dd class="text-sm font-medium text-slate-800">
                                     @if($licenseAttributed->total_value > 0)
-                                        {{ number_format($licenseAttributed->total_value, 2) }}EUR
+                                        {{ money($licenseAttributed->total_value) }}
                                     @else
                                         <span class="text-emerald-600">{{ __('diving.free') }}</span>
                                     @endif
@@ -273,7 +273,7 @@
                         <dt class="text-xs text-slate-500">{{ __('diving.value') }}</dt>
                         <dd class="text-sm font-medium text-slate-800">
                             @if($licenseAttributed->total_value > 0)
-                                {{ number_format($licenseAttributed->total_value, 2) }}EUR
+                                {{ money($licenseAttributed->total_value) }}
                             @else
                                 <span class="text-emerald-600">{{ __('diving.free') }}</span>
                             @endif

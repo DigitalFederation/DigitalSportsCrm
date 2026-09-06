@@ -48,14 +48,14 @@
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                             @if($plan->individual_fee)
-                                €{{ number_format($plan->individual_fee, 2) }}
+                                {{ money($plan->individual_fee) }}
                             @else
                                 <span class="text-gray-400">-</span>
                             @endif
                         </td>
                         <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                             @if($plan->entity_fee)
-                                €{{ number_format($plan->entity_fee, 2) }}
+                                {{ money($plan->entity_fee) }}
                             @else
                                 <span class="text-gray-400">-</span>
                             @endif

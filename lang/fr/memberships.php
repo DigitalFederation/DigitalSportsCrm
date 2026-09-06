@@ -77,7 +77,7 @@ return [
     'fee_individual_subscription' => 'Frais en cas de souscription par des particuliers',
     'fee_entity_institution' => 'Frais facturés à l\'entité (institution)',
     'fee_entity_subscription' => 'Frais en cas de souscription par des entités',
-    'free_plan_option' => 'Ceci est un plan gratuit (définir les frais à 0 €)',
+    'free_plan_option' => 'Ceci est un plan gratuit (définir les frais à :amount)',
     'immediate_availability' => 'Laissez vide pour une disponibilité immédiate',
     'no_expiration' => 'Laissez vide pour une durée illimitée',
     'description_help' => 'Fournissez des informations détaillées sur ce que ce plan inclut, les conditions, les avantages, etc.',

@@ -329,7 +329,7 @@
                                     <tr wire:key="pricing-{{ $pricing->id }}">
                                         <td class="px-5 py-3 whitespace-nowrap">
                                             <span class="inline-flex items-center px-3 py-1 rounded-md bg-blue-50 border border-blue-200 font-bold text-blue-700">
-                                                {{ $pricing->price }}€
+                                                {{ money($pricing->price) }}
                                             </span>
                                         </td>
                                         <td class="px-5 py-3 text-sm text-gray-700">

@@ -148,7 +148,7 @@
                                 </td>
                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap text-right">
                                     <div class="text-slate-800 font-medium">
-                                        {{ number_format($affiliation->individual_fee ?? 0, 2, ',', '.') }} €
+                                        {{ money($affiliation->individual_fee ?? 0) }}
                                     </div>
                                 </td>
                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">

@@ -641,15 +641,15 @@
             <div class="budget-box">
                 <div class="budget-cell budget-cell-expenses">
                     <div class="budget-label" style="color: #be123c;">{{ __('event_applications.wizard.sections.expenses') }}</div>
-                    <div class="budget-value" style="color: #be123c;">{{ number_format($totalExpenses, 2) }} EUR</div>
+                    <div class="budget-value" style="color: #be123c;">{{ money($totalExpenses) }}</div>
                 </div>
                 <div class="budget-cell budget-cell-revenue">
                     <div class="budget-label" style="color: #059669;">{{ __('event_applications.wizard.sections.revenue') }}</div>
-                    <div class="budget-value" style="color: #059669;">{{ number_format($totalRevenue, 2) }} EUR</div>
+                    <div class="budget-value" style="color: #059669;">{{ money($totalRevenue) }}</div>
                 </div>
                 <div class="budget-cell {{ $balance >= 0 ? 'budget-cell-balance' : 'budget-cell-negative' }}">
                     <div class="budget-label" style="color: {{ $balance >= 0 ? '#2563eb' : '#d97706' }};">{{ __('event_applications.wizard.labels.balance') }}</div>
-                    <div class="budget-value" style="color: {{ $balance >= 0 ? '#2563eb' : '#d97706' }};">{{ number_format($balance, 2) }} EUR</div>
+                    <div class="budget-value" style="color: {{ $balance >= 0 ? '#2563eb' : '#d97706' }};">{{ money($balance) }}</div>
                 </div>
             </div>
 
@@ -679,8 +679,8 @@
                                     <tr>
                                         <td>{{ __('event_applications.wizard.expense_items.' . $itemKey) }}</td>
                                         <td class="text-right">{{ $qty }}</td>
-                                        <td class="text-right">{{ number_format($val, 2) }}</td>
-                                        <td class="text-right">{{ number_format($subtotal, 2) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($val) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($subtotal) }}</td>
                                     </tr>
                                 @endif
                             @endforeach
@@ -715,8 +715,8 @@
                                     <tr>
                                         <td>{{ $label }}</td>
                                         <td class="text-right">{{ $qty }}</td>
-                                        <td class="text-right">{{ number_format($val, 2) }}</td>
-                                        <td class="text-right">{{ number_format($subtotal, 2) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($val) }}</td>
+                                        <td class="text-right">{{ \Support\Money::amount($subtotal) }}</td>
                                     </tr>
                                 @endif
                             @endforeach

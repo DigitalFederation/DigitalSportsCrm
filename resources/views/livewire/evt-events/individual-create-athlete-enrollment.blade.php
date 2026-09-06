@@ -81,7 +81,7 @@
                                     <option value="">{{ __('events.select_per_person_pricing') }}</option>
                                     @foreach ($pricingData->where('price_type', \App\Enums\EvtEventFeeTypeEnum::PER_PERSON->value) as $pricing)
                                         <option value="{{ $pricing->id }}">{{ $pricing->description }}
-                                            - {{ $pricing->price }}€
+                                            - {{ money($pricing->price) }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -92,7 +92,7 @@
                                     <option value="">{{ __('events.discipline_fee') }}</option>
                                     @foreach ($pricingData->where('price_type', \App\Enums\EvtEventFeeTypeEnum::PER_DISCIPLINE->value) as $pricing)
                                         <option value="{{ $pricing->id }}">{{ $pricing->description }}
-                                            - {{ $pricing->price }}€
+                                            - {{ money($pricing->price) }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -103,7 +103,7 @@
                                     <option value="">{{ __('events.select_event_fee_pricing') }}</option>
                                     @foreach ($pricingData->where('price_type', \App\Enums\EvtEventFeeTypeEnum::EVENT_FEE->value) as $pricing)
                                         <option value="{{ $pricing->id }}">{{ $pricing->description }}
-                                            - {{ $pricing->price }}€
+                                            - {{ money($pricing->price) }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -227,14 +227,14 @@
                         <div class="mt-4 p-4 bg-gray-50 rounded-lg">
                             <div class="flex justify-between items-center">
                                 <div class="text-lg font-semibold">{{ __('events.pending_total_cost') }}</div>
-                                <div class="text-xl font-bold">{{ number_format($totalCost, 2) }}€</div>
+                                <div class="text-xl font-bold">{{ money($totalCost) }}</div>
                             </div>
                             @if (!empty($costBreakdown) && is_array($costBreakdown))
                                 <div class="mt-2 text-sm text-gray-600">
                                     @foreach ($costBreakdown as $item)
                                         <div class="flex justify-between">
                                             <span>{{ $item['description'] ?? '' }}</span>
-                                            <span>{{ number_format($item['amount'] ?? 0, 2) }}€</span>
+                                            <span>{{ money($item['amount'] ?? 0) }}</span>
                                         </div>
                                     @endforeach
                                 </div>
@@ -434,7 +434,7 @@
                     <div class="mt-4 p-4 bg-gray-50 rounded-lg">
                         <div class="flex justify-between items-center">
                             <div class="text-lg font-semibold">{{ __('events.total_cost') }}</div>
-                            <div class="text-xl font-bold">{{ number_format($totalCost, 2) }}€</div>
+                            <div class="text-xl font-bold">{{ money($totalCost) }}</div>
                         </div>
 
                         @if (!empty($costBreakdown) && is_array($costBreakdown))
@@ -442,7 +442,7 @@
                                 @foreach ($costBreakdown as $item)
                                     <div class="flex justify-between">
                                         <span>{{ $item['description'] ?? '' }}</span>
-                                        <span>{{ number_format($item['amount'] ?? 0, 2) }}€</span>
+                                        <span>{{ money($item['amount'] ?? 0) }}</span>
                                     </div>
                                 @endforeach
                             </div>
@@ -468,7 +468,7 @@
             <div class="mt-4 p-4 bg-gray-50 rounded-lg">
                 <div class="flex justify-between items-center">
                     <div class="text-lg font-semibold">{{ __('events.registration_cost') }}</div>
-                    <div class="text-xl font-bold">{{ number_format($currentDisciplineCost, 2) }}€</div>
+                    <div class="text-xl font-bold">{{ money($currentDisciplineCost) }}</div>
                 </div>
             </div>
         @endif

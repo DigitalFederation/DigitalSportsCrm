@@ -85,7 +85,6 @@ return [
     'Fee when subscribed by individuals' => 'Gebühr bei Abonnement durch Einzelpersonen',
     'Fee charged to the entity (institution)' => 'Gebühr für die Einrichtung (Institution)',
     'Fee when subscribed by entities' => 'Gebühr bei Abonnement durch Einrichtungen',
-    'This is a free plan (set fees to €0)' => 'Dies ist ein kostenloser Plan (Gebühren auf 0 € setzen)',
     'Leave empty for immediate availability' => 'Leer lassen für sofortige Verfügbarkeit',
     'Leave empty for no expiration' => 'Leer lassen für unbegrenzte Gültigkeit',
     'Provide detailed information about what this plan includes, requirements, benefits, etc.' => 'Geben Sie detaillierte Informationen darüber an, was dieser Plan umfasst, sowie Anforderungen, Vorteile usw.',

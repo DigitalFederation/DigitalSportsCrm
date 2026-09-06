@@ -57,6 +57,92 @@ does not change the database model or provide country reference data by itself.
 Users can change to any locale registered in `config/app.php`. An authenticated user's selection is
 stored on the user record and takes precedence over the session and application default.
 
+## Currency
+
+Every monetary amount in the application renders through one formatter, configured in
+`config/currency.php` from environment variables:
+
+```ini
+CURRENCY_CODE=EUR
+CURRENCY_SYMBOL=€
+CURRENCY_SYMBOL_POSITION=after
+CURRENCY_SYMBOL_SPACE=true
+CURRENCY_DECIMALS=2
+CURRENCY_DECIMAL_SEPARATOR=,
+CURRENCY_THOUSANDS_SEPARATOR=.
+```
+
+| Variable | Purpose |
+|----------|---------|
+| `CURRENCY_CODE` | ISO 4217 code. Shown where a label names the currency rather than an amount, such as a chart axis. |
+| `CURRENCY_SYMBOL` | Symbol printed beside an amount. |
+| `CURRENCY_SYMBOL_POSITION` | `before` or `after` the number. |
+| `CURRENCY_SYMBOL_SPACE` | Whether a space separates symbol and number: `1,00 €` versus `1,00€`. |
+| `CURRENCY_DECIMALS` | Decimal places. `0` prints whole units with no separator. |
+| `CURRENCY_DECIMAL_SEPARATOR` | Character before the decimal places. |
+| `CURRENCY_THOUSANDS_SEPARATOR` | Character grouping thousands. |
+
+The symbol is not the only thing that varies between currencies—separator characters and symbol
+position do too. Configure all seven values together. Common combinations:
+
+| Variable | Euro (`pt`, `es`, `fr`, `de`) | US dollar | Brazilian real |
+|----------|------------------------------|-----------|----------------|
+| `CURRENCY_CODE` | `EUR` | `USD` | `BRL` |
+| `CURRENCY_SYMBOL` | `€` | `$` | `R$` |
+| `CURRENCY_SYMBOL_POSITION` | `after` | `before` | `before` |
+| `CURRENCY_SYMBOL_SPACE` | `true` | `false` | `true` |
+| `CURRENCY_DECIMAL_SEPARATOR` | `,` | `.` | `,` |
+| `CURRENCY_THOUSANDS_SEPARATOR` | `.` | `,` | `.` |
+| **Renders** | `1.234,56 €` | `$1,234.56` | `R$ 1.234,56` |
+
+Currency configuration is independent of `APP_LOCALE`. A locale governs the language of the
+interface; the currency setting governs how money is written. An installation serving several
+locales still bills in one currency, and every user sees that currency regardless of the language
+they have selected.
+
+### What this setting does not do
+
+This is a presentation setting. It changes how stored amounts are written, and nothing else:
+
+- **No conversion.** Amounts are stored as plain decimal numbers with no currency attached. Changing
+  `CURRENCY_CODE` reinterprets existing values in the new currency; it does not convert them. An
+  installation holding a `250.00` fee will read it as `250,00 €` or `R$ 250,00` depending only on
+  configuration.
+- **No effect on what a payment gateway charges.** The configured currency is not transmitted to
+  payment or invoicing providers. Providers that operate in a fixed currency continue to do so. See
+  [Payments](/features/payments) before pairing a non-Euro currency with the bundled EasyPay or
+  Moloni integrations.
+- **One currency per installation.** Individual plans, licenses, documents, and transactions cannot
+  each carry their own currency.
+
+After changing any currency value, rebuild the cached configuration with `php artisan optimize:clear`
+and `php artisan config:cache`, as with the other installation defaults above.
+
+### Known limitation: client-side amounts
+
+A few screens format an amount in the browser rather than on the server: a Chart.js axis callback
+on the licence analytics dashboard, and some Alpine `x-text` bindings on the subscription and
+insurance pages. These use the configured symbol or ISO code, but fix its placement in the markup — the analytics
+chart prefixes the symbol, the insurance bindings append the ISO code — and they use the browser's
+own separators. They do not honour `CURRENCY_SYMBOL_POSITION`, `CURRENCY_DECIMAL_SEPARATOR`, or
+`CURRENCY_THOUSANDS_SEPARATOR`.
+
+Every server-rendered amount does, as does the event-application budget step, whose client-side
+totals are formatted from the same configuration. That step rounds half-cent values in the browser
+rather than in PHP, so a live preview may show `1,00` where the server stores `1,01`. The figure
+submitted and stored is always the server's.
+
+### Known limitation: entering amounts
+
+Currency configuration governs how amounts are *displayed*. It does not change the fee and price
+**inputs** in the admin area — the licence and membership plan forms validate what you type against
+a fixed pattern that expects a full stop for decimals and accepts a comma only as a thousands
+separator (`1234.56`, `1,234.56`).
+
+So on an installation configured for reais or euros, a fee shown as `1.234,56` must be typed back
+as `1234.56`. Enter amounts with a full stop for the decimal place and no thousands separator, and
+they will display in the configured format.
+
 ## Geography datasets
 
 Geographic reference data is selected through `config/geography.php`. A dataset is a seeder class

@@ -592,6 +592,58 @@ return [
 - Icons: provide `aria-label` or visible text; decorative SVGs should be hidden from AT.
 - Color: never communicate state by color alone; include text or icons.
 
+## Money & Currency
+
+Never write a currency symbol into a template, a translated string, or a translation key. The
+symbol, its position, and the separator characters are installation configuration
+(`config/currency.php`) — an installation may bill in Euro, dollars, or reais.
+
+Render every monetary amount with the global `money()` helper, which applies the configured symbol,
+position, and separators:
+
+```blade
+{{-- Correct --}}
+{{ money($document->total_value) }}
+
+{{-- Wrong --}}
+{{ $document->total_value }}€
+€{{ number_format($price, 2) }}
+```
+
+Do not wrap the value in `number_format()` before passing it — `money()` does the formatting, and
+double-formatting corrupts the output. It accepts `int`, `float`, numeric `string`, and `null`
+(rendered as zero).
+
+For labels that name the currency rather than print an amount — a chart axis, a column header — use
+`Support\Money::code()` and pass it into the translation as a placeholder:
+
+```php
+// Translation file:  'revenue_in_currency' => 'Revenue (:currency)'
+__('dashboard.revenue_in_currency', ['currency' => Money::code()])
+```
+
+Where a translated sentence embeds an amount, the amount is a placeholder filled by the caller, not
+part of the translated text:
+
+```php
+// Correct:  'Purchase for :amount' => 'Purchase for :amount'
+__('licenses.Purchase for :amount', ['amount' => money($totalPrice)])
+
+// Wrong:    'Purchase for €:amount' => 'Purchase for €:amount'
+```
+
+`Support\Money::amount()` returns the formatted number without a symbol, for the rare case where a
+surrounding label already names the currency.
+
+This is enforced: `tests/Unit/Support/NoHardcodedCurrencyTest.php` scans `resources/`, `app/`,
+`src/`, and `lang/`, and fails the build on any hardcoded euro — the literal `€`, the ISO code
+`EUR`, or the HTML entities `&euro;` and `&#8364;`.
+
+**The test only knows about the euro.** A hardcoded `$`, `£`, `R$`, `USD` or `BRL` passes it
+silently, and so does an amount rendered with no symbol at all — a bare `number_format($fee, 2)`
+looks like any other number. Both have reached production in this codebase before. A green test
+means no euro slipped in; it does not mean the amount is formatted correctly. Read the diff.
+
 ## Standards & Anti‑Patterns
 
 ### DO
@@ -635,6 +687,7 @@ Before submitting a view:
 - [ ] `<x-layout>` + `previous-layout-classes` used
 - [ ] Title uses `page-first-title`
 - [ ] All strings translated (including buttons, empty states)
+- [ ] Monetary amounts rendered with `money()`; no currency symbol in markup or translations
 - [ ] Correct button variant and size; consistent grouping
 - [ ] Responsive layout verified on small and large screens
 - [ ] Validation, errors, and empty states handled

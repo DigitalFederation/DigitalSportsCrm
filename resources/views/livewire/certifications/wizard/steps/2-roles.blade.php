@@ -219,7 +219,7 @@
                                     <span class="font-medium text-gray-900">{{ __('certifications.digital_only') }}</span>
                                     <p class="text-xs text-gray-500">{{ __('certifications.digital_only_description') }}</p>
                                 </div>
-                                <span class="text-green-600 font-semibold">{{ number_format($selectedCertification->getDigitalPrice(), 2) }}</span>
+                                <span class="text-green-600 font-semibold">{{ money($selectedCertification->getDigitalPrice()) }}</span>
                             </label>
 
                             {{-- Digital + Physical Card Option (only if available) --}}
@@ -232,7 +232,7 @@
                                         <span class="font-medium text-gray-900">{{ __('certifications.digital_plus_card') }}</span>
                                         <p class="text-xs text-gray-500">{{ __('certifications.digital_plus_card_description') }}</p>
                                     </div>
-                                    <span class="text-green-600 font-semibold">{{ number_format($selectedCertification->getDigitalPlusCardPrice(), 2) }}</span>
+                                    <span class="text-green-600 font-semibold">{{ money($selectedCertification->getDigitalPlusCardPrice()) }}</span>
                                 </label>
                             @endif
                         </div>

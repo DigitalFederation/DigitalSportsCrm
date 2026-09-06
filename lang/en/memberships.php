@@ -77,7 +77,7 @@ return [
     'fee_individual_subscription' => 'Fee when subscribed by individuals',
     'fee_entity_institution' => 'Fee charged to the entity (institution)',
     'fee_entity_subscription' => 'Fee when subscribed by entities',
-    'free_plan_option' => 'This is a free plan (set fees to €0)',
+    'free_plan_option' => 'This is a free plan (set fees to :amount)',
     'immediate_availability' => 'Leave empty for immediate availability',
     'no_expiration' => 'Leave empty for no expiration',
     'description_help' => 'Provide detailed information about what this plan includes, requirements, benefits, etc.',

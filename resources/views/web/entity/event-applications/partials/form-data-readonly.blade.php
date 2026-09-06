@@ -680,15 +680,15 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="p-4 bg-rose-50 rounded-lg border border-rose-200">
                     <p class="text-xs font-medium text-rose-600">{{ __('event_applications.wizard.sections.expenses') }}</p>
-                    <p class="text-xl font-bold text-rose-700 tabular-nums">{{ number_format($totalExpenses, 2) }} EUR</p>
+                    <p class="text-xl font-bold text-rose-700 tabular-nums">{{ money($totalExpenses) }}</p>
                 </div>
                 <div class="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
                     <p class="text-xs font-medium text-emerald-600">{{ __('event_applications.wizard.sections.revenue') }}</p>
-                    <p class="text-xl font-bold text-emerald-700 tabular-nums">{{ number_format($totalRevenue, 2) }} EUR</p>
+                    <p class="text-xl font-bold text-emerald-700 tabular-nums">{{ money($totalRevenue) }}</p>
                 </div>
                 <div class="p-4 {{ ($totalRevenue - $totalExpenses) >= 0 ? 'bg-blue-50 border-blue-200' : 'bg-amber-50 border-amber-200' }} rounded-lg border">
                     <p class="text-xs font-medium {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-600' : 'text-amber-600' }}">{{ __('event_applications.wizard.labels.balance') }}</p>
-                    <p class="text-xl font-bold {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-700' : 'text-amber-700' }} tabular-nums">{{ number_format($totalRevenue - $totalExpenses, 2) }} EUR</p>
+                    <p class="text-xl font-bold {{ ($totalRevenue - $totalExpenses) >= 0 ? 'text-blue-700' : 'text-amber-700' }} tabular-nums">{{ money($totalRevenue - $totalExpenses) }}</p>
                 </div>
             </div>
 
@@ -767,8 +767,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ __('event_applications.wizard.expense_items.' . $itemKey) }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -776,7 +776,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? number_format($groupTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? \Support\Money::amount($groupTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -833,8 +833,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ $p['entity'] ?? '-' }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -842,7 +842,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $partnersTotal ? number_format($partnersTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $partnersTotal ? \Support\Money::amount($partnersTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -907,8 +907,8 @@
                                                     <tr class="hover:bg-slate-50/50 transition-colors">
                                                         <td class="px-4 py-2.5">{{ __('event_applications.wizard.revenue_items.' . $itemKey) }}</td>
                                                         <td class="px-4 py-2.5 text-right tabular-nums">{{ $qty ?: '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? number_format($val, 2) : '-' }}</td>
-                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? number_format($subtotal, 2) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $val ? \Support\Money::amount($val) : '-' }}</td>
+                                                        <td class="px-4 py-2.5 text-right tabular-nums">{{ $subtotal ? \Support\Money::amount($subtotal) : '-' }}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -916,7 +916,7 @@
                                         <tfoot>
                                             <tr class="border-t-2 border-slate-300 bg-slate-50">
                                                 <td colspan="3" class="px-4 py-2.5 text-right text-xs font-semibold text-slate-600">{{ __('event_applications.wizard.labels.group_total') }}</td>
-                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? number_format($groupTotal, 2) : '-' }}</td>
+                                                <td class="px-4 py-2.5 text-right font-semibold text-slate-700 tabular-nums">{{ $groupTotal ? \Support\Money::amount($groupTotal) : '-' }}</td>
                                             </tr>
                                         </tfoot>
                                     </table>

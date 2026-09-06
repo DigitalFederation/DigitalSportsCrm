@@ -71,6 +71,9 @@ class ReconcileMoloniInvoices extends Command
                     $doc->id,
                     $doc->number_extended,
                     $doc->owner?->name ?? 'N/A',
+                    // Moloni is a Portuguese e-invoicing provider and always invoices in Euro,
+                    // regardless of this install's configured currency (config/currency.php).
+                    // This reports what Moloni invoiced, not what the install displays.
                     number_format($doc->total_value, 2) . ' EUR',
                     $doc->updated_at->format('Y-m-d H:i'),
                 ])

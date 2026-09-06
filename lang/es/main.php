@@ -85,7 +85,6 @@ return [
     'Fee when subscribed by individuals' => 'Cuota cuando se suscriben individuos',
     'Fee charged to the entity (institution)' => 'Cuota cobrada a la entidad (institución)',
     'Fee when subscribed by entities' => 'Cuota cuando se suscriben entidades',
-    'This is a free plan (set fees to €0)' => 'Este es un plan gratuito (establezca las cuotas en €0)',
     'Leave empty for immediate availability' => 'Deje vacío para disponibilidad inmediata',
     'Leave empty for no expiration' => 'Deje vacío para que no caduque',
     'Provide detailed information about what this plan includes, requirements, benefits, etc.' => 'Proporcione información detallada sobre lo que incluye este plan, requisitos, beneficios, etc.',

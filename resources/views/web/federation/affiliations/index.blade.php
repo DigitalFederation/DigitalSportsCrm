@@ -111,7 +111,7 @@
                                     <div class="text-slate-800">{{ $affiliation->affiliationPlan->name ?? '-' }}</div>
                                 </td>
                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                    <div class="text-slate-800">{{ number_format($affiliation->affiliationPlan->entity_fee ?? 0, 2) }}&#8364;</div>
+                                    <div class="text-slate-800">{{ money($affiliation->affiliationPlan->entity_fee ?? 0) }}</div>
                                 </td>
                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                     <div class="text-slate-800">{{ $affiliation->activation_date?->format('d-m-Y') ?? '-' }}</div>

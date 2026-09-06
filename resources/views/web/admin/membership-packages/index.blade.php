@@ -51,7 +51,7 @@
                                 $individualPrice = $package->affiliationPlans->sum('individual_fee') + $package->insurancePlans->sum('premium');
                             @endphp
                             @if($individualPrice > 0)
-                                €{{ number_format($individualPrice, 2) }}
+                                {{ money($individualPrice) }}
                             @else
                                 <span class="text-gray-400">-</span>
                             @endif
@@ -61,7 +61,7 @@
                                 $entityPrice = $package->affiliationPlans->sum('entity_fee') + $package->insurancePlans->sum('premium');
                             @endphp
                             @if($entityPrice > 0)
-                                €{{ number_format($entityPrice, 2) }}
+                                {{ money($entityPrice) }}
                             @else
                                 <span class="text-gray-400">-</span>
                             @endif

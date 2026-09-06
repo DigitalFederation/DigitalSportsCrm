@@ -116,7 +116,7 @@
                         </div>
                         <div class="border-t border-slate-200 pt-3 mt-3">
                             <span class="block text-xs text-slate-500 mb-0.5">{{ __('federation.affiliation_fee') }}</span>
-                            <span class="text-xl font-bold text-indigo-600">{{ number_format($affiliation->entity_fee ?? 0, 2) }}&#8364;</span>
+                            <span class="text-xl font-bold text-indigo-600">{{ money($affiliation->entity_fee ?? 0) }}</span>
                         </div>
                     </div>
                 </div>

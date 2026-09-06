@@ -100,7 +100,7 @@
         <div x-show="getFeeStructure(selectedScenario) === 'individual_only' || getFeeStructure(selectedScenario) === 'both'"
              class="mb-4">
             <label for="individual_fee" class="block text-sm font-medium text-gray-700">
-                {{ __('Individual Fee') }} ({{ config('squidflex.currency_symbol', '€') }})
+                {{ __('Individual Fee') }} ({{ \Support\Money::symbol() }})
             </label>
             <input type="number" name="individual_fee" id="individual_fee" 
                    value="{{ old('individual_fee', $plan->individual_fee ?? '') }}" 
@@ -120,7 +120,7 @@
         <div x-show="getFeeStructure(selectedScenario) === 'entity_only' || getFeeStructure(selectedScenario) === 'both'"
              class="mb-4">
             <label for="entity_fee" class="block text-sm font-medium text-gray-700">
-                {{ __('Entity Fee') }} ({{ config('squidflex.currency_symbol', '€') }})
+                {{ __('Entity Fee') }} ({{ \Support\Money::symbol() }})
             </label>
             <input type="number" name="entity_fee" id="entity_fee" 
                    value="{{ old('entity_fee', $plan->entity_fee ?? '') }}" 
@@ -191,7 +191,7 @@
         <div class="bg-white p-3 rounded border border-gray-200">
             <label class="flex items-center">
                 <input type="checkbox" class="rounded border-gray-300 text-green-600 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50">
-                <span class="ml-2 text-sm text-gray-700">{{ __('memberships.free_plan_option') }}</span>
+                <span class="ml-2 text-sm text-gray-700">{{ __('memberships.free_plan_option', ['amount' => money(0)]) }}</span>
             </label>
         </div>
     </div>
