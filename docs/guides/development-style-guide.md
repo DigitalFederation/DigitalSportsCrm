@@ -639,6 +639,11 @@ This is enforced: `tests/Unit/Support/NoHardcodedCurrencyTest.php` scans `resour
 `src/`, and `lang/`, and fails the build on any hardcoded euro — the literal `€`, the ISO code
 `EUR`, or the HTML entities `&euro;` and `&#8364;`.
 
+**The test only knows about the euro.** A hardcoded `$`, `£`, `R$`, `USD` or `BRL` passes it
+silently, and so does an amount rendered with no symbol at all — a bare `number_format($fee, 2)`
+looks like any other number. Both have reached production in this codebase before. A green test
+means no euro slipped in; it does not mean the amount is formatted correctly. Read the diff.
+
 ## Standards & Anti‑Patterns
 
 ### DO

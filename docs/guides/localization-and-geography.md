@@ -128,7 +128,20 @@ own separators. They do not honour `CURRENCY_SYMBOL_POSITION`, `CURRENCY_DECIMAL
 `CURRENCY_THOUSANDS_SEPARATOR`.
 
 Every server-rendered amount does, as does the event-application budget step, whose client-side
-totals are formatted from the same configuration.
+totals are formatted from the same configuration. That step rounds half-cent values in the browser
+rather than in PHP, so a live preview may show `1,00` where the server stores `1,01`. The figure
+submitted and stored is always the server's.
+
+### Known limitation: entering amounts
+
+Currency configuration governs how amounts are *displayed*. It does not change the fee and price
+**inputs** in the admin area — the licence and membership plan forms validate what you type against
+a fixed pattern that expects a full stop for decimals and accepts a comma only as a thousands
+separator (`1234.56`, `1,234.56`).
+
+So on an installation configured for reais or euros, a fee shown as `1.234,56` must be typed back
+as `1234.56`. Enter amounts with a full stop for the decimal place and no thousands separator, and
+they will display in the configured format.
 
 ## Geography datasets
 
