@@ -2,13 +2,24 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Concerns\NormalizesMonetaryInput;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InsurancePlanCreateRequest extends FormRequest
 {
+    use NormalizesMonetaryInput;
+
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->normalizeMonetaryInput([
+            'individual_fee',
+            'entity_fee',
+        ]);
     }
 
     public function rules(): array

@@ -72,19 +72,24 @@ are per-deployment and are overwritten on the next re-seed.
 ### Entering fees and prices
 
 Every screen that takes money — membership and affiliation plans, licence prices, insurance fees,
-certification prices — expects the amount typed with a **full stop for the decimal place and no
-thousands separator**:
+certification prices — accepts the amount **however your installation writes it**. All of these
+store the same fee:
 
-| Type this | Not this |
+| You type | Stored as |
 |---|---|
-| `1234.56` | `1.234,56` |
-| `250` or `250.00` | `250,00` |
+| `1234.56` | 1234.56 |
+| `1234,56` | 1234.56 |
+| `1.234,56` | 1234.56 |
+| `1,234.56` | 1234.56 |
+| `R$ 1.234,56` | 1234.56 |
 
-This is independent of how amounts are *displayed*. An installation configured for euros or reais
-shows the same fee back as `1.234,56 €` or `R$ 1.234,56`, but the input still wants `1234.56`. If a
-fee field rejects what you type, a decimal comma is the usual reason.
+So you can copy an amount off a screen and type it straight back, including the currency symbol.
 
-Which symbol and number format the platform displays is set once per installation and is not
+One rule worth knowing: a separator followed by **three** digits is read as a thousands separator,
+so `1.234` is one thousand two hundred and thirty-four, not one euro and 234. Only one or two
+digits after a separator mark the decimal place.
+
+Which symbol and number format the platform *displays* is set once per installation and is not
 editable in the admin area — see [Currency](/guides/localization-and-geography#currency).
 
 ## Managed in the UI vs. in config

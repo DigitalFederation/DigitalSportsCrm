@@ -375,7 +375,7 @@
                                        name="unit_value_individual"
                                        id="unit_value_individual"
                                        class="form-input w-full {{ $errors->has('unit_value_individual') ? 'border-rose-300' : '' }}"
-                                       pattern="^\$?(([1-9](\d*|\d{0,2}(,\d{3})*))|0)(\.\d{1,2})?$"
+                                       pattern="[0-9]+([.,][0-9]{1,2})?|[0-9]{1,3}([ .,][0-9]{3})+([.,][0-9]{1,2})?"
                                        value="{{ old('unit_value_individual', $license->unit_value_individual) }}">
                                 <div
                                     class="text-xs mt-1"> {{ __('Preço quando adquirido por indivíduos.') }} </div>
@@ -394,7 +394,7 @@
                                        name="unit_value_entity"
                                        id="unit_value_entity"
                                        class="form-input w-full {{ $errors->has('unit_value_entity') ? 'border-rose-300' : '' }}"
-                                       pattern="^\$?(([1-9](\d*|\d{0,2}(,\d{3})*))|0)(\.\d{1,2})?$"
+                                       pattern="[0-9]+([.,][0-9]{1,2})?|[0-9]{1,3}([ .,][0-9]{3})+([.,][0-9]{1,2})?"
                                        value="{{ old('unit_value_entity', $license->unit_value_entity) }}">
                                 <div
                                     class="text-xs mt-1"> {{ __('Preço quando adquirido por entidades.') }} </div>
@@ -413,7 +413,7 @@
                                        name="unit_value_federation"
                                        id="unit_value_federation"
                                        class="form-input w-full {{ $errors->has('unit_value_federation') ? 'border-rose-300' : '' }}"
-                                       pattern="^\$?(([1-9](\d*|\d{0,2}(,\d{3})*))|0)(\.\d{1,2})?$"
+                                       pattern="[0-9]+([.,][0-9]{1,2})?|[0-9]{1,3}([ .,][0-9]{3})+([.,][0-9]{1,2})?"
                                        value="{{ old('unit_value_federation', $license->unit_value_federation) }}">
                                 <div
                                     class="text-xs mt-1"> {{ __('Preço quando adquirido por federações.') }} </div>

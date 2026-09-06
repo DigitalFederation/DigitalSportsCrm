@@ -96,7 +96,7 @@
                                     <label class="block text-sm font-medium mb-1" for="price">{{ __('Price') }}
                                         ({{ \Support\Money::symbol() }})</label>
                                     <input id="price"
-                                           pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$"
+                                           pattern="[0-9]+([.,][0-9]{1,2})?|[0-9]{1,3}([ .,][0-9]{3})+([.,][0-9]{1,2})?"
                                            class="form-input {{ $errors->has('price') ? 'border-rose-300' : '' }}"
                                            type="text"
                                            min="0"

@@ -3,11 +3,14 @@
 namespace App\Http\Requests;
 
 use App\Enums\CertificationCategoryEnum;
+use App\Http\Requests\Concerns\NormalizesMonetaryInput;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
 class CertificationRequest extends FormRequest
 {
+    use NormalizesMonetaryInput;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -23,6 +26,14 @@ class CertificationRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
+        $this->normalizeMonetaryInput([
+            'unit_value',
+            'unit_value_individual',
+            'unit_value_entity',
+            'digital_price',
+            'digital_plus_card_price',
+        ]);
+
         // Get the raw input data
         $input = $this->all();
 

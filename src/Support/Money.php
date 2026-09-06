@@ -77,6 +77,61 @@ final class Money
     }
 
     /**
+     * Read a human-typed amount back into a float.
+     *
+     * The inverse of format(): it accepts what the application displays, so an
+     * operator can copy a fee off the screen and type it back. Returns null for
+     * null, an empty string, or anything that is not an amount.
+     *
+     * Separators are resolved by position rather than by configuration, because
+     * the two cannot be told apart from configuration alone: an installation
+     * configured with "." for thousands would otherwise read the "1234.56" its
+     * own earlier forms produced as 123456 — a hundredfold error on a fee.
+     *
+     * The rule: a "." or "," followed by exactly one or two digits at the end of
+     * the string is the decimal separator. Every other "." and "," is a
+     * thousands separator and is discarded.
+     *
+     *   "1234.56"   -> 1234.56      "1.234,56" -> 1234.56
+     *   "1,234.56"  -> 1234.56      "R$ 1.234,56" -> 1234.56
+     *   "1.234"     -> 1234.0       "250"      -> 250.0
+     */
+    public static function parse(int|float|string|null $input): ?float
+    {
+        if ($input === null) {
+            return null;
+        }
+
+        if (is_int($input) || is_float($input)) {
+            return (float) $input;
+        }
+
+        // Drop the currency symbol, spaces (including the non-breaking kind) and
+        // anything else that is not part of a number.
+        $value = preg_replace('/[^0-9.,\-]/u', '', $input) ?? '';
+
+        if ($value === '' || $value === '-') {
+            return null;
+        }
+
+        $negative = str_starts_with($value, '-');
+        $value = ltrim($value, '-');
+
+        if (preg_match('/^(.*)([.,])(\d{1,2})$/', $value, $m) === 1) {
+            $whole = str_replace(['.', ','], '', $m[1]);
+            $value = ($whole === '' ? '0' : $whole).'.'.$m[3];
+        } else {
+            $value = str_replace(['.', ','], '', $value);
+        }
+
+        if ($value === '' || ! is_numeric($value)) {
+            return null;
+        }
+
+        return (float) ($negative ? '-'.$value : $value);
+    }
+
+    /**
      * Null and empty string mean zero — call sites legitimately render a blank
      * database column as 0,00.
      *

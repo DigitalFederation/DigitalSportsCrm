@@ -132,16 +132,20 @@ totals are formatted from the same configuration. That step rounds half-cent val
 rather than in PHP, so a live preview may show `1,00` where the server stores `1,01`. The figure
 submitted and stored is always the server's.
 
-### Known limitation: entering amounts
+### Entering amounts
 
-Currency configuration governs how amounts are *displayed*. It does not change the fee and price
-**inputs** in the admin area — the licence and membership plan forms validate what you type against
-a fixed pattern that expects a full stop for decimals and accepts a comma only as a thousands
-separator (`1234.56`, `1,234.56`).
+Fee and price inputs accept an amount written either way — `1234.56`, `1234,56`, `1.234,56`,
+`1,234.56`, or with the symbol attached (`R$ 1.234,56`). `Support\Money::parse()` reads it back
+to a number, so an operator can copy a displayed amount and type it straight back.
 
-So on an installation configured for reais or euros, a fee shown as `1.234,56` must be typed back
-as `1234.56`. Enter amounts with a full stop for the decimal place and no thousands separator, and
-they will display in the configured format.
+Separators are resolved by position rather than by configuration, because the two cannot be told
+apart from configuration alone: an installation configured with `.` for thousands would otherwise
+read the `1234.56` its own earlier forms produced as `123456`. The rule is that a `.` or `,`
+followed by exactly one or two digits at the end is the decimal separator, and every other one is
+a thousands separator. `1.234` is therefore 1234, not 1.234.
+
+Percentages and counts — a VAT rate, a duration — are not treated this way. A comma there means
+what it always did.
 
 ## Geography datasets
 
