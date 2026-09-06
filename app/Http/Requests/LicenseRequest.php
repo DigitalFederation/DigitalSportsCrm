@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Concerns\NormalizesMonetaryInput;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LicenseRequest extends FormRequest
 {
+    use NormalizesMonetaryInput;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -16,6 +19,13 @@ class LicenseRequest extends FormRequest
 
     protected function prepareForValidation()
     {
+        $this->normalizeMonetaryInput([
+            'unit_value',
+            'unit_value_individual',
+            'unit_value_entity',
+            'unit_value_federation',
+        ]);
+
         $this->merge([
             'is_school_license' => $this->has('is_school_license'),
             'allow_entity_group_request' => $this->has('allow_entity_group_request'),

@@ -2,11 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\Concerns\NormalizesMonetaryInput;
 use Domain\Insurance\Models\Insurance;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InsuranceUpdateRequest extends FormRequest
 {
+    use NormalizesMonetaryInput;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -84,6 +87,10 @@ class InsuranceUpdateRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
+        $this->normalizeMonetaryInput([
+            'fee',
+        ]);
+
         $this->merge([
             'is_external' => $this->toBoolean($this->is_external),
         ]);

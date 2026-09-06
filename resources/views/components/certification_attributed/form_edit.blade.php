@@ -74,7 +74,7 @@
 
                             <div class="sm:w-1/3">
                                 <label class="block text-sm font-medium mb-1" for="price"> {{ __('Price (:currency)', ['currency' => \Support\Money::symbol()]) }}</label>
-                                <input type="text" name="price" id="price" class="form-input w-full {{ $errors->has('price') ? 'border-rose-300' : '' }}" pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$" value="{{ old('price', $certification->price) }}">
+                                <input type="text" name="price" id="price" class="form-input w-full {{ $errors->has('price') ? 'border-rose-300' : '' }}" pattern="[0-9]+([.,][0-9]{1,2})?|[0-9]{1,3}([ .,][0-9]{3})+([.,][0-9]{1,2})?" value="{{ old('price', $certification->price) }}">
 
                                 @if($errors->has('price'))
                                     <div class="text-xs mt-1 text-rose-500 h-2">

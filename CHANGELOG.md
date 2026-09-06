@@ -37,6 +37,13 @@ update procedure.
   payment or invoicing providers. The bundled EasyPay and Moloni integrations operate in Euro
   regardless of it — see [Payments](https://digitalfederation.github.io/DigitalSportsCrm/features/payments).
 
+- **Fee fields accept the amount as it is displayed.** Entering a price meant typing `1234.56`
+  even where the platform showed `1.234,56 €`, because the fee inputs validated against a
+  fixed English number format. Membership and affiliation plans, licence prices, insurance
+  fees, and certification prices now accept a decimal comma, a thousands separator of either
+  kind, and a pasted currency symbol. A separator followed by three digits is still read as a
+  thousands separator, so `1.234` remains 1234.
+
 ### Changed
 
 - **Euro amounts now use European number formatting.** Most screens previously rendered
