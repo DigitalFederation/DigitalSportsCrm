@@ -37,7 +37,7 @@ most new operators.
 | Map licenses/certifications/federations to roles | `/admin/role-mappings` | Auto-role assignment rules |
 | Reorder, rename, show/hide, or add **sidebar entries** | `/admin/menu-management` | Gated by flags — see [Navigation & Menus](/guides/navigation-and-menus) |
 | Add or change a **committee** | **Config, not a screen** → `config/committees.php` | [Configuring Committees](/guides/configuring-committees) |
-| Manage affiliation (membership) plans | Admin sidebar → Memberships | [Memberships](/features/memberships) |
+| Manage affiliation (membership) plans | Admin sidebar → Memberships | [Memberships](/features/memberships) — type fees as `1234.56`, see [Entering fees and prices](#entering-fees-and-prices) |
 | Manage zones & districts (reference data) | Admin sidebar → Settings | [Platform Utilities](/features/platform-utilities#_3-zones-districts-module) |
 | Run maintenance commands / inspect queues | `/admin/operations` | [Operations Center](/features/platform-utilities#_4-operations-center) |
 | Take or restore database backups | `/admin/backups` | Operator-only |
@@ -69,6 +69,24 @@ loads when the `MenuSeeder` has run, the `DYNAMIC_MENU_ADMIN` flag is on, and yo
 [Navigation & Menus](/guides/navigation-and-menus#managing-menus-in-the-admin-ui). In-app edits
 are per-deployment and are overwritten on the next re-seed.
 
+### Entering fees and prices
+
+Every screen that takes money — membership and affiliation plans, licence prices, insurance fees,
+certification prices — expects the amount typed with a **full stop for the decimal place and no
+thousands separator**:
+
+| Type this | Not this |
+|---|---|
+| `1234.56` | `1.234,56` |
+| `250` or `250.00` | `250,00` |
+
+This is independent of how amounts are *displayed*. An installation configured for euros or reais
+shows the same fee back as `1.234,56 €` or `R$ 1.234,56`, but the input still wants `1234.56`. If a
+fee field rejects what you type, a decimal comma is the usual reason.
+
+Which symbol and number format the platform displays is set once per installation and is not
+editable in the admin area — see [Currency](/guides/localization-and-geography#currency).
+
 ## Managed in the UI vs. in config
 
 Not everything is a screen — and knowing which is which saves a lot of hunting:
@@ -76,6 +94,7 @@ Not everything is a screen — and knowing which is which saves a lot of hunting
 | Concern | Where you manage it |
 |---|---|
 | Users, roles, permissions, route protection | **Admin UI** (screens above) |
+| **Currency** shown beside every amount (symbol, position, separators) | **Config/env** — `CURRENCY_*`, one currency per installation. See [Currency](/guides/localization-and-geography#currency). |
 | Sidebar entries (order, labels, visibility) | **Admin UI** — `/admin/menu-management` (after seeding) |
 | **Committees** (which exist, their scope, their menu/license/purchase wiring) | **Config** — `config/committees.php`, then re-seed. There is deliberately no committee-CRUD screen so the platform stays generic. See [Configuring Committees](/guides/configuring-committees). |
 | Which menu the app renders, and per-portal toggles | **Config/env** — `DYNAMIC_MENU_*` flags. See [Navigation & Menus](/guides/navigation-and-menus). |
