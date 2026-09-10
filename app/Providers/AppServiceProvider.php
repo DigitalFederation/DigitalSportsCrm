@@ -13,6 +13,8 @@ use Domain\Documents\Models\Document;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use App\Mail\MicrosoftGraphTransport;
+use Illuminate\Support\Facades\Mail;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -50,6 +52,15 @@ class AppServiceProvider extends ServiceProvider
             'individual' => \Domain\Individuals\Models\Individual::class,
             'federation' => \Domain\Federations\Models\Federation::class,
         ]);
+
+        Mail::extend('microsoft-graph', function (array $config = []) {
+            return new MicrosoftGraphTransport(
+                tenantId: config('services.microsoft_graph.tenant_id'),
+                clientId: config('services.microsoft_graph.client_id'),
+                clientSecret: config('services.microsoft_graph.client_secret'),
+                fromAddress: config('services.microsoft_graph.from_address'),
+            );
+        });
 
         $this->applySiteSettingsOverrides();
     }
