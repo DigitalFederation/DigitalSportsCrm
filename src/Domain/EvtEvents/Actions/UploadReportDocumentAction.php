@@ -2,8 +2,8 @@
 
 namespace Domain\EvtEvents\Actions;
 
-use Domain\EvtEvents\Models\EventReportDocument;
 use Domain\EvtEvents\Models\ChiefJudgeReport;
+use Domain\EvtEvents\Models\EventReportDocument;
 use Domain\EvtEvents\Models\TechnicalDelegateReport;
 use Domain\Individuals\Models\Individual;
 use Illuminate\Http\UploadedFile;
@@ -15,8 +15,6 @@ class UploadReportDocumentAction
 {
     /**
      * Upload a document to a report (TD or CJ)
-     *
-     * @param  TechnicalDelegateReport|ChiefJudgeReport  $report
      */
     public function execute(TechnicalDelegateReport|ChiefJudgeReport $report, UploadedFile $file, Individual $uploadedBy): EventReportDocument
     {

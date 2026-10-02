@@ -16,7 +16,6 @@ class SubscriptionValidationService
     /**
      * Validate if a member can subscribe to a package according to business rules
      *
-     * @param  Entity|Individual  $member
      * @return array ['valid' => bool, 'error' => string|null]
      */
     public function validateSubscription(Entity|Individual $member, MembershipPackage $package): array

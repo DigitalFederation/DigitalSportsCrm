@@ -42,7 +42,7 @@ function publishAdminFixture(array $attributes = []): LegalPage
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Access control                                                            */
+/*  Access control */
 /* -------------------------------------------------------------------------- */
 
 test('guests cannot reach the admin screen', function () {
@@ -80,7 +80,7 @@ test('unknown types and locales are rejected', function () {
 });
 
 /* -------------------------------------------------------------------------- */
-/*  Draft / publish flow                                                      */
+/*  Draft / publish flow */
 /* -------------------------------------------------------------------------- */
 
 test('saving a draft does not change the public page', function () {
@@ -132,7 +132,7 @@ test('the form rejects an empty body or title', function () {
 });
 
 /* -------------------------------------------------------------------------- */
-/*  The security path: hostile input through the real endpoint                */
+/*  The security path: hostile input through the real endpoint */
 /* -------------------------------------------------------------------------- */
 
 test('a script payload submitted through the admin form never reaches the public page', function () {
@@ -176,7 +176,7 @@ test('a script payload submitted through the admin form never reaches the public
 });
 
 /* -------------------------------------------------------------------------- */
-/*  Menu delivery                                                             */
+/*  Menu delivery */
 /* -------------------------------------------------------------------------- */
 
 test('the sidebar entry is created without disturbing existing menu items', function () {

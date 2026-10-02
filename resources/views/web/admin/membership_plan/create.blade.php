@@ -97,7 +97,9 @@
                                            min="0"
                                            name="price"
                                            value="{{ old('price') }}" />
-                                    <div class="text-xs mt-1"> {{ __('* Price in euros. Ex: 12,90') }} </div>
+                                    <div class="text-xs mt-1"> {{ __('* Price in :currency. Use a dot as decimal separator when entering values. Ex: 12.90', [
+                                            'currency' => \Support\Money::code(),
+                                        ]) }} </div>
 
                                     <div class="text-xs mt-1 text-rose-500 h-2">
                                         @if($errors->has('price'))

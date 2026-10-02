@@ -25,6 +25,14 @@ class PaymentMethodSeeder extends Seeder
                 'instructions' => 'Secure online payment with credit card, Multibanco, MBWay, and other methods',
                 'handler' => 'Domain\Payments\Handlers\EasyPayPaymentHandler',
             ],
+            [
+                'name' => 'PagBank PIX',
+                'driver' => 'pagbank',
+                'instructions' => 'Secure PIX payment via PagBank QR Code',
+                'handler' => 'Domain\Payments\Handlers\PagBankPaymentHandler',
+                // Keep optional country/provider gateways disabled until credentials are configured.
+                'is_enabled' => false,
+            ],
         ];
 
         foreach ($types as $type) {

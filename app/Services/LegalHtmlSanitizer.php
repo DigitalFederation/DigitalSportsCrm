@@ -49,7 +49,7 @@ class LegalHtmlSanitizer
 
         $editor = new Editor([
             'extensions' => [
-                new StarterKit(),
+                new StarterKit,
                 new Link(['openOnClick' => false]),
             ],
         ]);
@@ -79,7 +79,7 @@ class LegalHtmlSanitizer
             return $html;
         }
 
-        $document = new DOMDocument();
+        $document = new DOMDocument;
 
         $previous = libxml_use_internal_errors(true);
         $document->loadHTML(
