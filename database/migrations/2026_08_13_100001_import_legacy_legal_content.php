@@ -120,7 +120,7 @@ return new class extends Migration
             return null;
         }
 
-        $document = new DOMDocument();
+        $document = new DOMDocument;
         $previous = libxml_use_internal_errors(true);
         $document->loadHTML('<?xml encoding="UTF-8"?>' . $html);
         libxml_clear_errors();

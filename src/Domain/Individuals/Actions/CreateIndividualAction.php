@@ -77,7 +77,7 @@ class CreateIndividualAction
     }
 
     private function syncFederations(
-        int|array $federationId,
+        int|array|null $federationId,
         Individual $individual,
         bool $addedByFederation,
         bool $addedByEntity = false): void
@@ -126,7 +126,7 @@ class CreateIndividualAction
         }
     }
 
-    private function getSpecialFederationId(): int
+    private function getSpecialFederationId(): ?int
     {
         return Federation::where('is_default_federation', true)->value('id');
     }

@@ -7,30 +7,67 @@ use Domain\Documents\Models\Document;
 use Domain\Payments\Actions\InitiatePaymentAction;
 use Domain\Payments\Models\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class DocumentPaymentController extends Controller
 {
     public function store(Request $request, string $documentId)
     {
-        // Validate the method_id input
         $request->validate([
             'method_id' => 'required|exists:payment_method,id',
         ]);
 
-        $methodId = $request->input('method_id');
-        $document = Document::where('id', $documentId)->firstOrFail();
+        $methodId = (int) $request->input('method_id');
 
-        // Initialize your payment action or handler here, passing in the selected method
-        $paymentAction = new InitiatePaymentAction;
-        $response = $paymentAction->execute($document, $methodId);
+        $document = Document::where('id', $documentId)
+            ->firstOrFail();
+
+        // Never initiate payment for a document the user cannot access.
+        $this->authorize('view', $document);
 
         $method = PaymentMethod::findOrFail($methodId);
 
-        // Handle different response types from the new payment system
+        Log::info('Payment initiation requested', [
+            'document_id' => $document->id,
+            'method_id' => $methodId,
+            'driver' => $method->driver,
+            'amount' => $document->total_value,
+        ]);
 
-        // Check if response is a Laravel redirect response (from EasyPay)
+        try {
+            $paymentAction = new InitiatePaymentAction;
+
+            $response = $paymentAction->execute(
+                $document,
+                $methodId
+            );
+        } catch (Throwable $e) {
+            Log::error('Payment initiation failed', [
+                'document_id' => $document->id,
+                'method_id' => $methodId,
+                'driver' => $method->driver,
+                'exception' => $e::class,
+                'error' => $e->getMessage(),
+            ]);
+
+            $message = config('app.debug')
+                ? $e->getMessage()
+                : __('payments.payment_failed');
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'type' => 'error',
+                    'message' => $message,
+                ], 502);
+            }
+
+            return redirect()
+                ->route('individual.document.show', $documentId)
+                ->with('error', $message);
+        }
+
         if ($response instanceof \Illuminate\Http\RedirectResponse) {
-            // For AJAX requests, return JSON with the URL to open in new window
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'type' => 'redirect',
@@ -41,36 +78,26 @@ class DocumentPaymentController extends Controller
             return $response;
         }
 
-        // Check if response is boolean true (offline payments)
         if ($response === true) {
-            $instruction = $method->instructions ?? __('payments.offline_payment_instructions');
+            $instruction = $method->instructions
+                ?? __('payments.offline_payment_instructions');
 
             if ($request->ajax() || $request->wantsJson()) {
                 return response()->json([
                     'type' => 'message',
                     'message' => $instruction,
-                    'redirect' => route('individual.document.show', $documentId),
+                    'redirect' => route(
+                        'individual.document.show',
+                        $documentId
+                    ),
                 ]);
             }
 
-            return redirect()->route('individual.document.show', $documentId)
+            return redirect()
+                ->route('individual.document.show', $documentId)
                 ->with('information', $instruction);
         }
 
-        // Handle any other unexpected response types
-        if (is_object($response)) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response()->json([
-                    'type' => 'error',
-                    'message' => __('payments.payment_failed'),
-                ], 422);
-            }
-
-            return redirect()->route('individual.document.show', $documentId)
-                ->with('error', __('payments.payment_failed'));
-        }
-
-        // If response is not handled above, consider it a failure
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
                 'type' => 'error',
@@ -78,7 +105,8 @@ class DocumentPaymentController extends Controller
             ], 422);
         }
 
-        return redirect()->route('individual.document.show', $documentId)
+        return redirect()
+            ->route('individual.document.show', $documentId)
             ->with('error', __('payments.payment_failed'));
     }
 }

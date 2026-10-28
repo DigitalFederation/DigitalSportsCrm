@@ -5,8 +5,8 @@ namespace Tests\Feature\Menu;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Services\MenuBuilderService;
-use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 class MenuBuilderLazyLoadTest extends TestCase

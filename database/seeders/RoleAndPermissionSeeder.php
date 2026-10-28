@@ -103,7 +103,6 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::firstOrCreate(['name' => 'access diving attachments']);
         Permission::firstOrCreate(['name' => 'access scientific attachments']);
 
-
         Permission::firstOrCreate(['name' => 'access coach menu']);
         Permission::firstOrCreate(['name' => 'access instructor menu']);
         Permission::firstOrCreate(['name' => 'access athlete menu']);

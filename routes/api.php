@@ -21,4 +21,7 @@ Route::prefix('payment/webhook')->middleware('throttle:60,1')->group(function ()
     if (config('payment.gateways.easypay.enabled')) {
         Route::post('easypay', [PaymentWebhookController::class, 'easypay'])->name('api.payment.webhook.easypay');
     }
+    if (config('payment.gateways.pagbank.enabled')) {
+        Route::post('pagbank', [PaymentWebhookController::class, 'pagbank'])->name('api.payment.webhook.pagbank');
+    }
 });

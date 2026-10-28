@@ -34,25 +34,35 @@ class PaymentWebhookController extends Controller
 {
     public function easypay(Request $request): JsonResponse
     {
+        return $this->processWebhook($request, 'easypay', 'EasyPay');
+    }
+
+    public function pagbank(Request $request): JsonResponse
+    {
+        return $this->processWebhook($request, 'pagbank', 'PagBank');
+    }
+
+    private function processWebhook(Request $request, string $gatewayName, string $gatewayLabel): JsonResponse
+    {
         $requestId = uniqid('webhook_', true);
         $startTime = microtime(true);
         $webhookLog = null;
 
         try {
-            Log::info('EasyPay webhook received', [
+            Log::info("{$gatewayLabel} webhook received", [
                 'request_id' => $requestId,
                 'ip' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);
 
-            Log::debug('EasyPay webhook payload', [
+            Log::debug("{$gatewayLabel} webhook payload", [
                 'request_id' => $requestId,
                 'headers' => $this->sanitizeHeaders($request->headers->all()),
                 'payload' => $request->getContent(),
             ]);
 
             $webhookLog = WebhookLog::create([
-                'gateway' => 'easypay',
+                'gateway' => $gatewayName,
                 'request_id' => $requestId,
                 'status' => 'processing',
                 'ip_address' => $request->ip(),
@@ -61,10 +71,10 @@ class PaymentWebhookController extends Controller
             ]);
 
             $gatewayManager = PaymentGatewayManager::createFromConfig();
-            $gateway = $gatewayManager->gateway('easypay');
+            $gateway = $gatewayManager->gateway($gatewayName);
 
             if (! $gateway->validateWebhookSignature($request->headers->all(), $request->getContent())) {
-                Log::warning('EasyPay webhook signature validation failed', [
+                Log::warning("{$gatewayLabel} webhook signature validation failed", [
                     'request_id' => $requestId,
                     'ip' => $request->ip(),
                 ]);
@@ -85,7 +95,7 @@ class PaymentWebhookController extends Controller
                 return $this->handleFailedPayment($paymentResponse, $requestId, $webhookLog, $startTime);
             }
 
-            Log::info('EasyPay payment status update', [
+            Log::info("{$gatewayLabel} payment status update", [
                 'request_id' => $requestId,
                 'status' => $paymentResponse->status,
                 'transaction_id' => $paymentResponse->transactionId,
@@ -94,9 +104,8 @@ class PaymentWebhookController extends Controller
             $this->updateWebhookLog($webhookLog, 'acknowledged', $startTime, ['status' => 'acknowledged'], 200, $paymentResponse->transactionId);
 
             return response()->json(['status' => 'acknowledged'], 200);
-
         } catch (\Exception $e) {
-            Log::error('EasyPay webhook processing failed', [
+            Log::error("{$gatewayLabel} webhook processing failed", [
                 'request_id' => $requestId,
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
@@ -203,7 +212,7 @@ class PaymentWebhookController extends Controller
                 $markAsPaidAction = new MarkAsPaidAction;
                 $markAsPaidAction->execute($document->id);
 
-                Log::info('Document marked as paid via EasyPay webhook', [
+                Log::info('Document marked as paid via payment webhook', [
                     'request_id' => $requestId,
                     'document_id' => $document->id,
                     'transaction_id' => $transaction->id,
@@ -258,7 +267,7 @@ class PaymentWebhookController extends Controller
 
     private function handleFailedPayment($paymentResponse, string $requestId, WebhookLog $webhookLog, float $startTime): JsonResponse
     {
-        Log::info('EasyPay payment failed via webhook', [
+        Log::info('Payment failed via payment webhook', [
             'request_id' => $requestId,
             'transaction_id' => $paymentResponse->transactionId,
             'error' => $paymentResponse->errorMessage,
@@ -322,7 +331,7 @@ class PaymentWebhookController extends Controller
 
     private function sanitizeHeaders(array $headers): array
     {
-        $sensitiveHeaders = ['authorization', 'x-easypay-signature', 'cookie'];
+        $sensitiveHeaders = ['authorization', 'x-easypay-signature', 'x-authenticity-token', 'cookie'];
 
         return collect($headers)
             ->map(function ($value, $key) use ($sensitiveHeaders) {

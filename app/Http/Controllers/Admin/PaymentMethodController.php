@@ -7,6 +7,7 @@ use Domain\Payments\Models\PaymentMethod;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class PaymentMethodController extends Controller
 {
@@ -73,7 +74,9 @@ class PaymentMethodController extends Controller
                 'configured' => ! empty($easyPayConfig['account_id'] ?? null) && ! empty($easyPayConfig['api_key'] ?? null),
                 'webhook_configured' => ! empty($easyPayConfig['webhook_secret'] ?? null) && $easyPayConfig['webhook_secret'] !== 'your-webhook-secret',
                 'sandbox' => $easyPayConfig['sandbox'] ?? true,
-                'webhook_url' => route('api.payment.webhook.easypay'),
+                'webhook_url' => Route::has('api.payment.webhook.easypay')
+                    ? route('api.payment.webhook.easypay')
+                    : null,
             ],
             'offline' => [
                 'configured' => true,

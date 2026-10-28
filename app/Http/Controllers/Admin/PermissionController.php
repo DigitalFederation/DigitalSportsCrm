@@ -10,7 +10,6 @@ class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      */
     public function index(): never
     {
@@ -19,7 +18,6 @@ class PermissionController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
      */
     public function create(): never
     {
@@ -28,7 +26,6 @@ class PermissionController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
      */
     public function store(Request $request): never
     {
@@ -37,7 +34,6 @@ class PermissionController extends Controller
 
     /**
      * Display the specified resource.
-     *
      */
     public function show(Permission $permission): never
     {
@@ -46,7 +42,6 @@ class PermissionController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
      */
     public function edit(Permission $permission): never
     {
@@ -55,7 +50,6 @@ class PermissionController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
      */
     public function update(Request $request, Permission $permission): never
     {
@@ -64,7 +58,6 @@ class PermissionController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
      */
     public function destroy(Permission $permission): never
     {

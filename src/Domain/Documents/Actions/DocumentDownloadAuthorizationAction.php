@@ -7,6 +7,7 @@ use Domain\Documents\Models\Document;
 use Domain\Entities\Models\Entity;
 use Domain\Federations\Models\Federation;
 use Domain\Individuals\Models\Individual;
+use Domain\Memberships\Models\MemberSubscription;
 
 /**
  * Handles the authorization logic for document download requests.
@@ -28,36 +29,42 @@ class DocumentDownloadAuthorizationAction
      */
     public function execute(User $user, Document $document): bool
     {
-        // admin users can download any document
+        // Administrators may access every document.
         if ($user->isAdmin()) {
             return true;
         }
 
-        // Federation users
+        // Federation users.
         if ($user->isFederation()) {
-            // Main federation has access to all documents, like platform administrators.
             $federation = $user->getFederation();
+
             if ($federation && $federation->isMainFederation()) {
                 return true;
             }
 
-            // Documents owned by the federation itself
             if ($this->isOwnerType($document, Federation::class)) {
-                return $user->federations->contains($document->owner_id);
+                return $user->federations()
+                    ->whereKey($document->owner_id)
+                    ->exists();
             }
 
-            // Documents owned by entities that belong to the federation
             if ($this->isOwnerType($document, Entity::class)) {
                 $federationId = $user->getFederationId();
+
                 if ($federationId) {
                     $entity = Entity::find($document->owner_id);
-                    if ($entity && $entity->federations()->where('federation.id', $federationId)->exists()) {
+
+                    if (
+                        $entity
+                        && $entity->federations()
+                            ->where('federation.id', $federationId)
+                            ->exists()
+                    ) {
                         return true;
                     }
                 }
             }
 
-            // View access to documents related to DIVING/SCIENTIFIC certifications or licenses
             if (
                 $federation
                 && Document::query()
@@ -69,27 +76,95 @@ class DocumentDownloadAuthorizationAction
             }
         }
 
-        // Entity users can download documents owned by their entity
-        if ($user->isEntity() && $this->isOwnerType($document, Entity::class)) {
-            return $user->entities->contains($document->owner_id);
+        // Entity-owned documents.
+        if (
+            $this->isOwnerType($document, Entity::class)
+            && $user->entities()
+                ->whereKey($document->owner_id)
+                ->exists()
+        ) {
+            return true;
         }
 
-        // Individual users can download documents owned by their individuals
-        if ($user->isIndividual() && $this->isOwnerType($document, Individual::class)) {
-            return $user->individuals->contains($document->owner_id);
+        /*
+         * Individual documents.
+         *
+         * Do not depend on User::isIndividual() here. Portal permissions may
+         * come from roles such as "individual-approved", while isIndividual()
+         * checks the legacy/group classification (group_id).
+         *
+         * The actual relationship between User and Individual is sufficient
+         * proof that this user owns that Individual record.
+         */
+        if ($this->canAccessAsLinkedIndividual($user, $document)) {
+            return true;
         }
 
         return false;
     }
 
-    /**
-     * Check if the document owner type matches the given class.
-     * Handles both morph alias (e.g., 'entity') and full class name (e.g., 'Domain\Entities\Models\Entity').
-     */
+    private function canAccessAsLinkedIndividual(
+        User $user,
+        Document $document
+    ): bool {
+        $individualIds = $user->individuals()
+            ->pluck('id')
+            ->map(fn ($id) => (string) $id);
+
+        if ($individualIds->isEmpty()) {
+            return false;
+        }
+
+        // Normal case: the document itself belongs to the Individual.
+        if (
+            $this->isOwnerType($document, Individual::class)
+            && $individualIds->contains((string) $document->owner_id)
+        ) {
+            return true;
+        }
+
+        /*
+         * Subscription invoice fallback.
+         *
+         * A directly requested MemberSubscription belonging to one of this
+         * user's Individuals is also evidence that the invoice belongs to
+         * this Individual.
+         *
+         * entity_group subscriptions are deliberately excluded.
+         */
+        $individualTypes = array_values(array_unique([
+            Individual::class,
+            (new Individual)->getMorphClass(),
+        ]));
+
+        $subscriptionIds = MemberSubscription::query()
+            ->whereIn('member_type', $individualTypes)
+            ->whereIn('member_id', $individualIds->all())
+            ->whereIn('requester_type', $individualTypes)
+            ->whereIn('requester_id', $individualIds->all())
+            ->where('request_type', 'direct')
+            ->pluck('id');
+
+        if ($subscriptionIds->isEmpty()) {
+            return false;
+        }
+
+        $subscriptionTypes = array_values(array_unique([
+            MemberSubscription::class,
+            (new MemberSubscription)->getMorphClass(),
+        ]));
+
+        return $document->details()
+            ->whereIn('owner_type', $subscriptionTypes)
+            ->whereIn('owner_id', $subscriptionIds->all())
+            ->exists();
+    }
+
     private function isOwnerType(Document $document, string $class): bool
     {
         $morphClass = (new $class)->getMorphClass();
 
-        return $document->owner_type === $class || $document->owner_type === $morphClass;
+        return $document->owner_type === $class
+            || $document->owner_type === $morphClass;
     }
 }

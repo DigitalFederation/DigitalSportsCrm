@@ -10,7 +10,7 @@ use App\Services\LegalHtmlSanitizer;
  * if one of them starts failing, stored XSS is live on a public page.
  */
 beforeEach(function () {
-    $this->sanitizer = new LegalHtmlSanitizer();
+    $this->sanitizer = new LegalHtmlSanitizer;
 });
 
 dataset('dangerous payloads', [
@@ -79,7 +79,7 @@ test('keeps the words when it removes an unsafe link', function () {
 });
 
 test('strips schemes smuggled past a naive check with whitespace or control characters', function () {
-    foreach (['java\tscript:alert(1)', "java\nscript:alert(1)", " javascript:alert(1)"] as $href) {
+    foreach (['java\tscript:alert(1)', "java\nscript:alert(1)", ' javascript:alert(1)'] as $href) {
         $clean = $this->sanitizer->sanitize('<a href="' . $href . '">x</a>');
 
         expect(str_contains(strtolower(preg_replace('/\s/', '', $clean) ?? ''), 'javascript:'))

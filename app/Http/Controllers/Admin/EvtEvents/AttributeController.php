@@ -112,7 +112,6 @@ class AttributeController extends Controller
 
     /**
      * Display the specified attribute.
-     *
      */
     public function show(Attribute $attribute): View
     {
@@ -121,8 +120,6 @@ class AttributeController extends Controller
 
     /**
      * Show the form for editing the specified attribute.
-     *
-     * @return View
      */
     public function edit(Attribute $attribute): View
     {

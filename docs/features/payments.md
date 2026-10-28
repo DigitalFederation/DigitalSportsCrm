@@ -126,7 +126,57 @@ INSERT INTO payment_method (name, driver, handler, is_enabled, instructions) VAL
 
 ---
 
-## 3. Webhook Implementation Details
+## 3. PagBank Integration Guide
+
+PagBank is an optional, Brazil-specific gateway using the **Orders & Payments API**. The bundled implementation intentionally starts with **PIX** so card data never passes through Digital Sports CRM.
+
+### Prerequisites
+
+- A PagBank account with at least one active PIX key.
+- A Sandbox authentication token from the PagBank Developer Portal.
+- A public HTTPS URL for webhook delivery (a tunnel such as ngrok can be used in development).
+
+### Configuration
+
+Add the following to `.env`:
+
+```ini
+PAGBANK_ENABLED=true
+PAGBANK_SANDBOX=true
+PAGBANK_TOKEN=your-sandbox-token
+PAGBANK_PIX_EXPIRATION_MINUTES=30
+PAGBANK_PAYMENT_PAGE_TTL_MINUTES=60
+```
+
+Then clear cached configuration and enable the `PagBank PIX` payment method in the database/admin interface.
+
+The webhook URL sent with each order is:
+
+```text
+https://app.example.test/api/payment/webhook/pagbank
+```
+
+### Security
+
+- PagBank webhook authenticity is checked using the `x-authenticity-token` SHA-256 signature over `{token}-{raw_payload}`.
+- A successful webhook is **not trusted by itself**. Before a document is marked as paid, the gateway queries `GET /charges/{charge_id}` and verifies the charge reference, amount, currency and payment method.
+- The API token is read only from environment configuration and is never sent to the browser.
+- The create-order request uses an idempotency key derived from the local payment transaction UUID.
+
+### Sandbox testing
+
+The PagBank Sandbox simulator can exercise PIX status changes based on transaction value. Test at least:
+
+- an immediately paid PIX;
+- a delayed payment;
+- a waiting payment;
+- a declined payment.
+
+Confirm that duplicate webhook deliveries remain idempotent and that only a verified `PAID` charge marks the document as paid.
+
+---
+
+## 4. Webhook Implementation Details
 
 For detailed information about the webhook callback implementation, including:
 

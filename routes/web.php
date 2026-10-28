@@ -9,6 +9,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\OnboardingController;
+use App\Http\Controllers\Payments\PagBankPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
@@ -107,6 +108,11 @@ Route::get('/', function (Request $request) {
 Route::get('terms-of-service', [LegalController::class, 'termsOfService'])->name('terms-of-service');
 Route::get('privacy-policy', [LegalController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('data-sharing-policy', [LegalController::class, 'dataSharingPolicy'])->name('data-sharing-policy');
+
+// Signed public page used to display the PagBank PIX QR Code.
+Route::get('/payment/pagbank/{transaction}', PagBankPaymentController::class)
+    ->middleware(['signed', 'throttle:60,1'])
+    ->name('payment.pagbank.show');
 
 /**
  * Public views of location map
